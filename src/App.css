@@ -1,38 +1,280 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
+  font-family: 'Raleway', Helvetica, Arial, Lucida, sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+/* /*****CSS PREDEFINIDO*** */
+
+.top-20 {
+  margin-top: 20px;
+}
+
+.top-50 {
+  margin-top: 50px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.margin-90 {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* BOTONES */
+
+.btn1 {
+  text-align: center;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 0.6em;
+  color: #fff;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 1rem;
+  line-height: 1;
+  margin: 20px;
+  padding: 12px;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  border: 2px solid #ffffff34;
+}
+
+.btn1:hover {
+  background-color: transparent;
+  border: 2px solid #ffffff34;
+}
+
+.btn-primary {
+  background-color: #006699;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn-primary:hover {
+  border: 2px solid #006699;
+  color: #006699;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn-secondary {
+  background-color: #99CC00;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btn-secondary:hover {
+  border: 2px solid #99CC00;
+  color: #99CC00;
+}
+
+/* HEADER DE LA APP */
+/* *****************NAVBAR******************* */
+.navbarShop {
+  z-index: 20;
+  background: var(--r-globalnav-topbar-override, var(--r-topbar-background-color, var(--r-globalmessage-segment-background-color, #fbfbfd)));
+  padding: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.37);
+  position: fixed;
+  width: 100%;
+}
+
+.conter-navbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.position-nav {
+  padding: 5px;
+  height: 100%;
+  transform: translateX(-100%);
+  left: 0;
+}
+
+.toogel-nav {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+}
+
+/* LOGO EN EL NAV  */
+.footer-img {
+  height: 60px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 15px;
+  text-align: right;
 }
 
-.App-link {
-  color: #61dafb;
+.footer-img a {
+  text-decoration: none;
+  margin-left: 20px;
+  color: black;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer-img a>p {
+  font-size: 2em;
+  letter-spacing: 8px;
+  margin: 0;
+}
+
+.footer-img a>label {
+  letter-spacing: 4px;
+  color: rgb(80, 80, 80);
+}
+
+/* boton del menu */
+.togel {
+  margin-left: 20px;
+  border: 0;
+  border-radius: px;
+  background-color: transparent;
+  color: #20272b;
+  font-size: 30px;
+}
+
+.conter-ico-nav {
+  margin-right: 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.conter-ico-nav i {
+  color: #20272b;
+  font-size: 20px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.conter-ico-nav i:hover {
+  color: #656769;
+}
+
+.conter-nav-li {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.conter-nav-li i {
+  margin: 20px;
+  font-size: 1.5em;
+}
+
+/* *****************PAGINAS APP*************** */
+/* HOME */
+.conter-home {
+  width: 100%;
+  position: absolute;
+  margin-top: 50px;
+}
+
+.text-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.text-home a {
+  text-decoration: none;
+  margin-left: 20px;
+  color: black;
+  text-align: center;
+}
+
+.text-home a>p {
+  font-size: 5em;
+  letter-spacing: 50px;
+  margin: 0;
+}
+
+.text-home a>label {
+  letter-spacing: 12px;
+  color: rgb(80, 80, 80);
+}
+
+.conter-img-home {
+  background-color: rgba(0, 0, 0, 0.747);
+  width: 100%;
+  height: 70vh;
+  margin-top: 40px;
+}
+
+.conter-img-home img {
+  height: 100%;
+  width: 100%;
+  opacity: 0.7;
+}
+
+.conter-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  margin-bottom: 10px;
+}
+
+.conter-log-red {
+  width: 100%;
+  height: 10vh;
+  background-color: #20272b;
+}
+
+.box-vendido {
+  color: black;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.img-cards {
+  height: 35vh;
+  filter: contrast(124%);
+}
+
+.descripcio {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+  margin: 5px;
+}
+
+.precio {
+  color: #006699;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.precio span {
+  margin-right: 10px;
+  text-decoration: line-through;
+}
+
+.btn.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
