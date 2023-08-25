@@ -39,19 +39,13 @@ const data = [
         quantity: 1,
     },
     {
-        id: 8, img: "https://e-file.huawei.com/-/media/EBG/Images/ProductV2/network-energy/product/ids800-0410.png",
+        id: 9, img: "https://c.pxhere.com/photos/f8/89/appetite_banana_calories_catering_cellulite_chilli_cholesterol_close_up-1048666.jpg!d",
         title: "Card title",
         price: 80,
         quantity: 1,
     },
     {
-        id: 9, img: "https://e-file.huawei.com/-/media/EBG/Images/ProductV2/network-energy/product/ids800-0410.png",
-        title: "Card title",
-        price: 80,
-        quantity: 1,
-    },
-    {
-        id: 10, img: "https://e-file.huawei.com/-/media/EBG/Images/ProductV2/network-energy/product/ids800-0410.png",
+        id: 10, img: "https://c.pxhere.com/photos/83/dd/tangerines_citrus_fruit_clementines_citrus_fruit_vitamins_juicy_orange-458951.jpg!d",
         title: "Card title",
         price: 80,
         quantity: 1,
