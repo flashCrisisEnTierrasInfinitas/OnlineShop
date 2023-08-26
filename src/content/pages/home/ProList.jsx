@@ -60,7 +60,7 @@ export default function ProList() {
             <div className="conter-search top-50">
                 <CInputGroup className="">
                     <CFormInput placeholder="¿Qué estás buscando?" className='input-search' />
-                    <CButton type="button" color="primary" variant="outline" ><i class="fa fa-search" aria-hidden="true"></i>Buscar</CButton>
+                    <CButton type="button" color="secondary" variant="outline" ><i class="fa fa-search" aria-hidden="true"></i>Buscar</CButton>
                 </CInputGroup>
             </div>
             <div >
