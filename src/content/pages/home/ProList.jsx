@@ -4,7 +4,7 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 const data = [
     {
         id: 1, img: "https://c.pxhere.com/photos/84/fb/background_bitter_breakfast_bright_c_catering_closeup_close_up-819293.jpg!d",
-        title: "",
+        title: "Card title",
         price: 80,
         quantity: 1,
     },
@@ -52,11 +52,35 @@ const data = [
     }
 ];
 
-export default function ProList() {
+export default function ProList({
+    allProducts,
+    setAllproducts,
+    countProducts,
+    setCountProducts,
+    total,
+    setTotal
+}) {
 
+    const onAddProduct = (product) => {
+        if (allProducts.find(item => item.id === product.id)) {
+            const products = allProducts.map(item =>
+                item.id === product.id
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            );
+            setTotal(total + product.price * product.quantity);
+            setCountProducts(countProducts + product.quantity);
+            return setAllproducts([...products]);
+        }
+
+        setTotal(total + product.price * product.quantity);
+        setCountProducts(countProducts + product.quantity);
+        setAllproducts([...allProducts, product]);
+
+    };
 
     return (
-        <div className="margin-90">
+        <div className="margin-90 conter-pro">
             <div className="conter-search top-50">
                 <CInputGroup className="">
                     <CFormInput placeholder="¿Qué estás buscando?" className='input-search' />
@@ -75,10 +99,11 @@ export default function ProList() {
                                         <label>Some quick example text to build on the card title and make up</label>
                                     </div>
                                     <div className="precio">
-                                        <span>$999.00</span><a>$984.00</a>
+                                        <span className='color-primary'>$999.00</span><a className='color-secondary'>$984.00</a>
                                     </div>
-                                    <div className='btn.card'>
-                                        <button className='btn1 btn-primary'>Agregar al carrito</button>
+                                    <div className='btn-card'>
+                                        <button onClick={() => onAddProduct(product)}>Añadir al carrito</button>
+                                        <button>Comprar</button>
                                     </div>
                                 </CCardBody>
                             </CCard>

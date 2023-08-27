@@ -16,8 +16,100 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 
-export default function Header() {
+export default function Header({
+    allProducts,
+    setAllproducts,
+    countProducts,
+    setCountProducts,
+    total,
+    setTotal
+}) {
     const [visible, setVisible] = useState(false);
+
+    const [Open, setOpen] = useState(false)
+
+
+    const MenuPro = () => {
+        return (
+            <div className="box-tar-menu">
+                <div
+                    className="container-cart-products"
+                >
+                    {allProducts.length ? (
+                        <>
+                            <div className='row-product'>
+                                {allProducts.map(product => (
+                                    <div className='cart-product' key={product.id}>
+                                        <div className='info-cart-product'>
+                                            <span className='cantidad-producto-carrito'>
+                                                {product.quantity}
+                                            </span>
+                                            <p className='titulo-producto-carrito'>
+                                                {product.title}
+                                            </p>
+                                            <div className='img-menu'>
+                                                <img src={product.img} alt="" />
+                                            </div>
+                                            <span className='precio-producto-carrito'>
+                                                ${product.price}
+                                            </span>
+                                        </div>
+                                        <svg
+                                            xmlns='http://www.w3.org/2000/svg'
+                                            fill='none'
+                                            viewBox='0 0 24 24'
+                                            strokeWidth='1.5'
+                                            stroke='currentColor'
+                                            className='icon-close'
+                                            onClick={() => onDeleteProduct(product)}
+                                        >
+                                            <path
+                                                strokeLinecap='round'
+                                                strokeLinejoin='round'
+                                                d='M6 18L18 6M6 6l12 12'
+                                            />
+                                        </svg>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className='cart-total'>
+                                <h3>Total:</h3>
+                                <span className='total-pagar'>${total}</span>
+                            </div>
+                            <div className='con-btn-menu'>
+                                <button className='btn-clear-all btn-secondary' onClick={() => onCleanCart()}>
+                                    Vaciar Carrito
+                                </button>
+                                <a href='/sales' className='btn-clear-all btn-primary'>
+                                    proceder al pago
+                                </a>
+                            </div>
+
+                        </>
+                    ) : (
+                        <p className='cart-empty'>El carrito está vacío</p>
+                    )}
+                </div>
+            </div>
+        )
+    }
+
+    const onDeleteProduct = product => {
+        const results = allProducts.filter(
+            item => item.id !== product.id
+        );
+
+        setTotal(total - product.price * product.quantity);
+        setCountProducts(countProducts - product.quantity);
+        setAllproducts(results);
+    };
+
+    const onCleanCart = () => {
+        setAllproducts([]);
+        setTotal(0);
+        setCountProducts(0);
+    };
 
     return (
         <header>
@@ -36,7 +128,10 @@ export default function Header() {
                         <div className='conter-ico-nav'>
                             <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
                             <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                            <a onClick={() => setOpen(!Open)}><i class="fa fa-shopping-bag" aria-hidden="true">{countProducts}</i></a>
+                            <div className="conter-menu-pro">
+                                {Open ? <MenuPro /> : ''}
+                            </div>
                             <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
                         </div>
                     </div>
@@ -69,7 +164,7 @@ export default function Header() {
                                 <CNavItem>
                                     <CNavLink href="/store" active className='top-50'>
                                         <div className="conter-nav-li">
-                                            <i class="fa fa-cog" aria-hidden="true"></i>
+                                            <i class="fa fa-cog color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Mi perfil</label>
                                         </div>
                                     </CNavLink>
@@ -77,7 +172,7 @@ export default function Header() {
                                 <CNavItem>
                                     <CNavLink href="/admin/user" active>
                                         <div className="conter-nav-li">
-                                            <i class="fa fa-bell" aria-hidden="true"></i>
+                                            <i class="fa fa-bell color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Notificaciones</label>
                                         </div>
                                     </CNavLink>
@@ -85,7 +180,7 @@ export default function Header() {
                                 <CNavItem>
                                     <CNavLink href="/admin/testimonios" active>
                                         <div className="conter-nav-li">
-                                            <i class="fa fa-clock" aria-hidden="true"></i>
+                                            <i class="fa fa-clock color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Historial</label>
                                         </div>
                                     </CNavLink>
@@ -93,7 +188,7 @@ export default function Header() {
                                 <CNavItem>
                                     <CNavLink href="/admin/correos" active>
                                         <div className="conter-nav-li">
-                                            <i class="fa fa-th-list" aria-hidden="true"></i>
+                                            <i class="fa fa-th-list color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Mi lista</label>
                                         </div>
                                     </CNavLink>
@@ -101,7 +196,7 @@ export default function Header() {
                                 <CNavItem>
                                     <CNavLink href="/admin/producto" active>
                                         <div className="conter-nav-li">
-                                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                            <i class="fa fa-briefcase color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Servicios</label>
                                         </div>
                                     </CNavLink>
@@ -109,7 +204,7 @@ export default function Header() {
                                 <CNavItem>
                                     <CNavLink href="/admin/producto" active>
                                         <div className="conter-nav-li">
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <i class="fa fa-envelope color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Contáctenos</label>
                                         </div>
                                     </CNavLink>
@@ -117,7 +212,7 @@ export default function Header() {
                                 <CNavItem>
                                     <CNavLink href="/admin/producto" active>
                                         <div className="conter-nav-li">
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <i class="fa fa-server color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Servicios</label>
                                         </div>
                                     </CNavLink>
@@ -125,18 +220,23 @@ export default function Header() {
                                 <CNavItem>
                                     <CNavLink href="/admin/producto" active>
                                         <div className="conter-nav-li">
-                                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            <i class="fa fa-info-circle color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Terminos</label>
                                         </div>
                                     </CNavLink>
                                 </CNavItem>
                                 <CNavItem>
-                                  <div className="conter-log-red">
 
-                                  </div>
-                                </CNavItem> 
+                                </CNavItem>
+
                             </CNavbarNav>
+
                         </COffcanvasBody>
+                        <div className="conter-log-red">
+                            <div><img src="img/icons/facebook_108044.svg" alt="" /></div>
+                            <div><img src="img/icons/instagram_108043.svg" alt="" /></div>
+                            <div><img src="img/icons/whatsapp_108042.svg" alt="" /></div>
+                        </div>
                     </COffcanvas>
                 </CContainer>
             </nav>
