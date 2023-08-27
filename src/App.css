@@ -334,7 +334,6 @@ h1 {
 
 /* FOTER MENU  */
 .conter-footer-menu {
-  height: 9vh;
   bottom: 0;
   width: 100%;
   z-index: 20;
@@ -388,6 +387,8 @@ h1 {
 
 .info-cart-product {
   display: flex;
+  justify-content: center;
+  align-items: center;
   justify-content: space-between;
   flex: 0.8;
 }
@@ -398,7 +399,8 @@ h1 {
 }
 
 .titulo-producto-carrito {
-  font-size: 20px;
+  font-size: 15px;
+  margin: 5px;
 }
 
 .icon-close {

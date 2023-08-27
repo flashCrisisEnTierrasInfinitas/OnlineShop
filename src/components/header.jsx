@@ -45,7 +45,7 @@ export default function Header({
                                                 {product.quantity}
                                             </span>
                                             <p className='titulo-producto-carrito'>
-                                                {product.title}
+                                                {product.title.toUpperCase()}
                                             </p>
                                             <div className='img-menu'>
                                                 <img src={product.img} alt="" />
