@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import './App.css';
 import Footer from './components/Footer';
 import FooterMenu from './components/footer-menu';
@@ -40,24 +42,31 @@ function App() {
   return (
     <>
       <div className="App">
-        <header className="App-header">
-          <Header
-            allProducts={allProducts}
-            setAllproducts={setAllproducts}
-            total={total}
-            setTotal={setTotal}
-            countProducts={countProducts}
-            setCountProducts={setCountProducts}
-          />
-        </header>
-        <Home
-          allProducts={allProducts}
-          setAllproducts={setAllproducts}
-          total={total}
-          setTotal={setTotal}
-          countProducts={countProducts}
-          setCountProducts={setCountProducts} />
-        <FooterMenu />
+        <Router>
+          <header className="App-header">
+            <Header
+              allProducts={allProducts}
+              setAllproducts={setAllproducts}
+              total={total}
+              setTotal={setTotal}
+              countProducts={countProducts}
+              setCountProducts={setCountProducts}
+            />
+          </header>
+          <Routes>
+            <Route path='/' element={
+              <Home
+                allProducts={allProducts}
+                setAllproducts={setAllproducts}
+                total={total}
+                setTotal={setTotal}
+                countProducts={countProducts}
+                setCountProducts={setCountProducts} />
+            } />
+          </Routes>
+
+          <FooterMenu />
+        </Router>
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import { CInputGroup, CFormInput, CButton, CCardTitle, CCard, CCardImage, CCardBody } from '@coreui/react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const data = [
     {
@@ -10,13 +10,13 @@ const data = [
     },
     {
         id: 2, img: "https://get.pxhere.com/photo/plant-white-fruit-sweet-restaurant-isolated-summer-food-salad-green-cooking-ingredient-produce-tropical-colourful-macro-natural-fresh-couple-two-colorful-closeup-breakfast-healthy-delicious-health-cookery-fitness-life-close-up-peel-background-nutrition-mango-bright-seasonal-tasty-passion-still-over-good-c-catering-diet-vitamins-bitter-refreshing-rind-dieting-flowering-plant-nutrients-several-land-plant-wholesome-819451.jpg",
-        title: "Card title",
+        title: "MANGOs",
         price: 80,
         quantity: 1,
     },
     {
         id: 3, img: "https://c.pxhere.com/photos/c4/2c/background_bitter_breakfast_bright_c_catering_closeup_close_up-819464.jpg!d",
-        title: "Card title",
+        title: "naranjas",
         price: 80,
         quantity: 1,
     },
@@ -60,6 +60,13 @@ export default function ProList({
     total,
     setTotal
 }) {
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const filteredData = data?.filter(item => item.title?.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    const Search = () => {
+
+    }
 
     const onAddProduct = (product) => {
         if (allProducts.find(item => item.id === product.id)) {
@@ -83,18 +90,21 @@ export default function ProList({
         <div className="margin-90 conter-pro">
             <div className="conter-search top-50">
                 <CInputGroup className="">
-                    <CFormInput placeholder="¿Qué estás buscando?" className='input-search' />
-                    <CButton type="button" color="secondary" variant="outline" ><i class="fa fa-search" aria-hidden="true"></i>Buscar</CButton>
+                    <CFormInput placeholder="¿Qué estás buscando?" className='input-search'
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <CButton type="button" color="secondary" variant="outline"><i class="fa fa-search" aria-hidden="true"></i>Buscar</CButton>
                 </CInputGroup>
             </div>
             <div >
                 <div className="box-vendido">
-                    {data.map(product => {
+                    {filteredData.map(product => {
                         return (
                             <CCard>
                                 <CCardImage orientation="top" src={product.img} className='img-cards' />
                                 <CCardBody>
-                                    <CCardTitle>{product.title}</CCardTitle>
+                                    <CCardTitle>{product.title.toUpperCase()}</CCardTitle>
                                     <div className="descripcio">
                                         <label>Some quick example text to build on the card title and make up</label>
                                     </div>
