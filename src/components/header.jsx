@@ -54,25 +54,10 @@ export default function Header({
                                                 ${product.price}
                                             </span>
                                         </div>
-                                        <svg
-                                            xmlns='http://www.w3.org/2000/svg'
-                                            fill='none'
-                                            viewBox='0 0 24 24'
-                                            strokeWidth='1.5'
-                                            stroke='currentColor'
-                                            className='icon-close'
-                                            onClick={() => onDeleteProduct(product)}
-                                        >
-                                            <path
-                                                strokeLinecap='round'
-                                                strokeLinejoin='round'
-                                                d='M6 18L18 6M6 6l12 12'
-                                            />
-                                        </svg>
+                                        <a className='icon-close' onClick={() => onDeleteProduct(product)}><i class="fa fa-trash" aria-hidden="true"></i></a>
                                     </div>
                                 ))}
                             </div>
-
                             <div className='cart-total'>
                                 <h3>Total:</h3>
                                 <span className='total-pagar'>${total}</span>
@@ -128,7 +113,7 @@ export default function Header({
                         <div className='conter-ico-nav'>
                             <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
                             <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                            <a onClick={() => setOpen(!Open)}><i class="fa fa-shopping-bag" aria-hidden="true">{countProducts}</i></a>
+                            <a onClick={() => setOpen(!Open)}><i class="fa fa-shopping-bag" aria-hidden="true"><span className='conterProduct'>{countProducts}</span></i></a>
                             <div className="conter-menu-pro">
                                 {Open ? <MenuPro /> : ''}
                             </div>
