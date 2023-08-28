@@ -22,7 +22,20 @@ function App() {
     window.localStorage.setItem("allProducts", JSON.stringify(allProducts))
   }, [allProducts])
 
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(() => {
+    const total = window.localStorage.getItem("total");
+    if (total) {
+      return JSON.parse(total);
+    } else {
+      return []
+    }
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("total", JSON.stringify(total))
+  }, [total]);
+
+
   const [countProducts, setCountProducts] = useState(() => {
     const countProducts = window.localStorage.getItem("countProducts");
     if (countProducts) {
@@ -36,7 +49,6 @@ function App() {
     window.localStorage.setItem("countProducts", JSON.stringify(countProducts))
   }, [countProducts])
 
-  console.log(allProducts)
 
   return (
     <>
@@ -62,7 +74,7 @@ function App() {
                 countProducts={countProducts}
                 setCountProducts={setCountProducts} />
             } />
-            <Route path='/pay' element={<Pay/>}/>
+            <Route path='/pay' element={<Pay  total={total} setAllproducts={setAllproducts}  setTotal={setTotal}   setCountProducts={setCountProducts} />} />
           </Routes>
           <FooterMenu />
         </Router>
