@@ -94,12 +94,12 @@ export default function ProList({
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <CButton type="button" color="secondary" variant="outline"><i class="fa fa-search" aria-hidden="true"></i>Buscar</CButton>
+                    <CButton type="button" color="secondary" variant="outline" onClick={Search()}><i class="fa fa-search" aria-hidden="true"></i>Buscar</CButton>
                 </CInputGroup>
             </div>
             <div >
                 <div className="box-vendido">
-                    {filteredData.map(product => {
+                    {filteredData?.map(product => {
                         return (
                             <CCard>
                                 <CCardImage orientation="top" src={product.img} className='img-cards' />

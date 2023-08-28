@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './App.css';
-import Footer from './components/Footer';
 import FooterMenu from './components/footer-menu';
 import Header from './components/header';
 import Home from './content/pages/home/Home';
-import { CFooter, CLink } from '@coreui/react';
+import Pay from './content/pages/store/ pay';
 
 function App() {
 
@@ -63,8 +62,8 @@ function App() {
                 countProducts={countProducts}
                 setCountProducts={setCountProducts} />
             } />
+            <Route path='/pay' element={<Pay/>}/>
           </Routes>
-
           <FooterMenu />
         </Router>
       </div>

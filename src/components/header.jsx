@@ -66,8 +66,8 @@ export default function Header({
                                 <button className='btn-clear-all btn-secondary' onClick={() => onCleanCart()}>
                                     Vaciar Carrito
                                 </button>
-                                <a href='/sales' className='btn-clear-all btn-primary'>
-                                    proceder al pago
+                                <a href='/pay' className='btn-clear-all btn-primary'>
+                                    Proceder al pago
                                 </a>
                             </div>
 
