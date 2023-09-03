@@ -111,13 +111,13 @@ export default function Header({
                             </a>
                         </div>
                         <div className='conter-ico-nav'>
-                            <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                            <a href=""><i className="fa fa-user" aria-hidden="true"></i></a>
+                            <a href=""><i className="fa fa-heart" aria-hidden="true"></i></a>
                             <a onClick={() => setOpen(!Open)}><i class="fa fa-shopping-bag" aria-hidden="true"><span className='conterProduct'>{countProducts}</span></i></a>
                             <div className="conter-menu-pro">
                                 {Open ? <MenuPro /> : ''}
                             </div>
-                            <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                            <a href="/login"><i className="fa fa-sign-in" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <COffcanvas
@@ -129,7 +129,7 @@ export default function Header({
                     >
                         <COffcanvasHeader>
                             <div className="footer-img">
-                                <a href="#">
+                                <a href="/">
                                     <p>ASUPRO</p>
                                     <label>colombia</label>
                                 </a>

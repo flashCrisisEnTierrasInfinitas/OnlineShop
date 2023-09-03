@@ -1,54 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import './App.css';
-import FooterMenu from './components/footer-menu';
-import Header from './components/header';
-import Home from './content/pages/home/Home';
-import Pay from './content/pages/store/ pay';
+import "./App.css";
+import FooterMenu from "./components/footer-menu";
+import Header from "./components/header";
+import Home from "./content/pages/home/Home";
+import Pay from "./content/pages/store/ pay";
+import Login from "./Auth/login";
 
 function App() {
-
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
     if (saveEquipos) {
       return JSON.parse(saveEquipos);
     } else {
-      return []
+      return [];
     }
   });
 
   useEffect(() => {
-    window.localStorage.setItem("allProducts", JSON.stringify(allProducts))
-  }, [allProducts])
+    window.localStorage.setItem("allProducts", JSON.stringify(allProducts));
+  }, [allProducts]);
 
   const [total, setTotal] = useState(() => {
     const total = window.localStorage.getItem("total");
     if (total) {
       return JSON.parse(total);
     } else {
-      return []
+      return [];
     }
   });
 
   useEffect(() => {
-    window.localStorage.setItem("total", JSON.stringify(total))
+    window.localStorage.setItem("total", JSON.stringify(total));
   }, [total]);
-
 
   const [countProducts, setCountProducts] = useState(() => {
     const countProducts = window.localStorage.getItem("countProducts");
     if (countProducts) {
       return JSON.parse(countProducts);
     } else {
-      return []
+      return [];
     }
   });
 
   useEffect(() => {
-    window.localStorage.setItem("countProducts", JSON.stringify(countProducts))
-  }, [countProducts])
-
+    window.localStorage.setItem("countProducts", JSON.stringify(countProducts));
+  }, [countProducts]);
 
   return (
     <>
@@ -65,16 +63,32 @@ function App() {
             />
           </header>
           <Routes>
-            <Route path='/' element={
-              <Home
-                allProducts={allProducts}
-                setAllproducts={setAllproducts}
-                total={total}
-                setTotal={setTotal}
-                countProducts={countProducts}
-                setCountProducts={setCountProducts} />
-            } />
-            <Route path='/pay' element={<Pay  total={total} setAllproducts={setAllproducts}  setTotal={setTotal}   setCountProducts={setCountProducts} />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  allProducts={allProducts}
+                  setAllproducts={setAllproducts}
+                  total={total}
+                  setTotal={setTotal}
+                  countProducts={countProducts}
+                  setCountProducts={setCountProducts}
+                />
+              }
+            />
+            <Route
+              path="/pay"
+              element={
+                <Pay
+                  total={total}
+                  setAllproducts={setAllproducts}
+                  setTotal={setTotal}
+                  setCountProducts={setCountProducts}
+                />
+              }
+            />
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/ProductosCat" />
           </Routes>
           <FooterMenu />
         </Router>
