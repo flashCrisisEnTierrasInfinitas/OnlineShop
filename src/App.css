@@ -20,7 +20,9 @@ h1 {
 .top-50 {
   margin-top: 50px;
 }
-
+.bottom-50{
+  margin-bottom: 50;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

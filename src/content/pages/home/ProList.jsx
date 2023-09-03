@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 const data = [
     {
         id: 1, img: "https://c.pxhere.com/photos/84/fb/background_bitter_breakfast_bright_c_catering_closeup_close_up-819293.jpg!d",
-        title: "Card title",
+        title: "kiwi",
         price: 80,
         quantity: 1,
     },
@@ -22,31 +22,31 @@ const data = [
     },
     {
         id: 4, img: "https://c.pxhere.com/photos/eb/ac/background_bitter_breakfast_bright_c_catering_closeup_close_up-819423.jpg!d",
-        title: "Card title",
+        title: "limon",
         price: 80,
         quantity: 1,
     },
     {
         id: 6, img: "https://c.pxhere.com/photos/51/2b/pea_peas_vegetables_green_food_healthy_vegetarian_vegetable-1050058.jpg!d",
-        title: "Card title",
+        title: "arveja",
         price: 80,
         quantity: 1,
     },
     {
         id: 7, img: "https://c.pxhere.com/images/ed/6d/6f8f2820848433558a0982c074b5-1636140.jpg!d",
-        title: "Card title",
+        title: "tomate",
         price: 80,
         quantity: 1,
     },
     {
         id: 9, img: "https://c.pxhere.com/photos/f8/89/appetite_banana_calories_catering_cellulite_chilli_cholesterol_close_up-1048666.jpg!d",
-        title: "Card title",
+        title: "pimenton",
         price: 80,
         quantity: 1,
     },
     {
         id: 10, img: "https://c.pxhere.com/photos/83/dd/tangerines_citrus_fruit_clementines_citrus_fruit_vitamins_juicy_orange-458951.jpg!d",
-        title: "Card title",
+        title: "mandarina",
         price: 80,
         quantity: 1,
     }
@@ -109,7 +109,7 @@ export default function ProList({
                                         <label>Some quick example text to build on the card title and make up</label>
                                     </div>
                                     <div className="precio">
-                                        <span className='color-primary'>$999.00</span><a className='color-secondary'>$984.00</a>
+                                        <span className='color-primary'>$999.00</span><a className='color-secondary'>$ {product.price}</a>
                                     </div>
                                     <div className='btn-card'>
                                         <button onClick={() => onAddProduct(product)}>Añadir al carrito</button>

@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-
+import { CInputGroup, CFormInput, CButton, CCardTitle, CCard, CCardImage, CCardBody } from '@coreui/react';
 
 export default function Conted({
     setAllproducts,
@@ -12,18 +12,24 @@ export default function Conted({
         setAllproducts([]);
         setTotal(0);
         setCountProducts(0);
-       return Swal.fire({
+        return Swal.fire({
             position: 'center',
             icon: 'info',
             title: 'Su información se validará, para hacer el respectivo envió¡!',
             showConfirmButton: false,
             timer: 1900
-          })
+        })
     }
 
     return (
         <div className="conter-pay margin-90 top-50">
             <p>Para proceder con el pago, consigne el monto total de su compra al número de cuenta:<span className="color-secondary">311533906</span>su monto total es: <span className="color-secondary">${total}</span></p>
+            <form className='grid  margin-90 top-50'>
+                <div><CFormInput placeholder="Direccion del envio" className='input-search'/></div>
+                <div>       
+                <CFormInput placeholder="Numero de telefono" className='input-search bottom-50'/></div>
+         
+            </form>
             <div className="logos-pay">
                 <div><img src="img/icons/nequi-2.svg" /></div>
                 <div><img src="img/icons/daviplata.svg" /></div>
