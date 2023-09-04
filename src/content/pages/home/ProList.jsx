@@ -86,11 +86,16 @@ export default function ProList({
 
     };
 
+    const Sale = (product) => {
+        onAddProduct(product);
+        return window.location.replace("/pay");
+    }
+
     return (
         <div className="margin-90 conter-pro">
             <div className="conter-search top-50">
                 <CInputGroup className="">
-                    <CFormInput  placeholder="¿Qué estás buscando?" className='input-search'
+                    <CFormInput placeholder="¿Qué estás buscando?" className='input-search'
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -113,7 +118,7 @@ export default function ProList({
                                     </div>
                                     <div className='btn-card'>
                                         <button onClick={() => onAddProduct(product)}>Añadir al carrito</button>
-                                        <button>Comprar</button>
+                                        <button onClick={() => Sale(product)}>Comprar</button>
                                     </div>
                                 </CCardBody>
                             </CCard>

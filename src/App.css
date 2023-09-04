@@ -330,12 +330,12 @@ h1 {
   padding: 6px;
   font-family: 700;
   background-color: #fff;
-  border: 1px solid #03a691;
-  color: #03a691;
+  border: 1px solid rgb(40, 84, 216);
+  color: rgb(40, 84, 216);
 }
 
 .btn-card button:hover {
-  background-color: #03a691;
+  background-color: rgb(40, 84, 216);
   color: #fff;
 }
 
