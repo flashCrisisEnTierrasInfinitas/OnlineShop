@@ -147,7 +147,7 @@ export default function Header({
                                 <CNavItem className='top-20'>
                                 </CNavItem>
                                 <CNavItem>
-                                    <CNavLink href="/store" active className='top-50'>
+                                    <CNavLink href="/Profile" active className='top-50'>
                                         <div className="conter-nav-li">
                                             <i class="fa fa-cog color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Mi perfil</label>
@@ -163,7 +163,7 @@ export default function Header({
                                     </CNavLink>
                                 </CNavItem>
                                 <CNavItem>
-                                    <CNavLink href="/admin/testimonios" active>
+                                    <CNavLink href="/Historial" active>
                                         <div className="conter-nav-li">
                                             <i class="fa fa-clock color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Historial</label>

@@ -7,6 +7,9 @@ import Header from "./components/header";
 import Home from "./content/pages/home/Home";
 import Pay from "./content/pages/store/ pay";
 import Login from "./Auth/login";
+import ProductoCate from "./content/pages/store/producCate";
+import Profile from "./content/pages/dastboard/profile";
+import Historial from "./content/pages/dastboard/historial";
 
 function App() {
   const [allProducts, setAllproducts] = useState(() => {
@@ -88,7 +91,9 @@ function App() {
               }
             />
             <Route path="/login" element={<Login/>}/>
-            <Route path="/ProductosCat" />
+            <Route path="/ProductosCat" element={<ProductoCate/>}/>
+            <Route path="/Profile" element={<Profile/>}/>
+            <Route path="/Historial" element={<Historial/>}/>
           </Routes>
           <FooterMenu />
         </Router>

@@ -1,8 +1,8 @@
 export default function Header() {
     return (
             <div className="text-home">
-                <a  id='searchPro'>
-                    <p>TIENDA</p>
+                <a>
+                    <p>PROFILE</p>
                     <label>ASUPRO</label>
                 </a>
             </div>
