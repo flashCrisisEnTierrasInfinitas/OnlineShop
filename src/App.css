@@ -36,7 +36,11 @@ h1 {
   width: 90%;
   margin: 0 auto;
 }
-
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* BOTONES */
 
 .btn1 {
@@ -74,13 +78,13 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #2ec3cd;
+  background-color: rgb(9, 86, 131);
   text-align: center;
 }
 
 .btn-primary:hover {
-  border: 2px solid #2ec3cd;
-  color: #2ec3cd;
+  border: 2px solid rgb(9, 86, 131);
+  color: rgb(9, 86, 131);
 }
 
 .btn-secondary {
