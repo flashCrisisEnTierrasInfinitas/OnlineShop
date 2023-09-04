@@ -683,10 +683,3 @@ h1 {
 }
 
 
-@media (max-width: 809px) {
-  .box-menu {
-    width: 100%;
-    background-color: red;
-  }
-
-}

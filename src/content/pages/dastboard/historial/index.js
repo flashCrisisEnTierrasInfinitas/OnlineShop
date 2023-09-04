@@ -1,5 +1,13 @@
+import Header from "./Header";
+import Conted from "./conted";
+
 export default function Historial() {
     return (
-        <h1>HISTORIAL</h1>
+        <>
+            <div className="header-pay">
+                <Header />
+            </div>
+            <Conted />
+        </>
     )
 }
