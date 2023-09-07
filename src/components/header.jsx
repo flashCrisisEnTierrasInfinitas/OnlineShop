@@ -155,7 +155,7 @@ export default function Header({
                                     </CNavLink>
                                 </CNavItem>
                                 <CNavItem>
-                                    <CNavLink href="/admin/user" active>
+                                    <CNavLink href="/notificaciones" active>
                                         <div className="conter-nav-li">
                                             <i class="fa fa-bell color-secondary" aria-hidden="true"></i>
                                             <label className='label-nav'>Notificaciones</label>

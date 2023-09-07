@@ -680,8 +680,8 @@ h1 {
 /* ***************************************
 *****************PROFILE********************
 ****************************************** */
-.conted-profile{
-  margin-bottom: 30%;
+.conted-profile {
+  margin-bottom: 20%;
 }
 .avatar-profile img {
   border-radius: 100%;
@@ -765,4 +765,17 @@ h1 {
 .conter-cont-footer div i,
 p {
   margin-left: 10px;
+}
+
+/* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
+@media (max-width: 1024px) {
+  .text-home a > p {
+    font-size: 2em;
+    letter-spacing: 20px;
+    margin: 0;
+  }
+  .box-menu {
+    width: 100%;
+    border-radius: 0px;
+  }
 }

@@ -11,6 +11,7 @@ import ProductoCate from "./content/pages/store/producCate";
 import Profile from "./content/pages/dastboard/profile";
 import Historial from "./content/pages/dastboard/historial";
 import Footer from "./components/Footer";
+import Notificaciones from "./content/pages/dastboard/notificaciones";
 
 function App() {
   const [allProducts, setAllproducts] = useState(() => {
@@ -94,6 +95,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/ProductosCat" element={<ProductoCate/>}/>
             <Route path="/Profile" element={<Profile/>}/>
+            <Route path="/notificaciones" element={<Notificaciones/>}/>
             <Route path="/Historial" element={<Historial/>}/>
           </Routes>
           <FooterMenu />
