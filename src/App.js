@@ -10,6 +10,7 @@ import Login from "./Auth/login";
 import ProductoCate from "./content/pages/store/producCate";
 import Profile from "./content/pages/dastboard/profile";
 import Historial from "./content/pages/dastboard/historial";
+import Footer from "./components/Footer";
 
 function App() {
   const [allProducts, setAllproducts] = useState(() => {
@@ -96,6 +97,7 @@ function App() {
             <Route path="/Historial" element={<Historial/>}/>
           </Routes>
           <FooterMenu />
+          <Footer/>
         </Router>
       </div>
     </>
