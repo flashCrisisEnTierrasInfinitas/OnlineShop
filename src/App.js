@@ -12,6 +12,7 @@ import Profile from "./content/pages/dastboard/profile";
 import Historial from "./content/pages/dastboard/historial";
 import Footer from "./components/Footer";
 import Notificaciones from "./content/pages/dastboard/notificaciones";
+import MiLista from "./content/pages/dastboard/miLista";
 
 function App() {
   const [allProducts, setAllproducts] = useState(() => {
@@ -97,6 +98,7 @@ function App() {
             <Route path="/Profile" element={<Profile/>}/>
             <Route path="/notificaciones" element={<Notificaciones/>}/>
             <Route path="/Historial" element={<Historial/>}/>
+            <Route path="/MiLista" element={<MiLista/>}/>
           </Routes>
           <FooterMenu />
           <Footer/>

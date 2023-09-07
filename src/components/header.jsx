@@ -200,7 +200,7 @@ export default function Header({
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink href="/admin/correos" active>
+                  <CNavLink href="/MiLista" active>
                     <div className="conter-nav-li">
                       <i
                         class="fa fa-th-list color-secondary"
@@ -229,17 +229,6 @@ export default function Header({
                         aria-hidden="true"
                       ></i>
                       <label className="label-nav">Contáctenos</label>
-                    </div>
-                  </CNavLink>
-                </CNavItem>
-                <CNavItem>
-                  <CNavLink href="/admin/producto" active>
-                    <div className="conter-nav-li">
-                      <i
-                        class="fa fa-server color-secondary"
-                        aria-hidden="true"
-                      ></i>
-                      <label className="label-nav">Servicios</label>
                     </div>
                   </CNavLink>
                 </CNavItem>

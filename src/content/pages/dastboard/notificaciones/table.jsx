@@ -103,8 +103,7 @@ export default function Table() {
     }
   };
   return (
-    <div className="conter-table bottom-50">
-      <CContainer>
+    <div className="conter-table top-50">
         <CCard>
           <CCardBody>
             <CTable striped>
@@ -138,7 +137,6 @@ export default function Table() {
             </CTable>
           </CCardBody>
         </CCard>
-      </CContainer>
     </div>
   );
 }
