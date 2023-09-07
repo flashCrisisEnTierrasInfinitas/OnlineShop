@@ -5,7 +5,16 @@
 h1 {
   font-weight: 700;
 }
-
+/* TABLA */
+.conter-table {
+  margin: 20px;
+  margin-bottom: 40%;
+}
+.boton-tabla{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* /*****CSS PREDEFINIDO*** */
 
 .top-20 {
@@ -769,10 +778,7 @@ p {
 /* **************************
 **********NOTIFICACIONES****
 ************************** */
-.conter-table {
-  margin: 20px;
-  margin-bottom: 40%;
-}
+
 
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {

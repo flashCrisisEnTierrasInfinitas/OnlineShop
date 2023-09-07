@@ -9,9 +9,10 @@ import {
   CCard,
   CCardBody,
   CAlert,
+  CButton,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { cilBurn, cilCheckCircle, cilInfo } from "@coreui/icons";
+import { cilBurn, cilCheckCircle, cilDelete, cilInfo } from "@coreui/icons";
 
 const data = [
   {
@@ -88,13 +89,18 @@ export default function Table() {
       );
     }
     if (status == 2) {
-        return (
-          <CAlert color="info">
-             <CIcon icon={cilInfo} className="flex-shrink-0 me-2" width={24} height={24} />
-            {age}
-          </CAlert>
-        );
-      }
+      return (
+        <CAlert color="info">
+          <CIcon
+            icon={cilInfo}
+            className="flex-shrink-0 me-2"
+            width={24}
+            height={24}
+          />
+          {age}
+        </CAlert>
+      );
+    }
   };
   return (
     <div className="conter-table bottom-50">
@@ -106,6 +112,7 @@ export default function Table() {
                 <CTableHeaderCell>ID</CTableHeaderCell>
                 <CTableHeaderCell>Fecha</CTableHeaderCell>
                 <CTableHeaderCell>Notificación</CTableHeaderCell>
+                <CTableHeaderCell></CTableHeaderCell>
               </CTableHead>
               <CTableBody>
                 {data
@@ -118,6 +125,13 @@ export default function Table() {
                       <CTableDataCell>{item.id}</CTableDataCell>
                       <CTableDataCell>{item.name}</CTableDataCell>
                       <CTableDataCell>{Status(item)}</CTableDataCell>
+                      <CTableDataCell>
+                        <div className="boton-tabla">
+                          <CButton color="danger" variant="outline">
+                            <i className="fa fa-trash" aria-hidden="true" />
+                          </CButton>
+                        </div>
+                      </CTableDataCell>
                     </tr>
                   ))}
               </CTableBody>
