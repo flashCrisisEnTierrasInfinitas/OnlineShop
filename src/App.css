@@ -680,6 +680,9 @@ h1 {
 /* ***************************************
 *****************PROFILE********************
 ****************************************** */
+.conted-profile{
+  margin-bottom: 50%;
+}
 .avatar-profile img {
   border-radius: 100%;
   width: 190px;
@@ -691,6 +694,7 @@ h1 {
   background-color: #0b1416;
   z-index: 30;
   position: relative;
+  bottom: 0;
 }
 .footer-logos-pay {
   display: block;
