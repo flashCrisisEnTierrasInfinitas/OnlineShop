@@ -118,6 +118,9 @@ export default function Header({
               <a href="/Profile">
                 <i className="fa fa-user" aria-hidden="true"></i>
               </a>
+              <a href="/dahsboard">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+              </a>
               <a href="/notificaciones">
                 <i className="fa fa-bell" aria-hidden="true">
                 <span className="conterProduct">3</span>
