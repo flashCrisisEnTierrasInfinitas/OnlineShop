@@ -1,3 +1,6 @@
+//! app de la pagina web
+//* creador: jhon mario(WHOAOMI)
+//? fecha creacion: 2023
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -13,6 +16,7 @@ import Historial from "./content/pages/dastboard/historial";
 import Footer from "./components/Footer";
 import Notificaciones from "./content/pages/dastboard/notificaciones";
 import MiLista from "./content/pages/dastboard/miLista";
+import DahsboardAdmin from "./content/admin/dahsboard";
 
 function App() {
   const [allProducts, setAllproducts] = useState(() => {
@@ -99,6 +103,9 @@ function App() {
             <Route path="/notificaciones" element={<Notificaciones/>}/>
             <Route path="/Historial" element={<Historial/>}/>
             <Route path="/MiLista" element={<MiLista/>}/>
+            {/* TODO:routes the admin */}
+            <Route path="/dahsboard" element={<DahsboardAdmin/>}/>
+
           </Routes>
           <FooterMenu />
           <Footer/>
