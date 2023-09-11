@@ -3,8 +3,8 @@ import './style.css';
 export default function ContedAdmin(props) {
   return (
     <div className="conter-admin">
-      <AppBarAdmin />
-      {props.children}
+      <div className="app-conted"><AppBarAdmin /></div>
+      <div className="hijos-conted">{props.children}</div>
     </div>
   );
 }
