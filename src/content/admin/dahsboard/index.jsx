@@ -7,7 +7,6 @@ export default function DahsboardAdmin() {
   return (
     <ContedAdmin>
       <h1>dahsboard</h1>
-
       <div className="box-admin">
         <CWidgetStatsD />
       </div>

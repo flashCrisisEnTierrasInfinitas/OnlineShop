@@ -15,7 +15,7 @@ export default function AppBarAdmin() {
           <i class="fa fa-tachometer" aria-hidden="true"></i>
           <label>dahsboard</label>
         </a>
-        <a href="/dahsboard" className="text-appBar">
+        <a href="/User" className="text-appBar">
         <i class="fa fa-user-circle" aria-hidden="true"></i>
           <label>user</label>
         </a>

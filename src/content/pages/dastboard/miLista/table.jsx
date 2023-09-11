@@ -12,8 +12,7 @@ import {
   CButton,
   CFormInput,
 } from "@coreui/react";
-import CIcon from "@coreui/icons-react";
-import { cilBurn, cilCheckCircle, cilDelete, cilInfo } from "@coreui/icons";
+
 
 const data = [
   {
