@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.conter-admin{
+    z-index: 50;
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+}
+.conter-appBar{
+    background-color:;
+}
+.title-admin{
+    text-align: center;
+    font-weight: 700;
+    margin-top: 20px;
+}
