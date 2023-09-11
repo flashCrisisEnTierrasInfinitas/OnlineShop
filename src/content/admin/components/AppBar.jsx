@@ -11,11 +11,11 @@ export default function AppBarAdmin() {
       </div>
       <div className="logo-admin"><a href="/">ASUPRO</a></div>
       <div className="box-appbar">
-        <a href="/dahsboard">
+        <a href="/dahsboard" className="text-appBar">
           <i class="fa fa-tachometer" aria-hidden="true"></i>
           <label>dahsboard</label>
         </a>
-        <a href="/dahsboard">
+        <a href="/dahsboard" className="text-appBar">
         <i class="fa fa-user-circle" aria-hidden="true"></i>
           <label>user</label>
         </a>
