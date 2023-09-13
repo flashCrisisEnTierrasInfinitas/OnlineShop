@@ -846,5 +846,6 @@ p {
   .precio {
     font-size: 40px;
     display: block;
+    font-weight: 700;
   }
 }
