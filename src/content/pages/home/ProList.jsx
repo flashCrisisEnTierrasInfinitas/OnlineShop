@@ -19,8 +19,15 @@ const data = [
   },
   {
     id: 2,
-    img: "https://get.pxhere.com/photo/plant-white-fruit-sweet-restaurant-isolated-summer-food-salad-green-cooking-ingredient-produce-tropical-colourful-macro-natural-fresh-couple-two-colorful-closeup-breakfast-healthy-delicious-health-cookery-fitness-life-close-up-peel-background-nutrition-mango-bright-seasonal-tasty-passion-still-over-good-c-catering-diet-vitamins-bitter-refreshing-rind-dieting-flowering-plant-nutrients-several-land-plant-wholesome-819451.jpg",
-    title: "MANGOs",
+    img: "https://groupesebcol.vtexassets.com/arquivos/ids/160210-800-auto?v=637866627842230000&width=800&height=auto&aspect=true",
+    title: "Licuadora TEFAL Perfect Mix + Tritan Powelix - Imusa",
+    date: "06/05/2023",
+    quantity: 1,
+  },
+  {
+    id: 9,
+    img: "https://www.todoaseo.com/wp-content/uploads/2017/01/JABON-POLVO-AS-AZUL-X-3000-GR-REF-06472.jpg",
+    title: "JABON POLVO AS AZUL X 3000 GR CJX6",
     price: 80,
     quantity: 1,
   },
@@ -54,8 +61,8 @@ const data = [
   },
   {
     id: 9,
-    img: "https://c.pxhere.com/photos/f8/89/appetite_banana_calories_catering_cellulite_chilli_cholesterol_close_up-1048666.jpg!d",
-    title: "pimenton",
+    img: "https://exitocol.vtexassets.com/arquivos/ids/5793759/Vino-Estoril-Dulce-Botella-X-750ml-24490_a.jpg?v=637482049979600000",
+    title: "VINO DULCE BOTELLA ESTORIL 750 ml",
     price: 80,
     quantity: 1,
   },

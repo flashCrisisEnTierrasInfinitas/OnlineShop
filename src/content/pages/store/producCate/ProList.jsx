@@ -25,6 +25,21 @@ const data = [
     img: "https://www.aperitivoslareal.com/wp-content/uploads/2021/01/Aperitivos-LA-REAL-Blog-10-beneficios-de-las-legumbres-en-tu-dieta-2-1200x675.jpg",
     title: "legumbres",
   },
+  {
+    id: 4,
+    img: "https://mercadoacasa.mx/cdn/shop/collections/abarrotes_1200x1200.jpg?v=1599758598",
+    title: "Abarrotes",
+  },
+  {
+    id: 5,
+    img: "https://files.rcnradio.com/public/2019-07/licores_8_0.jpg?VersionId=xcrXq8BgYM2TCUz35lgmBotjCdeyZajD",
+    title: "licores",
+  },
+  {
+    id: 6,
+    img: "https://ebewvrxyg38.exactdn.com/wp-content/uploads/2021/04/electrodomesticos-cocina.jpg?strip=all&lossy=1&ssl=1",
+    title: "electrodomesticos",
+  },
 ];
 
 export default function ProList() {
