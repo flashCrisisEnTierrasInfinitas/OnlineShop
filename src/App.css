@@ -352,7 +352,7 @@ h1 {
   display: flex;
 }
 
-.precio span {
+.precio p {
   margin-right: 10px;
   text-decoration: line-through;
 }
