@@ -348,7 +348,8 @@ h1 {
 .precio {
   text-align: center;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 26px;
+  display: flex;
 }
 
 .precio span {

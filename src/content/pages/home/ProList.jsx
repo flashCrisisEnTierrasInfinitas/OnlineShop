@@ -138,8 +138,8 @@ export default function ProList({
                     </label>
                   </div>
                   <div className="precio">
-                    <span className="color-primary">$999.00</span>
-                    <a className="color-secondary">$ {product.price}</a>
+                    <p className="color-primary">$999.00</p>
+                    <p className="color-secondary">$ {product.price}</p>
                   </div>
                   <div className="btn-card">
                     <button onClick={() => onAddProduct(product)}>
