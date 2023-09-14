@@ -109,9 +109,10 @@ export default function Header({
               </button>
             </div>
             <div className="footer-img">
-              <a href="#">
-                <p>ASUPRO</p>
-                <label>colombia</label>
+              <a href="/">
+                <div>
+                  <img src="img/logos/logo1.png" />
+                </div>
               </a>
             </div>
             <div className="conter-ico-nav">
@@ -119,11 +120,11 @@ export default function Header({
                 <i className="fa fa-user" aria-hidden="true"></i>
               </a>
               <a href="/dahsboard">
-              <i class="fa fa-lock" aria-hidden="true"></i>
+                <i class="fa fa-lock" aria-hidden="true"></i>
               </a>
               <a href="/notificaciones">
                 <i className="fa fa-bell" aria-hidden="true">
-                <span className="conterProduct">3</span>
+                  <span className="conterProduct">3</span>
                 </i>
               </a>
               <a onClick={() => setOpen(!Open)}>
@@ -148,7 +149,6 @@ export default function Header({
               <div className="footer-img">
                 <a href="/">
                   <p>ASUPRO</p>
-                  <label>colombia</label>
                 </a>
               </div>
               <CCloseButton
