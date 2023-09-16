@@ -1,4 +1,5 @@
 import ContedAdmin from "../components/Conter";
+import New from "./new";
 import Table from "./table";
 
 export default function Product() {
@@ -6,7 +7,7 @@ export default function Product() {
     <ContedAdmin>
       <h1>Usuarios</h1>
       <div className="margin-90">
-        <button className="btn1 btn-primary">Nuevo</button>
+        <New/>
         <Table />
       </div>
     </ContedAdmin>

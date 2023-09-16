@@ -64,6 +64,7 @@ export default function Table() {
               <CTableHeaderCell>nombre</CTableHeaderCell>
               <CTableHeaderCell>descripcion</CTableHeaderCell>
               <CTableHeaderCell>codigo</CTableHeaderCell>
+              <CTableHeaderCell>fecha</CTableHeaderCell>
               <CTableHeaderCell>precio</CTableHeaderCell>
               <CTableHeaderCell>stock</CTableHeaderCell>
               <CTableHeaderCell></CTableHeaderCell>
