@@ -16,8 +16,12 @@ export default function AppBarAdmin() {
           <label>dahsboard</label>
         </a>
         <a href="/User" className="text-appBar">
-        <i class="fa fa-user-circle" aria-hidden="true"></i>
+          <i class="fa fa-user-circle" aria-hidden="true"></i>
           <label>user</label>
+        </a>
+        <a href="/product" className="text-appBar">
+          <i class="fa fa-tasks" aria-hidden="true"></i>
+          <label>Productos</label>
         </a>
       </div>
     </div>

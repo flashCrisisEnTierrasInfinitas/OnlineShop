@@ -18,6 +18,7 @@ import Notificaciones from "./content/pages/dastboard/notificaciones";
 import MiLista from "./content/pages/dastboard/miLista";
 import DahsboardAdmin from "./content/admin/dahsboard";
 import User from "./content/admin/user";
+import Product from "./content/admin/product";
 
 function App() {
   const [allProducts, setAllproducts] = useState(() => {
@@ -107,6 +108,7 @@ function App() {
             {/* TODO:routes the admin */}
             <Route path="/dahsboard" element={<DahsboardAdmin/>}/>
             <Route path="/User" element={<User/>}/>
+            <Route path="/product" element={<Product/>}/>
 
           </Routes>
           <FooterMenu />
