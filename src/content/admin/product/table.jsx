@@ -35,22 +35,37 @@ export default function Table() {
       }
       );
       setData(response.data);
-      setLoading(false);
     } catch (err) {
       console.error(err);
-      setLoading(false);
     }
   }, [isMountedRef]);
   useEffect(() => {
     getProduct();
   }, [getProduct]);
   getProduct();
-  if (loading) {
-    return <div className='progess'><CSpinner/></div>
 
+
+  const TipoPro = ({data}) => {
+    const map = {
+      0: {
+        text: 'Verduras',
+        color: 'rgb(241, 96, 29)'
+      },
+      1: {
+        text: 'Electrodomestico',
+        color: 'rgb(0, 255, 0)'
+      },
+      3: {
+        text: 'cocina',
+        color: 'blue'
+      }
+    };
+    const { text, color } = map[data];
+
+    return <a style={{ color: color }}>{text}</a>;
   }
 
- // Llama a la función dentro de useEffect, para que se ejecute una vez al montar el componente
+  // Llama a la función dentro de useEffect, para que se ejecute una vez al montar el componente
 
   const filteredData = data?.filter((item) =>
     item.nombrePro?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -74,6 +89,7 @@ export default function Table() {
               <CTableHeaderCell>nombre</CTableHeaderCell>
               <CTableHeaderCell>descripcion</CTableHeaderCell>
               <CTableHeaderCell>codigo</CTableHeaderCell>
+              <CTableHeaderCell>tipoProducto</CTableHeaderCell>
               <CTableHeaderCell>fecha</CTableHeaderCell>
               <CTableHeaderCell>precio</CTableHeaderCell>
               <CTableHeaderCell>stock</CTableHeaderCell>
@@ -91,8 +107,9 @@ export default function Table() {
                     <CTableDataCell>{item.nombrePro}</CTableDataCell>
                     <CTableDataCell>{item.descripPro}</CTableDataCell>
                     <CTableDataCell>{item.codigoPro}</CTableDataCell>
+                    <CTableDataCell><TipoPro data={item.tipoPro} /></CTableDataCell>
                     <CTableDataCell>{item.created_at}</CTableDataCell>
-                    <CTableDataCell>{item.precioPro}</CTableDataCell>
+                    <CTableDataCell>${item.precioPro}</CTableDataCell>
                     <CTableDataCell>{item.stockPro}</CTableDataCell>
                     <CTableDataCell>
                       <Icons data={item} />

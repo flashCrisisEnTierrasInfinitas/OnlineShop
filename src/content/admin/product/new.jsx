@@ -19,13 +19,14 @@ export default function New() {
     const [visible, setVisible] = useState(false);
 
     const [formData, setFormData] = useState({
-        nombrePro: '',
-        codigoPro: '',
-        descripPro: '',
-        precioPro: '',
-        stockPro: '',
+        nombrePro: "",
+        tipoPro: 0,
+        codigoPro: "",
+        descripPro: "",
+        precioPro: "",
+        stockPro: "",
     });
-    console.log("🚀 ~ file: new.jsx:28 ~ New ~ formData:", formData)
+    console.log("🚀 ~ file: new.jsx:28 ~ New ~ formData:", formData);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,26 +38,29 @@ export default function New() {
 
     const handleSubmit = async () => {
         try {
-          const response = await axios.post('http://localhost:8000/api/product', formData);
-          setVisible(false);
-          return Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: response.data.message,
-            showConfirmButton: false,
-            timer: 1500
-          })
+            const response = await axios.post(
+                "http://localhost:8000/api/product",
+                formData
+            );
+            setVisible(false);
+            return Swal.fire({
+                position: "center",
+                icon: "success",
+                title: response.data,
+                showConfirmButton: false,
+                timer: 1500,
+            });
         } catch (error) {
-          console.error('Error al enviar los datos:', error);
-          return Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: error,
-            showConfirmButton: false,
-            timer: 1500
-          })
+            console.error("Error al enviar los datos:", error);
+            return Swal.fire({
+                position: "center",
+                icon: "error",
+                title: error,
+                showConfirmButton: false,
+                timer: 1500,
+            });
         }
-      };
+    };
 
     return (
         <>
@@ -91,6 +95,19 @@ export default function New() {
                                 onChange={handleChange}
                             />
                         </CCol>
+                        <CCol md={6}>
+                            <CFormLabel>tipo Producto</CFormLabel>
+                            <CFormSelect
+                                id="tipoPro"
+                                name="tipoPro"
+                                value={formData.tipoPro}
+                                onChange={handleChange}
+                            >
+                                <option value={0}>Verduras</option>
+                                <option value={1}>Electrodomestico</option>
+                                <option value={3}>cocina</option>
+                            </CFormSelect>
+                        </CCol>
                         <CCol md={12}>
                             <CFormLabel>Descripcion</CFormLabel>
                             <textarea
@@ -124,7 +141,9 @@ export default function New() {
                     <CButton color="secondary" onClick={() => setVisible(false)}>
                         Close
                     </CButton>
-                    <CButton color="primary" onClick={()=>handleSubmit()}>Save</CButton>
+                    <CButton color="primary" onClick={() => handleSubmit()}>
+                        Save
+                    </CButton>
                 </CModalFooter>
             </CModal>
         </>
