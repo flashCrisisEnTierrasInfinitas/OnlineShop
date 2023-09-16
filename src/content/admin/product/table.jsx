@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   CTable,
   CTableBody,
@@ -7,10 +7,12 @@ import {
   CTableHeaderCell,
   CCard,
   CCardBody,
-  CButton,
   CFormInput,
+  CSpinner,
 } from "@coreui/react";
 import axios from "axios";
+import Icons from "./icons";
+import isMountedRef from '../../../hooks/useRefMounted'
 
 
 
@@ -18,29 +20,37 @@ export default function Table() {
   const itemsPerPage = 5; // Cambia esto según tus necesidades
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
 
 
   const [data, setData] = useState([]);
-  console.log("🚀 ~ file: table.jsx:24 ~ Table ~ data:", data)
 
 
-  useEffect(() => {
-    const getUsuarios = async () => {
-      try {
-        const response = await axios.get('http://localhost:8000/api/product', {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
-        });
-        setData(response.data);
-      } catch (err) {
-        console.error(err);
+  const getProduct = useCallback(async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/api/product', {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
       }
-    };
+      );
+      setData(response.data);
+      setLoading(false);
+    } catch (err) {
+      console.error(err);
+      setLoading(false);
+    }
+  }, [isMountedRef]);
+  useEffect(() => {
+    getProduct();
+  }, [getProduct]);
+  getProduct();
+  if (loading) {
+    return <div className='progess'><CSpinner/></div>
 
-    getUsuarios(); // Llama a la función dentro de useEffect, para que se ejecute una vez al montar el componente
+  }
 
-  }, []);
+ // Llama a la función dentro de useEffect, para que se ejecute una vez al montar el componente
 
   const filteredData = data?.filter((item) =>
     item.nombrePro?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -85,10 +95,7 @@ export default function Table() {
                     <CTableDataCell>{item.precioPro}</CTableDataCell>
                     <CTableDataCell>{item.stockPro}</CTableDataCell>
                     <CTableDataCell>
-                      <div className="boton-tabla">
-                        <button type="button" className="btn1 btn-primary">Delete</button>
-                        <button type="button" className="btn1 btn-secondary">Update</button>
-                      </div>
+                      <Icons data={item} />
                     </CTableDataCell>
                   </tr>
                 ))}
