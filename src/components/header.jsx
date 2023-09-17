@@ -4,7 +4,6 @@ import {
   CContainer,
   COffcanvas,
   COffcanvasHeader,
-  COffcanvasTitle,
   CCloseButton,
   COffcanvasBody,
   CNavItem,
@@ -15,6 +14,7 @@ import {
 } from "@coreui/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
+import { Link } from "react-router-dom";
 
 export default function Header({
   allProducts,
@@ -116,9 +116,9 @@ export default function Header({
               </a>
             </div>
             <div className="conter-ico-nav">
-              <a href="/Profile">
+              <Link  href="/Profile">
                 <i className="fa fa-user" aria-hidden="true"></i>
-              </a>
+              </Link >
               <a href="/dahsboard">
                 <i class="fa fa-lock" aria-hidden="true"></i>
               </a>
