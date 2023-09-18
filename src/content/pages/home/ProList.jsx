@@ -70,7 +70,7 @@ const data = [
     id: 10,
     img: "https://c.pxhere.com/photos/83/dd/tangerines_citrus_fruit_clementines_citrus_fruit_vitamins_juicy_orange-458951.jpg!d",
     title: "Mandarina clementina importada x 500 gr ",
-    tetx:'',
+    tetx: '',
     price: 6.795,
     quantity: 1,
   },
@@ -134,7 +134,7 @@ export default function ProList({
                   <CCardTitle>{product.title.toUpperCase()}</CCardTitle>
                   <div className="descripcio">
                     <label>
-                    {product.tetx}
+                      {product.tetx}
                     </label>
                   </div>
                   <div className="precio">
@@ -142,9 +142,11 @@ export default function ProList({
                     <a className="color-secondary">$ {product.price}</a>
                   </div>
                   <div className="btn-card">
-                    <button onClick={() => onAddProduct(product)}>
-                      Añadir al carrito
-                    </button>
+                    <a onClick={() => onAddProduct(product)} className="btn-cartd-product">
+                      <div className="icon-addproduct">
+                        <img src="img/icons/shop.png" />
+                      </div>
+                    </a>
                     <button onClick={() => Sale(product)}>Comprar</button>
                   </div>
                 </CCardBody>

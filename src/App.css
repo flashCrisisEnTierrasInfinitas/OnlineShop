@@ -383,14 +383,16 @@ h1 {
   margin: 5px;
   padding: 6px;
   font-family: 700;
-  background-color: #fff;
-  border: 1px solid rgb(40, 84, 216);
-  color: rgb(40, 84, 216);
+  border-radius: 5px;
+  background-color: rgb(40, 84, 216);
+  color: #fff;
+  border: 2px solid rgb(40, 84, 216);
 }
 
 .btn-card button:hover {
-  background-color: rgb(40, 84, 216);
-  color: #fff;
+  background-color: #fff;
+  border: 2px solid rgb(40, 84, 216);
+  color: rgb(40, 84, 216);
 }
 
 /* FOTER MENU  */
@@ -428,8 +430,8 @@ h1 {
   background-color: rgba(128, 128, 128, 0.178);
 }
 
-/* CARRITO DE COMPRAS */
-/* CARRITO DE COMPRAS */
+/*! CARRITO DE COMPRAS */
+/*? CARRITO DE COMPRAS */
 .conter-menu-pro {
   position: absolute;
   top: 50px;
@@ -547,6 +549,30 @@ h1 {
   position: absolute;
   top: 15px;
 }
+
+
+/* TODO: ICONO DEL BOTON DEL CARRITO DE COMPRAS */
+.btn-cartd-product{
+  padding: 5px;
+  width: 40px;
+  background-color: #fa4d08;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.btn-cartd-product:hover{
+  background-color: #fff;
+  border: 2px solid #fa4d08;
+}
+.icon-addproduct{
+  width: 100%;
+  height: 100%;
+}
+.icon-addproduct img{
+  width: 100%;
+  height: 100%;
+}
+
 
 /* PASARELA DE PAGOS */
 .header-pay {
