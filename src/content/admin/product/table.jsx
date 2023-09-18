@@ -28,7 +28,7 @@ export default function Table() {
 
   const getProduct = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/product', {
+      const response = await axios.get('https://apionlineshop.com.asuprocolombiasas.com/api/product', {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
