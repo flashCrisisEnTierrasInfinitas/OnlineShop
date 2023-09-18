@@ -3,6 +3,7 @@
 //? fecha creacion: 2023
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
 
 import "./App.css";
 import FooterMenu from "./components/footer-menu";
@@ -21,6 +22,7 @@ import User from "./content/admin/user";
 import Product from "./content/admin/product";
 
 function App() {
+  axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
     if (saveEquipos) {
@@ -99,20 +101,19 @@ function App() {
                 />
               }
             />
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/ProductosCat" element={<ProductoCate/>}/>
-            <Route path="/Profile" element={<Profile/>}/>
-            <Route path="/notificaciones" element={<Notificaciones/>}/>
-            <Route path="/Historial" element={<Historial/>}/>
-            <Route path="/MiLista" element={<MiLista/>}/>
+            <Route path="/login" element={<Login />} />
+            <Route path="/ProductosCat" element={<ProductoCate />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/notificaciones" element={<Notificaciones />} />
+            <Route path="/Historial" element={<Historial />} />
+            <Route path="/MiLista" element={<MiLista />} />
             {/* TODO:routes the admin */}
-            <Route path="/dahsboard" element={<DahsboardAdmin/>}/>
-            <Route path="/User" element={<User/>}/>
-            <Route path="/product" element={<Product/>}/>
-
+            <Route path="/dahsboard" element={<DahsboardAdmin />} />
+            <Route path="/User" element={<User />} />
+            <Route path="/product" element={<Product />} />
           </Routes>
           <FooterMenu />
-          <Footer/>
+          <Footer />
         </Router>
       </div>
     </>
