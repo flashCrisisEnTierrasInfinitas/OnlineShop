@@ -7,7 +7,7 @@ export default function Icons({ data }) {
     const Delete = async (id) => {
         try {
             const response = await axios.delete(
-                `http://localhost:8000/api/product/${id}`,
+                `/product/${id}`,
                 {
                     headers: {
                         "Content-Type": "multipart/form-data",

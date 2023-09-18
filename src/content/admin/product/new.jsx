@@ -39,7 +39,7 @@ export default function New() {
     const handleSubmit = async () => {
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/product",
+                "/product",
                 formData
             );
             setVisible(false);
