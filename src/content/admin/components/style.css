@@ -4,7 +4,6 @@
   position: absolute;
   background-color: #f5f5f5;
   width: 100%;
-  display: flex;
 }
 .hijos-conted {
   overflow-x: hidden;
@@ -29,42 +28,18 @@
 .conter-appBar {
   background-color: #232952;
   color: #fff;
-  display: block;
-  float: left;
-  height: 100%;
-  padding: 5px 0px 5px 5px;
 }
-.close-appbar {
-  padding: 5px;
-  display: flex;
-  justify-content: right;
-  height: 4vh;
-}
-.close-appbar svg {
-  height: 100%;
-  cursor: pointer;
-}
-.close-appbar svg:hover {
-  color: #e5e4e39c;
-}
+
 .logo-admin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 20px 0px 20px;
   font-weight: 500;
-  font-size: 4em;
+  font-size: 1.5em;
 }
 .logo-admin a {
   text-decoration: none;
   color: #fff;
 }
-.box-appbar {
-  margin-left: 10px;
-}
-.box-appbar a {
-  margin-top: 20px;
-  font-size: 20px;
+
+.text-appBar {
   display: flex;
   align-items: center;
   justify-content: left;
@@ -72,19 +47,45 @@
   text-decoration: none;
   padding: 5px;
 }
-.box-appbar a label,
-i {
-  margin-left: 20px;
+.text-appBar label {
+  color: black;
   transition: 0.3s;
   cursor: pointer;
-  font-weight: 700;
 }
 .text-appBar:hover {
-  font-size: 21px;
   cursor: pointer;
   background-color: #f5f5f5;
   color: #232952;
-  border-radius: 9px 0px 0px 9px;
+}
+.ico-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  margin-right: 10px;
+}
+.ico-menu img {
+  width: 100%;
+  height: 100%;
+}
+/* ? TITULO DE LOS MODULOS */
+.title-module {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 30px;
+}
+/* ! BOTON DE NUEVO REGISTRO */
+.conter-new {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+/* ? ICONOS DE LAS TABLAS */
+.conter-icons {
+  display: block;
+}
+.conter-icons button {
+  margin: 2px;
 }
 /* *************************************************** 
          TODO: El dashboar ira en este apartado
@@ -97,4 +98,3 @@ i {
 .chart {
   margin: 20px;
 }
-

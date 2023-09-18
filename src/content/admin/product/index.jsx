@@ -5,9 +5,11 @@ import Table from "./table";
 export default function Product() {
   return (
     <ContedAdmin>
-      <h1>Usuarios</h1>
+      <h1 className="title-module">LISTA PRODUCTOS</h1>
       <div className="margin-90">
-        <New/>
+        <div className="conter-new">
+          <New />
+        </div>
         <Table />
       </div>
     </ContedAdmin>
