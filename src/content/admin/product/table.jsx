@@ -20,7 +20,6 @@ export default function Table() {
   const itemsPerPage = 5; // Cambia esto según tus necesidades
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
 
 
   const [data, setData] = useState([]);
