@@ -195,13 +195,15 @@ export default function New() {
                                 onChange={handleChange}
                             />
                         </CCol>
-                        <CCol md={12}>
+                        <CCol md={6}>
                             <CFormInput
                                 type="file"
                                 name="featured"
                                 accept="image/*"
                                 onChange={handleImageChange}
                             />
+                        </CCol>
+                        <CCol md={6}>
                             <CButton onClick={Upload}>  {loadingUpload ? (
                                 <div className="progess">
                                     <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
