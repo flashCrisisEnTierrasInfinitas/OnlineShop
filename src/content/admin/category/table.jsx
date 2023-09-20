@@ -8,6 +8,7 @@ import {
   CCard,
   CCardBody,
   CFormInput,
+  CSpinner,
 } from "@coreui/react";
 import axios from "axios";
 import Icons from "./icons";
@@ -16,10 +17,8 @@ import isMountedRef from '../../../hooks/useRefMounted'
 
 
 export default function Table() {
-  const itemsPerPage = 5; // Cambia esto según tus necesidades
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [loading, setLoading] = useState(true);
 
   const [data, setData] = useState([]);
 
@@ -33,8 +32,10 @@ export default function Table() {
       }
       );
       setData(response.data);
+      setLoading(false);
     } catch (err) {
       console.error(err);
+      setLoading(false);
     }
   }, [isMountedRef]);
   useEffect(() => {
@@ -42,12 +43,13 @@ export default function Table() {
   }, [getProduct]);
   getProduct();
 
-
-  const TipoPro = ({data}) => {
-  
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center">
+        <CSpinner color="danger" />
+      </div>
+    )
   }
-
-  // Llama a la función dentro de useEffect, para que se ejecute una vez al montar el componente
 
   const filteredData = data?.filter((item) =>
     item.name?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -75,14 +77,10 @@ export default function Table() {
             </CTableHead>
             <CTableBody>
               {filteredData
-                .slice(
-                  (currentPage - 1) * itemsPerPage,
-                  currentPage * itemsPerPage
-                )
                 .map((item) => (
                   <tr key={item.id}>
                     <CTableDataCell>{item.id}</CTableDataCell>
-                    <CTableDataCell><p style={{color:item.color}}>{item.name}</p></CTableDataCell>
+                    <CTableDataCell><p style={{ color: item.color }}>{item.name}</p></CTableDataCell>
                     <CTableDataCell>{item.state}</CTableDataCell>
                     <CTableDataCell>{item.created_at}</CTableDataCell>
                     <CTableDataCell>

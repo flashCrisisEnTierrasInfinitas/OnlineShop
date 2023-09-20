@@ -1,16 +1,20 @@
-import { CButton } from "@coreui/react";
+import { CButton, CSpinner } from "@coreui/react";
 import axios from "axios";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 export default function Icons({ data }) {
+    const [loading, setLoading] = useState(false);
     const ID = data.id;
     const Delete = async (id) => {
         try {
+            setLoading(true);
             const response = await axios.delete(`/product/${id}`, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
+            setLoading(false);
             return Swal.fire({
                 position: "center",
                 icon: "success",
@@ -19,6 +23,7 @@ export default function Icons({ data }) {
                 timer: 1500,
             });
         } catch (e) {
+            setLoading(false);
             return Swal.fire({
                 position: "center",
                 icon: "error",
@@ -32,10 +37,16 @@ export default function Icons({ data }) {
     return (
         <div className="conter-icons">
             <CButton color="danger" variant="outline" onClick={() => Delete(ID)}>
-                <i className="fa fa-trash" aria-hidden="true" />
+
+                {loading ? (
+                    <div className="progess">
+                        <CSpinner color="danger" size="sm" style={{ width: '1rem', height: '1rem'}}/>
+                    </div>
+                ) : (<i className="fa fa-trash" aria-hidden="true" />)}
+
             </CButton>
             <CButton color="primary" variant="outline" onClick={() => Delete(ID)}>
-            <i className="fa fa-wrench" aria-hidden="true"/>
+                <i className="fa fa-wrench" aria-hidden="true" />
             </CButton>
         </div>
     );

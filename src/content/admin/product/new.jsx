@@ -12,15 +12,15 @@ import {
     CModalTitle,
 } from "@coreui/react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import isMountedRef from "../../../hooks/useRefMounted";
 
 export default function New() {
     const [visible, setVisible] = useState(false);
     const [image, setImage] = useState(null);
-    const [imgname, setNameImg] = useState('');
-    console.log("🚀 ~ file: new.jsx:22 ~ New ~ imgname:", imgname)
-
+    const [imgname, setNameImg] = useState("");
+    const [TypePro, setTypePro] = useState([]);
 
     const [formData, setFormData] = useState({
         nombrePro: "",
@@ -29,9 +29,8 @@ export default function New() {
         descripPro: "",
         precioPro: "",
         stockPro: "",
-        featured:imgname,
+        featured: imgname,
     });
-
 
     useEffect(() => {
         setFormData({
@@ -40,7 +39,6 @@ export default function New() {
         });
     }, [imgname]);
 
-
     const handleImageChange = (e) => {
         const selectedImage = e.target.files[0];
         setImage(selectedImage);
@@ -48,7 +46,6 @@ export default function New() {
     const nombrePro = formData.nombrePro;
 
     const Upload = async () => {
-      
         const formData = new FormData();
 
         formData.append("image", image);
@@ -75,10 +72,8 @@ export default function New() {
     };
 
     const handleSubmit = async () => {
-
         try {
             const response = await axios.post("/product", formData);
-            
             setVisible(false);
             return Swal.fire({
                 position: "center",
@@ -98,6 +93,22 @@ export default function New() {
             });
         }
     };
+
+    const getTypePro = useCallback(async () => {
+        try {
+            const response = await axios.get("/categoryProd", {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            setTypePro(response.data);
+        } catch (err) {
+            console.error(err);
+        }
+    }, [isMountedRef]);
+    useEffect(() => {
+        getTypePro();
+    }, [getTypePro]);
 
     return (
         <>
@@ -134,15 +145,17 @@ export default function New() {
                         </CCol>
                         <CCol md={6}>
                             <CFormLabel>tipo Producto</CFormLabel>
-                            <CFormSelect
-                                id="id_category"
-                                name="id_category"
-                                value={formData.id_category}
-                                onChange={handleChange}
-                            >
-                                <option value={0}>Verduras</option>
-                                <option value={1}>Electrodomestico</option>
-                                <option value={3}>cocina</option>
+                            <CFormSelect name="prodLineId" onChange={handleChange}>
+                                <option>Seleccione ...</option>
+                                {TypePro.map((option) => (
+                                    <option
+                                        value={option.id}
+                                        key={option.id}
+                                        onChange={handleChange}
+                                    >
+                                        {option.name}
+                                    </option>
+                                ))}
                             </CFormSelect>
                         </CCol>
                         <CCol md={12}>

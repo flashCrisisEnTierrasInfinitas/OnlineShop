@@ -10,6 +10,7 @@ import {
     CModalFooter,
     CModalHeader,
     CModalTitle,
+    CSpinner,
 } from "@coreui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -17,7 +18,7 @@ import Swal from "sweetalert2";
 
 export default function New() {
     const [visible, setVisible] = useState(false);
-    const [image, setImage] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -35,20 +36,24 @@ export default function New() {
 
     const handleSubmit = async () => {
         try {
+            setLoading(true);
             const response = await axios.post(
                 "/categoryProd",
                 formData
             );
+            console.log("🚀 ~ file: new.jsx:44 ~ handleSubmit ~ response:", response)
             setVisible(false);
+            setLoading(false);
             return Swal.fire({
                 position: "center",
                 icon: "success",
-                title: response.data,
+                title: response.data.message,
                 showConfirmButton: false,
                 timer: 1500,
             });
         } catch (error) {
             console.error("Error al enviar los datos:", error);
+            setLoading(false);
             return Swal.fire({
                 position: "center",
                 icon: "error",
@@ -111,7 +116,11 @@ export default function New() {
                         Close
                     </CButton>
                     <CButton color="primary" onClick={() => handleSubmit()}>
-                        Save
+                    {loading ? (
+                    <div className="progess">
+                        <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem'}}/>
+                    </div>
+                ) : (<label>Save</label>)}
                     </CButton>
                 </CModalFooter>
             </CModal>

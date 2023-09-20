@@ -87,6 +87,11 @@
 .conter-icons button {
   margin: 2px;
 }
+.img-table{
+  height: 60px;
+  width: 60px;
+  border-radius: 5px;
+}
 /* *************************************************** 
          TODO: El dashboar ira en este apartado
 * ***************************************************/
