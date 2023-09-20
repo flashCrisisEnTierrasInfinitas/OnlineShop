@@ -64,9 +64,11 @@ export default function New() {
             });
             setNameImg(response.data.url);
             setloadingUpload(false);
-            return console.log(response.data.url);
+            alert('Image uploaded successfully');
+            return console.info(response.data.url);
         } catch (error) {
             setloadingUpload(false);
+            alert('Error Al Cargar La Imagen')
             return console.error(error);
         }
     };
