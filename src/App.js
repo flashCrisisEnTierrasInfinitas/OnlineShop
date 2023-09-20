@@ -20,9 +20,11 @@ import MiLista from "./content/pages/dastboard/miLista";
 import DahsboardAdmin from "./content/admin/dahsboard";
 import User from "./content/admin/user";
 import Product from "./content/admin/product";
+import Category from "./content/admin/category";
 
 function App() {
-  axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  //axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  axios.defaults.baseURL ="http://localhost:8000/api";
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
     if (saveEquipos) {
@@ -111,6 +113,7 @@ function App() {
             <Route path="/dahsboard" element={<DahsboardAdmin />} />
             <Route path="/User" element={<User />} />
             <Route path="/product" element={<Product />} />
+            <Route path="/category" element={<Category />} />
           </Routes>
           <FooterMenu />
           <Footer />

@@ -8,7 +8,6 @@ import {
   CCard,
   CCardBody,
   CFormInput,
-  CSpinner,
 } from "@coreui/react";
 import axios from "axios";
 import Icons from "./icons";
@@ -27,7 +26,7 @@ export default function Table() {
 
   const getProduct = useCallback(async () => {
     try {
-      const response = await axios.get('/product', {
+      const response = await axios.get('/categoryProd', {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -41,17 +40,17 @@ export default function Table() {
   useEffect(() => {
     getProduct();
   }, [getProduct]);
-
+  getProduct();
 
 
   const TipoPro = ({data}) => {
- 
+  
   }
 
   // Llama a la función dentro de useEffect, para que se ejecute una vez al montar el componente
 
   const filteredData = data?.filter((item) =>
-    item.nombrePro?.toLowerCase().includes(searchTerm.toLowerCase())
+    item.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -70,26 +69,22 @@ export default function Table() {
             <CTableHead>
               <CTableHeaderCell>ID</CTableHeaderCell>
               <CTableHeaderCell>nombre</CTableHeaderCell>
-              <CTableHeaderCell>descripcion</CTableHeaderCell>
-              <CTableHeaderCell>codigo</CTableHeaderCell>
-              <CTableHeaderCell>tipoProducto</CTableHeaderCell>
+              <CTableHeaderCell>estado</CTableHeaderCell>
               <CTableHeaderCell>fecha</CTableHeaderCell>
-              <CTableHeaderCell>precio</CTableHeaderCell>
-              <CTableHeaderCell>stock</CTableHeaderCell>
               <CTableHeaderCell></CTableHeaderCell>
             </CTableHead>
             <CTableBody>
-              {filteredData.map((item) => (
+              {filteredData
+                .slice(
+                  (currentPage - 1) * itemsPerPage,
+                  currentPage * itemsPerPage
+                )
+                .map((item) => (
                   <tr key={item.id}>
                     <CTableDataCell>{item.id}</CTableDataCell>
-                    <CTableDataCell>{item.nombrePro}</CTableDataCell>
-                    <CTableDataCell><img src={item.img} alt={item.nombrePro} className="img-table"/></CTableDataCell>
-                    <CTableDataCell>{item.descripPro}</CTableDataCell>
-                    <CTableDataCell>{item.codigoPro}</CTableDataCell>
-                    <CTableDataCell><TipoPro data={item.tipoPro} /></CTableDataCell>
+                    <CTableDataCell><p style={{color:item.color}}>{item.name}</p></CTableDataCell>
+                    <CTableDataCell>{item.state}</CTableDataCell>
                     <CTableDataCell>{item.created_at}</CTableDataCell>
-                    <CTableDataCell>${item.precioPro}</CTableDataCell>
-                    <CTableDataCell>{item.stockPro}</CTableDataCell>
                     <CTableDataCell>
                       <Icons data={item} />
                     </CTableDataCell>

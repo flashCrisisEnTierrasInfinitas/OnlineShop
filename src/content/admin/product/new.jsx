@@ -12,22 +12,60 @@ import {
     CModalTitle,
 } from "@coreui/react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 export default function New() {
     const [visible, setVisible] = useState(false);
+    const [image, setImage] = useState(null);
+    const [imgname, setNameImg] = useState('');
+    console.log("🚀 ~ file: new.jsx:22 ~ New ~ imgname:", imgname)
+
 
     const [formData, setFormData] = useState({
         nombrePro: "",
-        tipoPro: 0,
+        id_category: 1,
         codigoPro: "",
         descripPro: "",
         precioPro: "",
         stockPro: "",
+        featured:imgname,
     });
-    console.log("🚀 ~ file: new.jsx:28 ~ New ~ formData:", formData);
 
+
+    useEffect(() => {
+        setFormData({
+            ...formData,
+            featured: imgname || "",
+        });
+    }, [imgname]);
+
+
+    const handleImageChange = (e) => {
+        const selectedImage = e.target.files[0];
+        setImage(selectedImage);
+    };
+    const nombrePro = formData.nombrePro;
+
+    const Upload = async () => {
+      
+        const formData = new FormData();
+
+        formData.append("image", image);
+        formData.append("nombre", nombrePro);
+
+        try {
+            const response = await axios.post("/upload", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            setNameImg(response.data.url);
+            return console.log(response.data.url);
+        } catch (error) {
+            return console.error(error);
+        }
+    };
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -37,18 +75,17 @@ export default function New() {
     };
 
     const handleSubmit = async () => {
+
         try {
-            const response = await axios.post(
-                "/product",
-                formData
-            );
+            const response = await axios.post("/product", formData);
+            
             setVisible(false);
             return Swal.fire({
                 position: "center",
                 icon: "success",
                 title: response.data,
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 5500,
             });
         } catch (error) {
             console.error("Error al enviar los datos:", error);
@@ -98,9 +135,9 @@ export default function New() {
                         <CCol md={6}>
                             <CFormLabel>tipo Producto</CFormLabel>
                             <CFormSelect
-                                id="tipoPro"
-                                name="tipoPro"
-                                value={formData.tipoPro}
+                                id="id_category"
+                                name="id_category"
+                                value={formData.id_category}
                                 onChange={handleChange}
                             >
                                 <option value={0}>Verduras</option>
@@ -134,6 +171,15 @@ export default function New() {
                                 value={formData.stockPro}
                                 onChange={handleChange}
                             />
+                        </CCol>
+                        <CCol md={12}>
+                            <CFormInput
+                                type="file"
+                                name="featured"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                            />
+                            <CButton onClick={Upload}>Upload Image</CButton>
                         </CCol>
                     </CForm>
                 </CModalBody>

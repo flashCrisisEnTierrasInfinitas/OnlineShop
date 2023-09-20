@@ -102,7 +102,7 @@ export default function AppBarAdmin() {
                   <label>Productos</label>
                 </CDropdownToggle>
                 <CDropdownMenu>
-                <a href="/producCate" className="text-appBar">
+                <a href="/category" className="text-appBar">
                     <div className="ico-menu">
                       <img src="img/icons/category.png" />
                     </div>
