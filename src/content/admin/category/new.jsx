@@ -41,9 +41,8 @@ export default function New() {
                 "/categoryProd",
                 formData
             );
-            console.log("🚀 ~ file: new.jsx:44 ~ handleSubmit ~ response:", response)
             setVisible(false);
-            setLoading(false);
+            setLoading(false); 
             return Swal.fire({
                 position: "center",
                 icon: "success",

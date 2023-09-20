@@ -26,17 +26,14 @@
 }
 /* ?APPBAR el menu del administrador sera muy diferente, este estara de flotando a la izquierda */
 .conter-appBar {
-  background-color: #232952;
-  color: #fff;
+  background-color: #fff;
 }
 
 .logo-admin {
-  font-weight: 500;
-  font-size: 1.5em;
+  width: 120px;
 }
-.logo-admin a {
-  text-decoration: none;
-  color: #fff;
+.logo-admin a img {
+  width: 100%;
 }
 
 .text-appBar {
@@ -87,7 +84,7 @@
 .conter-icons button {
   margin: 2px;
 }
-.img-table{
+.img-table {
   height: 60px;
   width: 60px;
   border-radius: 5px;

@@ -10,6 +10,7 @@ import {
     CModalFooter,
     CModalHeader,
     CModalTitle,
+    CSpinner,
 } from "@coreui/react";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
@@ -21,6 +22,8 @@ export default function New() {
     const [image, setImage] = useState(null);
     const [imgname, setNameImg] = useState("");
     const [TypePro, setTypePro] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [loadingUpload,setloadingUpload]= useState(false);
 
     const [formData, setFormData] = useState({
         nombrePro: "",
@@ -31,6 +34,7 @@ export default function New() {
         stockPro: "",
         featured: imgname,
     });
+
 
     useEffect(() => {
         setFormData({
@@ -52,14 +56,17 @@ export default function New() {
         formData.append("nombre", nombrePro);
 
         try {
+            setloadingUpload(true);
             const response = await axios.post("/upload", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
             setNameImg(response.data.url);
+            setloadingUpload(false);
             return console.log(response.data.url);
         } catch (error) {
+            setloadingUpload(false);
             return console.error(error);
         }
     };
@@ -73,17 +80,20 @@ export default function New() {
 
     const handleSubmit = async () => {
         try {
+            setLoading(true);
             const response = await axios.post("/product", formData);
             setVisible(false);
+            setLoading(false);
             return Swal.fire({
                 position: "center",
                 icon: "success",
-                title: response.data,
+                title: response.data.message,
                 showConfirmButton: false,
                 timer: 5500,
             });
         } catch (error) {
             console.error("Error al enviar los datos:", error);
+            setLoading(false);
             return Swal.fire({
                 position: "center",
                 icon: "error",
@@ -145,7 +155,7 @@ export default function New() {
                         </CCol>
                         <CCol md={6}>
                             <CFormLabel>tipo Producto</CFormLabel>
-                            <CFormSelect name="prodLineId" onChange={handleChange}>
+                            <CFormSelect name="id_category" onChange={handleChange}>
                                 <option>Seleccione ...</option>
                                 {TypePro.map((option) => (
                                     <option
@@ -192,7 +202,11 @@ export default function New() {
                                 accept="image/*"
                                 onChange={handleImageChange}
                             />
-                            <CButton onClick={Upload}>Upload Image</CButton>
+                            <CButton onClick={Upload}>  {loadingUpload ? (
+                                <div className="progess">
+                                    <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+                                </div>
+                            ) : (<label>Upload Image</label>)}</CButton>
                         </CCol>
                     </CForm>
                 </CModalBody>
@@ -201,7 +215,11 @@ export default function New() {
                         Close
                     </CButton>
                     <CButton color="primary" onClick={() => handleSubmit()}>
-                        Save
+                        {loading ? (
+                            <div className="progess">
+                                <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+                            </div>
+                        ) : (<label>Save</label>)}
                     </CButton>
                 </CModalFooter>
             </CModal>
