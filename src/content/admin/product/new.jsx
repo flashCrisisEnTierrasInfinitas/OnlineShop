@@ -5,6 +5,7 @@ import {
     CFormInput,
     CFormLabel,
     CFormSelect,
+    CFormTextarea,
     CModal,
     CModalBody,
     CModalFooter,
@@ -23,7 +24,7 @@ export default function New() {
     const [imgname, setNameImg] = useState("");
     const [TypePro, setTypePro] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [loadingUpload,setloadingUpload]= useState(false);
+    const [loadingUpload, setloadingUpload] = useState(false);
 
     const [formData, setFormData] = useState({
         nombrePro: "",
@@ -48,12 +49,14 @@ export default function New() {
         setImage(selectedImage);
     };
     const nombrePro = formData.nombrePro;
+    const route = 'product';
 
     const Upload = async () => {
         const formData = new FormData();
 
         formData.append("image", image);
         formData.append("nombre", nombrePro);
+        formData.append("route", route);
 
         try {
             setloadingUpload(true);
@@ -65,7 +68,7 @@ export default function New() {
             setNameImg(response.data.url);
             setloadingUpload(false);
             alert('Image uploaded successfully');
-            return console.info(response.data.url);
+            return console.info(response.data);
         } catch (error) {
             setloadingUpload(false);
             alert('Error Al Cargar La Imagen')
@@ -171,13 +174,16 @@ export default function New() {
                             </CFormSelect>
                         </CCol>
                         <CCol md={12}>
-                            <CFormLabel>Descripcion</CFormLabel>
-                            <textarea
-                                type="text"
+                            <CFormTextarea
+                                id="exampleFormControlTextarea1"
+                                label="Descripcion"
+                                rows={3}
+                                text="Must be 8-20 words long."
                                 name="descripPro"
                                 value={formData.descripPro}
                                 onChange={handleChange}
                             />
+
                         </CCol>
                         <CCol md={6}>
                             <CFormInput
