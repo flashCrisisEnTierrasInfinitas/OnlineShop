@@ -4,7 +4,6 @@ import isMountedRef from '../../../hooks/useRefMounted';
 
 export default function ListCategorias({ id }) {
   const [data, setData] = useState([]);
-  console.log("🚀 ~ file: ListCategorias.jsx:7 ~ ListCategorias ~ data:", data)
   const [error, setError] = useState(null);
 
   // ...
@@ -16,9 +15,8 @@ export default function ListCategorias({ id }) {
           'Content-Type': 'multipart/form-data'
         },
       });
-      if (isMountedRef.current) {
-        setData(response.data);
-      }
+      console.log("🚀 ~ file: ListCategorias.jsx:15 ~ getUsuarios ~ response:", response)
+      setData(response.data);
     } catch (err) {
       console.error(err);
       setError(err); // Puedes almacenar el error en el estado
@@ -33,14 +31,12 @@ export default function ListCategorias({ id }) {
 
   return (
     <>
-      {error ? (
-        <div>Error al cargar datos: {error.message}</div>
+      {data.length > 0 ? (
+        data.map((item) => (
+          <div key={item.id}>{item.name}</div>
+        ))
       ) : (
-        <>
-          {data.map(item => (
-            <div key={item.id}>{item.name}</div>
-          ))}
-        </>
+        <div>No hay datos disponibles.</div>
       )}
     </>
   );

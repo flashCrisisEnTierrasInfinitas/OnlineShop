@@ -44,7 +44,6 @@ export default function ProList({
       setLoading(false);
     }
   }, [isMountedRef]);
-
   useEffect(() => {
     getDataList();
   }, [getDataList]);
@@ -94,9 +93,7 @@ export default function ProList({
       </div>
       <div>
         <div className="box-vendido">
-          {error ? (
-            <p>Error al cargar datos: {error.message}</p>
-          ) : (
+          {
             filteredData?.map((product) => (
               <CCard key={product.id}> {/* Agrega una clave única para cada tarjeta */}
                 <CCardImage
@@ -124,7 +121,7 @@ export default function ProList({
                 </CCardBody>
               </CCard>
             ))
-          )}
+          }
         </div>
       </div>
     </div>

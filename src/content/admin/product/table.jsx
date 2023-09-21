@@ -22,14 +22,13 @@ export default function Table() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getProduct = useCallback(async () => {
+  const getDataList = useCallback(async () => {
     try {
-      const response = await axios.get('/product', {
+      const response = await axios.get(`/product`, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
-      }
-      );
+      });
       setData(response.data);
       setLoading(false);
     } catch (err) {
@@ -37,15 +36,15 @@ export default function Table() {
       setLoading(false);
     }
   }, [isMountedRef]);
-
   useEffect(() => {
-    getProduct();
-  }, []);
-  getProduct();
+    getDataList();
+  }, [getDataList]);
+
+
   if (loading) {
     return (
       <div className="d-flex justify-content-center">
-        <CSpinner color="danger"/>
+        <CSpinner color="danger" />
       </div>
     )
   }
@@ -89,7 +88,7 @@ export default function Table() {
                   <CTableDataCell><img src={item.img} alt={item.nombrePro} className="img-table" /></CTableDataCell>
                   <CTableDataCell>{item.descripPro}</CTableDataCell>
                   <CTableDataCell>{item.codigoPro}</CTableDataCell>
-                  <CTableDataCell><ListCategorias id={item.id_category}/></CTableDataCell>
+                  <CTableDataCell><ListCategorias id={item.id_category} /></CTableDataCell>
                   <CTableDataCell>{item.created_at}</CTableDataCell>
                   <CTableDataCell>${item.precioPro}</CTableDataCell>
                   <CTableDataCell>{item.stockPro}</CTableDataCell>
