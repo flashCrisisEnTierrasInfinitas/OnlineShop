@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   CTable,
   CTableBody,
@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import Icons from "./icons";
 import isMountedRef from '../../../hooks/useRefMounted'
+import ListCategorias from "./ListCategorias";
 
 
 
@@ -36,11 +37,11 @@ export default function Table() {
       setLoading(false);
     }
   }, [isMountedRef]);
+
   useEffect(() => {
     getProduct();
-  }, [getProduct]);
+  }, []);
   getProduct();
-
   if (loading) {
     return (
       <div className="d-flex justify-content-center">
@@ -88,7 +89,7 @@ export default function Table() {
                   <CTableDataCell><img src={item.img} alt={item.nombrePro} className="img-table" /></CTableDataCell>
                   <CTableDataCell>{item.descripPro}</CTableDataCell>
                   <CTableDataCell>{item.codigoPro}</CTableDataCell>
-                  <CTableDataCell>{item.id_productype}</CTableDataCell>
+                  <CTableDataCell><ListCategorias id={item.id_category}/></CTableDataCell>
                   <CTableDataCell>{item.created_at}</CTableDataCell>
                   <CTableDataCell>${item.precioPro}</CTableDataCell>
                   <CTableDataCell>{item.stockPro}</CTableDataCell>

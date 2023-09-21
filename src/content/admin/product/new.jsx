@@ -51,7 +51,7 @@ export default function New() {
     const nombrePro = formData.nombrePro;
     const route = 'product';
 
-    const Upload = async () => {
+    const Upload = async () => { 
         const formData = new FormData();
 
         formData.append("image", image);

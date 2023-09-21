@@ -55,6 +55,21 @@ export default function Table() {
     item.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const State = ({data}) => {
+    const map = {
+      0: {
+        Text: 'Activo',
+        color:'green'
+      },
+      1: {
+        Text: 'Inactivo',
+        color:'red'
+      }
+    }
+    const { Text,color } = map[data];
+
+    return <a style={{color:color}}>{Text}</a>
+  }
   return (
     <div className="box-admin">
       <div className="conter-search">
@@ -71,6 +86,7 @@ export default function Table() {
             <CTableHead>
               <CTableHeaderCell>ID</CTableHeaderCell>
               <CTableHeaderCell>nombre</CTableHeaderCell>
+              <CTableHeaderCell>img</CTableHeaderCell>
               <CTableHeaderCell>estado</CTableHeaderCell>
               <CTableHeaderCell>fecha</CTableHeaderCell>
               <CTableHeaderCell></CTableHeaderCell>
@@ -81,7 +97,8 @@ export default function Table() {
                   <tr key={item.id}>
                     <CTableDataCell>{item.id}</CTableDataCell>
                     <CTableDataCell><p style={{ color: item.color }}>{item.name}</p></CTableDataCell>
-                    <CTableDataCell>{item.state}</CTableDataCell>
+                    <CTableDataCell><img src={item.img} alt={item.name} className="img-table" /></CTableDataCell>
+                    <CTableDataCell><State data={item.state} /></CTableDataCell>
                     <CTableDataCell>{item.created_at}</CTableDataCell>
                     <CTableDataCell>
                       <Icons data={item} />

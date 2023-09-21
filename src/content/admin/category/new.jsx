@@ -13,16 +13,21 @@ import {
     CSpinner,
 } from "@coreui/react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+
 
 export default function New() {
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [image, setImage] = useState(null);
+    const [imgname, setNameImg] = useState("");
+    const [loadingUpload, setloadingUpload] = useState(false);
 
     const [formData, setFormData] = useState({
         name: "",
         color: "",
+        img: imgname,
         state: 0,
     });
 
@@ -42,7 +47,7 @@ export default function New() {
                 formData
             );
             setVisible(false);
-            setLoading(false); 
+            setLoading(false);
             return Swal.fire({
                 position: "center",
                 icon: "success",
@@ -60,6 +65,47 @@ export default function New() {
                 showConfirmButton: false,
                 timer: 1500,
             });
+        }
+    };
+
+    //! Se envia la img de las categories
+    useEffect(() => {
+        setFormData({
+            ...formData,
+            img: imgname || "",
+        });
+    }, [imgname]);
+
+    const nombrePro = formData.name;
+    const route = 'categoryProd';
+
+    const handleImageChange = (e) => {
+        const selectedImage = e.target.files[0];
+        setImage(selectedImage);
+    };
+
+    const Upload = async () => {
+        const formData = new FormData();
+
+        formData.append("image", image);
+        formData.append("nombre",nombrePro);
+        formData.append("route", route);
+
+        try {
+            setloadingUpload(true);
+            const response = await axios.post("/upload", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            setNameImg(response.data.url);
+            setloadingUpload(false);
+            alert('Image uploaded successfully');
+            return console.info(response.data);
+        } catch (error) {
+            setloadingUpload(false);
+            alert('Error Al Cargar La Imagen')
+            return console.error(error);
         }
     };
 
@@ -96,6 +142,21 @@ export default function New() {
                                 onChange={handleChange}
                             />
                         </CCol>
+                        <CCol md={6}>
+                            <CFormInput
+                                type="file"
+                                name="featured"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                            />
+                        </CCol>
+                        <CCol md={6}>
+                            <CButton onClick={Upload}>  {loadingUpload ? (
+                                <div className="progess">
+                                    <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+                                </div>
+                            ) : (<label>Upload Image</label>)}</CButton>
+                        </CCol>
                         <CCol md={12}>
                             <CFormLabel>Estado</CFormLabel>
                             <CFormSelect
@@ -115,11 +176,11 @@ export default function New() {
                         Close
                     </CButton>
                     <CButton color="primary" onClick={() => handleSubmit()}>
-                    {loading ? (
-                    <div className="progess">
-                        <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem'}}/>
-                    </div>
-                ) : (<label>Save</label>)}
+                        {loading ? (
+                            <div className="progess">
+                                <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+                            </div>
+                        ) : (<label>Save</label>)}
                     </CButton>
                 </CModalFooter>
             </CModal>
