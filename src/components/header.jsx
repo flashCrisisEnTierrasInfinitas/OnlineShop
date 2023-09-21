@@ -42,13 +42,13 @@ export default function Header({
                         {product.quantity}
                       </span>
                       <p className="titulo-producto-carrito">
-                        {product.title.toUpperCase()}
+                        {product.nombrePro.toUpperCase()}
                       </p>
                       <div className="img-menu">
                         <img src={product.img} alt="" />
                       </div>
                       <span className="precio-producto-carrito">
-                        ${product.price}
+                        ${product.precioPro}
                       </span>
                     </div>
                     <a
@@ -87,7 +87,7 @@ export default function Header({
   const onDeleteProduct = (product) => {
     const results = allProducts.filter((item) => item.id !== product.id);
 
-    setTotal(total - product.price * product.quantity);
+    setTotal(total - product.precioPro * product.quantity);
     setCountProducts(countProducts - product.quantity);
     setAllproducts(results);
   };
