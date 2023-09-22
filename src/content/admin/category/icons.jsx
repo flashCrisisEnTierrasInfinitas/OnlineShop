@@ -2,15 +2,17 @@ import { CButton } from "@coreui/react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-export default function Icons({ data }) {
+export default function Icons({data,key,setKey}) {
     const ID = data.id;
+    
     const Delete = async (id) => {
         try {
-            const response = await axios.delete(`/product/${id}`, {
+            const response = await axios.delete(`/categoryProd/${id}`, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
+            setKey(key+1);
             return Swal.fire({
                 position: "center",
                 icon: "success",

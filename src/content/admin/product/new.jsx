@@ -21,10 +21,8 @@ import isMountedRef from "../../../hooks/useRefMounted";
 export default function New() {
     const [visible, setVisible] = useState(false);
     const [image, setImage] = useState(null);
-    const [imgname, setNameImg] = useState("");
     const [TypePro, setTypePro] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [loadingUpload, setloadingUpload] = useState(false);
 
     const [formData, setFormData] = useState({
         nombrePro: "",
@@ -33,47 +31,20 @@ export default function New() {
         descripPro: "",
         precioPro: "",
         stockPro: "",
-        featured: imgname,
+        img: image,
     });
 
 
     useEffect(() => {
         setFormData({
             ...formData,
-            featured: imgname || "",
+            img: image || "",
         });
-    }, [imgname]);
+    }, [image]);
 
     const handleImageChange = (e) => {
         const selectedImage = e.target.files[0];
         setImage(selectedImage);
-    };
-    const nombrePro = formData.nombrePro;
-    const route = 'product';
-
-    const Upload = async () => { 
-        const formData = new FormData();
-
-        formData.append("image", image);
-        formData.append("nombre", nombrePro);
-        formData.append("route", route);
-
-        try {
-            setloadingUpload(true);
-            const response = await axios.post("/upload", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            });
-            setNameImg(response.data.url);
-            setloadingUpload(false);
-            alert('Image uploaded successfully');
-            return console.info(response.data);
-        } catch (error) {
-            setloadingUpload(false);
-            alert('Error Al Cargar La Imagen')
-            return console.error(error);
-        }
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -82,11 +53,15 @@ export default function New() {
             [name]: value,
         }));
     };
-
+    //* envia la data para crear un nuevo registro
     const handleSubmit = async () => {
         try {
             setLoading(true);
-            const response = await axios.post("/product", formData);
+            const response = await axios.post("/product", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
             setVisible(false);
             setLoading(false);
             return Swal.fire({
@@ -203,20 +178,13 @@ export default function New() {
                                 onChange={handleChange}
                             />
                         </CCol>
-                        <CCol md={6}>
+                        <CCol md={12}>
                             <CFormInput
                                 type="file"
                                 name="featured"
                                 accept="image/*"
                                 onChange={handleImageChange}
                             />
-                        </CCol>
-                        <CCol md={6}>
-                            <CButton onClick={Upload}>  {loadingUpload ? (
-                                <div className="progess">
-                                    <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
-                                </div>
-                            ) : (<label>Upload Image</label>)}</CButton>
                         </CCol>
                     </CForm>
                 </CModalBody>

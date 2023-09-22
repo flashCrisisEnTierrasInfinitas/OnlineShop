@@ -7,8 +7,8 @@ import {
   CTableHeaderCell,
   CCard,
   CCardBody,
-  CButton,
   CFormInput,
+  CSpinner
 } from "@coreui/react";
 import Icons from "./icons";
 import { useEffect } from "react";
@@ -17,9 +17,8 @@ import isMountedRef from "../../../hooks/useRefMounted";
 import axios from "axios";
 
 export default function Table() {
-  const itemsPerPage = 5; // Cambia esto según tus necesidades
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const [data, setData] = useState([]);
 
@@ -31,14 +30,26 @@ export default function Table() {
         },
       });
       setData(response.data);
+      setLoading(false);
     } catch (err) {
       console.error(err);
+      setLoading(false);
     }
   }, [isMountedRef]);
   useEffect(() => {
     getProduct();
   }, [getProduct]);
   getProduct();
+
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center">
+        <CSpinner color="danger" />
+      </div>
+    )
+  }
+
 
   const filteredData = data?.filter((item) =>
     item.name?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -69,10 +80,6 @@ export default function Table() {
             </CTableHead>
             <CTableBody>
               {filteredData
-                .slice(
-                  (currentPage - 1) * itemsPerPage,
-                  currentPage * itemsPerPage
-                )
                 .map((item) => (
                   <tr key={item.id}>
                     <CTableDataCell>{item.id}</CTableDataCell>

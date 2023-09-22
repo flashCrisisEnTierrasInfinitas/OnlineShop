@@ -6,7 +6,7 @@ import Doughnut from "./Doughnut ";
 export default function DahsboardAdmin() {
   return (
     <ContedAdmin>
-      <h1>dahsboard</h1>
+      <h1 className="title-module">DAHSBOARD</h1>
       <div className="box-admin">
         <CWidgetStatsD />
       </div>

@@ -22,11 +22,8 @@ export default function ProList({
 
 
   const [data, setData] = useState([]);
-  console.log("🚀 ~ file: ListCategorias.jsx:7 ~ ListCategorias ~ data:", data)
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  // ...
 
   const getDataList = useCallback(async () => {
     try {
@@ -38,7 +35,7 @@ export default function ProList({
 
         setData(response.data);
         setLoading(false);
-    } catch (err) {
+    } catch (err) { 
       console.error(err);
       setError(err);
       setLoading(false);

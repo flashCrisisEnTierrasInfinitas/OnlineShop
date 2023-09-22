@@ -16,7 +16,8 @@ import isMountedRef from '../../../hooks/useRefMounted'
 
 
 
-export default function Table() {
+export default function Table({key,setKey}) {
+
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -40,8 +41,7 @@ export default function Table() {
   }, [isMountedRef]);
   useEffect(() => {
     getProduct();
-  }, [getProduct]);
-  getProduct();
+  }, [getProduct,key]);
 
   if (loading) {
     return (
@@ -101,7 +101,7 @@ export default function Table() {
                     <CTableDataCell><State data={item.state} /></CTableDataCell>
                     <CTableDataCell>{item.created_at}</CTableDataCell>
                     <CTableDataCell>
-                      <Icons data={item} />
+                      <Icons data={item} setKey={setKey}  key={key}/>
                     </CTableDataCell>
                   </tr>
                 ))}
