@@ -128,7 +128,7 @@ export default function Header({
                 </i>
               </a>
               <a onClick={() => setOpen(!Open)}>
-                <i class="fa fa-shopping-bag" aria-hidden="true">
+              <i class="fa fa-shopping-cart" aria-hidden="true">
                   <span className="conterProduct">{countProducts}</span>
                 </i>
               </a>

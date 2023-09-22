@@ -23,8 +23,8 @@ import Product from "./content/admin/product";
 import Category from "./content/admin/category";
 
 function App() {
-  //axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
-  axios.defaults.baseURL ="http://localhost:8000/api";
+  axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  //axios.defaults.baseURL ="http://localhost:8000/api";
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
     if (saveEquipos) {
@@ -51,14 +51,7 @@ function App() {
     window.localStorage.setItem("total", JSON.stringify(total));
   }, [total]);
 
-  const [countProducts, setCountProducts] = useState(() => {
-    const countProducts = window.localStorage.getItem("countProducts");
-    if (countProducts) {
-      return JSON.parse(countProducts);
-    } else {
-      return [];
-    }
-  });
+  const [countProducts, setCountProducts] = useState([]);
 
   useEffect(() => {
     window.localStorage.setItem("countProducts", JSON.stringify(countProducts));

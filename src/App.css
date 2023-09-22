@@ -337,7 +337,8 @@ h1 {
 }
 
 .img-cards {
-  height: 45vh;
+  height: 50vh;
+  background-size: cover;
 }
 
 .descripcio {
