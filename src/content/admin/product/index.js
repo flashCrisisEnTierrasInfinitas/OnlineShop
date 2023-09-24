@@ -1,6 +1,7 @@
 import ContedAdmin from "../components/Conter";
 import New from "./new";
 import Table from "./table";
+import TableMaterial from "./tableMaterial";
 
 export default function Product() {
   return (
@@ -10,7 +11,7 @@ export default function Product() {
         <div className="conter-new">
           <New />
         </div>
-        <Table />
+        <TableMaterial/>
       </div>
     </ContedAdmin>
   );

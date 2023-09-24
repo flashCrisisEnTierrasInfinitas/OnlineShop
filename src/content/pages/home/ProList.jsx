@@ -33,9 +33,9 @@ export default function ProList({
         },
       });
 
-        setData(response.data);
-        setLoading(false);
-    } catch (err) { 
+      setData(response.data);
+      setLoading(false);
+    } catch (err) {
       console.error(err);
       setError(err);
       setLoading(false);
@@ -48,7 +48,7 @@ export default function ProList({
   if (loading) {
     return (
       <div className="d-flex justify-content-center">
-        <CSpinner color="danger"/>
+        <CSpinner color="danger" />
       </div>
     )
   }
@@ -77,6 +77,31 @@ export default function ProList({
     onAddProduct(product);
     return window.location.replace("/pay");
   };
+
+  const Validate = ({ product }) => {
+    if (allProducts.length > 0 && allProducts[0].quantity !== undefined) {
+      console.table(product.stockPro);
+      console.table(allProducts[0].quantity);
+  
+      if (product.stockPro > allProducts[0].quantity) {
+        return (
+          <a onClick={() => onAddProduct(product)} className="btn-cartd-product">
+            <div className="icon-addproduct">
+              <img src="img/icons/shop.png" alt="Shop Icon" />
+            </div>
+          </a>
+        );
+      } else {
+        
+        return (
+          <p>No Stock</p>
+        );
+      }
+    }
+  
+    // Agrega un return fuera de la condición para otros casos
+    return null;
+  }
 
   return (
     <div className="margin-90 conter-pro">
@@ -108,11 +133,7 @@ export default function ProList({
                     <a className="color-secondary">$ {product.precioPro}</a>
                   </div>
                   <div className="btn-card">
-                    <a onClick={() => onAddProduct(product)} className="btn-cartd-product">
-                      <div className="icon-addproduct">
-                        <img src="img/icons/shop.png" alt="Shop Icon" />
-                      </div>
-                    </a>
+                    <Validate product={product} />
                     <button onClick={() => Sale(product)}>Comprar</button>
                   </div>
                 </CCardBody>

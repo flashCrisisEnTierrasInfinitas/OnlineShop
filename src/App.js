@@ -51,7 +51,7 @@ function App() {
     window.localStorage.setItem("total", JSON.stringify(total));
   }, [total]);
 
-  const [countProducts, setCountProducts] = useState([]);
+  const [countProducts, setCountProducts] = useState(0);
 
   useEffect(() => {
     window.localStorage.setItem("countProducts", JSON.stringify(countProducts));

@@ -24,9 +24,11 @@ export default function Header({
   total,
   setTotal,
 }) {
-  const [visible, setVisible] = useState(false);
 
+  const [visible, setVisible] = useState(false);
   const [Open, setOpen] = useState(false);
+
+
 
   const MenuPro = () => {
     return (
@@ -42,7 +44,7 @@ export default function Header({
                         {product.quantity}
                       </span>
                       <p className="titulo-producto-carrito">
-                        {product.nombrePro.toUpperCase()}
+                        {product.nombrePro}
                       </p>
                       <div className="img-menu">
                         <img src={product.img} alt="" />
@@ -116,7 +118,7 @@ export default function Header({
               </a>
             </div>
             <div className="conter-ico-nav">
-              <Link  href="/Profile">
+              <Link href="/Profile">
                 <i className="fa fa-user" aria-hidden="true"></i>
               </Link >
               <a href="/dahsboard">
@@ -128,7 +130,7 @@ export default function Header({
                 </i>
               </a>
               <a onClick={() => setOpen(!Open)}>
-              <i class="fa fa-shopping-cart" aria-hidden="true">
+                <i class="fa fa-shopping-cart" aria-hidden="true">
                   <span className="conterProduct">{countProducts}</span>
                 </i>
               </a>
