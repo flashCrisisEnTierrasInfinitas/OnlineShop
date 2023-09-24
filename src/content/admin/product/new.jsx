@@ -17,6 +17,7 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import isMountedRef from "../../../hooks/useRefMounted";
+import { Button } from "@mui/material";
 
 export default function New() {
     const [visible, setVisible] = useState(false);
@@ -102,7 +103,7 @@ export default function New() {
 
     return (
         <>
-            <CButton onClick={() => setVisible(!visible)}>Nuevo</CButton>
+            <Button  variant="contained"  onClick={() => setVisible(!visible)}>Nuevo</Button>
             <CModal
                 size="xl"
                 backdrop="static"

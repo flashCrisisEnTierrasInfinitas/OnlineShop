@@ -72,10 +72,13 @@
   font-size: 30px;
 }
 /* ! BOTON DE NUEVO REGISTRO */
-.conter-new {
+.botom-table {
   display: flex;
   align-items: center;
   justify-content: right;
+}
+.botom-table button {
+  margin-right: 20px;
 }
 /* ? ICONOS DE LAS TABLAS */
 .conter-icons {
@@ -88,6 +91,8 @@
   height: 100%;
   width: 100%;
   border-radius: 5px;
+  padding: 5px;
+  background-size: cover;
 }
 /* *************************************************** 
          TODO: El dashboar ira en este apartado
