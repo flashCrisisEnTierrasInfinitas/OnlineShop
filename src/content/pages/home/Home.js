@@ -1,6 +1,7 @@
 import Conted from "./Conted";
 import Header from "./Header";
 import ProList from "./ProList";
+import BasicModal from "./modasl";
 
 export default function Home({
     allProducts,
@@ -13,6 +14,7 @@ export default function Home({
 
     return (
         <div className="conter-home">
+            <BasicModal/>
             <Conted />
             <Header />
             <ProList

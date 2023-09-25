@@ -23,7 +23,8 @@ import Product from "./content/admin/product";
 import Category from "./content/admin/category";
 
 function App() {
-  axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  axios.defaults.baseURL =
+    "https://apionlineshop.com.asuprocolombiasas.com/api";
   //axios.defaults.baseURL ="http://localhost:8000/api";
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
@@ -56,6 +57,30 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("countProducts", JSON.stringify(countProducts));
   }, [countProducts]);
+
+  // Guarda la fecha de expiración en localStorage
+  const setExpiration = (minutes) => {
+    const now = new Date();
+    const expiration = new Date(now.getTime() + minutes * 60000); // Agrega minutos
+    window.localStorage.setItem("expiration", expiration);
+  };
+
+  // Comprueba si los datos han expirado y los elimina
+  const checkExpiration = () => {
+    const expiration = new Date(window.localStorage.getItem("expiration"));
+    const now = new Date();
+    if (now > expiration) {
+      // Los datos han expirado, elimínalos
+      window.localStorage.removeItem("modals");
+      window.localStorage.removeItem("expiration");
+    }
+  };
+
+  // Para establecer una expiración de 24 horas para "modals"
+  setExpiration(2); // 24 horas en minutos
+
+  // Llama a esto en algún lugar de tu código para verificar y eliminar datos expirados
+  checkExpiration();
 
   return (
     <>

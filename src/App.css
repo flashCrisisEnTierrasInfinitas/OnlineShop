@@ -5,6 +5,15 @@
 h1 {
   font-weight: 700;
 }
+
+.conter-img-modasl{
+  width: 100%;
+  height: 100%;
+}
+.conter-img-modasl img{
+  width: 100%;
+  height: 100%;
+}
 /* TABLA */
 .conter-table {
   width: 90%;
