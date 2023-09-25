@@ -124,7 +124,7 @@ export default function ProList({
           {
             filteredData?.map((product) => (
               <>
-                <Card sx={{ width: 320 }} key={product.id}>
+                <Card  key={product.id}>
                   <div>
                     <Typography level="title-lg">{product.nombrePro}</Typography>
                     <Typography level="body-sm">{product.descripPro}</Typography>
