@@ -124,7 +124,7 @@ export default function ProList({
           {
             filteredData?.map((product) => (
               <>
-                <Card  key={product.id}>
+                <Card  key={product.id} sx={{ width: 310 }}>
                   <div>
                     <Typography level="title-lg">{product.nombrePro}</Typography>
                     <Typography level="body-sm">{product.descripPro}</Typography>
@@ -150,12 +150,12 @@ export default function ProList({
                     <div>
                       <Typography level="body-xs">Total price:</Typography>
                       <Typography fontSize="lg" fontWeight="lg">
-                        ${product.precioPro}
+                        ${product.precioPro.toLocaleString("es-CO")}
                       </Typography>
                     </div>
                     <div className="flex">
                       <Tooltip title="Agregar al carrito">
-                        <Button variant="contained" color='warning'>
+                        <Button variant="contained" color='warning' onClick={() => onAddProduct(product)}>
                           <AddShoppingCartIcon />
                         </Button>
                       </Tooltip>
