@@ -99,8 +99,6 @@ export default function ProList({
         );
       }
     }
-  
-    // Agrega un return fuera de la condición para otros casos
     return null;
   }
 
@@ -115,7 +113,7 @@ export default function ProList({
         />
       </div>
       <div>
-        <Sliders/>
+        <Sliders data={data}/>
         <div className="box-vendido">
           {
             filteredData?.map((product) => (
