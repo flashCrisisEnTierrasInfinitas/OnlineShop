@@ -65,7 +65,7 @@ function App() {
     window.localStorage.setItem("expiration", expiration);
   };
 
-  // Comprueba si los datos han expirado y los elimina
+  // Esta función verifica si los datos han expirado y los elimina
   const checkExpiration = () => {
     const expiration = new Date(window.localStorage.getItem("expiration"));
     const now = new Date();
@@ -76,11 +76,15 @@ function App() {
     }
   };
 
-  // Para establecer una expiración de 24 horas para "modals"
-  setExpiration(2); // 24 horas en minutos
+  // Establece la expiración al montar el componente
+  useEffect(() => {
+    setExpiration(10); // 10 minutos en minutos
+  }, []);
 
-  // Llama a esto en algún lugar de tu código para verificar y eliminar datos expirados
-  checkExpiration();
+  // Verifica y elimina datos expirados al montar el componente
+  useEffect(() => {
+    checkExpiration();
+  }, []);
 
   return (
     <>
