@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import { CFormInput, CSpinner } from '@coreui/react';
 import isMountedRef from '../../../hooks/useRefMounted'
 import axios from 'axios';
-import { Box, Button } from '@mui/material';
 import Icons from './icons';
 
 const columns = [
@@ -17,7 +16,7 @@ const columns = [
             <img src={params.row.img} alt={params.row.nombrePro} className="img-table" />
         ),
     },
-    { field: 'descripPro', headerName: 'Descripción', width: 200 },
+    { field: 'descripPro', headerName: 'Descripción', width: 220 },
     {
         field: 'codigoPro',
         headerName: 'Age',
@@ -31,7 +30,7 @@ const columns = [
     {
         field: 'actions', // Nombre del campo
         headerName: 'Acciones', // Nombre en la cabecera
-        width: 100, // Ancho de la columna
+        width: 100, // Ancho de la columna  
         renderCell: (params) => (
             <Icons data={params} />
         ),
@@ -44,7 +43,6 @@ export default function DataTable() {
     const [searchTerm, setSearchTerm] = React.useState("");
     const [loading, setLoading] = React.useState(true);
     const [data, setData] = React.useState([]);
-    console.log("🚀 ~ file: tableMaterial.jsx:33 ~ DataTable ~ data:", data)
 
     const getDataList = React.useCallback(async () => {
         try {

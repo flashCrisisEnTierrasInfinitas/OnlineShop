@@ -1,4 +1,7 @@
-import { CButton, CSpinner } from "@coreui/react";
+import { CSpinner } from "@coreui/react";
+import { Button, IconButton } from "@mui/material";
+import PlumbingIcon from '@mui/icons-material/Plumbing';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -36,18 +39,18 @@ export default function Icons({ data }) {
 
     return (
         <div className="conter-icons">
-            <CButton color="danger" variant="outline" onClick={() => Delete(ID)}>
 
+            <IconButton aria-label="fingerprint" color="primary" onClick={() => Delete(ID)}>
+               <PlumbingIcon />
+            </IconButton>
+            <IconButton onClick={() => Delete(ID)} color="error" aria-label="fingerprint">
                 {loading ? (
                     <div className="progess">
-                        <CSpinner color="danger" size="sm" style={{ width: '1rem', height: '1rem'}}/>
+                        <CSpinner color="danger" size="sm" style={{ width: '1rem', height: '1rem' }} />
                     </div>
-                ) : (<i className="fa fa-trash" aria-hidden="true" />)}
+                ) : ( <DeleteForeverIcon />)}
 
-            </CButton>
-            <CButton color="primary" variant="outline" onClick={() => Delete(ID)}>
-                <i className="fa fa-wrench" aria-hidden="true" />
-            </CButton>
+            </IconButton>
         </div>
     );
 }

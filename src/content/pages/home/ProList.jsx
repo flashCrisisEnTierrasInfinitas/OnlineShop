@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import React, { useState, useEffect, useCallback } from "react";
 import isMountedRef from '../../../hooks/useRefMounted';
+import Sliders from "./slider";
 
 export default function ProList({
   allProducts,
@@ -114,6 +115,7 @@ export default function ProList({
         />
       </div>
       <div>
+        <Sliders/>
         <div className="box-vendido">
           {
             filteredData?.map((product) => (
