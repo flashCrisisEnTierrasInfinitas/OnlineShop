@@ -1,15 +1,20 @@
 import {
   CFormInput,
-  CCardTitle,
-  CCard,
-  CCardImage,
-  CCardBody,
   CSpinner,
 } from "@coreui/react";
 import axios from "axios";
 import React, { useState, useEffect, useCallback } from "react";
 import isMountedRef from '../../../hooks/useRefMounted';
 import Sliders from "./slider";
+import AspectRatio from '@mui/joy/AspectRatio';
+import Card from '@mui/joy/Card';
+import CardContent from '@mui/joy/CardContent';
+import IconButton from '@mui/joy/IconButton';
+import Typography from '@mui/joy/Typography';
+import BookmarkAdd from '@mui/icons-material/BookmarkAddOutlined';
+import LoupeIcon from '@mui/icons-material/Loupe';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { Tooltip,Button } from "@mui/material";
 
 export default function ProList({
   allProducts,
@@ -83,7 +88,7 @@ export default function ProList({
     if (allProducts.length > 0 && allProducts[0].quantity !== undefined) {
       console.table(product.stockPro);
       console.table(allProducts[0].quantity);
-  
+
       if (product.stockPro > allProducts[0].quantity) {
         return (
           <a onClick={() => onAddProduct(product)} className="btn-cartd-product">
@@ -93,12 +98,13 @@ export default function ProList({
           </a>
         );
       } else {
-        
+
         return (
           <p>No Stock</p>
         );
       }
     }
+
     return null;
   }
 
@@ -113,31 +119,56 @@ export default function ProList({
         />
       </div>
       <div>
-        <Sliders data={data}/>
-        <div className="box-vendido">
+        <Sliders data={data} />
+        <div className="box-vendido top-50">
           {
             filteredData?.map((product) => (
-              <CCard key={product.id}> {/* Agrega una clave única para cada tarjeta */}
-                <CCardImage
-                  orientation="top"
-                  src={product.img}
-                  className="img-cards"
-                />
-                <CCardBody>
-                  <CCardTitle>{product.nombrePro.toUpperCase()}</CCardTitle>
-                  <div className="descripcio">
-                    <label>{product.descripPro}</label> {/* Corrige el nombre de la propiedad */}
+              <>
+                <Card sx={{ width: 320 }} key={product.id}>
+                  <div>
+                    <Typography level="title-lg">{product.nombrePro}</Typography>
+                    <Typography level="body-sm">{product.descripPro}</Typography>
+                    <IconButton
+                      aria-label="bookmark Bahamas Islands"
+                      variant="plain"
+                      color="neutral"
+                      size="sm"
+                      sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}
+                    >
+                      <BookmarkAdd />
+                    </IconButton>
                   </div>
-                  <div className="precio">
-                    <p className="color-primary">$999.00</p>
-                    <a className="color-secondary">$ {product.precioPro}</a>
-                  </div>
-                  <div className="btn-card">
-                    <Validate product={product} />
-                    <button onClick={() => Sale(product)}>Comprar</button>
-                  </div>
-                </CCardBody>
-              </CCard>
+                  <AspectRatio minHeight="120px" maxHeight="200px">
+                    <img
+                      src={product.img}
+                      srcSet={product.img}
+                      loading="lazy"
+                      alt={product.nombrePro}
+                    />
+                  </AspectRatio>
+                  <CardContent orientation="horizontal">
+                    <div>
+                      <Typography level="body-xs">Total price:</Typography>
+                      <Typography fontSize="lg" fontWeight="lg">
+                        ${product.precioPro}
+                      </Typography>
+                    </div>
+                    <div className="flex">
+                      <Tooltip title="Agregar al carrito">
+                        <Button variant="contained" color='warning'>
+                          <AddShoppingCartIcon />
+                        </Button>
+                      </Tooltip>
+                      <Tooltip title="Ver detalle">
+                        <Button variant="contained">
+                          <LoupeIcon />
+                        </Button>
+                      </Tooltip>
+                    </div>
+                  </CardContent>
+                </Card>
+              </>
+
             ))
           }
         </div>
