@@ -40,7 +40,7 @@ export default function Icons({ data }) {
     return (
         <div className="conter-icons">
 
-            <IconButton aria-label="fingerprint" color="primary" onClick={() => Delete(ID)}>
+            <IconButton aria-label="fingerprint" color="primary">
                <PlumbingIcon />
             </IconButton>
             <IconButton onClick={() => Delete(ID)} color="error" aria-label="fingerprint">

@@ -65,9 +65,6 @@ export default function ProList({
     const IndexCarrito = allProducts.findIndex(
       (item) => item.id === product.id
     );
-    const IndexProducto = filteredData.findIndex(
-      (item) => item.id === product.id
-    );
 
     if (
       allProducts.length > 0 && allProducts[IndexCarrito]?.quantity
@@ -108,10 +105,6 @@ export default function ProList({
     setAllproducts([...allProducts, product]);
   };
 
-  const Sale = (product) => {
-    onAddProduct(product);
-    return window.location.replace("/pay");
-  };
 
   return (
     <div className="margin-90 conter-pro">
