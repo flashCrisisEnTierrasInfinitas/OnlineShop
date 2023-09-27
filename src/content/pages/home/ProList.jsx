@@ -154,6 +154,12 @@ export default function ProList({
                       ${product.precioPro.toLocaleString("es-CO")}
                     </Typography>
                   </div>
+                  <div>
+                    <Typography level="body-xs">Total Stock:</Typography>
+                    <Typography fontSize="lg" fontWeight="lg">
+                      {product.stockPro}
+                    </Typography>
+                  </div>
                   <div className="flex">
                     {product.noSePuedeComprar ? (
                       <p>No Stock</p>
