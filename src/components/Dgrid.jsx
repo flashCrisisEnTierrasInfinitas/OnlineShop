@@ -9,7 +9,7 @@ export default function ResponsiveGrid(props) {
             <Grid
                 container
                 spacing={{ xs: 2, md: 3 }}
-                columns={{ xs: 5, sm: 8, md: 5 }}
+                columns={{ xs: 3, sm: 8, md: 3 }}
             >
              
                 {props.children}
