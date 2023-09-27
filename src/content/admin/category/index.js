@@ -2,6 +2,9 @@ import { useState } from "react";
 import ContedAdmin from "../components/Conter";
 import New from "./new";
 import Table from "./table";
+import TableMaterial from './tableMaterial';
+import { Button } from "@mui/material";
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 
 export default function Category() {
 
@@ -11,10 +14,16 @@ export default function Category() {
     <ContedAdmin>
       <h1 className="title-module">CATEGORIA PRODUCTOS</h1>
       <div className="margin-90">
-        <div className="conter-new">
-          <New setKey={setKey} key={key}/>
+        <div className="botom-table">
+        <Button
+            variant="contained"
+            startIcon={<CloudDownloadIcon/>}
+          >
+            Download PDF
+          </Button>
+          <New />
         </div>
-        <Table  setKey={setKey} key={key}/>
+        <TableMaterial  setKey={setKey} key={key}/>
       </div>
     </ContedAdmin>
   );

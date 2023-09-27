@@ -12,6 +12,7 @@ import {
     CModalTitle,
     CSpinner,
 } from "@coreui/react";
+import { Button } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -88,10 +89,10 @@ export default function New({ key, setKey }) {
 
     return (
         <>
-            <CButton onClick={() => setVisible(!visible)}>Nuevo</CButton>
+            <Button  variant="contained"  onClick={() => setVisible(!visible)}>Nuevo</Button>
             <CModal
                 size="xl"
-                backdrop="static"
+                backdrop="static" 
                 visible={visible}
                 onClose={() => setVisible(false)}
                 aria-labelledby="StaticBackdropExampleLabel"

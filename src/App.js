@@ -21,6 +21,7 @@ import DahsboardAdmin from "./content/admin/dahsboard";
 import User from "./content/admin/user";
 import Product from "./content/admin/product";
 import Category from "./content/admin/category";
+import CategoryProduct from "./content/pages/store/categoryProduct";
 
 function App() {
   axios.defaults.baseURL =
@@ -127,6 +128,7 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/ProductosCat" element={<ProductoCate />} />
+            <Route path="/categoryProduct/:id" element={<CategoryProduct />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/notificaciones" element={<Notificaciones />} />
             <Route path="/Historial" element={<Historial />} />

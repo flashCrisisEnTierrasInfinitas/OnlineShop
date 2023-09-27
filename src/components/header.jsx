@@ -113,7 +113,7 @@ export default function Header({
             <div className="footer-img">
               <a href="/">
                 <div>
-                  <img src="img/logos/logo1.png" />
+                  <img src="/img/logos/logo1.png" />
                 </div>
               </a>
             </div>

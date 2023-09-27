@@ -10,7 +10,16 @@ import {
 } from "@coreui/react";
 import axios from "axios";
 import React, { useState, useEffect, useCallback } from "react";
-import isMountedRef from '../../../../hooks/useRefMounted';
+import isMountedRef from "../../../../hooks/useRefMounted";
+import AspectRatio from "@mui/joy/AspectRatio";
+import Card from "@mui/joy/Card";
+import CardContent from "@mui/joy/CardContent";
+import IconButton from "@mui/joy/IconButton";
+import Typography from "@mui/joy/Typography";
+import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
+import LoupeIcon from "@mui/icons-material/Loupe";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Tooltip, Button } from "@mui/material";
 
 export default function ProList() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,12 +31,12 @@ export default function ProList() {
     try {
       const response = await axios.get(`/categoryProd`, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          "Content-Type": "multipart/form-data",
         },
       });
 
-        setData(response.data);
-        setLoading(false);
+      setData(response.data);
+      setLoading(false);
     } catch (err) {
       console.error(err);
       setError(err);
@@ -41,11 +50,10 @@ export default function ProList() {
   if (loading) {
     return (
       <div className="d-flex justify-content-center">
-        <CSpinner color="danger"/>
+        <CSpinner color="danger" />
       </div>
-    )
+    );
   }
-
 
   const filteredData = data?.filter((item) =>
     item.name?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -65,25 +73,43 @@ export default function ProList() {
         <div className="box-vendido">
           {filteredData?.map((product) => {
             return (
-              <CCard>
-                <div className="flex">
-                  <CCardTitle className="top-50 ">
-                    {product.name.toUpperCase()}
-                  </CCardTitle>
+              <Card key={product.id} sx={{ width: 310 }}>
+                <div>
+                  <Typography level="title-lg">{product.name}</Typography>
+                  <IconButton
+                    aria-label="bookmark Bahamas Islands"
+                    variant="plain"
+                    color="neutral"
+                    size="sm"
+                    sx={{
+                      position: "absolute",
+                      top: "0.875rem",
+                      right: "0.5rem",
+                    }}
+                  >
+                    <BookmarkAdd />
+                  </IconButton>
                 </div>
-                <CCardImage
-                  orientation="top"
-                  src={product.img}
-                  className="img-cards"
-                />
-                <CCardBody>
+                <AspectRatio minHeight="120px" maxHeight="200px">
+                  <img
+                    src={product.img}
+                    srcSet={product.img}
+                    loading="lazy"
+                    alt={product.name}
+                  />
+                </AspectRatio>
+                <CardContent orientation="horizontal">
                   <div className="flex">
-                    <a type="button" className="btn1 btn-secondary">
-                      Ver mas
-                    </a>
+                    <Tooltip title="Ver Más">
+                      <a href={`categoryProduct/${product.id}`}>
+                        <Button variant="contained" color="warning">
+                          <LoupeIcon />
+                        </Button>
+                      </a>
+                    </Tooltip>
                   </div>
-                </CCardBody>
-              </CCard>
+                </CardContent>
+              </Card>
             );
           })}
         </div>

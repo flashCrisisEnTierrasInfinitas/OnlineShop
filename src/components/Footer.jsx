@@ -27,10 +27,10 @@ export default function Footer() {
           <h1>PAGOS</h1>
           <div className="footer-logos-pay">
             <div>
-              <img src="img/icons/nequi-2.svg" />
+              <img src="/img/icons/nequi-2.svg" />
             </div>
             <div>
-              <img src="img/icons/daviplata.svg" />
+              <img src="/img/icons/daviplata.svg" />
             </div>
           </div>
         </div>
@@ -58,13 +58,13 @@ export default function Footer() {
       </CFooter>
       <div className="conter-log-red">
         <div>
-          <img src="img/icons/facebook_108044.svg" alt="" />
+          <img src="/img/icons/facebook_108044.svg" alt="" />
         </div>
         <div>
-          <img src="img/icons/instagram_108043.svg" alt="" />
+          <img src="/img/icons/instagram_108043.svg" alt="" />
         </div>
         <div>
-          <img src="img/icons/whatsapp_108042.svg" alt="" />
+          <img src="/img/icons/whatsapp_108042.svg" alt="" />
         </div>
       </div>
     </div>

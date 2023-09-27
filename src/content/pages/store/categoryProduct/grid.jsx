@@ -1,8 +1,7 @@
 import { CFormInput, CSpinner } from "@coreui/react";
 import axios from "axios";
 import React, { useState, useEffect, useCallback } from "react";
-import isMountedRef from "../../../hooks/useRefMounted";
-import Sliders from "./slider";
+import isMountedRef from "../../../../hooks/useRefMounted";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
@@ -116,7 +115,6 @@ export default function ProList({
         />
       </div>
       <div>
-        <Sliders data={data} />
         <div className="box-vendido top-50">
           {filteredData?.map((product) => (
             <>

@@ -39,7 +39,6 @@ export default function Icons({ data }) {
 
     return (
         <div className="conter-icons">
-
             <IconButton aria-label="fingerprint" color="primary">
                <PlumbingIcon />
             </IconButton>
