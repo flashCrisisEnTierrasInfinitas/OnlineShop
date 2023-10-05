@@ -842,15 +842,18 @@ p {
 }
 
 /*! PRODUCTO POR CATEGORIA */
-.conter-filter h1{
+.conter-filter h1 {
   font-size: 30px;
   margin-bottom: 20px;
 }
-.conter-filter{
+.conter-filter {
   height: 60vh;
   margin: 20px;
 }
-
+/* DETALLE DEL PRODUCTO */
+.conter-detallepro {
+  margin-top: 5pc;
+}
 /* ? SLIDER DEL HOME */
 .styles-module_carousel-arrow__26sRw {
   background: url(https://cdn.dsmcdn.com/web/production/slick-arrow.svg) 50%

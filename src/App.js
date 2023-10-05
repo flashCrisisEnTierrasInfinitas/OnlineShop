@@ -22,6 +22,7 @@ import User from "./content/admin/user";
 import Product from "./content/admin/product";
 import Category from "./content/admin/category";
 import CategoryProduct from "./content/pages/store/categoryProduct";
+import DetalleProduc from "./content/pages/store/detalle";
 
 function App() {
   axios.defaults.baseURL =
@@ -128,6 +129,7 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/ProductosCat" element={<ProductoCate />} />
+            <Route path="/DetalleProduc" element={<DetalleProduc />} />
             <Route
               path="/categoryProduct/:id"
               element={
