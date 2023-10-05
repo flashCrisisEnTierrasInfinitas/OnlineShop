@@ -18,7 +18,6 @@ import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 import LoupeIcon from "@mui/icons-material/Loupe";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Tooltip, Button } from "@mui/material";
 
 export default function ProList() {

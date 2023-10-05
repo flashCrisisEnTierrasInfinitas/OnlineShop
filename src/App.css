@@ -6,11 +6,11 @@ h1 {
   font-weight: 700;
 }
 
-.conter-img-modasl{
+.conter-img-modasl {
   width: 100%;
   height: 100%;
 }
-.conter-img-modasl img{
+.conter-img-modasl img {
   width: 100%;
   height: 100%;
 }
@@ -20,7 +20,7 @@ h1 {
   margin: 0 auto;
   margin-bottom: 40%;
 }
-.boton-tabla{
+.boton-tabla {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,7 +159,7 @@ h1 {
   display: flex;
   align-items: center;
 }
-.conter-nav-li label{
+.conter-nav-li label {
   position: relative;
   cursor: pointer;
 }
@@ -194,7 +194,6 @@ h1 {
   color: rgb(244, 86, 7);
   font-weight: 700;
   text-align: center;
-  
 }
 
 .footer-img a div {
@@ -551,9 +550,8 @@ h1 {
   top: 15px;
 }
 
-
 /* TODO: ICONO DEL BOTON DEL CARRITO DE COMPRAS */
-.btn-cartd-product{
+.btn-cartd-product {
   padding: 5px;
   width: 40px;
   background-color: #fa4d08;
@@ -561,19 +559,18 @@ h1 {
   cursor: pointer;
   transition: 0.1s;
 }
-.btn-cartd-product:hover{
+.btn-cartd-product:hover {
   background-color: #fff;
   border: 2px solid #fa4d08;
 }
-.icon-addproduct{
+.icon-addproduct {
   width: 100%;
   height: 100%;
 }
-.icon-addproduct img{
+.icon-addproduct img {
   width: 100%;
   height: 100%;
 }
-
 
 /* PASARELA DE PAGOS */
 .header-pay {
@@ -844,6 +841,16 @@ p {
   margin-left: 10px;
 }
 
+/*! PRODUCTO POR CATEGORIA */
+.conter-filter h1{
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.conter-filter{
+  height: 60vh;
+  margin: 20px;
+}
+
 /* ? SLIDER DEL HOME */
 .styles-module_carousel-arrow__26sRw {
   background: url(https://cdn.dsmcdn.com/web/production/slick-arrow.svg) 50%
@@ -866,7 +873,6 @@ p {
 /* **************************
 **********NOTIFICACIONES****
 ************************** */
-
 
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {

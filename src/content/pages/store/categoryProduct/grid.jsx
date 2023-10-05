@@ -26,7 +26,6 @@ export default function ProList({
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [validateCarrito, setValidateCarrito] = useState(true);
 
   const getDataList = useCallback(async () => {
     try {

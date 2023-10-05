@@ -128,7 +128,19 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/ProductosCat" element={<ProductoCate />} />
-            <Route path="/categoryProduct/:id" element={<CategoryProduct />} />
+            <Route
+              path="/categoryProduct/:id"
+              element={
+                <CategoryProduct
+                  allProducts={allProducts}
+                  setAllproducts={setAllproducts}
+                  total={total}
+                  setTotal={setTotal}
+                  countProducts={countProducts}
+                  setCountProducts={setCountProducts}
+                />
+              }
+            />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/notificaciones" element={<Notificaciones />} />
             <Route path="/Historial" element={<Historial />} />
