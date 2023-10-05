@@ -173,9 +173,11 @@ export default function ProList({
                       </Tooltip>
                     )}
                     <Tooltip title="Ver detalle">
-                      <Button variant="contained">
-                        <LoupeIcon />
-                      </Button>
+                      <a href="/DetalleProduc">
+                        <Button variant="contained">
+                          <LoupeIcon />
+                        </Button>
+                      </a>
                     </Tooltip>
                   </div>
                 </CardContent>

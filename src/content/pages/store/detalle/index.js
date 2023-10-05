@@ -83,7 +83,7 @@ export default function DetalleProduc() {
           >
             <div>
               <Typography level="title-lg">Warning</Typography>
-              <Typography level="body-sm">
+              <Typography>
                 Este producto se cobra por peso. El precio total en esta orden
                 es estimado y dependerá del peso final al momento de preparar su
                 orden.
@@ -112,6 +112,9 @@ export default function DetalleProduc() {
       </div>
       <div>
         <h3 className="color-gray">{data.descripPro}</h3>
+      </div>
+      <div>
+        
       </div>
     </div>
   );
