@@ -854,6 +854,17 @@ p {
 .conter-detallepro {
   margin-top: 5pc;
 }
+.boton-detalle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 5px;
+}
+.boton-detalle button {
+  font-size: 20px;
+  padding: 10px;
+}
 /* ? SLIDER DEL HOME */
 .styles-module_carousel-arrow__26sRw {
   background: url(https://cdn.dsmcdn.com/web/production/slick-arrow.svg) 50%
@@ -914,5 +925,10 @@ p {
     font-size: 40px;
     display: block;
     font-weight: 700;
+  }
+  .boton-detalle button {
+    width: 100%;
+    font-size: 21px;
+    padding: 10px;
   }
 }

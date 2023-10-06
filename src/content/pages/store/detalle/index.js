@@ -9,6 +9,7 @@ import LinearProgress from "@mui/joy/LinearProgress";
 import Typography from "@mui/joy/Typography";
 import WarningIcon from "@mui/icons-material/Warning";
 import Close from "@mui/icons-material/Close";
+import { Button } from "@mui/joy";
 
 export default function DetalleProduc() {
   const [data, setData] = useState([]);
@@ -113,8 +114,8 @@ export default function DetalleProduc() {
       <div>
         <h3 className="color-gray">{data.descripPro}</h3>
       </div>
-      <div>
-        
+      <div className="boton-detalle">
+        <Button>Agregar al Carrito</Button>
       </div>
     </div>
   );
