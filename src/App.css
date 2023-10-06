@@ -1034,7 +1034,7 @@ p {
   .conte-text-img {
     font-size: 2.1em;
   }
-  .conter-ico-nav{
+  .conter-ico-nav {
     display: flex;
     align-items: center;
     justify-content: left;
@@ -1050,12 +1050,19 @@ p {
   .footer-img a {
     width: 100%;
   }
-  .logo-asupro{
+  .logo-asupro {
     width: 100%;
   }
-  .conter-navbar{
+  .conter-navbar {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .conter-search {
+    height: 6vh;
+    display: block;
+  }
+  .input-search {
+    font-size: 5em;
   }
 }

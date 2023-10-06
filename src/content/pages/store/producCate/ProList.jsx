@@ -72,43 +72,45 @@ export default function ProList() {
         <div className="box-vendido">
           {filteredData?.map((product) => {
             return (
-              <Card key={product.id} sx={{ width: 310 }}>
-                <div>
-                  <Typography level="title-lg">{product.name}</Typography>
-                  <IconButton
-                    aria-label="bookmark Bahamas Islands"
-                    variant="plain"
-                    color="neutral"
-                    size="sm"
-                    sx={{
-                      position: "absolute",
-                      top: "0.875rem",
-                      right: "0.5rem",
-                    }}
-                  >
-                    <BookmarkAdd />
-                  </IconButton>
-                </div>
-                <AspectRatio minHeight="120px" maxHeight="200px">
-                  <img
-                    src={product.img}
-                    srcSet={product.img}
-                    loading="lazy"
-                    alt={product.name}
-                  />
-                </AspectRatio>
-                <CardContent orientation="horizontal">
-                  <div className="flex">
-                    <Tooltip title="Ver Más">
-                      <a href={`categoryProduct/${product.id}`}>
-                        <Button variant="contained" color="warning">
-                          <LoupeIcon />
-                        </Button>
-                      </a>
-                    </Tooltip>
+              <div className="card-pro-list">
+                <Card key={product.id}>
+                  <div>
+                    <h1 className="title-card-list">{product.name}</h1>
+                    <IconButton
+                      aria-label="bookmark Bahamas Islands"
+                      variant="plain"
+                      color="neutral"
+                      size="sm"
+                      sx={{
+                        position: "absolute",
+                        top: "0.875rem",
+                        right: "0.5rem",
+                      }}
+                    >
+                      <BookmarkAdd />
+                    </IconButton>
                   </div>
-                </CardContent>
-              </Card>
+                  <AspectRatio minHeight="120px" maxHeight="400px">
+                    <img
+                      src={product.img}
+                      srcSet={product.img}
+                      loading="lazy"
+                      alt={product.name}
+                    />
+                  </AspectRatio>
+                  <CardContent orientation="horizontal">
+                    <div className="flex boton-product">
+                      <Tooltip title="Ver Más">
+                        <a href={`categoryProduct/${product.id}`}>
+                          <Button variant="contained" color="warning">
+                            <LoupeIcon />
+                          </Button>
+                        </a>
+                      </Tooltip>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             );
           })}
         </div>

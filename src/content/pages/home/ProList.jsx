@@ -61,7 +61,6 @@ export default function ProList({
   );
   //!
   const onAddProduct = (product) => {
-    
     const IndexCarrito = allProducts.findIndex(
       (item) => item.id === product.id
     );
@@ -109,6 +108,7 @@ export default function ProList({
     <div className="margin-90 conter-pro">
       <div className="conter-search top-50">
         <CFormInput
+          type="text"
           placeholder="¿Qué estás buscando?"
           className="input-search"
           value={searchTerm}
@@ -123,7 +123,7 @@ export default function ProList({
               <div className="card-pro-list">
                 <Card key={product.id}>
                   <div>
-                      <h1 className="title-card-list">{product.nombrePro}</h1>
+                    <h1 className="title-card-list">{product.nombrePro}</h1>
                     <IconButton
                       aria-label="bookmark Bahamas Islands"
                       variant="plain"
@@ -160,15 +160,15 @@ export default function ProList({
                       </Typography>
                     </div>
                     <div className="flex boton-product">
-                        <Tooltip title="Agregar al carrito">
-                          <Button
-                            variant="contained"
-                            color="warning"
-                            onClick={() => onAddProduct(product)}
-                          >
-                            <AddShoppingCartIcon />
-                          </Button>
-                        </Tooltip>
+                      <Tooltip title="Agregar al carrito">
+                        <Button
+                          variant="contained"
+                          color="warning"
+                          onClick={() => onAddProduct(product)}
+                        >
+                          <AddShoppingCartIcon />
+                        </Button>
+                      </Tooltip>
                       <Tooltip title="Ver detalle">
                         <a href="/DetalleProduc">
                           <Button variant="contained">
