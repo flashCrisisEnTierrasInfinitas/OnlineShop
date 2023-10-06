@@ -14,7 +14,10 @@ import {
 } from "@coreui/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
+import Drawer from "@mui/joy/Drawer";
 import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
+import { Button } from "@mui/joy";
 
 export default function Header({
   allProducts,
@@ -24,11 +27,43 @@ export default function Header({
   total,
   setTotal,
 }) {
-
   const [visible, setVisible] = useState(false);
   const [Open, setOpen] = useState(false);
+  const [Drawes, setDrawes] = useState(false);
 
-
+  const Drawers = () => {
+    return (
+      <>
+        <div className="boton-drawer">
+          <button
+            onClick={() => setDrawes(!Drawes)}
+            className="btn-clear-all btn-primary"
+          >
+            Proceder al pago
+          </button>
+        </div>
+        <Drawer open={Drawes} anchor="bottom" size="sm" className="drawes">
+          <div className="header-drawes">
+            <Button onClick={() => setDrawes(!Drawes)} variant="text">
+              <CloseIcon />
+            </Button>
+          </div>
+          <div className="conter-drawes">
+            <div>
+              <img src="/img/icons/shop_106574.png" alt="shop" />
+              <p>Recoger</p>
+            </div>
+            <div>
+              <a href="/pay">
+                <img src="/img/icons/delivery_46877.png" alt="pay" />
+                <p>Entregar</p>
+              </a>
+            </div>
+          </div>
+        </Drawer>
+      </>
+    );
+  };
 
   const MenuPro = () => {
     return (
@@ -73,9 +108,7 @@ export default function Header({
                 >
                   Vaciar Carrito
                 </button>
-                <a href="/pay" className="btn-clear-all btn-primary">
-                  Proceder al pago
-                </a>
+                <Drawers />
               </div>
             </>
           ) : (
@@ -120,7 +153,7 @@ export default function Header({
             <div className="conter-ico-nav">
               <Link href="/Profile">
                 <i className="fa fa-user" aria-hidden="true"></i>
-              </Link >
+              </Link>
               <a href="/dahsboard">
                 <i class="fa fa-lock" aria-hidden="true"></i>
               </a>
