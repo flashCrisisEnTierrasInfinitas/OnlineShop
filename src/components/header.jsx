@@ -42,7 +42,7 @@ export default function Header({
             Proceder al pago
           </button>
         </div>
-        <Drawer open={Drawes} anchor="bottom" size="sm" className="drawes">
+        <Drawer open={Drawes} anchor="bottom" size="sm">
           <div className="header-drawes">
             <Button onClick={() => setDrawes(!Drawes)} variant="text">
               <CloseIcon />

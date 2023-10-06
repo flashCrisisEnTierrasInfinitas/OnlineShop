@@ -119,69 +119,73 @@ export default function ProList({
         <div className="box-vendido top-50">
           {filteredData?.map((product) => (
             <>
-              <Card key={product.id} sx={{ width: 310 }}>
-                <div>
-                  <Typography level="title-lg">{product.nombrePro}</Typography>
-                  <Typography level="body-sm">{product.descripPro}</Typography>
-                  <IconButton
-                    aria-label="bookmark Bahamas Islands"
-                    variant="plain"
-                    color="neutral"
-                    size="sm"
-                    sx={{
-                      position: "absolute",
-                      top: "0.875rem",
-                      right: "0.5rem",
-                    }}
-                  >
-                    <BookmarkAdd />
-                  </IconButton>
-                </div>
-                <AspectRatio minHeight="120px" maxHeight="200px">
-                  <img
-                    src={product.img}
-                    srcSet={product.img}
-                    loading="lazy"
-                    alt={product.nombrePro}
-                  />
-                </AspectRatio>
-                <CardContent orientation="horizontal">
+              <div className="card-pro-list">
+                <Card key={product.id}>
                   <div>
-                    <Typography level="body-xs">Total price:</Typography>
-                    <Typography fontSize="lg" fontWeight="lg">
-                      ${product.precioPro.toLocaleString("es-CO")}
+                      <h1 className="title-card-list">{product.nombrePro}</h1>
+                    <Typography level="body-sm">
+                      {product.descripPro}
                     </Typography>
+                    <IconButton
+                      aria-label="bookmark Bahamas Islands"
+                      variant="plain"
+                      color="neutral"
+                      size="sm"
+                      sx={{
+                        position: "absolute",
+                        top: "0.875rem",
+                        right: "0.5rem",
+                      }}
+                    >
+                      <BookmarkAdd />
+                    </IconButton>
                   </div>
-                  <div>
-                    <Typography level="body-xs">Total Stock:</Typography>
-                    <Typography fontSize="lg" fontWeight="lg">
-                      {product.stockPro}
-                    </Typography>
-                  </div>
-                  <div className="flex">
-                    {product.noSePuedeComprar ? (
-                      <p>No Stock</p>
-                    ) : (
-                      <Tooltip title="Agregar al carrito">
-                        <Button
-                          variant="contained"
-                          color="warning"
-                          onClick={() => onAddProduct(product)}
-                        >
-                          <AddShoppingCartIcon />
-                        </Button>
+                  <AspectRatio minHeight="120px" maxHeight="400px">
+                    <img
+                      src={product.img}
+                      srcSet={product.img}
+                      loading="lazy"
+                      alt={product.nombrePro}
+                    />
+                  </AspectRatio>
+                  <CardContent orientation="horizontal">
+                    <div>
+                      <Typography level="body-xs">Total price:</Typography>
+                      <Typography fontSize="lg" fontWeight="lg">
+                        ${product.precioPro.toLocaleString("es-CO")}
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography level="body-xs">Total Stock:</Typography>
+                      <Typography fontSize="lg" fontWeight="lg">
+                        {product.stockPro}
+                      </Typography>
+                    </div>
+                    <div className="flex">
+                      {product.noSePuedeComprar ? (
+                        <p>No Stock</p>
+                      ) : (
+                        <Tooltip title="Agregar al carrito">
+                          <Button
+                            variant="contained"
+                            color="warning"
+                            onClick={() => onAddProduct(product)}
+                          >
+                            <AddShoppingCartIcon />
+                          </Button>
+                        </Tooltip>
+                      )}
+                      <Tooltip title="Ver detalle">
+                        <a href="/DetalleProduc">
+                          <Button variant="contained">
+                            <LoupeIcon />
+                          </Button>
+                        </a>
                       </Tooltip>
-                    )}
-                    <Tooltip title="Ver detalle">
-                      <a href="/DetalleProduc">
-                        <Button variant="contained">
-                          <LoupeIcon />
-                        </Button>
-                      </a>
-                    </Tooltip>
-                  </div>
-                </CardContent>
-              </Card>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </>
           ))}
         </div>
