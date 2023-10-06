@@ -116,10 +116,10 @@ export default function ProList({
       <div>
         <div className="box-vendido top-50">
           {filteredData?.map((product) => (
-            <>
-              <Card key={product.id} sx={{ width: 310 }}>
+            <div className="card-pro-list">
+              <Card key={product.id}>
                 <div>
-                  <Typography level="title-lg">{product.nombrePro}</Typography>
+                  <h1 className="title-card-list">{product.nombrePro}</h1>
                   <Typography level="body-sm">{product.descripPro}</Typography>
                   <IconButton
                     aria-label="bookmark Bahamas Islands"
@@ -135,7 +135,7 @@ export default function ProList({
                     <BookmarkAdd />
                   </IconButton>
                 </div>
-                <AspectRatio minHeight="120px" maxHeight="200px">
+                <AspectRatio minHeight="120px" maxHeight="400px">
                   <img
                     src={product.img}
                     srcSet={product.img}
@@ -144,19 +144,19 @@ export default function ProList({
                   />
                 </AspectRatio>
                 <CardContent orientation="horizontal">
-                  <div>
+                  <div className="text-product">
                     <Typography level="body-xs">Total price:</Typography>
-                    <Typography fontSize="lg" fontWeight="lg">
+                    <Typography fontWeight="lg">
                       ${product.precioPro.toLocaleString("es-CO")}
                     </Typography>
                   </div>
-                  <div>
+                  <div className="text-product">
                     <Typography level="body-xs">Total Stock:</Typography>
                     <Typography fontSize="lg" fontWeight="lg">
                       {product.stockPro}
                     </Typography>
                   </div>
-                  <div className="flex">
+                  <div className="flex boton-product">
                     {product.noSePuedeComprar ? (
                       <p>No Stock</p>
                     ) : (
@@ -178,7 +178,7 @@ export default function ProList({
                   </div>
                 </CardContent>
               </Card>
-            </>
+            </div>
           ))}
         </div>
       </div>
