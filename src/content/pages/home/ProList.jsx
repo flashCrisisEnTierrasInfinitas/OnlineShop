@@ -61,6 +61,7 @@ export default function ProList({
   );
   //!
   const onAddProduct = (product) => {
+    
     const IndexCarrito = allProducts.findIndex(
       (item) => item.id === product.id
     );

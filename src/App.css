@@ -1031,4 +1031,31 @@ p {
     width: 100%;
     font-size: 3em;
   }
+  .conte-text-img {
+    font-size: 2.1em;
+  }
+  .conter-ico-nav{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+  .conter-ico-nav i {
+    font-size: 2em;
+    padding: 5px;
+  }
+  .footer-img {
+    padding: 5px;
+    width: 100%;
+  }
+  .footer-img a {
+    width: 100%;
+  }
+  .logo-asupro{
+    width: 100%;
+  }
+  .conter-navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

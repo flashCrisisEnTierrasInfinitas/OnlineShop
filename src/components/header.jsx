@@ -146,14 +146,14 @@ export default function Header({
             <div className="footer-img">
               <a href="/">
                 <div>
-                  <img src="/img/logos/logo1.png" />
+                  <img src="/img/logos/logo1.png" className="logo-asupro"/>
                 </div>
               </a>
             </div>
             <div className="conter-ico-nav">
-              <Link href="/Profile">
+              <a href="/Profile">
                 <i className="fa fa-user" aria-hidden="true"></i>
-              </Link>
+              </a>
               <a href="/dahsboard">
                 <i class="fa fa-lock" aria-hidden="true"></i>
               </a>
