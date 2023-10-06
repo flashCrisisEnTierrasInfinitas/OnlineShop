@@ -123,9 +123,6 @@ export default function ProList({
                 <Card key={product.id}>
                   <div>
                       <h1 className="title-card-list">{product.nombrePro}</h1>
-                    <Typography level="body-sm">
-                      {product.descripPro}
-                    </Typography>
                     <IconButton
                       aria-label="bookmark Bahamas Islands"
                       variant="plain"
@@ -149,22 +146,19 @@ export default function ProList({
                     />
                   </AspectRatio>
                   <CardContent orientation="horizontal">
-                    <div>
+                    <div className="text-product">
                       <Typography level="body-xs">Total price:</Typography>
                       <Typography fontSize="lg" fontWeight="lg">
                         ${product.precioPro.toLocaleString("es-CO")}
                       </Typography>
                     </div>
-                    <div>
+                    <div className="text-product">
                       <Typography level="body-xs">Total Stock:</Typography>
                       <Typography fontSize="lg" fontWeight="lg">
                         {product.stockPro}
                       </Typography>
                     </div>
-                    <div className="flex">
-                      {product.noSePuedeComprar ? (
-                        <p>No Stock</p>
-                      ) : (
+                    <div className="flex boton-product">
                         <Tooltip title="Agregar al carrito">
                           <Button
                             variant="contained"
@@ -174,7 +168,6 @@ export default function ProList({
                             <AddShoppingCartIcon />
                           </Button>
                         </Tooltip>
-                      )}
                       <Tooltip title="Ver detalle">
                         <a href="/DetalleProduc">
                           <Button variant="contained">

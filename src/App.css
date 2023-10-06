@@ -378,7 +378,7 @@ h1 {
   height: 50vh;
   background-size: cover;
 }
-.title-card-list{
+.title-card-list {
   font-size: 19px;
   margin: 20px;
   font-weight: 700;
@@ -427,6 +427,9 @@ h1 {
   background-color: #fff;
   border: 2px solid rgb(40, 84, 216);
   color: rgb(40, 84, 216);
+}
+.boton-product button {
+  margin: 2px;
 }
 
 /* FOTER MENU  */
@@ -1010,7 +1013,22 @@ p {
   .card-pro-list {
     width: 90%;
     margin: 0 auto;
-  }.title-card-list{
+  }
+  .title-card-list {
     font-size: 2.5em;
+  }
+  .text-product span {
+    font-size: 1.5em;
+  }
+  .text-product p {
+    font-size: 3em;
+    text-align: center;
+  }
+  .boton-product button {
+    margin: 2px;
+  }
+  .boton-product button svg {
+    width: 100%;
+    font-size: 3em;
   }
 }
