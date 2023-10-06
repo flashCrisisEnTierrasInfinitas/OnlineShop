@@ -853,6 +853,26 @@ p {
 /* DETALLE DEL PRODUCTO */
 .conter-detallepro {
   margin-top: 5pc;
+}.title-detalle{
+  font-size: 3em;
+  font-weight: 700;
+  margin: 20px;
+}.text-detalle{
+  font-size: 20px;
+  margin: 20px;
+}
+.img-detalle{
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}.img-detalle img{
+  height: 100%;
+  height: 100%;
+}.descrip-detalle{
+  margin: 20px;
 }
 .boton-detalle {
   display: flex;
@@ -930,5 +950,10 @@ p {
     width: 100%;
     font-size: 21px;
     padding: 10px;
+  }.title-detalle{
+    text-align: center;
+  }.text-detalle{
+    font-size: 25px;
+    font-weight: 700;
   }
 }

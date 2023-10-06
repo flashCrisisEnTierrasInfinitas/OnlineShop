@@ -104,14 +104,14 @@ export default function DetalleProduc() {
             />
           </Alert>
         </div>
-        <h1>{data.nombrePro}</h1>
-        <p>1 lb</p>
-        <p>${data.precioPro.toLocaleString("es-CO")}</p>
+        <h1 className="title-detalle">{data.nombrePro}</h1>
+        <p className="text-detalle">1 lb</p>
+        <p className="text-detalle">${data.precioPro.toLocaleString("es-CO")}</p>
       </header>
-      <div>
+      <div className="img-detalle">
         <img src={data.img} alt={data.nombrePro} />
       </div>
-      <div>
+      <div className="descrip-detalle">
         <h3 className="color-gray">{data.descripPro}</h3>
       </div>
       <div className="boton-detalle">
