@@ -170,7 +170,7 @@ export default function ProList({
                         </Button>
                       </Tooltip>
                       <Tooltip title="Ver detalle">
-                        <a href="/DetalleProduc">
+                        <a href={`/DetalleProduc/${product.id}`}>
                           <Button variant="contained">
                             <LoupeIcon />
                           </Button>

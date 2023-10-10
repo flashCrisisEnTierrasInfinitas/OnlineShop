@@ -969,7 +969,7 @@ p {
     height: 100%;
   }
   .conter-img-home {
-    height: 50vh;
+    display: none;
   }
   .position-nav {
     width: 50%;
@@ -1064,5 +1064,9 @@ p {
   }
   .input-search {
     font-size: 5em;
+  }
+  .searchPro{
+    font-size: 2em;
+    margin-top:10vh ;
   }
 }

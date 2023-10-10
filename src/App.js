@@ -129,7 +129,7 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/ProductosCat" element={<ProductoCate />} />
-            <Route path="/DetalleProduc" element={<DetalleProduc />} />
+            <Route path="/DetalleProduc/:id" element={<DetalleProduc />} />
             <Route
               path="/categoryProduct/:id"
               element={
