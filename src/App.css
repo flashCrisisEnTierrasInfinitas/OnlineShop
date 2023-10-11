@@ -329,10 +329,12 @@ h1 {
 .text-resul {
   margin: 20px;
   width: 50%;
-}.text-resul h1{
+}
+.text-resul h1 {
   font-weight: bold;
   font-size: 4em;
-}.text-resul p{
+}
+.text-resul p {
   font-size: 2em;
 }
 .img-resul {
@@ -964,10 +966,76 @@ p {
   position: relative;
   height: 100%;
 }
-/* **************************
-**********NOTIFICACIONES****
+/*! **************************
+**********MY DALY****
 ************************** */
-
+.title-daly {
+  font-size: 3em;
+  margin: 20px;
+  text-align: center;
+}
+.conter-daly {
+  width: 90%;
+  margin: 0 auto;
+}
+.alerta {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 0.975rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  background-color: #2e7d32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  color: #fff;
+}
+.conter-alerta {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  margin: 5px;
+}
+.text-alerta {
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.text-alerta div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+.text-alerta div label {
+  margin-right: 5px;
+}
+.text-alerta strong {
+  margin: 5px;
+}
+.ico-alerta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+.ico-daly {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.ico-daly svg {
+  font-size: 2.5em;
+}
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
   .text-home a > p {
