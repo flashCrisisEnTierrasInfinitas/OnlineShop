@@ -9,17 +9,25 @@ import LinearProgress from "@mui/joy/LinearProgress";
 import Typography from "@mui/joy/Typography";
 import WarningIcon from "@mui/icons-material/Warning";
 import Close from "@mui/icons-material/Close";
-import { Button } from "@mui/joy";
+import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
-export default function DetalleProduc() {
+export default function DetalleProduc({
+  allProducts,
+  setAllproducts,
+  countProducts,
+  setCountProducts,
+  total,
+  setTotal,
+}) {
   const [data, setData] = useState([]);
-  console.log("🚀 ~ file: index.js:10 ~ DetalleProduc ~ data:", data);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { id } = useParams();
 
   const getDataList = useCallback(async () => {
     try {
-      const response = await axios.get(`/product/32`, {
+      const response = await axios.get(`/product/${id}`, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -44,6 +52,50 @@ export default function DetalleProduc() {
       </div>
     );
   }
+
+  const onAddProduct = (product) => {
+    const IndexCarrito = allProducts.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (
+      allProducts.length > 0 && allProducts[IndexCarrito]?.quantity
+        ? allProducts[IndexCarrito].quantity + 1
+        : 1
+    ) {
+      if (product.stockPro == allProducts[IndexCarrito]?.quantity) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        return Toast.fire({
+          icon: "error",
+          title: "No Stock",
+        });
+      }
+    }
+
+    if (allProducts.find((item) => item.id === product.id)) {
+      const products = allProducts.map((item) =>
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+      setTotal(total + product.precioPro * product.quantity);
+      setCountProducts(countProducts + product.quantity);
+      return setAllproducts([...products]);
+    }
+
+    setTotal(total + product.precioPro * product.quantity);
+    setCountProducts(countProducts + product.quantity);
+    setAllproducts([...allProducts, product]);
+  };
 
   return (
     <div className="conter-detallepro">
@@ -90,23 +142,13 @@ export default function DetalleProduc() {
                 orden.
               </Typography>
             </div>
-            <LinearProgress
-              variant="soft"
-              value={40}
-              sx={(theme) => ({
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                color: `rgb(${theme.vars.palette.success.lightChannel} / 0.72)`,
-                "--LinearProgress-radius": "0px",
-              })}
-            />
           </Alert>
         </div>
         <h1 className="title-detalle">{data.nombrePro}</h1>
         <p className="text-detalle">1 lb</p>
-        <p className="text-detalle">${data.precioPro.toLocaleString("es-CO")}</p>
+        <p className="text-detalle">
+          ${data.precioPro.toLocaleString("es-CO")}
+        </p>
       </header>
       <div className="img-detalle">
         <img src={data.img} alt={data.nombrePro} />
@@ -115,7 +157,7 @@ export default function DetalleProduc() {
         <h3 className="color-gray">{data.descripPro}</h3>
       </div>
       <div className="boton-detalle">
-        <Button>Agregar al Carrito</Button>
+        <button className="btn1 btn-primary" onClick={() => onAddProduct(data)}>Agregar al Carrito</button>
       </div>
     </div>
   );

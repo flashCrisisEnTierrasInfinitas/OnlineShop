@@ -129,7 +129,19 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/ProductosCat" element={<ProductoCate />} />
-            <Route path="/DetalleProduc/:id" element={<DetalleProduc />} />
+            <Route
+              path="/DetalleProduc/:id"
+              element={
+                <DetalleProduc
+                  allProducts={allProducts}
+                  setAllproducts={setAllproducts}
+                  total={total}
+                  setTotal={setTotal}
+                  countProducts={countProducts}
+                  setCountProducts={setCountProducts}
+                />
+              }
+            />
             <Route
               path="/categoryProduct/:id"
               element={

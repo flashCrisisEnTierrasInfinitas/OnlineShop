@@ -369,7 +369,7 @@ h1 {
 }
 /* !LISTA DE TODOS LOS PRODUCTOS */
 .conter-pro {
-  margin-bottom: 150px;
+  margin-bottom: 180px;
 }
 .card-pro-list {
   width: 320px;
@@ -611,7 +611,7 @@ h1 {
 
 /* PASARELA DE PAGOS */
 .header-pay {
-  margin-top: 90px;
+  margin-top: 10vh;
 }
 
 .conter-pay {
