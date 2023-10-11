@@ -11,8 +11,9 @@ import Typography from "@mui/joy/Typography";
 import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 import LoupeIcon from "@mui/icons-material/Loupe";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Tooltip, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import Swal from "sweetalert2";
+import { Tooltip } from "@mui/joy";
 
 export default function ProList({
   allProducts,

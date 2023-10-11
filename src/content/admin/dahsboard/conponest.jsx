@@ -1,7 +1,9 @@
-import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
-import EditIcon from "@mui/icons-material/Edit";
 import GppBadIcon from "@mui/icons-material/GppBad";
+import SendIcon from "@mui/icons-material/Send";
+import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
+import Edit from "./edit";
+import { Tooltip } from "@mui/material";
 
 const data = [
   {
@@ -16,6 +18,8 @@ const data = [
     text: "Sin entregar",
     user: "jhonma",
     codigo: "2",
+    ico1: <DoneOutlineIcon />,
+    ico: <SendIcon />,
     color: "#ed6c02",
   },
   {
@@ -29,6 +33,7 @@ const data = [
     id: 4,
     text: "Enviado",
     user: "jhonma",
+    ico1: <DoneOutlineIcon />,
     codigo: "3",
     color: "#0288d1",
   },
@@ -56,7 +61,13 @@ export default function Components() {
                 </div>
               </div>
               <div className="ico-daly">
-                <EditIcon />
+                <Tooltip title="Entregar">
+                  <button className="btn">{data.ico1}</button>
+                </Tooltip>
+                <Tooltip title="Enviar">
+                  <button className="btn">{data.ico}</button>
+                </Tooltip>
+                <Edit data={data} />
               </div>
             </div>
           </div>
