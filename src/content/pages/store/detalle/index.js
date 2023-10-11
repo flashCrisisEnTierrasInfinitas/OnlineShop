@@ -157,7 +157,7 @@ export default function DetalleProduc({
         <h3 className="color-gray">{data.descripPro}</h3>
       </div>
       <div className="boton-detalle">
-        <button className="btn1 btn-primary" onClick={() => onAddProduct(data)}>Agregar al Carrito</button>
+        <button className="btn1 btn-secondary" onClick={() => onAddProduct(data)}>Agregar al Carrito</button>
       </div>
     </div>
   );

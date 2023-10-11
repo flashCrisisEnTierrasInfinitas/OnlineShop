@@ -924,7 +924,7 @@ p {
 }
 .boton-detalle button {
   font-size: 20px;
-  padding: 10px;
+  padding: 20px;
 }
 /* ? SLIDER DEL HOME */
 .styles-module_carousel-arrow__26sRw {
@@ -1070,5 +1070,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
   }
 }
