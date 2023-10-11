@@ -1,7 +1,7 @@
 export default function Header() {
     return (
             <div className="text-home">
-                <a  className='searchPro'>
+                <a  className='searchPro' id="searchPro">
                     <p>TIENDA</p>
                     <label>ASUPRO</label>
                 </a>
