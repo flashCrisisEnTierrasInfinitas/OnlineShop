@@ -3,16 +3,14 @@ import {
   CTable,
   CTableBody,
   CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CContainer,
   CCard,
   CCardBody,
   CAlert,
-  CButton,
+
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import { cilBurn, cilCheckCircle, cilDelete, cilInfo } from "@coreui/icons";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const data = [
   {
@@ -104,39 +102,31 @@ export default function Table() {
   };
   return (
     <div className="conter-table top-50">
-        <CCard>
-          <CCardBody>
-            <CTable striped>
-              <CTableHead>
-                <CTableHeaderCell>ID</CTableHeaderCell>
-                <CTableHeaderCell>Fecha</CTableHeaderCell>
-                <CTableHeaderCell>Notificación</CTableHeaderCell>
-                <CTableHeaderCell></CTableHeaderCell>
-              </CTableHead>
-              <CTableBody>
-                {data
-                  .slice(
-                    (currentPage - 1) * itemsPerPage,
-                    currentPage * itemsPerPage
-                  )
-                  .map((item) => (
-                    <tr key={item.id}>
-                      <CTableDataCell>{item.id}</CTableDataCell>
-                      <CTableDataCell>{item.name}</CTableDataCell>
-                      <CTableDataCell>{Status(item)}</CTableDataCell>
-                      <CTableDataCell>
-                        <div className="boton-tabla">
-                          <CButton color="danger" variant="outline">
-                            <i className="fa fa-trash" aria-hidden="true" />
-                          </CButton>
-                        </div>
-                      </CTableDataCell>
-                    </tr>
-                  ))}
-              </CTableBody>
-            </CTable>
-          </CCardBody>
-        </CCard>
+      <CCard>
+        <CCardBody>
+          <CTable striped>
+            <CTableBody>
+              {data
+                .slice(
+                  (currentPage - 1) * itemsPerPage,
+                  currentPage * itemsPerPage
+                )
+                .map((item) => (
+                  <tr key={item.id}>
+                    <CTableDataCell>{Status(item)}</CTableDataCell>
+                    <CTableDataCell>
+                      <div className="boton-tabla">
+                        <button className="btn">
+                          <DeleteIcon />
+                        </button>
+                      </div>
+                    </CTableDataCell>
+                  </tr>
+                ))}
+            </CTableBody>
+          </CTable>
+        </CCardBody>
+      </CCard>
     </div>
   );
 }
