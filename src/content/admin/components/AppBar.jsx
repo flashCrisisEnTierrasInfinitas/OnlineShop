@@ -63,7 +63,7 @@ export default function AppBarAdmin() {
                 <div className="ico-menu">
                   <img src="img/icons/meterdashmac.png" />
                 </div>
-                <label>Dahsboard</label>
+                <label>Mi diario</label>
               </a>
               <a href="/User" className="text-appBar">
                 <div className="ico-menu">

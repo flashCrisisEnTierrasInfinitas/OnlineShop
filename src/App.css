@@ -172,6 +172,7 @@ h1 {
 .toogel-nav {
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 .conter-nav-li label {
   position: relative;
@@ -983,10 +984,7 @@ p {
 /*! **************************
 **********MY DALY****
 ************************** */
-.edit-modal {
-  background-color: red;
-  width: 50%;
-}
+
 .title-daly {
   font-size: 3em;
   margin: 20px;
@@ -1061,8 +1059,7 @@ p {
 .img-pago {
   margin: 0 auto;
   height: 70vh;
-  width: 40%;
-  margin-top: 10vh;
+  width: 50%;
 }
 .img-pago img {
   height: 100%;
@@ -1076,9 +1073,10 @@ p {
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
   .text-home a > p {
-    font-size: 2em;
+    font-size: 1em;
     letter-spacing: 20px;
     margin: 0;
+    margin-top: 10vh;
   }
   .box-menu {
     width: 100%;
@@ -1087,12 +1085,6 @@ p {
     justify-content: center;
     border-radius: 0px;
     height: 15vh;
-  }
-  .a-footerMenu{
-    background-color: rebeccapurple;
-  }
-  .conter-search {
-    margin-bottom: 20px;
   }
   .input-search {
     width: 100%;
@@ -1140,22 +1132,6 @@ p {
     width: 90%;
     margin: 0 auto;
   }
-  .conter-ico-nav {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-  }
-  .conter-ico-nav i {
-    font-size: 2em;
-    padding: 5px;
-  }
-  .footer-img {
-    padding: 5px;
-    width: 100%;
-  }
-  .footer-img a {
-    width: 100%;
-  }
   .logo-asupro {
     width: 100%;
   }
@@ -1163,10 +1139,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .conter-search {
-    height: 6vh;
-    display: block;
   }
   .input-search {
     font-size: 5em;
@@ -1193,56 +1165,14 @@ p {
   .text-alerta {
     display: block;
   }
-  .text-alerta strong {
-    text-align: center;
-    font-size: 2em;
-  }
-  .text-alerta div label {
-    font-size: 1.5em;
-  }
-  .text-alerta div div {
-    height: 50px;
-    font-size: 1.5em;
-    padding: 20px;
-  }
-  .ico-daly {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ico-daly svg {
-    font-size: 3.5em;
-  }
+
   .ico-alerta {
     display: block;
   }
-  .ico-alerta svg {
-    font-size: 3.2em;
-  }
-  .title-ver-daly {
-    font-size: 2em;
-    font-weight: bold;
-  }
-  .form-control1 {
-    padding: 20px;
-    font-size: 1.9rem;
-  }
   .img-pago {
-    margin: 0 auto;
-    height: 70vh;
     width: 80%;
-    margin-top: 10vh;
-  }
-  .boton-close {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    width: 100%;
-    margin-bottom: 20px;
   }
   .boton-close .btn svg {
-    float: right;
-    font-size: 3em;
+    font-size: 2em;
   }
 }

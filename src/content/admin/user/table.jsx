@@ -8,7 +8,7 @@ import {
   CCard,
   CCardBody,
   CFormInput,
-  CSpinner
+  CSpinner,
 } from "@coreui/react";
 import Icons from "./icons";
 import { useEffect } from "react";
@@ -41,15 +41,13 @@ export default function Table() {
   }, [getProduct]);
   getProduct();
 
-
   if (loading) {
     return (
       <div className="d-flex justify-content-center">
         <CSpinner color="danger" />
       </div>
-    )
+    );
   }
-
 
   const filteredData = data?.filter((item) =>
     item.name?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -58,9 +56,10 @@ export default function Table() {
   return (
     <div className="box-admin">
       <div className="conter-search">
-        <CFormInput
+        <input
+          type="text"
           placeholder="¿Qué estás buscando?"
-          className="input-search"
+          class="form-control"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -79,26 +78,25 @@ export default function Table() {
               <CTableHeaderCell>Fecha</CTableHeaderCell>
             </CTableHead>
             <CTableBody>
-              {filteredData
-                .map((item) => (
-                  <tr key={item.id}>
-                    <CTableDataCell>{item.id}</CTableDataCell>
-                    <CTableDataCell>
-                      <div className="img-table">
-                        <img src={item.img} />
-                      </div>
-                    </CTableDataCell>
-                    <CTableDataCell>{item.name}</CTableDataCell>
-                    <CTableDataCell>{item.last_name}</CTableDataCell>
-                    <CTableDataCell>{item.email}</CTableDataCell>
-                    <CTableDataCell>{item.role}</CTableDataCell>
-                    <CTableDataCell>{item.status}</CTableDataCell>
-                    <CTableDataCell>{item.created_at}</CTableDataCell>
-                    <CTableDataCell>
-                      <Icons data={item} />
-                    </CTableDataCell>
-                  </tr>
-                ))}
+              {filteredData.map((item) => (
+                <tr key={item.id}>
+                  <CTableDataCell>{item.id}</CTableDataCell>
+                  <CTableDataCell>
+                    <div className="img-table">
+                      <img src={item.img} />
+                    </div>
+                  </CTableDataCell>
+                  <CTableDataCell>{item.name}</CTableDataCell>
+                  <CTableDataCell>{item.last_name}</CTableDataCell>
+                  <CTableDataCell>{item.email}</CTableDataCell>
+                  <CTableDataCell>{item.role}</CTableDataCell>
+                  <CTableDataCell>{item.status}</CTableDataCell>
+                  <CTableDataCell>{item.created_at}</CTableDataCell>
+                  <CTableDataCell>
+                    <Icons data={item} />
+                  </CTableDataCell>
+                </tr>
+              ))}
             </CTableBody>
           </CTable>
         </CCardBody>

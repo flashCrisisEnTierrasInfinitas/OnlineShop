@@ -6,62 +6,60 @@ import axios from "axios";
 import Icons from "./icons";
 
 export default function DataTable(setKey, key) {
-
-    const columns = [
-        { field: "id", headerName: "ID", width: 70 },
-        {
-          field: "name",
-          width: 130,
-          renderCell: (params) => (
-            <p style={{ color: params.row.color }}>{params.row.name}</p>
-          ),
-        },
-        {
-          field: "img",
-          headerName: "img",
-          width: 90,
-          renderCell: (params) => (
-            <img
-              src={params.row.img}
-              alt={params.row.nombrePro}
-              className="img-table"
-            />
-          ),
-        },
-        {
-          field: "state",
-          headerName: "Estado",
-          width: 220,
-          renderCell: (params) => {
-            const map = {
-              0: {
-                Text: "Activo",
-                color: "green",
-              },
-              1: {
-                Text: "Inactivo",
-                color: "red",
-              },
-            };
-            const { Text, color } = map[params.value];
-      
-            return <a style={{ color: color }}>{Text}</a>;
+  const columns = [
+    { field: "id", headerName: "ID", width: 70 },
+    {
+      field: "name",
+      width: 130,
+      renderCell: (params) => (
+        <p style={{ color: params.row.color }}>{params.row.name}</p>
+      ),
+    },
+    {
+      field: "img",
+      headerName: "img",
+      width: 90,
+      renderCell: (params) => (
+        <img
+          src={params.row.img}
+          alt={params.row.nombrePro}
+          className="img-table"
+        />
+      ),
+    },
+    {
+      field: "state",
+      headerName: "Estado",
+      width: 220,
+      renderCell: (params) => {
+        const map = {
+          0: {
+            Text: "Activo",
+            color: "green",
           },
-        },
-        {
-          field: "created_at",
-          headerName: "fecha",
-          type: "Codigo",
-          width: 90,
-        },
-        {
-          field: "actions", // Nombre del campo
-          headerName: "Acciones", // Nombre en la cabecera
-          width: 130, // Ancho de la columna
-          renderCell: (params) => <Icons data={params} setKey={setKey} key={key} />,
-        },
-      ];
+          1: {
+            Text: "Inactivo",
+            color: "red",
+          },
+        };
+        const { Text, color } = map[params.value];
 
+        return <a style={{ color: color }}>{Text}</a>;
+      },
+    },
+    {
+      field: "created_at",
+      headerName: "fecha",
+      type: "Codigo",
+      width: 90,
+    },
+    {
+      field: "actions", // Nombre del campo
+      headerName: "Acciones", // Nombre en la cabecera
+      width: 130, // Ancho de la columna
+      renderCell: (params) => <Icons data={params} setKey={setKey} key={key} />,
+    },
+  ];
 
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
@@ -83,7 +81,7 @@ export default function DataTable(setKey, key) {
   }, [isMountedRef]);
   useEffect(() => {
     getDataList();
-  }, [getDataList,key]);
+  }, [getDataList, key]);
 
   if (loading) {
     return (
@@ -100,9 +98,10 @@ export default function DataTable(setKey, key) {
   return (
     <div style={{ height: 400, width: "100%" }}>
       <div className="conter-search">
-        <CFormInput
+        <input
+          type="text"
           placeholder="¿Qué estás buscando?"
-          className="input-search"
+          class="form-control"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

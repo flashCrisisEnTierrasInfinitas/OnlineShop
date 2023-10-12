@@ -6,6 +6,7 @@ import Sheet from "@mui/joy/Sheet";
 import { useState } from "react";
 import { Tooltip, ModalOverflow } from "@mui/joy";
 import DataTable from "./table";
+import ModalClose from "@mui/joy/ModalClose";
 
 export default function Edit({ data }) {
   const [open, setOpen] = useState(false);
@@ -22,9 +23,8 @@ export default function Edit({ data }) {
         open={open}
         onClose={() => setOpen(false)}
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          maxWidth: 900,
+          margin:"0 auto"
         }}
       >
         <div className="edit-modal">
@@ -32,17 +32,11 @@ export default function Edit({ data }) {
             <Sheet
               variant="outlined"
               sx={{
-                maxWidth: 900,
                 borderRadius: "md",
                 p: 3,
-                margin: "0 auto",
               }}
             >
-              <div className="boton-close">
-                <button className="btn" onClick={() => setOpen(false)}>
-                  <ClearIcon />
-                </button>
-              </div>
+              <ModalClose variant="plain" sx={{ m: 1 }} />
               <h2 className="title-ver-daly">Usuario: {data.user}</h2>
               <h2 className="title-ver-daly color-gray">
                 Codigo: {data.codigo}
@@ -52,7 +46,7 @@ export default function Edit({ data }) {
                   <div class="col">
                     <input
                       type="text"
-                      class="form-control1"
+                      class="form-control"
                       value={data.text}
                       disabled
                     />
@@ -64,7 +58,9 @@ export default function Edit({ data }) {
                   </div>
                 </div>
                 <div class="col-12">
-                  <Typography>Comprobante pago:</Typography>
+                  <br />
+                  <br />
+                  <h2 className="title-ver-daly top-50">Comprobante pago:</h2>
                   <div className="img-pago">
                     <img
                       src="https://storage.googleapis.com/support-forums-api/attachment/thread-181250426-10933702374541799356.jpg"

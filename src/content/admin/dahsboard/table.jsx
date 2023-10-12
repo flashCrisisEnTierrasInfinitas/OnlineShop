@@ -73,7 +73,7 @@ export default function DataTable() {
         <input
           type="text"
           placeholder="¿Qué estás buscando?"
-          class="form-control1"
+          class="form-control"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
