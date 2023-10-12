@@ -1,13 +1,6 @@
 import Swal from "sweetalert2";
-import {
-  CInputGroup,
-  CFormInput,
-  CButton,
-  CCardTitle,
-  CCard,
-  CCardImage,
-  CCardBody,
-} from "@coreui/react";
+import BackupIcon from "@mui/icons-material/Backup";
+import { Button } from "@mui/joy";
 
 export default function Conted({
   setAllproducts,
@@ -38,15 +31,17 @@ export default function Conted({
       <div className="top-50 bottom-50">
         <form className="grid  margin-90">
           <div>
-            <CFormInput
+            <input
+              type="text"
               placeholder="Direccion del envio"
-              className="input-search"
+              class="form-control"
             />
           </div>
           <div>
-            <CFormInput
+            <input
+              type="text"
               placeholder="Numero de telefono"
-              className="input-search bottom-50"
+              class="form-control"
             />
           </div>
         </form>
@@ -72,9 +67,9 @@ export default function Conted({
           <input type="file" id="fileInput" class="custom-file-input" />
           <label for="fileInput" class="custom-file-label"></label>
         </div>
-        <button className="btn1 btn-primary" onClick={() => Update()}>
-          Upload
-        </button>
+        <Button onClick={() => Update()}>
+          <BackupIcon />
+        </Button>
       </div>
     </div>
   );

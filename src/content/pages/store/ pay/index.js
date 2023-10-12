@@ -11,7 +11,7 @@ export default function Pay({
     return (
         <div className="conter-home">
             <div className="header-pay">
-                <Header />
+                <Header /> 
             </div>
             <Conted
                 total={total}
