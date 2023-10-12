@@ -291,8 +291,8 @@ h1 {
 }
 .conter-drawes div {
   height: 100%;
-  margin: 20px;
-  padding: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
   text-align: center;
   font-size: 20px;
 }
@@ -1117,8 +1117,8 @@ p {
     width: 90%;
   }
   .resul-home {
-    margin:0px;
-    margin-top:12vh;
+    margin: 0px;
+    margin-top: 12vh;
   }
   .img-resul div {
     width: 100%;
