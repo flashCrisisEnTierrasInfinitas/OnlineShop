@@ -8,9 +8,6 @@ import {
   COffcanvasBody,
   CNavItem,
   CNavLink,
-  CForm,
-  CFormInput,
-  CButton,
 } from "@coreui/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
@@ -34,14 +31,9 @@ export default function Header({
   const Drawers = () => {
     return (
       <>
-        <div className="boton-drawer">
-          <button
-            onClick={() => setDrawes(!Drawes)}
-            className="btn-clear-all btn-primary"
-          >
-            Proceder al pago
-          </button>
-        </div>
+        <Button onClick={() => setDrawes(!Drawes)} color="success">
+          Proceder al pago
+        </Button>
         <Drawer open={Drawes} anchor="bottom" size="sx">
           <div className="header-drawes">
             <Button onClick={() => setDrawes(!Drawes)} variant="text">
@@ -101,14 +93,10 @@ export default function Header({
                 <h3>Total:</h3>
                 <span className="total-pagar">${total}</span>
               </div>
-              <div className="con-btn-menu">
-                <button
-                  className="btn-clear-all btn-secondary"
-                  onClick={() => onCleanCart()}
-                >
-                  Vaciar Carrito
-                </button>
+              <div className="grid">
+                <Button onClick={() => onCleanCart()}>Vaciar Carrito</Button>
                 <Drawers />
+                <br />
               </div>
             </>
           ) : (
@@ -146,7 +134,7 @@ export default function Header({
             <div className="footer-img">
               <a href="/">
                 <div>
-                  <img src="/img/logos/logo1.png" className="logo-asupro"/>
+                  <img src="/img/logos/logo1.png" className="logo-asupro" />
                 </div>
               </a>
             </div>
