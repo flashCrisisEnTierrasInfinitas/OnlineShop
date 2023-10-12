@@ -1,10 +1,11 @@
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Modal from "@mui/joy/Modal";
-import ModalClose from "@mui/joy/ModalClose";
+import ClearIcon from "@mui/icons-material/Clear";
 import Typography from "@mui/joy/Typography";
 import Sheet from "@mui/joy/Sheet";
 import { useState } from "react";
-import { Button, Input, Tooltip } from "@mui/joy";
+import { Tooltip, ModalOverflow } from "@mui/joy";
+import DataTable from "./table";
 
 export default function Edit({ data }) {
   const [open, setOpen] = useState(false);
@@ -15,7 +16,6 @@ export default function Edit({ data }) {
           <RemoveRedEyeIcon />
         </button>
       </Tooltip>
-
       <Modal
         aria-labelledby="modal-title"
         aria-describedby="modal-desc"
@@ -27,57 +27,55 @@ export default function Edit({ data }) {
           alignItems: "center",
         }}
       >
-        <Sheet
-          variant="outlined"
-          sx={{
-            maxWidth: 900,
-            borderRadius: "md",
-            p: 3,
-          }}
-          size="lg"
-        >
-          <ModalClose variant="plain" sx={{ m: 1 }} />
-          <Typography
-            component="h2"
-            id="modal-title"
-            level="h4"
-            textColor="inherit"
-            fontWeight="lg"
-            mb={1}
-          >
-            Usuario: {data.user}
-          </Typography>
-          <Typography
-            component="h2"
-            id="modal-title"
-            level="h4"
-            textColor="inherit"
-            fontWeight="lg"
-            mb={1}
-          >
-            Codigo: {data.codigo}
-          </Typography>
-          <Typography id="modal-desc" textColor="text.tertiary">
-            <div class="row">
-              <div class="col">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="First name"
-                  aria-label="First name"
-                  value={data.text}
-                  disabled
-                />
+        <div className="edit-modal">
+          <ModalOverflow>
+            <Sheet
+              variant="outlined"
+              sx={{
+                maxWidth: 900,
+                borderRadius: "md",
+                p: 3,
+                margin: "0 auto",
+              }}
+            >
+              <div className="boton-close">
+                <button className="btn" onClick={() => setOpen(false)}>
+                  <ClearIcon />
+                </button>
               </div>
-              <div class="col-12 top-50">
-                <Typography>Lista Producto:</Typography>
-              </div>
-            </div>
-            <div class="col-12 top-50">
-              <Button>Guardar</Button>
-            </div>
-          </Typography>
-        </Sheet>
+              <h2 className="title-ver-daly">Usuario: {data.user}</h2>
+              <h2 className="title-ver-daly color-gray">
+                Codigo: {data.codigo}
+              </h2>
+              <Typography id="modal-desc" textColor="text.tertiary">
+                <div class="row">
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control1"
+                      value={data.text}
+                      disabled
+                    />
+                  </div>
+                  <div class="col-12 top-50">
+                    <Typography></Typography>
+                    <h2 className="title-ver-daly">Lista Producto:</h2>
+                    <DataTable />
+                  </div>
+                </div>
+                <div class="col-12">
+                  <Typography>Comprobante pago:</Typography>
+                  <div className="img-pago">
+                    <img
+                      src="https://storage.googleapis.com/support-forums-api/attachment/thread-181250426-10933702374541799356.jpg"
+                      alt={data.user}
+                    />
+                  </div>
+                </div>
+              </Typography>
+            </Sheet>
+          </ModalOverflow>
+        </div>
       </Modal>
     </>
   );

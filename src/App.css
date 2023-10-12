@@ -5,7 +5,21 @@
 h1 {
   font-weight: 700;
 }
-
+.form-control1 {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 .conter-img-modasl {
   width: 100%;
   height: 100%;
@@ -357,6 +371,7 @@ h1 {
   justify-content: center;
   height: 10vh;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .conter-log-red {
@@ -964,11 +979,14 @@ p {
   margin: 5px;
   display: block;
   position: relative;
-  height: 100%;
 }
 /*! **************************
 **********MY DALY****
 ************************** */
+.edit-modal {
+  background-color: red;
+  width: 50%;
+}
 .title-daly {
   font-size: 3em;
   margin: 20px;
@@ -1036,6 +1054,25 @@ p {
 .ico-daly svg {
   font-size: 2.5em;
 }
+.title-ver-daly {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.img-pago {
+  margin: 0 auto;
+  height: 70vh;
+  width: 40%;
+  margin-top: 10vh;
+}
+.img-pago img {
+  height: 100%;
+  width: 100%;
+}
+.boton-close {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
   .text-home a > p {
@@ -1045,10 +1082,16 @@ p {
   }
   .box-menu {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 0px;
+    height: 15vh;
+  }
+  .a-footerMenu{
+    background-color: rebeccapurple;
   }
   .conter-search {
-    height: 3vh;
     margin-bottom: 20px;
   }
   .input-search {
@@ -1096,26 +1139,6 @@ p {
   .card-pro-list {
     width: 90%;
     margin: 0 auto;
-  }
-  .title-card-list {
-    font-size: 2.5em;
-  }
-  .text-product span {
-    font-size: 1.5em;
-  }
-  .text-product p {
-    font-size: 3em;
-    text-align: center;
-  }
-  .boton-product button {
-    margin: 2px;
-  }
-  .boton-product button svg {
-    width: 100%;
-    font-size: 3em;
-  }
-  .conte-text-img {
-    font-size: 2.1em;
   }
   .conter-ico-nav {
     display: flex;
@@ -1196,5 +1219,30 @@ p {
   }
   .ico-alerta svg {
     font-size: 3.2em;
+  }
+  .title-ver-daly {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .form-control1 {
+    padding: 20px;
+    font-size: 1.9rem;
+  }
+  .img-pago {
+    margin: 0 auto;
+    height: 70vh;
+    width: 80%;
+    margin-top: 10vh;
+  }
+  .boton-close {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .boton-close .btn svg {
+    float: right;
+    font-size: 3em;
   }
 }

@@ -3,7 +3,7 @@ export default function FooterMenu() {
         <div className="conter-footer-menu">
             <div className="box-menu grid">
                 <div>
-                    <a href="/">
+                    <a href="/" className="a-footerMenu">
                         <div className="conte-text-img">
                             <i
                                 class="fa fa-shopping-bag color-secondary"
