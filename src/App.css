@@ -747,49 +747,13 @@ h1 {
 
 .conter-box-login {
   background-color: #fff;
-  height: 80%;
-  width: 90%;
+  height: 60%;
+  width: 40%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 10px;
-}
-
-.wellcome {
-  background-image: url("/public/img/backgroud/Ripple-5s-1084px.svg");
-}
-
-.text-wellcome {
-  height: 100%;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.text-wellcome a {
-  font-weight: bold;
-  text-decoration: none;
-  margin-left: 20px;
-  text-align: center;
-}
-
-.text-wellcome a > p {
-  font-size: 3em;
-  letter-spacing: 50px;
-  margin: 0;
-}
-
-.text-wellcome a > label {
-  letter-spacing: 12px;
-  font-size: 29px;
-}
-
-.text-wellcome a > h3 {
-  margin: 20px;
-  letter-spacing: 3px;
-  font-size: 18px;
-  color: rgb(219, 218, 218);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 7px;
 }
 
 .box-login {
@@ -1163,5 +1127,9 @@ p {
   }
   .boton-close .btn svg {
     font-size: 2em;
+  }
+  .conter-box-login {
+    height: 80%;
+    width: 90%;
   }
 }

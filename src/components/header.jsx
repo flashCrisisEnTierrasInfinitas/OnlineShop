@@ -237,40 +237,6 @@ export default function Header({
                     </div>
                   </CNavLink>
                 </CNavItem>
-                <CNavItem>
-                  <CNavLink href="/admin/producto" active>
-                    <div className="conter-nav-li">
-                      <i
-                        class="fa fa-briefcase color-secondary"
-                        aria-hidden="true"
-                      ></i>
-                      <label className="label-nav">Servicios</label>
-                    </div>
-                  </CNavLink>
-                </CNavItem>
-                <CNavItem>
-                  <CNavLink href="/admin/producto" active>
-                    <div className="conter-nav-li">
-                      <i
-                        class="fa fa-envelope color-secondary"
-                        aria-hidden="true"
-                      ></i>
-                      <label className="label-nav">Contáctenos</label>
-                    </div>
-                  </CNavLink>
-                </CNavItem>
-                <CNavItem>
-                  <CNavLink href="/admin/producto" active>
-                    <div className="conter-nav-li">
-                      <i
-                        class="fa fa-info-circle color-secondary"
-                        aria-hidden="true"
-                      ></i>
-                      <label className="label-nav">Terminos</label>
-                    </div>
-                  </CNavLink>
-                </CNavItem>
-                <CNavItem></CNavItem>
               </CNavbarNav>
             </COffcanvasBody>
             <div className="conter-log-red">

@@ -54,12 +54,7 @@ export default function Login() {
   };
   //INGRESO DEL USUARIO
   const Sing = () => {
-    console.log("🚀 ~ file: login.jsx:57 ~ Sing ~  data.name:", data.name);
     if (dataLog.Usuario !== data.name) {
-      console.log(
-        "🚀 ~ file: login.jsx:57 ~ Sing ~ dataLog.Usuario:",
-        dataLog.Usuario
-      );
 
       return Swal.fire({
         position: "center",
@@ -74,21 +69,9 @@ export default function Login() {
   };
 
   return (
-    <div className="conted-login grid">
-      <div className="conter-box-login grid">
-        <div className="wellcome">
-          <div className="text-wellcome">
-            <a>
-              <p>WELCOME</p>
-              <label>ASUPRO</label>
-              <h3>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
-                molestiae aspernatur nisi, reiciendis
-              </h3>
-            </a>
-          </div>
-        </div>
-        <div className="box-login">
+    <div className="conted-login">
+      <div className="conter-box-login">
+        <div className="box-">
           {log ? (
             <form className="form-login">
               <h1 className="top-50">Registrarse</h1>
