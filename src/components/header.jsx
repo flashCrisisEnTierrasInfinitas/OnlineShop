@@ -193,17 +193,6 @@ export default function Header({
             </COffcanvasHeader>
             <COffcanvasBody>
               <CNavbarNav>
-                <CForm className="d-flex">
-                  <CFormInput
-                    type="search"
-                    className="me-2"
-                    placeholder="Search"
-                  />
-                  <CButton type="submit" color="success" variant="outline">
-                    Search
-                  </CButton>
-                </CForm>
-                <CNavItem className="top-20"></CNavItem>
                 <CNavItem>
                   <CNavLink href="/Profile" active className="top-50">
                     <div className="conter-nav-li">

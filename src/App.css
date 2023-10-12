@@ -1093,17 +1093,6 @@ p {
   .conter-img-home {
     display: none;
   }
-  .position-nav {
-    width: 50%;
-  }
-  .conter-nav-li {
-    padding: 9px;
-  }
-
-  .conter-nav-li {
-    margin: 20px;
-    font-size: 1.6em;
-  }
   .precio {
     font-size: 40px;
     display: block;
