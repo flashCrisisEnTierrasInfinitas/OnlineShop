@@ -108,10 +108,10 @@ export default function ProList({
   return (
     <div className="margin-90 conter-pro">
       <div className="conter-search top-50">
-        <CFormInput
+      <input
           type="text"
           placeholder="¿Qué estás buscando?"
-          className="input-search"
+          class="form-control"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
