@@ -145,9 +145,14 @@ export default function DetalleProduc({
           </Alert>
         </div>
         <h1 className="title-detalle">{data.nombrePro}</h1>
-        <p className="text-detalle">1 lb</p>
         <p className="text-detalle">
-          ${data.precioPro.toLocaleString("es-CO")}
+          <strong>Quantity:</strong> 1LB
+        </p>
+        <p className="text-detalle">
+          <strong>Stock:</strong> {data.stockPro}
+        </p>
+        <p className="text-detalle">
+          <strong>Precio:</strong> ${data.precioPro.toLocaleString("es-CO")}
         </p>
       </header>
       <div className="img-detalle">
@@ -157,7 +162,12 @@ export default function DetalleProduc({
         <h3 className="color-gray">{data.descripPro}</h3>
       </div>
       <div className="boton-detalle">
-        <button className="btn1 btn-secondary" onClick={() => onAddProduct(data)}>Agregar al Carrito</button>
+        <button
+          className="btn1 btn-secondary"
+          onClick={() => onAddProduct(data)}
+        >
+          Agregar al Carrito
+        </button>
       </div>
     </div>
   );

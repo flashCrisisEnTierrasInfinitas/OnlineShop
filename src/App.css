@@ -892,7 +892,8 @@ p {
   margin: 20px;
 }
 .img-detalle {
-  width: 70%;
+  width: 50%;
+  height: 60vh;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -1066,14 +1067,6 @@ p {
     display: block;
     font-weight: 700;
   }
-
-  .title-detalle {
-    text-align: center;
-  }
-  .text-detalle {
-    font-size: 25px;
-    font-weight: 700;
-  }
   .conter-drawes div {
     height: 10vh;
     width: 50%;
@@ -1099,16 +1092,6 @@ p {
   .searchPro {
     font-size: 2em;
     margin-top: 10vh;
-  }
-  .boton-detalle button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .conter-detallepro {
-    margin-top: 7pc;
   }
   .conter-alerta {
     display: block;
@@ -1165,5 +1148,8 @@ p {
   }
   .box-file button svg {
     font-size: 2em;
+  }
+  .img-detalle {
+    width: 100%;
   }
 }
