@@ -6,7 +6,6 @@ import Sheet from "@mui/joy/Sheet";
 import { useState } from "react";
 import { Button, Input, Tooltip } from "@mui/joy";
 
-
 export default function Edit({ data }) {
   const [open, setOpen] = useState(false);
   return (
@@ -70,15 +69,8 @@ export default function Edit({ data }) {
                   disabled
                 />
               </div>
-              <div class="col">
-                <label class="visually-hidden" for="specificSizeSelect">
-                  Preference
-                </label>
-                <select class="form-select" id="specificSizeSelect">
-                  <option value="1">{data.text}</option>
-                  <option value="2">Entregado</option>
-                  <option value="3">Enviado</option>
-                </select>
+              <div class="col-12 top-50">
+                <Typography>Lista Producto:</Typography>
               </div>
             </div>
             <div class="col-12 top-50">
