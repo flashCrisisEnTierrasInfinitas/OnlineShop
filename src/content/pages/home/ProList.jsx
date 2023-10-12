@@ -14,6 +14,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Button } from "@mui/material";
 import Swal from "sweetalert2";
 import { Tooltip } from "@mui/joy";
+import DefaultCarousel from "./slider2";
 
 export default function ProList({
   allProducts,
@@ -118,6 +119,7 @@ export default function ProList({
       </div>
       <div>
         <Sliders data={data} />
+        <DefaultCarousel data={data}/>
         <div className="box-vendido top-50">
           {filteredData?.map((product) => (
             <>

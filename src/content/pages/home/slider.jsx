@@ -9,6 +9,7 @@ import LoupeIcon from "@mui/icons-material/Loupe";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Chip from "@mui/joy/Chip";
+import "../../../App.css";
 
 export default function Sliders({ data }) {
   const Highlight = ({ children, color }) => (
@@ -21,7 +22,6 @@ export default function Sliders({ data }) {
         display: "block",
         height: "200px",
         margin: "16px 16px 16px 0",
-        width:"100%"
       }}
     >
       {" "}
