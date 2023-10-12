@@ -1016,13 +1016,22 @@ p {
   justify-content: right;
 }
 .carusel2 {
-  display: none;
   width: 100%;
+}
+.conter-vacio{
+  display: none;
 }
 .carusel2 div {
   width: 100%;
 }
-
+.carusel2 div div {
+  margin: 0px;
+  width: 400px;
+}
+.carusel2 div div div {
+  margin: 0px;
+  width: 100%;
+}
 .absolute button {
   display: none;
 }
@@ -1137,6 +1146,13 @@ p {
   }
   .carusel2 {
     display: block;
+    width: 100%;
+  }
+  .carusel2 div {
+    width: 100%;
+  }
+  .carusel2 div div {
+    margin: 0px;
     width: 100%;
   }
 }

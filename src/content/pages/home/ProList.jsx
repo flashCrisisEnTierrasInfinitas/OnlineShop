@@ -1,8 +1,7 @@
-import { CFormInput, CSpinner } from "@coreui/react";
+import { CSpinner } from "@coreui/react";
 import axios from "axios";
 import React, { useState, useEffect, useCallback } from "react";
 import isMountedRef from "../../../hooks/useRefMounted";
-import Sliders from "./slider";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
@@ -109,7 +108,7 @@ export default function ProList({
   return (
     <div className="margin-90 conter-pro">
       <div className="conter-search top-50">
-      <input
+        <input
           type="text"
           placeholder="¿Qué estás buscando?"
           class="form-control"
@@ -118,8 +117,15 @@ export default function ProList({
         />
       </div>
       <div>
-        <Sliders data={data} />
-        <DefaultCarousel data={data}/>
+        <DefaultCarousel
+          data={data}
+          allProducts={allProducts}
+          setAllproducts={setAllproducts}
+          countProducts={countProducts}
+          setCountProducts={setCountProducts}
+          total={total}
+          setTotal={setTotal}
+        />
         <div className="box-vendido top-50">
           {filteredData?.map((product) => (
             <>
