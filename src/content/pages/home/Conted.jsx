@@ -3,7 +3,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function Conted() {
   return (
-    <div className="resul-home">
+    <div className="resul-home grid">
       <div className="text-resul">
         <h1>Asupro Colombia</h1>
         <p>Venta de productos de la canasta familiar, entre otros.</p>

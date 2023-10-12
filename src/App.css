@@ -333,9 +333,7 @@ h1 {
 }
 
 .resul-home {
-  display: flex;
   align-items: center;
-  height: 50vh;
   margin: 12vh;
   background-color: #2c57f10e;
   border-radius: 5px;
@@ -343,7 +341,6 @@ h1 {
 }
 .text-resul {
   margin: 20px;
-  width: 50%;
 }
 .text-resul h1 {
   font-weight: bold;
@@ -353,7 +350,6 @@ h1 {
   font-size: 2em;
 }
 .img-resul {
-  width: 100%;
   height: 50vh;
   padding: 5px;
 }
@@ -464,6 +460,9 @@ h1 {
   background-color: #fff;
   border: 2px solid rgb(40, 84, 216);
   color: rgb(40, 84, 216);
+}
+.boton-product {
+  display: flex;
 }
 .boton-product button {
   margin: 2px;
@@ -1131,5 +1130,13 @@ p {
   .conter-box-login {
     height: 80%;
     width: 90%;
+  }
+  .resul-home {
+    margin:0px;
+    margin-top:12vh;
+  }
+  .img-resul div {
+    width: 100%;
+    height: 100%;
   }
 }
