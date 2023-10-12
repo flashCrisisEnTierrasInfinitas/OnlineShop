@@ -280,7 +280,7 @@ h1 {
   font-size: 50px;
 }
 .conter-drawes {
-  height: 20vh;
+  height: 10vh;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -510,7 +510,6 @@ h1 {
   top: 50px;
   right: 0;
   background-color: #fff;
-  width: 400px;
   z-index: 1;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -589,16 +588,6 @@ h1 {
 .btn-clear-all:hover {
   background-color: #fff;
 }
-
-.con-btn-menu {
-  padding: 5px;
-  text-decoration: none;
-}
-
-.con-btn-menu a {
-  text-decoration: none;
-}
-
 .img-menu {
   width: 60px;
   height: 60px;
@@ -1069,13 +1058,9 @@ p {
     font-size: 25px;
     font-weight: 700;
   }
-  .header-drawes button svg {
-    font-size: 50px;
-  }
   .conter-drawes div {
-    height: 50%;
+    height: 10vh;
     width: 50%;
-    font-size: 30px;
   }
   .conter-drawes div img {
     width: 40%;
