@@ -7,7 +7,6 @@ import {
   CTableHeaderCell,
   CCard,
   CCardBody,
-  CFormInput,
   CSpinner,
 } from "@coreui/react";
 import Icons from "./icons";
@@ -15,10 +14,14 @@ import { useEffect } from "react";
 import { useCallback } from "react";
 import isMountedRef from "../../../hooks/useRefMounted";
 import axios from "axios";
+import { Alert } from "@mui/material";
+import DataGrids from "./DataGrid";
 
-export default function Table() {
+export default function Table({ token }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
+  const [Error, setError] = useState(false);
+  const [Message, setMessage] = useState([]);
 
   const [data, setData] = useState([]);
 
@@ -27,12 +30,15 @@ export default function Table() {
       const response = await axios.get("/users", {
         headers: {
           "Content-Type": "multipart/form-data",
+          'X-Requested-With': 'XMLHttpRequest',
+          'Authorization': 'Bearer ' + token,
         },
       });
       setData(response.data);
       setLoading(false);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      setMessage(error.response.data.message)
+      setError(true);
       setLoading(false);
     }
   }, [isMountedRef]);
@@ -54,53 +60,27 @@ export default function Table() {
   );
 
   return (
-    <div className="box-admin">
-      <div className="conter-search">
-        <input
-          type="text"
-          placeholder="¿Qué estás buscando?"
-          class="form-control"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-      <CCard>
-        <CCardBody>
-          <CTable striped>
-            <CTableHead>
-              <CTableHeaderCell>ID</CTableHeaderCell>
-              <CTableHeaderCell>img</CTableHeaderCell>
-              <CTableHeaderCell>Nombre</CTableHeaderCell>
-              <CTableHeaderCell>Apellido</CTableHeaderCell>
-              <CTableHeaderCell>Email</CTableHeaderCell>
-              <CTableHeaderCell>Rol</CTableHeaderCell>
-              <CTableHeaderCell>Estado</CTableHeaderCell>
-              <CTableHeaderCell>Fecha</CTableHeaderCell>
-            </CTableHead>
-            <CTableBody>
-              {filteredData.map((item) => (
-                <tr key={item.id}>
-                  <CTableDataCell>{item.id}</CTableDataCell>
-                  <CTableDataCell>
-                    <div className="img-table">
-                      <img src={item.img} />
-                    </div>
-                  </CTableDataCell>
-                  <CTableDataCell>{item.name}</CTableDataCell>
-                  <CTableDataCell>{item.last_name}</CTableDataCell>
-                  <CTableDataCell>{item.email}</CTableDataCell>
-                  <CTableDataCell>{item.role}</CTableDataCell>
-                  <CTableDataCell>{item.status}</CTableDataCell>
-                  <CTableDataCell>{item.created_at}</CTableDataCell>
-                  <CTableDataCell>
-                    <Icons data={item} />
-                  </CTableDataCell>
-                </tr>
-              ))}
-            </CTableBody>
-          </CTable>
-        </CCardBody>
-      </CCard>
-    </div>
+    <>
+      {
+        Error ? (<Alert variant="filled" severity="error">
+          {Message}
+        </Alert>) : (
+          <div className="box-admin">
+            <div className="conter-search">
+              <input
+                type="text"
+                placeholder="¿Qué estás buscando?"
+                class="form-control"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)
+                }
+              />
+            </div >
+            <DataGrids data={filteredData} />
+          </div >
+        )
+      }
+    </>
+
   );
 }

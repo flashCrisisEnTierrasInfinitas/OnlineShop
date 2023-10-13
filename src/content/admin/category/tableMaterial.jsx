@@ -5,7 +5,7 @@ import isMountedRef from "../../../hooks/useRefMounted";
 import axios from "axios";
 import Icons from "./icons";
 
-export default function DataTable(setKey, key) {
+export default function DataTable({setKey, key,token}) {
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     {
@@ -57,7 +57,7 @@ export default function DataTable(setKey, key) {
       field: "actions", // Nombre del campo
       headerName: "Acciones", // Nombre en la cabecera
       width: 130, // Ancho de la columna
-      renderCell: (params) => <Icons data={params} setKey={setKey} key={key} />,
+      renderCell: (params) => <Icons data={params} setKey={setKey} key={key} token={token}/>,
     },
   ];
 

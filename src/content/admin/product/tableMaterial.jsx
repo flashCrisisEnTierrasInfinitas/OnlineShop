@@ -70,9 +70,22 @@ export default function DataTable() {
     );
   }
 
-  const filteredData = data?.filter((item) =>
-    item.nombrePro?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredData = data?.filter((item) => {
+    // Convierte cada valor del objeto en una cadena y verifica si contiene el término de búsqueda
+    for (const key in item) {
+      if (Object.prototype.hasOwnProperty.call(item, key)) {
+        const value = item[key];
+        if (
+          value &&
+          typeof value === "string" &&
+          value.toLowerCase().includes(searchTerm.toLowerCase())
+        ) {
+          return true; // Si alguna propiedad contiene el término de búsqueda, se incluye en los resultados
+        }
+      }
+    }
+    return false;
+  });
 
   return (
     <div style={{ height: 400, width: "100%" }}>

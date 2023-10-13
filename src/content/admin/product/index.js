@@ -3,8 +3,10 @@ import ContedAdmin from "../components/Conter";
 import New from "./new";
 import TableMaterial from "./tableMaterial";
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
+import Cookies from "js-cookie";
 
 export default function Product() {
+  var token = Cookies.get('token');
   return (
     <ContedAdmin>
       <h1 className="title-module">LISTA PRODUCTOS</h1>
@@ -16,9 +18,9 @@ export default function Product() {
           >
             Download PDF
           </Button>
-          <New />
+          <New token={token}/>
         </div>
-        <TableMaterial />
+        <TableMaterial token={token}/>
       </div>
     </ContedAdmin>
   );

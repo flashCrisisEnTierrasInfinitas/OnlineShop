@@ -24,13 +24,13 @@ export default function AppBarAdmin() {
     <CNavbar colorScheme="light" className="conter-appBar">
       <CContainer fluid>
         <CNavbarBrand>
-        <div className="logo-admin ">
-              <a href="/">
-                <div>
-                  <img src="img/logos/logo1.png" />
-                </div>
-              </a>
-            </div>
+          <div className="logo-admin ">
+            <a href="/">
+              <div>
+                <img src="img/logos/logo1.png" />
+              </div>
+            </a>
+          </div>
         </CNavbarBrand>
         <CNavbarToggler
           aria-controls="offcanvasNavbar"
@@ -61,7 +61,7 @@ export default function AppBarAdmin() {
               </a>
               <a href="/dahsboard" className="text-appBar">
                 <div className="ico-menu">
-                  <img src="img/icons/meterdashmac.png" />
+                  <img src="img/icons/school_81290.png" />
                 </div>
                 <label>Mi diario</label>
               </a>
@@ -71,25 +71,18 @@ export default function AppBarAdmin() {
                 </div>
                 <label>Usuarios</label>
               </a>
-              <CDropdown variant="nav-item" popper={false}>
-                <CDropdownToggle color="secondary">
-                  <label>Productos</label>
-                </CDropdownToggle>
-                <CDropdownMenu>
-                <a href="/category" className="text-appBar">
-                    <div className="ico-menu">
-                      <img src="img/icons/category.png" />
-                    </div>
-                    <label>Categoria</label>
-                  </a>
-                  <a href="/product" className="text-appBar">
-                    <div className="ico-menu">
-                      <img src="img/icons/shopping.png" />
-                    </div>
-                    <label>Lista</label>
-                  </a>
-                </CDropdownMenu>
-              </CDropdown>
+              <a href="/category" className="text-appBar">
+                <div className="ico-menu">
+                  <img src="img/icons/category.png" />
+                </div>
+                <label>Categoria</label>
+              </a>
+              <a href="/product" className="text-appBar">
+                <div className="ico-menu">
+                  <img src="img/icons/shopping.png" />
+                </div>
+                <label>Lista</label>
+              </a>
             </CNavbarNav>
           </COffcanvasBody>
         </COffcanvas>

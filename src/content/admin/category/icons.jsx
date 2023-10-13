@@ -6,7 +6,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { CSpinner } from "@coreui/react";
 import { useState } from "react";
 
-export default function Icons({ data, key, setKey }) {
+export default function Icons({ data, key, setKey ,token}) {
   const ID = data.id;
   const [loading, setLoading] = useState(false);
 
@@ -15,6 +15,8 @@ export default function Icons({ data, key, setKey }) {
       const response = await axios.delete(`/categoryProd/${id}`, {
         headers: {
           "Content-Type": "multipart/form-data",
+          ' X-Requested-With': 'XMLHttpRequest',
+          'Authorization': 'Bearer ' + token,
         },
       });
       setKey(key + 1);

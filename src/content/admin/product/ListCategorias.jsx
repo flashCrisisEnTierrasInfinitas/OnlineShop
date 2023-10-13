@@ -15,7 +15,6 @@ export default function ListCategorias({ id }) {
           'Content-Type': 'multipart/form-data'
         },
       });
-      console.log("🚀 ~ file: ListCategorias.jsx:15 ~ getUsuarios ~ response:", response)
       setData(response.data);
     } catch (err) {
       console.error(err);

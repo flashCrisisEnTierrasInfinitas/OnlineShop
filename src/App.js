@@ -26,8 +26,8 @@ import DetalleProduc from "./content/pages/store/detalle";
 import protectedRoute from "./Auth/ProtectedRoute";
 
 function App() {
-  axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
-  //axios.defaults.baseURL = "http://localhost:8000/api";
+  //axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  axios.defaults.baseURL = "http://localhost:8000/api";
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
     if (saveEquipos) {

@@ -14,6 +14,7 @@ import {
 } from "@coreui/react";
 import { Button } from "@mui/material";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
@@ -23,8 +24,7 @@ export default function New({ key, setKey }) {
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState(null);
-    const [imgname, setNameImg] = useState("");
-    const [loadingUpload, setloadingUpload] = useState(false);
+    var getToken = Cookies.get('token');
 
     const [formData, setFormData] = useState({
         name: "",
@@ -49,12 +49,13 @@ export default function New({ key, setKey }) {
                 formData,
                 {
                     headers: {
-                        'Content-Type': 'multipart/form-data'
+                        ' X-Requested-With': 'XMLHttpRequest',
+                        'Authorization': 'Bearer ' + getToken,
+                        'Content-Type': 'multipart/form-data',
                     },
                 });
             setVisible(false);
             setLoading(false);
-            setKey(key + 1);
             return Swal.fire({
                 position: "center",
                 icon: "success",
@@ -89,10 +90,10 @@ export default function New({ key, setKey }) {
 
     return (
         <>
-            <Button  variant="contained"  onClick={() => setVisible(!visible)}>Nuevo</Button>
+            <Button variant="contained" onClick={() => setVisible(!visible)}>Nuevo</Button>
             <CModal
                 size="xl"
-                backdrop="static" 
+                backdrop="static"
                 visible={visible}
                 onClose={() => setVisible(false)}
                 aria-labelledby="StaticBackdropExampleLabel"
@@ -127,6 +128,7 @@ export default function New({ key, setKey }) {
                                 accept="image/*"
                                 onChange={handleImageChange}
                             />
+
                         </CCol>
                         <CCol md={12}>
                             <CFormLabel>Estado</CFormLabel>

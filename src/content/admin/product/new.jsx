@@ -19,7 +19,7 @@ import Swal from "sweetalert2";
 import isMountedRef from "../../../hooks/useRefMounted";
 import { Button } from "@mui/material";
 
-export default function New() {
+export default function New({ token }) {
     const [visible, setVisible] = useState(false);
     const [image, setImage] = useState(null);
     const [TypePro, setTypePro] = useState([]);
@@ -60,6 +60,8 @@ export default function New() {
             setLoading(true);
             const response = await axios.post("/product", formData, {
                 headers: {
+                    ' X-Requested-With': 'XMLHttpRequest',
+                    'Authorization': 'Bearer ' + token,
                     "Content-Type": "multipart/form-data",
                 },
             });
@@ -103,7 +105,7 @@ export default function New() {
 
     return (
         <>
-            <Button  variant="contained"  onClick={() => setVisible(!visible)}>Nuevo</Button>
+            <Button variant="contained" onClick={() => setVisible(!visible)}>Nuevo</Button>
             <CModal
                 size="xl"
                 backdrop="static"

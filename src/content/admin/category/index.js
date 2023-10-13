@@ -4,10 +4,12 @@ import New from "./new";
 import TableMaterial from './tableMaterial';
 import { Button } from "@mui/material";
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
+import Cookies from "js-cookie";
 
 export default function Category() {
 
   const [key, setKey]= useState(0)
+  var getToken = Cookies.get('token');
 
   return (
     <ContedAdmin>
@@ -20,9 +22,9 @@ export default function Category() {
           >
             Download PDF
           </Button>
-          <New />
+          <New token={getToken}/>
         </div>
-        <TableMaterial  setKey={setKey} key={key}/>
+        <TableMaterial  setKey={setKey} key={key} token={getToken}/>
       </div>
     </ContedAdmin>
   );
