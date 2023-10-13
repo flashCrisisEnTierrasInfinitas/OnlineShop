@@ -61,7 +61,7 @@ export default function DataTable() {
   React.useEffect(() => {
     getDataList();
   }, [getDataList]);
-
+ 
   if (loading) {
     return (
       <div className="d-flex justify-content-center">

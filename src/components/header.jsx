@@ -15,6 +15,7 @@ import Drawer from "@mui/joy/Drawer";
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import { Button } from "@mui/joy";
+import Cookies from "js-cookie";
 
 export default function Header({
   allProducts,
@@ -27,6 +28,7 @@ export default function Header({
   const [visible, setVisible] = useState(false);
   const [Open, setOpen] = useState(false);
   const [Drawes, setDrawes] = useState(false);
+  var role = Cookies.get('role');
 
   const Drawers = () => {
     return (
@@ -121,6 +123,16 @@ export default function Header({
     setCountProducts(0);
   };
 
+  const Admin = () => {
+    if (role == 1) {
+      return (
+        <a href="/dahsboard">
+          <i class="fa fa-lock" aria-hidden="true"></i>
+        </a>
+      )
+    }
+  }
+
   return (
     <header>
       <nav className="navbarShop">
@@ -142,9 +154,8 @@ export default function Header({
               <a href="/Profile">
                 <i className="fa fa-user" aria-hidden="true"></i>
               </a>
-              <a href="/dahsboard">
-                <i class="fa fa-lock" aria-hidden="true"></i>
-              </a>
+
+              <Admin />
               <a href="/notificaciones">
                 <i className="fa fa-bell" aria-hidden="true">
                   <span className="conterProduct">3</span>

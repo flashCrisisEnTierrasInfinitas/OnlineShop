@@ -1,28 +1,25 @@
 import { CFormInput } from "@coreui/react";
+import { CircularProgress } from "@mui/material";
+import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
-
-const data = [
-  {
-    id: 0,
-    name: "jhon",
-    pass: "123",
-    rol: 1,
-  },
-  {
-    id: 1,
-    name: "carlos",
-    pass: "123",
-    rol: 0,
-  },
-];
+import Cookies from 'js-cookie';
 
 export default function Login() {
   const [log, setLog] = useState(false);
-  //VALORES QUE SE ENVIAN EN EL AXIOS
+  const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState('');
+  const [role, setRole] = useState('');
+
+  const Cooki = () => {
+    Cookies.set('token', token, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
+    Cookies.set('role', role, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
+  }
+  Cooki();
+
   const [dataLog, setDataLog] = useState({
-    Usuario: "",
-    Password: "",
+    email: "",
+    password: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,18 +50,18 @@ export default function Login() {
     }
   };
   //INGRESO DEL USUARIO
-  const Sing = () => {
-    if (dataLog.Usuario !== data.name) {
-
-      return Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "usuario y contraseña incorrectos",
-        showConfirmButton: false,
-        timer: 1900,
-      });
-    } else {
-      return window.location.replace("/");
+  const Sing = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post("/auth/login", dataLog);
+      console.table(response.data);
+      setToken(response.data.access_token);
+      setRole(response.data.role);
+      setLoading(false);
+      return (window.location.href = "/");
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error.response.data);
+      setLoading(false);
     }
   };
 
@@ -76,18 +73,18 @@ export default function Login() {
             <form className="form-login">
               <h1 className="top-50">Registrarse</h1>
               <CFormInput
-                placeholder="Usuario"
+                placeholder="email"
                 className="inpunt-login"
-                name="Usuario"
-                value={dataLog.Usuario}
+                name="email"
+                value={dataLog.email}
                 onChange={handleChange}
               />
               <CFormInput
                 placeholder="Password"
                 className="inpunt-login"
-                type="Password"
-                name="Password"
-                value={dataLog.Password}
+                type="password"
+                name="password"
+                value={dataLog.password}
                 onChange={handleChange}
               />
               <div className="conte-terminos">
@@ -112,18 +109,18 @@ export default function Login() {
             <form className="form-login">
               <h1 className="top-50">Ingresar</h1>
               <CFormInput
-                placeholder="Usuario"
+                placeholder="email"
                 className="inpunt-login"
-                name="Usuario"
-                value={dataLog.Usuario}
+                name="email"
+                value={dataLog.email}
                 onChange={handleChange}
               />
               <CFormInput
                 placeholder="Password"
                 className="inpunt-login"
-                type="Password"
-                name="Password"
-                value={dataLog.Password}
+                type="password"
+                name="password"
+                value={dataLog.password}
                 onChange={handleChange}
               />
               <div className="conte-terminos">
@@ -146,11 +143,11 @@ export default function Login() {
                   Registrarse
                 </button>
                 <button
+                  className="btn1  btn-secondary"
                   type="button"
-                  className="btn1 btn-secondary"
-                  onClick={() => Sing()}
+                  onClick={Sing}
                 >
-                  Ingresar
+                  {loading && <CircularProgress />}Ingresar
                 </button>
               </div>
             </form>

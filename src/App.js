@@ -23,11 +23,11 @@ import Product from "./content/admin/product";
 import Category from "./content/admin/category";
 import CategoryProduct from "./content/pages/store/categoryProduct";
 import DetalleProduc from "./content/pages/store/detalle";
+import protectedRoute from "./Auth/ProtectedRoute";
 
 function App() {
-  axios.defaults.baseURL =
-    "https://apionlineshop.com.asuprocolombiasas.com/api";
-  //axios.defaults.baseURL ="http://localhost:8000/api";
+  axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  //axios.defaults.baseURL = "http://localhost:8000/api";
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
     if (saveEquipos) {
@@ -116,17 +116,7 @@ function App() {
                 />
               }
             />
-            <Route
-              path="/pay"
-              element={
-                <Pay
-                  total={total}
-                  setAllproducts={setAllproducts}
-                  setTotal={setTotal}
-                  setCountProducts={setCountProducts}
-                />
-              }
-            />
+
             <Route path="/login" element={<Login />} />
             <Route path="/ProductosCat" element={<ProductoCate />} />
             <Route
@@ -160,10 +150,25 @@ function App() {
             <Route path="/Historial" element={<Historial />} />
             <Route path="/MiLista" element={<MiLista />} />
             {/* TODO:routes the admin */}
-            <Route path="/dahsboard" element={<DahsboardAdmin />} />
-            <Route path="/User" element={<User />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/category" element={<Category />} />
+            <Route element={protectedRoute()}>
+              <Route path="/dahsboard" element={<DahsboardAdmin />} />
+              <Route path="/dahsboard" element={<DahsboardAdmin />} />
+              <Route path="/User" element={<User />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/category" element={<Category />} />
+
+              <Route
+                path="/pay"
+                element={
+                  <Pay
+                    total={total}
+                    setAllproducts={setAllproducts}
+                    setTotal={setTotal}
+                    setCountProducts={setCountProducts}
+                  />
+                }
+              />
+            </Route>
           </Routes>
           <FooterMenu />
           <Footer />
