@@ -55,9 +55,21 @@ export default function Table({ token }) {
     );
   }
 
-  const filteredData = data?.filter((item) =>
-    item.name?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredData = data?.filter((item) => {
+    for (const key in item) {
+      if (Object.prototype.hasOwnProperty.call(item, key)) {
+        const value = item[key];
+        if (
+          value &&
+          typeof value === "string" &&
+          value.toLowerCase().includes(searchTerm.toLowerCase())
+        ) {
+          return true;
+        }
+      }
+    }
+    return false;
+  });
 
   return (
     <>

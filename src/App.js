@@ -165,6 +165,7 @@ function App() {
                     setAllproducts={setAllproducts}
                     setTotal={setTotal}
                     setCountProducts={setCountProducts}
+                    allProducts={allProducts}
                   />
                 }
               />

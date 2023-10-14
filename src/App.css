@@ -1039,6 +1039,9 @@ p {
   display: none;
 }
 
+.conter-alerts {
+  width: 40%;
+}
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
   .text-home a > p {

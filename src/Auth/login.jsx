@@ -1,15 +1,19 @@
-import { CFormInput } from "@coreui/react";
+import { CFormInput, CSpinner } from "@coreui/react";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import Cookies from 'js-cookie';
+import { Button } from "@mui/joy";
+import Alerts from "../components/alerts";
 
 export default function Login() {
   const [log, setLog] = useState(false);
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState('');
   const [role, setRole] = useState('');
+  const [data, setData] = useState('');
+  const [open, setOpen] = useState(false);
 
   const Cooki = () => {
     Cookies.set('token', token, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
@@ -54,19 +58,21 @@ export default function Login() {
     try {
       setLoading(true);
       const response = await axios.post("/auth/login", dataLog);
-      console.table(response.data);
       setToken(response.data.access_token);
       setRole(response.data.role);
       setLoading(false);
       return (window.location.href = "/");
     } catch (error) {
+      setData(error.response.data.error);
       console.error("Error al iniciar sesión:", error.response.data);
       setLoading(false);
+      setOpen(true);
     }
   };
 
   return (
     <div className="conted-login">
+      <Alerts open={open} setOpen={setOpen} data={data} color={'error'}/>
       <div className="conter-box-login">
         <div className="box-">
           {log ? (
@@ -143,11 +149,15 @@ export default function Login() {
                   Registrarse
                 </button>
                 <button
-                  className="btn1  btn-secondary"
                   type="button"
+                  className="btn1 btn-secondary"
                   onClick={Sing}
                 >
-                  {loading && <CircularProgress />}Ingresar
+                  {loading ? (
+                    <div className="progess">
+                      <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+                    </div>
+                  ) : (<label>Ingresar</label>)}
                 </button>
               </div>
             </form>

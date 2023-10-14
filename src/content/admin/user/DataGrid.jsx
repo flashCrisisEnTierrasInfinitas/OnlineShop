@@ -41,15 +41,6 @@ export default function DataGrids({
 
     return (
         <div style={{ height: 400, width: "100%" }}>
-            <div className="conter-search">
-                <input
-                    type="text"
-                    placeholder="¿Qué estás buscando?"
-                    class="form-control"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-            </div>
             <DataGrid
                 columns={columns}
                 rows={data}
