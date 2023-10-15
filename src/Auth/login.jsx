@@ -22,6 +22,7 @@ export default function Login() {
   Cooki();
 
   const [dataLog, setDataLog] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -33,26 +34,6 @@ export default function Login() {
     }));
   };
   //REGISTRO DEL USUARIO
-  const RegLog = () => {
-    if (!dataLog.Usuario | dataLog.Password) {
-      return Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "Todos los campos son requeridos",
-        showConfirmButton: false,
-        timer: 1900,
-      });
-    } else {
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Registro exitoso",
-        showConfirmButton: false,
-        timer: 1900,
-      });
-      return window.location.replace("/");
-    }
-  };
   //INGRESO DEL USUARIO
   const Sing = async () => {
     try {
@@ -63,21 +44,89 @@ export default function Login() {
       setLoading(false);
       return (window.location.href = "/");
     } catch (error) {
-      setData(error.response.data.error);
+      console.error("Error al iniciar sesión:", error.response.data.error);
+      setLoading(false);
+      setOpen(true);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'error',
+        title: error.response.data.error
+      })
+    }
+  }
+
+  const hanledRegister = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post("/auth/register", dataLog);
+      setToken(response.data.access_token);
+      setRole(response.data.role);
+      setLoading(false);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'registrado con exito!!',
+        title: 'Signed in successfully'
+      })
+      return (window.location.href = "/login");
+    } catch (error) {
       console.error("Error al iniciar sesión:", error.response.data);
       setLoading(false);
       setOpen(true);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'error',
+        title: error.response.data
+      })
     }
   };
 
   return (
     <div className="conted-login">
-      <Alerts open={open} setOpen={setOpen} data={data} color={'error'}/>
       <div className="conter-box-login">
         <div className="box-">
           {log ? (
             <form className="form-login">
               <h1 className="top-50">Registrarse</h1>
+              <CFormInput
+                placeholder="nombre"
+                className="inpunt-login"
+                name="name"
+                value={dataLog.name}
+                onChange={handleChange}
+              />
               <CFormInput
                 placeholder="email"
                 className="inpunt-login"
@@ -104,10 +153,14 @@ export default function Login() {
               <div className="flex">
                 <button
                   type="button"
-                  className="btn1 btn-primary"
-                  onClick={() => RegLog()}
+                  className="btn1 btn-secondary"
+                  onClick={hanledRegister}
                 >
-                  Registrarse
+                  {loading ? (
+                    <div className="progess">
+                      <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+                    </div>
+                  ) : (<label>Registrarse</label>)}
                 </button>
               </div>
             </form>

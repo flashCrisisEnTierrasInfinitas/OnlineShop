@@ -5,7 +5,7 @@ import isMountedRef from "../../../hooks/useRefMounted";
 import axios from "axios";
 import Icons from "./icons";
 
-export default function DataTable({setKey, key,token}) {
+export default function DataTable({ setKey, key, token }) {
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     {
@@ -57,7 +57,7 @@ export default function DataTable({setKey, key,token}) {
       field: "actions", // Nombre del campo
       headerName: "Acciones", // Nombre en la cabecera
       width: 130, // Ancho de la columna
-      renderCell: (params) => <Icons data={params} setKey={setKey} key={key} token={token}/>,
+      renderCell: (params) => <Icons data={params} setKey={setKey} key={key} token={token} />,
     },
   ];
 
@@ -91,9 +91,23 @@ export default function DataTable({setKey, key,token}) {
     );
   }
 
-  const filteredData = data?.filter((item) =>
-    item.name?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredData = data?.filter((item) => {
+    // Convierte cada valor del objeto en una cadena y verifica si contiene el término de búsqueda
+    for (const key in item) {
+      if (Object.prototype.hasOwnProperty.call(item, key)) {
+        const value = item[key];
+        if (
+          value &&
+          typeof value === "string" &&
+          value.toLowerCase().includes(searchTerm.toLowerCase())
+        ) {
+          return true; // Si alguna propiedad contiene el término de búsqueda, se incluye en los resultados
+        }
+      }
+    }
+    return false;
+  });
+
 
   return (
     <div style={{ height: 400, width: "100%" }}>

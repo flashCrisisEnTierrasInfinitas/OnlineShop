@@ -50,22 +50,13 @@ export default function Components() {
     );
   }
 
+
   const filteredData = data?.filter((item) => {
-    // Convierte cada valor del objeto en una cadena y verifica si contiene el término de búsqueda
-    for (const key in item) {
-      if (Object.prototype.hasOwnProperty.call(item, key)) {
-        const value = item[key];
-        if (
-          value &&
-          typeof value === "string" &&
-          value.toLowerCase().includes(searchTerm.toLowerCase())
-        ) {
-          return true; // Si alguna propiedad contiene el término de búsqueda, se incluye en los resultados
-        }
-      }
-    }
-    return false;
+    const itemId = String(item.id); // Asegura que item.id sea una cadena
+    const searchTermLower = searchTerm.toLowerCase(); // Convierte la búsqueda a minúsculas
+    return itemId.includes(searchTermLower);
   });
+
 
   return (
 
@@ -73,16 +64,27 @@ export default function Components() {
       {Error ? (<Alert variant="filled" severity="error">
         {Message}
       </Alert>) : (
-        <Stack sx={{ width: "100%" }} spacing={2}>
-          {filteredData && filteredData.length > 0 ? (
-            filteredData?.map((data) => (
-              <Alertas data={data}/>
-            ))
-          ) : (<p><Alert variant="filled" severity="info">
-            No Rows!!
-          </Alert></p>)}
+        <>
+          <div className="conter-search">
+            <input
+              type="text"
+              placeholder="Busca por N° venta! ej:10"
+              class="form-control"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <Stack sx={{ width: "100%" }} spacing={2}>
+            {filteredData && filteredData.length > 0 ? (
+              filteredData?.map((data) => (
+                <Alertas data={data} />
+              ))
+            ) : (<p><Alert variant="filled" severity="info">
+              No Rows!!
+            </Alert></p>)}
 
-        </Stack>
+          </Stack>
+        </>
       )}
     </div>
   );
