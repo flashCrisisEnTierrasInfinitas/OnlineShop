@@ -10,7 +10,6 @@ export default function Pay({
     allProducts,
     Seccion
 }) {
-    console.log("🚀 ~ file: index.js:13 ~ Seccion:", Seccion)
     var token = Cookies.get('token');
     return (
         <div className="conter-home">

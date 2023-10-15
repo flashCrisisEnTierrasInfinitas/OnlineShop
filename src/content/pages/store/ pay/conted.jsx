@@ -34,7 +34,7 @@ export default function Conted({
       cantidad: producto.quantity
     }))
   });
-  console.log("🚀 ~ file: conted.jsx:38 ~ formData:", formData)
+
 
   useEffect(() => {
     setFormData({
