@@ -1042,6 +1042,53 @@ p {
 .conter-alerts {
   width: 40%;
 }
+/*! FACTURA */
+.conter-factura {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.head-factura {
+  text-align: center;
+  padding: 5px;
+}
+.resul-factura {
+  background-color: whitesmoke;
+  padding: 9px;
+}
+.produc-factura {
+  display: flex;
+}
+.produc-factura div,
+.subTotal-factura div {
+  width: 50%;
+}
+.precio-pro-fac p {
+  float: right;
+}
+.subTotal-factura {
+  display: flex;
+  padding: 5px;
+  background-color: whitesmoke;
+}
+.precio-pro-fac h5 {
+  float: right;
+}
+.fecha-factura {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.codigo-factura {
+  display: flex;
+}
+.codigo-factura div {
+  width: 50%;
+}
+
+.precio-pro-fac div {
+  float: right;
+  margin: 0;
+}
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
   .text-home a > p {

@@ -1,64 +1,74 @@
 import { Chip, Tooltip } from "@mui/material";
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import DoneAllIcon from '@mui/icons-material/DoneAll';
-import SendIcon from '@mui/icons-material/Send';
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
+import SendIcon from "@mui/icons-material/Send";
 import GppBadIcon from "@mui/icons-material/GppBad";
 import Edit from "./edit";
 import axios from "axios";
 import { useState } from "react";
 
 export default function Alertas({ data }) {
-
     const cancelData = {
         status_venta: 1,
-    }
+    };
     const enviarData = {
         status_venta: 2,
-    }
+    };
     const entregarData = {
         status_venta: 3,
-    }
-
+    };
 
     const CancelStatus = async (id) => {
-        alert('venta cancelada', id)
+        alert("venta cancelada", id);
 
         const response = await axios.put(`/ventas/${id}`, cancelData, {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                ' X-Requested-With': 'XMLHttpRequest',
-            }
+                "Content-Type": "application/x-www-form-urlencoded",
+                " X-Requested-With": "XMLHttpRequest",
+            },
         });
-        console.log(response)
-    }
+        console.log(response);
+    };
     const EntregadoStatus = async (id) => {
-        alert('venta cancelada', id)
+        alert("venta cancelada", id);
 
         const response = await axios.put(`/ventas/${id}`, entregarData, {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                ' X-Requested-With': 'XMLHttpRequest',
-            }
+                "Content-Type": "application/x-www-form-urlencoded",
+                " X-Requested-With": "XMLHttpRequest",
+            },
         });
-        console.log(response)
-    }
+        console.log(response);
+    };
     const EnviarStatus = async (id) => {
-        alert('venta cancelada', id)
+        alert("venta cancelada", id);
 
         const response = await axios.put(`/ventas/${id}`, enviarData, {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                ' X-Requested-With': 'XMLHttpRequest',
-            }
+                "Content-Type": "application/x-www-form-urlencoded",
+                " X-Requested-With": "XMLHttpRequest",
+            },
         });
-        console.log(response)
-    }
+        console.log(response);
+    };
 
     const TypeService = ({ data }) => {
         if (data == 0) {
-            return <Chip label='Entregar' color='primary' />;
-        } if (data == 1) {
-            return <Chip label='Enviar' color='success' />;
+            return <Chip label="Entregar" color="primary" />;
+        }
+        if (data == 1) {
+            return <Chip label="Enviar" color="success" />;
+        }
+    };
+
+    const Direccion = ({ data }) => {
+        if (data.tipo_servicio == 1) {
+            return (
+                <>
+                    <label>Direccion:</label>
+                    <label>{data.direccion}</label>
+                </>
+            )
         }
     };
 
@@ -67,11 +77,15 @@ export default function Alertas({ data }) {
             return (
                 <>
                     <Tooltip title="Cancelar">
-                        <button className="btn" onClick={() => CancelStatus(data.id)}><HighlightOffIcon /></button>
+                        <button className="btn" onClick={() => CancelStatus(data.id)}>
+                            <HighlightOffIcon />
+                        </button>
                     </Tooltip>
                     {data.tipo_servicio === 0 && (
                         <Tooltip title="Entregar">
-                            <button className="btn" onClick={() => EntregadoStatus(data.id)}><DoneAllIcon /></button>
+                            <button className="btn" onClick={() => EntregadoStatus(data.id)}>
+                                <DoneAllIcon />
+                            </button>
                         </Tooltip>
                     )}
                     {data.tipo_servicio === 1 && (
@@ -82,20 +96,22 @@ export default function Alertas({ data }) {
                         </Tooltip>
                     )}
                 </>
-            )
+            );
         }
         if (data.status_venta == 2) {
-            return <Tooltip title="Entregar">
-                <button className="btn" onClick={() => EntregadoStatus(data.id)}><DoneAllIcon /></button>
-            </Tooltip>
+            return (
+                <Tooltip title="Entregar">
+                    <button className="btn" onClick={() => EntregadoStatus(data.id)}>
+                        <DoneAllIcon />
+                    </button>
+                </Tooltip>
+            );
         }
-
-    }
-
+    };
 
     if (data.status_venta == 0) {
         return (
-            <div className="alerta" style={{ background: 'rgb(237, 108, 2)' }}>
+            <div className="alerta" style={{ background: "rgb(237, 108, 2)" }}>
                 <div className="conter-alerta">
                     <div className="ico-alerta">
                         <GppBadIcon />
@@ -114,6 +130,9 @@ export default function Alertas({ data }) {
                             <label>Tipo Servicio:</label>
                             <TypeService data={data.tipo_servicio} />
                         </div>
+                        <div>
+                            <Direccion data={data} />
+                        </div>
                     </div>
                     <div className="ico-daly">
                         <Icons data={data} />
@@ -121,11 +140,11 @@ export default function Alertas({ data }) {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
     if (data.status_venta == 1) {
         return (
-            <div className="alerta" style={{ background: 'rgb(211, 47, 47)' }}>
+            <div className="alerta" style={{ background: "rgb(211, 47, 47)" }}>
                 <div className="conter-alerta">
                     <div className="ico-alerta">
                         <GppBadIcon />
@@ -144,6 +163,9 @@ export default function Alertas({ data }) {
                             <label>Tipo Servicio:</label>
                             <TypeService data={data.tipo_servicio} />
                         </div>
+                        <div>
+                            <Direccion data={data} />
+                        </div>
                     </div>
                     <div className="ico-daly">
                         <Icons data={data} />
@@ -151,11 +173,11 @@ export default function Alertas({ data }) {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
     if (data.status_venta == 2) {
         return (
-            <div className="alerta" style={{ background: 'rgb(2, 136, 209)' }}>
+            <div className="alerta" style={{ background: "rgb(2, 136, 209)" }}>
                 <div className="conter-alerta">
                     <div className="ico-alerta">
                         <GppBadIcon />
@@ -174,6 +196,9 @@ export default function Alertas({ data }) {
                             <label>Tipo Servicio:</label>
                             <TypeService data={data.tipo_servicio} />
                         </div>
+                        <div>
+                            <Direccion data={data} />
+                        </div>
                     </div>
                     <div className="ico-daly">
                         <Icons data={data} />
@@ -181,11 +206,11 @@ export default function Alertas({ data }) {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
     if (data.status_venta == 3) {
         return (
-            <div className="alerta" style={{ background: 'rgb(46, 125, 50)' }}>
+            <div className="alerta" style={{ background: "rgb(46, 125, 50)" }}>
                 <div className="conter-alerta">
                     <div className="ico-alerta">
                         <GppBadIcon />
@@ -204,6 +229,9 @@ export default function Alertas({ data }) {
                             <label>Tipo Servicio:</label>
                             <TypeService data={data.tipo_servicio} />
                         </div>
+                        <div>
+                            <Direccion data={data} />
+                        </div>
                     </div>
                     <div className="ico-daly">
                         <Icons data={data} />
@@ -211,6 +239,6 @@ export default function Alertas({ data }) {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }

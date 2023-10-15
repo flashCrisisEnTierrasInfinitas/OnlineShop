@@ -7,8 +7,10 @@ import { useState } from "react";
 import { Tooltip, ModalOverflow } from "@mui/joy";
 import DataTable from "./table";
 import ModalClose from "@mui/joy/ModalClose";
+import Factura from "../../pages/facturaPay";
 
 export default function Edit({ data }) {
+
   const [open, setOpen] = useState(false);
 
   const Status = ({ data }) => {
@@ -84,7 +86,7 @@ export default function Edit({ data }) {
         open={open}
         onClose={() => setOpen(false)}
         sx={{
-          maxWidth: 900,
+          maxWidth: 1000,
           margin: "0 auto"
         }}
       >
@@ -116,19 +118,31 @@ export default function Edit({ data }) {
                   <div class="col-12 top-50">
                     <Typography></Typography>
                     <h2 className="title-ver-daly">Lista Producto:</h2>
-                    <DataTable id={data.id}/>
+                    <DataTable id={data.id} />
                   </div>
                 </div>
                 <div class="col-12">
                   <br />
                   <br />
-                  <h2 className="title-ver-daly top-50">Comprobante pago:</h2>
-                  <div className="img-pago">
-                    <img
-                      src={data.img}
-                      alt='Sin Comprobante de pago rechazar la solicitud¡!'
-                    />
-                  </div>
+                  {data.tipo_servicio === 0 && (
+                    <>
+                      <h2 className="title-ver-daly top-50">Factura productos:</h2>
+                      <div className="img-pago">
+                       <Factura data={data}/>
+                      </div>
+                    </>
+                  )}
+                  {data.tipo_servicio === 1 && (
+                    <>
+                      <h2 className="title-ver-daly top-50">Comprobante pago:</h2>
+                      <div className="img-pago">
+                        <img
+                          src={data.img}
+                          alt='Sin Comprobante de pago rechazar la solicitud¡!'
+                        />
+                      </div>
+                    </>
+                  )}
                 </div>
               </Typography>
             </Sheet>
