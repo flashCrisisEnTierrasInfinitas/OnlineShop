@@ -174,7 +174,7 @@ function App() {
               <Route path="/Profile" element={<Profile />} />
               <Route path="/notificaciones" element={<Notificaciones />} />
               <Route path="/Historial" element={<Historial />} />
-              <Route path="/MiLista" element={<MiLista />} />
+              <Route path="/MiLista" element={<MiLista seccion={seccion}/>} />
             </Route>
           </Routes>
           <FooterMenu />
