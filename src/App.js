@@ -24,10 +24,13 @@ import Category from "./content/admin/category";
 import CategoryProduct from "./content/pages/store/categoryProduct";
 import DetalleProduc from "./content/pages/store/detalle";
 import protectedRoute from "./Auth/ProtectedRoute";
+import protectedUser from "./Auth/RoutesUser";
+import Cookies from "js-cookie";
 
 function App() {
   //axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
   axios.defaults.baseURL = "http://localhost:8000/api";
+  const seccion = Cookies.get("seccion");
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
     if (saveEquipos) {
@@ -145,10 +148,6 @@ function App() {
                 />
               }
             />
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/notificaciones" element={<Notificaciones />} />
-            <Route path="/Historial" element={<Historial />} />
-            <Route path="/MiLista" element={<MiLista />} />
             {/* TODO:routes the admin */}
             <Route element={protectedRoute()}>
               <Route path="/dahsboard" element={<DahsboardAdmin />} />
@@ -156,7 +155,9 @@ function App() {
               <Route path="/User" element={<User />} />
               <Route path="/product" element={<Product />} />
               <Route path="/category" element={<Category />} />
-
+            </Route>
+            {/* rutas del usuario */}
+            <Route element={protectedUser()}>
               <Route
                 path="/pay"
                 element={
@@ -166,9 +167,14 @@ function App() {
                     setTotal={setTotal}
                     setCountProducts={setCountProducts}
                     allProducts={allProducts}
+                    Seccion={seccion}
                   />
                 }
               />
+              <Route path="/Profile" element={<Profile />} />
+              <Route path="/notificaciones" element={<Notificaciones />} />
+              <Route path="/Historial" element={<Historial />} />
+              <Route path="/MiLista" element={<MiLista />} />
             </Route>
           </Routes>
           <FooterMenu />

@@ -7,8 +7,10 @@ export default function Pay({
     setCountProducts,
     total,
     setTotal,
-    allProducts
+    allProducts,
+    Seccion
 }) {
+    console.log("🚀 ~ file: index.js:13 ~ Seccion:", Seccion)
     var token = Cookies.get('token');
     return (
         <div className="conter-home">
@@ -22,6 +24,7 @@ export default function Pay({
                 setTotal={setTotal}
                 token={token}
                 allProducts={allProducts}
+                Seccion={Seccion}
             />
         </div>
 

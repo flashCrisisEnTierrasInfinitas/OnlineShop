@@ -12,12 +12,13 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState('');
   const [role, setRole] = useState('');
-  const [data, setData] = useState('');
+  const [seccion, setSeccion] = useState('');
   const [open, setOpen] = useState(false);
 
   const Cooki = () => {
     Cookies.set('token', token, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
     Cookies.set('role', role, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
+    Cookies.set('seccion', seccion, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
   }
   Cooki();
 
@@ -41,6 +42,7 @@ export default function Login() {
       const response = await axios.post("/auth/login", dataLog);
       setToken(response.data.access_token);
       setRole(response.data.role);
+      setSeccion(response.data.seccion);
       setLoading(false);
       return (window.location.href = "/");
     } catch (error) {

@@ -13,6 +13,7 @@ export default function Conted({
   total,
   setTotal,
   token,
+  Seccion
 }) {
   const [image, setImage] = useState(null);
   const [open, setOpen] = useState(false);
@@ -22,8 +23,8 @@ export default function Conted({
   console.table(productos)
 
   const [formData, setFormData] = useState({
-    user_venta: "pedro",
-    user_compra: "andres",
+    user_venta: "Admin",
+    user_compra: Seccion,
     direccion: "",
     user_telefono: "",
     tipo_servicio: 0,
@@ -33,6 +34,7 @@ export default function Conted({
       cantidad: producto.quantity
     }))
   });
+  console.log("🚀 ~ file: conted.jsx:38 ~ formData:", formData)
 
   useEffect(() => {
     setFormData({

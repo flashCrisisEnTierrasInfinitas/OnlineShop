@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   CTable,
   CTableBody,
@@ -6,11 +6,15 @@ import {
   CCard,
   CCardBody,
   CAlert,
+  CSpinner,
 
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { cilBurn, cilCheckCircle, cilDelete, cilInfo } from "@coreui/icons";
+import { cilBellExclamation,cilFire,cilInfo,cilCheck
+} from "@coreui/icons";
 import DeleteIcon from '@mui/icons-material/Delete';
+import axios from "axios";
+import isMountedRef from "../../../../hooks/useRefMounted";
 
 const data = [
   {
@@ -34,59 +38,70 @@ const data = [
   // Agrega más datos aquí
 ];
 
-const columns = [
-  { key: "id", label: "ID" },
-  { key: "name", label: "Name" },
-  { key: "age", label: "Age" },
-  // Agrega más columnas aquí
-];
+
 
 export default function Table() {
   const itemsPerPage = 5; // Cambia esto según tus necesidades
   const [currentPage, setCurrentPage] = useState(1);
 
-  const goToPreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
-  const goToNextPage = () => {
-    const totalPages = Math.ceil(data.length / itemsPerPage);
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
+  const getDataList = useCallback(async () => {
+    try {
+      const response = await axios.get(`/ventas/karen`, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setData(response.data);
+      setLoading(false);
+    } catch (err) {
+      console.error(err);
+      setLoading(false);
     }
-  };
+  }, [isMountedRef]);
+  useEffect(() => {
+    getDataList();
+  }, [getDataList]);
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center">
+        <CSpinner color="danger" />
+      </div>
+    );
+  }
 
   const Status = (data) => {
-    const { status, age } = data;
-    if (status == 0) {
+    const { status_venta, age } = data;
+    if (status_venta == 0) {
       return (
-        <CAlert color="danger">
+        <CAlert color="warning">
           <CIcon
-            icon={cilBurn}
+            icon={cilBellExclamation}
             className="flex-shrink-0 me-2"
             width={24}
             height={24}
           />
-          {age}
+          Compra Sin Entregar
         </CAlert>
       );
     }
-    if (status == 1) {
+    if (status_venta == 1) {
       return (
-        <CAlert color="success">
+        <CAlert color="error">
           <CIcon
-            icon={cilCheckCircle}
+            icon={cilFire}
             className="flex-shrink-0 me-2"
             width={24}
             height={24}
           />
-          {age}
+          Su compra fue rechazada
         </CAlert>
       );
     }
-    if (status == 2) {
+    if (status_venta == 2) {
       return (
         <CAlert color="info">
           <CIcon
@@ -95,7 +110,20 @@ export default function Table() {
             width={24}
             height={24}
           />
-          {age}
+          Su producto ya fue enviado, en breve resivira su producto en su puerta!
+        </CAlert>
+      );
+    }
+    if (status_venta == 3) {
+      return (
+        <CAlert color="info">
+          <CIcon
+            icon={cilCheck}
+            className="flex-shrink-0 me-2"
+            width={24}
+            height={24}
+          />
+          Su compra ya fue entregada!
         </CAlert>
       );
     }
@@ -114,13 +142,13 @@ export default function Table() {
                 .map((item) => (
                   <tr key={item.id}>
                     <CTableDataCell>{Status(item)}</CTableDataCell>
-                    <CTableDataCell>
+                  {/*   <CTableDataCell>
                       <div className="boton-tabla">
                         <button className="btn">
                           <DeleteIcon />
                         </button>
                       </div>
-                    </CTableDataCell>
+                    </CTableDataCell> */}
                   </tr>
                 ))}
             </CTableBody>
