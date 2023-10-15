@@ -1,6 +1,6 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { CFormInput, CSpinner } from "@coreui/react";
+import { CSpinner } from "@coreui/react";
 import isMountedRef from "../../../hooks/useRefMounted";
 import axios from "axios";
 
@@ -19,27 +19,19 @@ const columns = [
       />
     ),
   },
-  { field: "descripPro", headerName: "Descripción", width: 220 },
-  {
-    field: "codigoPro",
-    headerName: "Age",
-    type: "Codigo",
-    width: 90,
-  },
-  { field: "id_category", headerName: "Categoria", width: 10 },
-  { field: "created_at", headerName: "Fecha", width: 130 },
-  { field: "precioPro", headerName: "Precio", width: 130 },
-  { field: "stockPro", headerName: "Stock", width: 10 },
+  { field: "codigoPro", headerName: "Codigo", width: 220 },
+  { field: "precio", headerName: "precio", width: 10 },
+  { field: "cantidad", headerName: "cantidad", width: 130 },
 ];
 
-export default function DataTable() {
+export default function DataTable({id}) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [loading, setLoading] = React.useState(true);
   const [data, setData] = React.useState([]);
 
   const getDataList = React.useCallback(async () => {
     try {
-      const response = await axios.get(`/product`, {
+      const response = await axios.get(`/ventasProductos/${id}`, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

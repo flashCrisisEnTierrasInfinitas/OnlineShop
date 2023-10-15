@@ -7,6 +7,10 @@ import axios from "axios";
 import isMountedRef from "../../../hooks/useRefMounted";
 import { CSpinner } from "@coreui/react";
 import Cookies from "js-cookie";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
+import SendIcon from '@mui/icons-material/Send';
+import Alertas from "./alerta";
 
 
 export default function Components() {
@@ -19,7 +23,7 @@ export default function Components() {
 
   const getDataList = useCallback(async () => {
     try {
-      const response = await axios.get(`/mydaly`, {
+      const response = await axios.get(`/ventas`, {
         headers: {
           'X-Requested-With': 'XMLHttpRequest',
           'Authorization': 'Bearer ' + getToken,
@@ -63,21 +67,6 @@ export default function Components() {
     return false;
   });
 
-  const TypeService = ({ data }) => {
-    const map = {
-      1: {
-        text: "Entrega",
-        color: "success",
-      },
-      3: {
-        text: "Envio",
-        color: "primary",
-      },
-    };
-    const { text, color } = map[data];
-    return <Chip label={text} color={color} />;
-  };
-
   return (
 
     <div className="conter-daly">
@@ -87,40 +76,7 @@ export default function Components() {
         <Stack sx={{ width: "100%" }} spacing={2}>
           {filteredData && filteredData.length > 0 ? (
             filteredData?.map((data) => (
-              <div className="alerta" style={{ background: data.color }}>
-                <div className="conter-alerta">
-                  <div className="ico-alerta">
-                    <GppBadIcon />
-                  </div>
-                  <div className="text-alerta">
-                    <strong>{data.text}</strong>
-                    <div>
-                      <label>Usuario:</label>
-                      <label>{data.Com_usuario}</label>
-                    </div>
-                    <div>
-                      <label>codigo venta:</label>
-                      <Chip label={data.Codigo_ven} color="secondary" />
-                    </div>
-                    <div>
-                      <label>Tipo Servicio:</label>
-                      <TypeService data={data.TypeService} />
-                    </div>
-                  </div>
-                  <div className="ico-daly">
-                    <Tooltip title="Cancelar">
-                      <button className="btn">{data.icoDele}</button>
-                    </Tooltip>
-                    <Tooltip title="Entregar">
-                      <button className="btn">{data.ico1}</button>
-                    </Tooltip>
-                    <Tooltip title="Enviar">
-                      <button className="btn">{data.ico}</button>
-                    </Tooltip>
-                    <Edit data={data} />
-                  </div>
-                </div>
-              </div>
+              <Alertas data={data}/>
             ))
           ) : (<p><Alert variant="filled" severity="info">
             No Rows!!
