@@ -40,6 +40,18 @@ const columns = [
     width: 90,
   },
   {
+    field: "cantidad",
+    headerName: "cantidad",
+    type: "Codigo",
+    width: 90,
+  },
+  {
+    field: "Total_Pago",
+    headerName: "Total_Pago",
+    type: "Codigo",
+    width: 90,
+  },
+  {
     field: "created_at",
     headerName: "fecha",
     type: "Codigo",
