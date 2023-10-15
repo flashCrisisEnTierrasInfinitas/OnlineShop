@@ -7,7 +7,7 @@ import Icons from "./icons";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "nombrePro", headerName: "Nombre", width: 130 },
+  { field: "nombrePro", headerName: "Nombre", width: 230 },
   {
     field: "img",
     headerName: "img",
@@ -27,6 +27,16 @@ const columns = [
     type: "Codigo",
     width: 90,
   },
+  {
+    field: "status", // Nombre del campo
+    headerName: "status", // Nombre en la cabecera
+    width: 100, // Ancho de la columna
+    renderCell: (params) => (
+        params.row.status == 0 ? (
+            <p>Activo</p>
+        ) : (<p>Inactivo</p>)
+    ),
+},
   { field: "id_category", headerName: "Categoria", width: 10 },
   { field: "created_at", headerName: "Fecha", width: 130 },
   { field: "precioPro", headerName: "Precio", width: 130 },
@@ -34,7 +44,7 @@ const columns = [
   {
     field: "actions", // Nombre del campo
     headerName: "Acciones", // Nombre en la cabecera
-    width: 100, // Ancho de la columna
+    width: 130, // Ancho de la columna
     renderCell: (params) => <Icons data={params} />,
   },
 ];

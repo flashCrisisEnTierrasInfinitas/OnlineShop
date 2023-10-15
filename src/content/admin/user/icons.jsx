@@ -1,16 +1,28 @@
-import { CButton } from "@coreui/react";
+import { CButton, CSpinner } from "@coreui/react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Swal from "sweetalert2";
+import Update from "./update";
+import { useState } from "react";
 
 export default function Icons({ data }) {
     const ID = data.id;
+    const [loading, setLoading] = useState(false);
+    var token = Cookies.get('token');
+    const datas = {
+        status: 1
+    }
     const Delete = async (id) => {
         try {
-            const response = await axios.delete(`/users/${id}`, {
+            setLoading(true);
+            const response = await axios.post(`/usersDelete/${id}`, datas, {
                 headers: {
-                    "Content-Type": "multipart/form-data",
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    " X-Requested-With": "XMLHttpRequest",
+                    'Authorization': 'Bearer ' + token,
                 },
             });
+            setLoading(false);
             return Swal.fire({
                 position: "center",
                 icon: "success",
@@ -19,6 +31,7 @@ export default function Icons({ data }) {
                 timer: 1500,
             });
         } catch (e) {
+            setLoading(false);
             return Swal.fire({
                 position: "center",
                 icon: "error",
@@ -31,12 +44,17 @@ export default function Icons({ data }) {
 
     return (
         <div className="conter-icons">
-            <CButton color="danger" variant="outline" onClick={() => Delete(ID)}>
-                <i className="fa fa-trash" aria-hidden="true" />
+            <CButton
+                color="danger"
+                variant="outline" onClick={() => Delete(ID)}
+            >
+                {loading ? (
+                    <div className="progess">
+                        <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+                    </div>
+                ) : (<i className="fa fa-trash" aria-hidden="true" />)}
             </CButton>
-            <CButton color="primary" variant="outline" onClick={() => Delete(ID)}>
-            <i className="fa fa-wrench" aria-hidden="true"/>
-            </CButton>
+            <Update data={data} />
         </div>
     );
 }

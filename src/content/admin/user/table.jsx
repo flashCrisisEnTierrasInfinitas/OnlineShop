@@ -45,7 +45,6 @@ export default function Table({ token }) {
   useEffect(() => {
     getProduct();
   }, [getProduct]);
-  getProduct();
 
   if (loading) {
     return (

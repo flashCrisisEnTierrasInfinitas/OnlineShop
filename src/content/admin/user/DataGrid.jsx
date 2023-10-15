@@ -5,7 +5,15 @@ import Icons from "./icons";
 export default function DataGrids({
     data
 }) {
-    const [searchTerm, setSearchTerm] = React.useState("");
+    const Status = ({ data }) => {
+        console.log(data)
+        if (data.status == 0) {
+            return (<p>sapo</p>)
+        }
+        if (data.status == 1) {
+            return <>Inactivo</>
+        }
+    }
 
     const columns = [
         { field: "id", headerName: "ID", width: 20 },
@@ -25,7 +33,16 @@ export default function DataGrids({
         },
         { field: "email", headerName: "email", width: 230 },
         { field: "role", headerName: "role", width: 10 },
-        { field: "status", headerName: "status", width: 10 },
+        {
+            field: "status", // Nombre del campo
+            headerName: "status", // Nombre en la cabecera
+            width: 100, // Ancho de la columna
+            renderCell: (params) => (
+                params.row.status == 0 ? (
+                    <p>Activo</p>
+                ) : (<p>Inactivo</p>)
+            ),
+        },
         { field: "created_at", headerName: "fecha", width: 230 },
         {
             field: "actions", // Nombre del campo
