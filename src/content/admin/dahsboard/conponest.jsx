@@ -7,9 +7,6 @@ import axios from "axios";
 import isMountedRef from "../../../hooks/useRefMounted";
 import { CSpinner } from "@coreui/react";
 import Cookies from "js-cookie";
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import DoneAllIcon from '@mui/icons-material/DoneAll';
-import SendIcon from '@mui/icons-material/Send';
 import Alertas from "./alerta";
 
 
@@ -77,7 +74,7 @@ export default function Components() {
           <Stack sx={{ width: "100%" }} spacing={2}>
             {filteredData && filteredData.length > 0 ? (
               filteredData?.map((data) => (
-                <Alertas data={data} />
+                <Alertas data={data} getDataList={getDataList}/>
               ))
             ) : (<p><Alert variant="filled" severity="info">
               No Rows!!

@@ -398,14 +398,14 @@ h1 {
   color: black;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+  gap: 30px;
 }
 /* !LISTA DE TODOS LOS PRODUCTOS */
 .conter-pro {
   margin-bottom: 180px;
 }
 .card-pro-list {
-  width: 320px;
+  width: 260px;
 }
 .img-cards {
   height: 50vh;

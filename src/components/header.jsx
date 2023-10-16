@@ -8,14 +8,14 @@ import {
   COffcanvasBody,
   CNavItem,
   CNavLink,
+  CSpinner,
 } from "@coreui/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import Drawer from "@mui/joy/Drawer";
-import { Link } from "react-router-dom";
-import CloseIcon from "@mui/icons-material/Close";
-import { Button } from "@mui/joy";
+
+import { Button, Tooltip } from "@mui/joy";
 import Cookies from "js-cookie";
+import Drawers from "./drawers";
 
 export default function Header({
   allProducts,
@@ -24,40 +24,18 @@ export default function Header({
   setCountProducts,
   total,
   setTotal,
+  Seccion
 }) {
   const [visible, setVisible] = useState(false);
   const [Open, setOpen] = useState(false);
-  const [Drawes, setDrawes] = useState(false);
+
   var role = Cookies.get('role');
 
-  const Drawers = () => {
-    return (
-      <>
-        <Button onClick={() => setDrawes(!Drawes)} color="success">
-          Proceder al pago
-        </Button>
-        <Drawer open={Drawes} anchor="bottom" size="sx">
-          <div className="header-drawes">
-            <Button onClick={() => setDrawes(!Drawes)} variant="text">
-              <CloseIcon />
-            </Button>
-          </div>
-          <div className="conter-drawes">
-            <div>
-              <img src="/img/icons/shop_106574.png" alt="shop" />
-              <p>Recoger</p>
-            </div>
-            <div>
-              <a href="/pay">
-                <img src="/img/icons/delivery_46877.png" alt="pay" />
-                <p>Entregar</p>
-              </a>
-            </div>
-          </div>
-        </Drawer>
-      </>
-    );
-  };
+  const formattedNumber = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP'
+  }).format(total);
+
 
   const MenuPro = () => {
     return (
@@ -93,12 +71,16 @@ export default function Header({
               </div>
               <div className="cart-total">
                 <h3>Total:</h3>
-                <span className="total-pagar">${total}</span>
+                <span className="total-pagar">{formattedNumber}</span>
               </div>
               <div className="grid">
                 <Button onClick={() => onCleanCart()}>Vaciar Carrito</Button>
-                <Drawers />
-                <br />
+                <Drawers Seccion={Seccion}
+                  setAllproducts={setAllproducts}
+                  setCountProducts={setCountProducts}
+                  setTotal={setTotal}
+                  allProducts={allProducts}
+                />
               </div>
             </>
           ) : (

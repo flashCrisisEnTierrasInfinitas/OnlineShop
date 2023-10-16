@@ -28,7 +28,7 @@ export default function ProList() {
 
   const getDataList = useCallback(async () => {
     try {
-      const response = await axios.get(`/categoryProd`, {
+      const response = await axios.get(`/listActiveCategory`, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

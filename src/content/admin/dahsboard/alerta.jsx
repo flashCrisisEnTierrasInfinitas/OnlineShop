@@ -6,8 +6,9 @@ import GppBadIcon from "@mui/icons-material/GppBad";
 import Edit from "./edit";
 import axios from "axios";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
-export default function Alertas({ data }) {
+export default function Alertas({ data, getDataList }) {
     const cancelData = {
         status_venta: 1,
     };
@@ -19,8 +20,6 @@ export default function Alertas({ data }) {
     };
 
     const CancelStatus = async (id) => {
-        alert("venta cancelada", id);
-
         const response = await axios.put(`/ventas/${id}`, cancelData, {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -28,10 +27,25 @@ export default function Alertas({ data }) {
             },
         });
         console.log(response);
+        getDataList();
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Update Event'
+        })
     };
     const EntregadoStatus = async (id) => {
-        alert("venta cancelada", id);
-
         const response = await axios.put(`/ventas/${id}`, entregarData, {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -39,6 +53,23 @@ export default function Alertas({ data }) {
             },
         });
         console.log(response);
+        getDataList();
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Update Event'
+        })
     };
     const EnviarStatus = async (id) => {
         alert("venta cancelada", id);
@@ -50,6 +81,23 @@ export default function Alertas({ data }) {
             },
         });
         console.log(response);
+        getDataList();
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Update Event'
+        })
     };
 
     const TypeService = ({ data }) => {

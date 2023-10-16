@@ -60,7 +60,7 @@ const columns = [
 ];
 ;
 
-export default function Table({seccion}) {
+export default function Table({seccion,token}) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [loading, setLoading] = useState(true);
@@ -71,6 +71,8 @@ export default function Table({seccion}) {
       const response = await axios.post(`/ventasProductos/${seccion}`, {
         headers: {
           "Content-Type": "multipart/form-data",
+          'X-Requested-With': 'XMLHttpRequest',
+          'Authorization': 'Bearer ' + token,
         },
       });
       setData(response.data);

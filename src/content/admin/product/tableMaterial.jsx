@@ -4,6 +4,7 @@ import { CFormInput, CSpinner } from "@coreui/react";
 import isMountedRef from "../../../hooks/useRefMounted";
 import axios from "axios";
 import Icons from "./icons";
+import { Chip } from "@mui/material";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -32,12 +33,29 @@ const columns = [
     headerName: "status", // Nombre en la cabecera
     width: 100, // Ancho de la columna
     renderCell: (params) => (
-        params.row.status == 0 ? (
-            <p>Activo</p>
-        ) : (<p>Inactivo</p>)
+      params.row.status == 0 ? (
+        <p style={{color:'green'}}>Activo</p>
+      ) : (<p style={{color:'red'}}>Inactivo</p>)
     ),
-},
-  { field: "id_category", headerName: "Categoria", width: 10 },
+  },
+  {
+    field: "oferta", // Nombre del campo
+    headerName: "oferta", // Nombre en la cabecera
+    width: 100, // Ancho de la columna
+    renderCell: (params) => (
+      params.row.oferta == 0 ? (
+        <Chip label="NO" color="primary" />
+      ) : (<Chip label="SI" color="error" />)
+    ),
+  },
+  {
+    field: "name",
+    headerName: "Categoria",
+    width: 130,
+    renderCell: (params) => (
+      <p style={{ color: params.row.color }}>{params.row.name}</p>
+    ),
+  },
   { field: "created_at", headerName: "Fecha", width: 130 },
   { field: "precioPro", headerName: "Precio", width: 130 },
   { field: "stockPro", headerName: "Stock", width: 10 },
@@ -71,7 +89,7 @@ export default function DataTable() {
   React.useEffect(() => {
     getDataList();
   }, [getDataList]);
- 
+
   if (loading) {
     return (
       <div className="d-flex justify-content-center">

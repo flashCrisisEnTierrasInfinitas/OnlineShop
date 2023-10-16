@@ -12,46 +12,25 @@ import {
 import CIcon from "@coreui/icons-react";
 import { cilBellExclamation,cilFire,cilInfo,cilCheck
 } from "@coreui/icons";
-import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
 import isMountedRef from "../../../../hooks/useRefMounted";
+import Cookies from "js-cookie";
 
-const data = [
-  {
-    id: 1,
-    status: 1,
-    name: "06/05/2023",
-    age: "Su compra fue aprobada, en un tiempo estimado de una hora llegara a su puerta",
-  },
-  {
-    id: 2,
-    status: 0,
-    name: "07/05/2023",
-    age: "Su compra fue rechazada por motivos de datos incorrectos",
-  },
-  {
-    id: 3,
-    status: 2,
-    name: "07/05/2023",
-    age: "Verifique sus datos para poder hacer compras en nuestra tienda virtual",
-  },
-  // Agrega más datos aquí
-];
-
-
-
-export default function Table() {
+export default function Table({Seccion}) {
   const itemsPerPage = 5; // Cambia esto según tus necesidades
   const [currentPage, setCurrentPage] = useState(1);
+  const token = Cookies.get("token");
 
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const getDataList = useCallback(async () => {
     try {
-      const response = await axios.get(`/ventas/karen`, {
+      const response = await axios.get(`/ventas/${Seccion}`, {
         headers: {
           "Content-Type": "multipart/form-data",
+          'X-Requested-With': 'XMLHttpRequest',
+          'Authorization': 'Bearer ' + token,
         },
       });
       setData(response.data);

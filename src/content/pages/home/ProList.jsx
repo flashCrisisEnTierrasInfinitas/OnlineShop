@@ -26,12 +26,13 @@ export default function ProList({
   const [searchTerm, setSearchTerm] = useState("");
 
   const [data, setData] = useState([]);
+  const [oferta, setOferta] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const getDataList = useCallback(async () => {
     try {
-      const response = await axios.get(`/product`, {
+      const response = await axios.get(`/listActiveProduct`, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -48,6 +49,25 @@ export default function ProList({
   useEffect(() => {
     getDataList();
   }, [getDataList]);
+  const getOfertaList = useCallback(async () => {
+    try {
+      const response = await axios.get(`/producOferta`, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      setOferta(response.data);
+      setLoading(false);
+    } catch (err) {
+      console.error(err);
+      setError(err);
+      setLoading(false);
+    }
+  }, [isMountedRef]);
+  useEffect(() => {
+    getOfertaList();
+  }, [getOfertaList]);
 
   if (loading) {
     return (
@@ -118,7 +138,7 @@ export default function ProList({
       </div>
       <div>
         <DefaultCarousel
-          data={data}
+          data={oferta}
           allProducts={allProducts}
           setAllproducts={setAllproducts}
           countProducts={countProducts}
@@ -155,7 +175,7 @@ export default function ProList({
                       alt={product.nombrePro}
                     />
                   </AspectRatio>
-                  <CardContent orientation="horizontal">
+                  <div className="grid">
                     <div className="text-product">
                       <Typography level="body-xs">Total price:</Typography>
                       <Typography fontSize="lg" fontWeight="lg">
@@ -169,7 +189,9 @@ export default function ProList({
                       </Typography>
                     </div>
                     <div className="flex boton-product">
-                      <Tooltip title="Agregar al carrito">
+                      {product.stockPro == 0 ? (
+                        ''
+                      ) : (<Tooltip title="Agregar al carrito">
                         <Button
                           variant="contained"
                           color="warning"
@@ -177,7 +199,7 @@ export default function ProList({
                         >
                           <AddShoppingCartIcon />
                         </Button>
-                      </Tooltip>
+                      </Tooltip>)}
                       <Tooltip title="Ver detalle">
                         <a href={`/DetalleProduc/${product.id}`}>
                           <Button variant="contained">
@@ -186,7 +208,7 @@ export default function ProList({
                         </a>
                       </Tooltip>
                     </div>
-                  </CardContent>
+                  </div>
                 </Card>
               </div>
             </>

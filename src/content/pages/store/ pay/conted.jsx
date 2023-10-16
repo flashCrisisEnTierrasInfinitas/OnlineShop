@@ -20,14 +20,13 @@ export default function Conted({
   const [loading, setLoading] = useState(false);
   const data = localStorage.getItem('allProducts');
   const productos = JSON.parse(data);
-  console.table(productos)
 
   const [formData, setFormData] = useState({
     user_venta: "Admin",
     user_compra: Seccion,
     direccion: "",
     user_telefono: "",
-    tipo_servicio: 0,
+    tipo_servicio: 1,
     img: image,
     productos: productos.map(producto => ({
       id: producto.id,
@@ -74,6 +73,7 @@ export default function Conted({
           'Authorization': 'Bearer ' + token,
         },
       });
+      console.log(response)
       setLoading(false);
       setAllproducts([]);
       setTotal(0);

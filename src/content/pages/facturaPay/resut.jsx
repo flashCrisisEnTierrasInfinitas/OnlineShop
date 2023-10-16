@@ -6,7 +6,7 @@ import isMountedRef from "../../../hooks/useRefMounted";
 export default function Result({ id }) {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    console.table(data);
+
     const getDataList = useCallback(async () => {
         try {
             const response = await axios.get(`/ventasProductos/${id}`, {
@@ -24,7 +24,7 @@ export default function Result({ id }) {
     useEffect(() => {
         getDataList();
     }, [getDataList]);
-
+    getDataList();
     if (loading) {
         return (
             <div className="d-flex justify-content-center">

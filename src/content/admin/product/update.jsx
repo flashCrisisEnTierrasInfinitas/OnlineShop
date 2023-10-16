@@ -35,6 +35,7 @@ export default function Update({data, token }) {
         status: data.row.status,
         precioPro: data.row.precioPro,
         stockPro: data.row.stockPro,
+        oferta: data.row.oferta,
         img: image,
     });
 
@@ -195,6 +196,18 @@ export default function Update({data, token }) {
                                 value={formData.stockPro}
                                 onChange={handleChange}
                             />
+                        </CCol>
+                        <CCol md={12}>
+                        <CFormLabel>Oferta?</CFormLabel>
+                            <CFormSelect
+                                id="oferta"
+                                name="oferta"
+                                value={formData.oferta}
+                                onChange={handleChange}
+                            >
+                                <option value={0}>NO</option>
+                                <option value={1}>SI</option>
+                            </CFormSelect>
                         </CCol>
                         <CCol md={12}>
                             <CFormInput

@@ -26,11 +26,13 @@ import DetalleProduc from "./content/pages/store/detalle";
 import protectedRoute from "./Auth/ProtectedRoute";
 import protectedUser from "./Auth/RoutesUser";
 import Cookies from "js-cookie";
+import Oficina from "./content/pages/store/oficina";
 
 function App() {
-  //axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
   axios.defaults.baseURL = "http://localhost:8000/api";
   const seccion = Cookies.get("seccion");
+  const token = Cookies.get("token");
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
     if (saveEquipos) {
@@ -103,6 +105,7 @@ function App() {
               setTotal={setTotal}
               countProducts={countProducts}
               setCountProducts={setCountProducts}
+              Seccion={seccion}
             />
           </header>
           <Routes>
@@ -171,8 +174,21 @@ function App() {
                   />
                 }
               />
+              <Route
+                path="/oficina"
+                element={
+                  <Oficina
+                    total={total}
+                    setAllproducts={setAllproducts}
+                    setTotal={setTotal}
+                    setCountProducts={setCountProducts}
+                    allProducts={allProducts}
+                    Seccion={seccion}
+                  />
+                }
+              />
               <Route path="/Profile" element={<Profile />} />
-              <Route path="/notificaciones" element={<Notificaciones />} />
+              <Route path="/notificaciones" element={<Notificaciones Seccion={seccion} token={token}/>} />
               <Route path="/Historial" element={<Historial />} />
               <Route path="/MiLista" element={<MiLista seccion={seccion}/>} />
             </Route>
