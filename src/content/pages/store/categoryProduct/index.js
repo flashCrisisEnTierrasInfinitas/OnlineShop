@@ -13,30 +13,27 @@ export default function CategoryProduct({
   setTotal,
 }) {
   const { id } = useParams();
-  const { filter, setFilter } = useState([]);
-
-  localStorage.setItem("key", id);
-  const key = localStorage.getItem("key");
+  const [idFilter,setIdFilter] = useState(id);
+  console.log("🚀 ~ file: index.js:19 ~ idFilter:", idFilter)
 
   return (
     <div className="conter-home">
       <div className="header-pay">
-        <Header />
+        <Header id={id}/>
       </div>
-      <div className="flex">
-        <div>
-          <Filter setFilter={setFilter} filter={filter} id={id}/>
-        </div>
+      <div className="row">
+        <div className="col-9 margin-90">
         <ProList
-          id={id}
-          key={key}
           allProducts={allProducts}
           setAllproducts={setAllproducts}
           total={total}
           setTotal={setTotal}
           countProducts={countProducts}
           setCountProducts={setCountProducts}
+          idFilter={idFilter}
+          id={id}
         />
+        </div>
       </div>
     </div>
   );

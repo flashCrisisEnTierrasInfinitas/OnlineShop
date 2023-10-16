@@ -1,9 +1,9 @@
 export default function Head({ data }) {
     return (
         <div className="head-factura">
-            <h1>ASUPRO</h1>
-            <p>Colombia</p>
-
+            <div className="img-factura">
+                <img src="/img/logos/logo1.png" alt="" />
+            </div>
             <div className="fecha-factura">
                 <label>{new Date(data.created_at).toLocaleString()}</label>
             </div>

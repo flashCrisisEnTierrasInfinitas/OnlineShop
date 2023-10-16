@@ -18,7 +18,7 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-export default function Update({ key, setKey, data }) {
+export default function Update({ key, getDataList, data }) {
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState(null);
@@ -51,6 +51,7 @@ export default function Update({ key, setKey, data }) {
             });
             setVisible(false);
             setLoading(false);
+            getDataList();
             return Swal.fire({
                 position: "center",
                 icon: "success",

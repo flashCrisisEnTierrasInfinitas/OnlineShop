@@ -1,23 +1,23 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import { CSpinner } from "@coreui/react";
 
 export default function DataGrids({
-    data
+    data,
+    loading
 }) {
-    const Status = ({ data }) => {
-        console.log(data)
-        if (data.status == 0) {
-            return (<p>sapo</p>)
-        }
-        if (data.status == 1) {
-            return <>Inactivo</>
-        }
-    }
 
+    if (loading) {
+        return (
+            <div className="d-flex justify-content-center">
+                <CSpinner color="danger" />
+            </div>
+        );
+    }
     const columns = [
         { field: "id", headerName: "ID", width: 20 },
         { field: "nombrePro", headerName: "Nombre", width: 130 },
-        { field: "cantidad", headerName: "cantidad", width: 130 },
+        { field: "quantity", headerName: "cantidad", width: 130 },
         {
             field: "img",
             headerName: "img",
@@ -30,7 +30,7 @@ export default function DataGrids({
                 />
             ),
         },
-        { field: "precio", headerName: "precio", width: 130 },  
+        { field: "precioPro", headerName: "precio", width: 130 },  
         { field: "created_at", headerName: "fecha", width: 230 },
     ];
 

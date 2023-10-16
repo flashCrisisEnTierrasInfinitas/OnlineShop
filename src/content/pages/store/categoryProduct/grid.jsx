@@ -20,6 +20,8 @@ export default function ProList({
   setCountProducts,
   total,
   setTotal,
+  idFilter,
+  id
 }) {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -29,7 +31,7 @@ export default function ProList({
 
   const getDataList = useCallback(async () => {
     try {
-      const response = await axios.get(`/product`, {
+      const response = await axios.get(`/listCategoriPro/${id}`, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -105,7 +107,7 @@ export default function ProList({
 
   return (
     <div className="margin-90 conter-pro">
-      <div className="conter-search top-50">
+      <div className="conter-search">
         <CFormInput
           placeholder="¿Qué estás buscando?"
           className="input-search"
@@ -114,53 +116,52 @@ export default function ProList({
         />
       </div>
       <div>
-        <div className="box-vendido top-50">
+      <div className="box-vendido">
           {filteredData?.map((product) => (
-            <div className="card-pro-list">
-              <Card key={product.id}>
-                <div>
-                  <h1 className="title-card-list">{product.nombrePro}</h1>
-                  <Typography level="body-sm">{product.descripPro}</Typography>
-                  <IconButton
-                    aria-label="bookmark Bahamas Islands"
-                    variant="plain"
-                    color="neutral"
-                    size="sm"
-                    sx={{
-                      position: "absolute",
-                      top: "0.875rem",
-                      right: "0.5rem",
-                    }}
-                  >
-                    <BookmarkAdd />
-                  </IconButton>
-                </div>
-                <AspectRatio minHeight="120px" maxHeight="400px">
-                  <img
-                    src={product.img}
-                    srcSet={product.img}
-                    loading="lazy"
-                    alt={product.nombrePro}
-                  />
-                </AspectRatio>
-                <CardContent orientation="horizontal">
-                  <div className="text-product">
-                    <Typography level="body-xs">Total price:</Typography>
-                    <Typography fontWeight="lg">
-                      ${product.precioPro.toLocaleString("es-CO")}
-                    </Typography>
+            <>
+              <div className="card-pro-list">
+                <Card key={product.id}>
+                  <div>
+                    <h1 className="title-card-list">{product.nombrePro}</h1>
+                    <IconButton
+                      aria-label="bookmark Bahamas Islands"
+                      variant="plain"
+                      color="neutral"
+                      size="sm"
+                      sx={{
+                        position: "absolute",
+                        top: "0.875rem",
+                        right: "0.5rem",
+                      }}
+                    >
+                      <BookmarkAdd />
+                    </IconButton>
                   </div>
-                  <div className="text-product">
-                    <Typography level="body-xs">Total Stock:</Typography>
-                    <Typography fontSize="lg" fontWeight="lg">
-                      {product.stockPro}
-                    </Typography>
-                  </div>
-                  <div className="flex boton-product">
-                    {product.noSePuedeComprar ? (
-                      <p>No Stock</p>
-                    ) : (
-                      <Tooltip title="Agregar al carrito">
+                  <AspectRatio minHeight="120px" maxHeight="400px">
+                    <img
+                      src={product.img}
+                      srcSet={product.img}
+                      loading="lazy"
+                      alt={product.nombrePro}
+                    />
+                  </AspectRatio>
+                  <div className="grid">
+                    <div className="text-product">
+                      <Typography level="body-xs">Total price:</Typography>
+                      <Typography fontSize="lg" fontWeight="lg">
+                        ${product.precioPro.toLocaleString("es-CO")}
+                      </Typography>
+                    </div>
+                    <div className="text-product">
+                      <Typography level="body-xs">Total Stock:</Typography>
+                      <Typography fontSize="lg" fontWeight="lg">
+                        {product.stockPro}
+                      </Typography>
+                    </div>
+                    <div className="flex boton-product">
+                      {product.stockPro == 0 ? (
+                        ''
+                      ) : (<Tooltip title="Agregar al carrito">
                         <Button
                           variant="contained"
                           color="warning"
@@ -168,19 +169,19 @@ export default function ProList({
                         >
                           <AddShoppingCartIcon />
                         </Button>
+                      </Tooltip>)}
+                      <Tooltip title="Ver detalle">
+                        <a href={`/DetalleProduc/${product.id}`}>
+                          <Button variant="contained">
+                            <LoupeIcon />
+                          </Button>
+                        </a>
                       </Tooltip>
-                    )}
-                    <Tooltip title="Ver detalle">
-                      <a href={`/DetalleProduc/${product.id}`}>
-                        <Button variant="contained">
-                          <LoupeIcon />
-                        </Button>
-                      </a>
-                    </Tooltip>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
+                </Card>
+              </div>
+            </>
           ))}
         </div>
       </div>

@@ -7,7 +7,7 @@ import { CButton, CSpinner } from "@coreui/react";
 import { useState } from "react";
 import Update from "./update";
 
-export default function Icons({ data, key, setKey, token }) {
+export default function Icons({ data, key, setKey, token,getDataList }) {
   const ID = data.id;
   const [loading, setLoading] = useState(false);
   const datas={
@@ -24,6 +24,7 @@ export default function Icons({ data, key, setKey, token }) {
           'Authorization': 'Bearer ' + token,
         },
       });
+      getDataList();
       setKey(key + 1);
       setLoading(false)
       return Swal.fire({
@@ -48,7 +49,7 @@ export default function Icons({ data, key, setKey, token }) {
 
   return (
     <div className="conter-icons">
-      <Update setKey={setKey} key={key} data={data}/>
+      <Update setKey={setKey} key={key} data={data} getDataList={getDataList}/>
       <CButton
         color="danger"
         variant="outline" onClick={() => Delete(ID)}

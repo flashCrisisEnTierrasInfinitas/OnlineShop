@@ -57,7 +57,7 @@ export default function DataTable({ setKey, key, token }) {
       field: "actions", // Nombre del campo
       headerName: "Acciones", // Nombre en la cabecera
       width: 130, // Ancho de la columna
-      renderCell: (params) => <Icons data={params} setKey={setKey} key={key} token={token} />,
+      renderCell: (params) => <Icons getDataList={getDataList} data={params} setKey={setKey} key={key} token={token} />,
     },
   ];
 

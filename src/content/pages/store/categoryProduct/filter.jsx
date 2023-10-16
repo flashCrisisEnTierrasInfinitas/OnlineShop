@@ -3,12 +3,12 @@ import { useCallback, useEffect, useState } from "react";
 import isMountedRef from "../../../../hooks/useRefMounted";
 import { Button, ButtonGroup } from "@mui/joy";
 
-export default function Filter({ setFilter, filter, id }) {
+export default function Filter({ setIdFilter,id }) {
   const [data, setData] = useState([]);
 
   const getDataList = useCallback(async () => {
     try {
-      const response = await axios.get(`/categoryProd`, {
+      const response = await axios.get(`/categoryProd/${id}`, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -23,22 +23,20 @@ export default function Filter({ setFilter, filter, id }) {
   }, [getDataList]);
 
   const onChangeFilter = (id) => {
-    localStorage.setItem("key", id);
+    setIdFilter(id);
   };
 
   return (
-    <div className="conter-filter">
+    <>
       <h1>Filtrar por:</h1>
-      <div className="conter-bot-filter">
+      <div>
         <ButtonGroup orientation="vertical">
           <Button>Todo</Button>
-          {data.map((data) => (
             <Button onClick={() => onChangeFilter(data.id)} variant="outlined">
               {data.name}
             </Button>
-          ))}
         </ButtonGroup>
       </div>
-    </div>
+    </>
   );
 }

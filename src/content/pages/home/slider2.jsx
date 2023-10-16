@@ -113,15 +113,17 @@ export default function DefaultCarousel({
                   </Typography>
                 </div>
                 <div className="flex boton-product">
-                  <Tooltip title="Agregar al carrito">
-                    <Button
-                      variant="contained"
-                      color="warning"
-                      onClick={() => onAddProduct(product)}
-                    >
-                      <AddShoppingCartIcon />
-                    </Button>
-                  </Tooltip>
+                {product.stockPro == 0 ? (
+                        ''
+                      ) : (<Tooltip title="Agregar al carrito">
+                        <Button
+                          variant="contained"
+                          color="warning"
+                          onClick={() => onAddProduct(product)}
+                        >
+                          <AddShoppingCartIcon />
+                        </Button>
+                      </Tooltip>)}
                   <Tooltip title="Ver detalle">
                     <a href={`/DetalleProduc/${product.id}`}>
                       <Button variant="contained">

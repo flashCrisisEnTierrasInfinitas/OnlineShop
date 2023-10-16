@@ -1005,7 +1005,6 @@ p {
 }
 .img-pago {
   margin: 0 auto;
-  height: 70vh;
   width: 50%;
 }
 .img-pago img {
@@ -1049,6 +1048,15 @@ p {
 .head-factura {
   text-align: center;
   padding: 5px;
+}
+.img-factura{
+  height: 20vh;
+  width: 50%;
+  margin: 0 auto;
+}
+.img-factura im{
+  height: 100%;
+  width: 100%;
 }
 .resul-factura {
   background-color: whitesmoke;
