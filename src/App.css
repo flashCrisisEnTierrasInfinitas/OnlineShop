@@ -1050,11 +1050,11 @@ p {
   padding: 5px;
 }
 .img-factura{
-  height: 20vh;
+  height: 30vh;
   width: 50%;
   margin: 0 auto;
 }
-.img-factura im{
+.img-factura img{
   height: 100%;
   width: 100%;
 }
