@@ -24,7 +24,8 @@ export default function Header({
   setCountProducts,
   total,
   setTotal,
-  Seccion
+  Seccion,
+  contNotifi
 }) {
   const [visible, setVisible] = useState(false);
   const [Open, setOpen] = useState(false);
@@ -140,7 +141,7 @@ export default function Header({
               <Admin />
               <a href="/notificaciones">
                 <i className="fa fa-bell" aria-hidden="true">
-                  <span className="conterProduct">3</span>
+                  <span className="conterProduct">{contNotifi}</span>
                 </i>
               </a>
               <a onClick={() => setOpen(!Open)}>

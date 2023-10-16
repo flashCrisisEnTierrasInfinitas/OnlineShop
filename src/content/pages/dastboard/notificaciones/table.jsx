@@ -19,15 +19,13 @@ import Cookies from "js-cookie";
 import { Alert, AlertTitle, Chip } from "@mui/material";
 import PDF from "./pdf";
 
-export default function Table({ Seccion }) {
-  const itemsPerPage = 5; // Cambia esto según tus necesidades
-  const [currentPage, setCurrentPage] = useState(1);
+export default function Table({ Seccion, setContNotifi }) {
   const token = Cookies.get("token");
-
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  console.log("🚀 ~ file: table.jsx:26 ~ Table ~ data:", data)
 
+  const uniqueCount = new Set(data).size;
+  setContNotifi(uniqueCount);
   const getDataList = useCallback(async () => {
     try {
       const response = await axios.get(`/ventas/${Seccion}`, {
