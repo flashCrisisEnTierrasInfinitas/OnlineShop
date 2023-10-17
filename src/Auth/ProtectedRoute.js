@@ -7,16 +7,20 @@ function protectedRoute() {
   // Obtenemos el token del LocalStorage
 
   var getToken = Cookies.get('token');
- 
+  var role = Cookies.get('role');
+ var hastRole =role;
   // Verificamos si el usuario está autenticado
   let isLogged = getToken;
 
-
+  const hasPermission = hastRole === "1";
   // Si el usuario no está autenticado, redireccionamos a la página de inicio de sesión
   if (!isLogged) {
     return <Navigate to="/login" />;
   }
-
+  if (!hasPermission) {
+    return <Navigate to="/" />; // O puedes retornar otro componente para indicar que no tiene permiso
+  }
+  //
   // Si el usuario está autenticado, mostramos el contenido de la ruta protegida
   return <Outlet />;
 }

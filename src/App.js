@@ -125,7 +125,7 @@ function App() {
               }
             />
 
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login/>} />
             <Route path="/ProductosCat" element={<ProductoCate />} />
             <Route
               path="/DetalleProduc/:id"
@@ -155,7 +155,6 @@ function App() {
             />
             {/* TODO:routes the admin */}
             <Route element={protectedRoute()}>
-              <Route path="/dahsboard" element={<DahsboardAdmin />} />
               <Route path="/dahsboard" element={<DahsboardAdmin />} />
               <Route path="/User" element={<User />} />
               <Route path="/product" element={<Product />} />

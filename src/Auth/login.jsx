@@ -4,8 +4,6 @@ import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import Cookies from 'js-cookie';
-import { Button } from "@mui/joy";
-import Alerts from "../components/alerts";
 
 export default function Login() {
   const [log, setLog] = useState(false);
@@ -15,10 +13,11 @@ export default function Login() {
   const [seccion, setSeccion] = useState('');
   const [id, setId] = useState('');
   const [open, setOpen] = useState(false);
+  const hastRole = btoa(role);
 
   const Cooki = () => {
     Cookies.set('token', token, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
-    Cookies.set('role', role, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
+    Cookies.set('role', hastRole, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
     Cookies.set('seccion', seccion, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
     Cookies.set('id', id, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
   }
@@ -47,9 +46,12 @@ export default function Login() {
       setSeccion(response.data.seccion);
       setId(response.data.id);
       setLoading(false);
+      
+      if(response.data.role==1){
+        return (window.location.href = "/dahsboard");
+      }
       return (window.location.href = "/");
     } catch (error) {
-      console.error("Error al iniciar sesión:", error.response.data.error);
       setLoading(false);
       setOpen(true);
       const Toast = Swal.mixin({

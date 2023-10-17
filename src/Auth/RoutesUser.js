@@ -19,9 +19,7 @@ function protectedUser() {
   if (!isLogged) {
     return <Navigate to="/login" />;
   }
-  if (!hasPermission) {
-    return <Navigate to="/" />; // O puedes retornar otro componente para indicar que no tiene permiso
-  }
+
   // Si el usuario está autenticado, mostramos el contenido de la ruta protegida
   return <Outlet />;
 }

@@ -8,7 +8,6 @@ import {
   COffcanvasBody,
   CNavItem,
   CNavLink,
-  CSpinner,
 } from "@coreui/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
@@ -31,6 +30,7 @@ export default function Header({
   const [Open, setOpen] = useState(false);
 
   var role = Cookies.get('role');
+  var hastRole = role;
 
   const formattedNumber = new Intl.NumberFormat('es-CO', {
     style: 'currency',
@@ -107,7 +107,7 @@ export default function Header({
   };
 
   const Admin = () => {
-    if (role == 1) {
+    if (hastRole == 1) {
       return (
         <a href="/dahsboard">
           <i class="fa fa-lock" aria-hidden="true"></i>
