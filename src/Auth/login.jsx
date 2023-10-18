@@ -13,11 +13,11 @@ export default function Login() {
   const [seccion, setSeccion] = useState('');
   const [id, setId] = useState('');
   const [open, setOpen] = useState(false);
-  const hastRole = btoa(role);
+
 
   const Cooki = () => {
     Cookies.set('token', token, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
-    Cookies.set('role', hastRole, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
+    Cookies.set('role', role, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
     Cookies.set('seccion', seccion, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
     Cookies.set('id', id, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
   }

@@ -1,13 +1,12 @@
 import Stack from "@mui/material/Stack";
-import GppBadIcon from "@mui/icons-material/GppBad";
-import Edit from "./edit";
-import { Tooltip, Chip, Alert } from "@mui/material";
+import { Tooltip, Chip, Alert, Button } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import isMountedRef from "../../../hooks/useRefMounted";
 import { CSpinner } from "@coreui/react";
 import Cookies from "js-cookie";
 import Alertas from "./alerta";
+import Toast from "./toast";
 
 
 export default function Components() {
@@ -58,6 +57,7 @@ export default function Components() {
   return (
 
     <div className="conter-daly">
+      <Toast />
       {Error ? (<Alert variant="filled" severity="error">
         {Message}
       </Alert>) : (
@@ -71,10 +71,17 @@ export default function Components() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
+          <div className="boton-product">
+            <Button variant="contained" color="warning">Nuevos</Button>
+            <Button variant="contained" color="info">Enviados</Button>
+            <Button variant="contained" color="success">Entregados</Button>
+            <Button variant="contained" color="error">Cancelado</Button>
+          </div>
+          <br />
           <Stack sx={{ width: "100%" }} spacing={2}>
             {filteredData && filteredData.length > 0 ? (
               filteredData?.map((data) => (
-                <Alertas data={data} getDataList={getDataList}/>
+                <Alertas data={data} getDataList={getDataList} />
               ))
             ) : (<p><Alert variant="filled" severity="info">
               No Rows!!

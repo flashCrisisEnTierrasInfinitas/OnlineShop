@@ -105,3 +105,8 @@
 .chart {
   margin: 20px;
 }
+.conter-toast {
+  position: absolute;
+  top:0;
+  left: 0;
+}
