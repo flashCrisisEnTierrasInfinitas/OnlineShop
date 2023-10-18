@@ -15,6 +15,7 @@ export default function Components() {
   const [data, setData] = useState([]);
   const [Error, setError] = useState(false);
   const [Message, setMessage] = useState([]);
+  const [statusVen, setStatusVen] = useState(0);
   var getToken = Cookies.get('token');
 
   const getDataList = useCallback(async () => {
@@ -36,7 +37,7 @@ export default function Components() {
   }, [isMountedRef]);
   useEffect(() => {
     getDataList();
-  }, [getDataList]);
+  }, [statusVen]);
 
   if (loading) {
     return (
@@ -50,14 +51,19 @@ export default function Components() {
   const filteredData = data?.filter((item) => {
     const itemId = String(item.id); // Asegura que item.id sea una cadena
     const searchTermLower = searchTerm.toLowerCase(); // Convierte la búsqueda a minúsculas
-    return itemId.includes(searchTermLower);
+   
+    return (
+      itemId.includes(searchTermLower) && (item.status_venta === statusVen)
+    );
+    
   });
 
-
+  const haldeClikStatus = async (id) => {
+    setStatusVen(id);
+  }
   return (
 
     <div className="conter-daly">
-      <Toast />
       {Error ? (<Alert variant="filled" severity="error">
         {Message}
       </Alert>) : (
@@ -72,10 +78,10 @@ export default function Components() {
             />
           </div>
           <div className="boton-product">
-            <Button variant="contained" color="warning">Nuevos</Button>
-            <Button variant="contained" color="info">Enviados</Button>
-            <Button variant="contained" color="success">Entregados</Button>
-            <Button variant="contained" color="error">Cancelado</Button>
+            <Button variant="contained" color="warning" onClick={() => haldeClikStatus(0)}>Nuevos</Button>
+            <Button variant="contained" color="info" onClick={() => haldeClikStatus(2)}>Enviados</Button>
+            <Button variant="contained" color="success" onClick={() => haldeClikStatus(3)}>Entregados</Button>
+            <Button variant="contained" color="error" onClick={() => haldeClikStatus(1)}>Cancelados</Button>
           </div>
           <br />
           <Stack sx={{ width: "100%" }} spacing={2}>
