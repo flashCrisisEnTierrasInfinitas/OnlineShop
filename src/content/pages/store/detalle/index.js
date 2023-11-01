@@ -5,6 +5,7 @@ import axios from "axios";
 import WestIcon from "@mui/icons-material/West";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Button } from "@mui/material";
 
 export default function DetalleProduc({
   allProducts,
@@ -118,12 +119,9 @@ export default function DetalleProduc({
         <h3 className="color-gray">{data.descripPro}</h3>
       </div>
       <div className="boton-detalle">
-        <button
-          className="btn1 btn-secondary"
-          onClick={() => onAddProduct(data)}
-        >
-          Agregar al Carrito
-        </button>
+        <Button variant="contained" onClick={() => onAddProduct(data)}>
+          Agregar
+        </Button>
       </div>
     </div>
   );

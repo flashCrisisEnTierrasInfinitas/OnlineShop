@@ -884,7 +884,8 @@ p {
   background-color: #fff;
   position: absolute;
   width: 100%;
-  z-index: 100;
+  z-index: 40;
+  margin-top: 9ch;
 }
 .title-detalle {
   font-size: 2em;
@@ -932,11 +933,6 @@ p {
   align-items: center;
   justify-content: center;
   margin: 20px;
-  padding: 5px;
-}
-.boton-detalle button {
-  font-size: 20px;
-  padding: 20px;
 }
 /* ? SLIDER DEL HOME */
 .styles-module_carousel-arrow__26sRw {
