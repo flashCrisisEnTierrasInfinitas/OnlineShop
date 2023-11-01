@@ -12,25 +12,30 @@ import {
     CModalTitle,
     CSpinner,
 } from "@coreui/react";
-import { Button } from "@mui/material";
+import { Button, MenuItem, Select } from "@mui/material";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
+import OutdoorGrillIcon from "@mui/icons-material/OutdoorGrill";
+import BakeryDiningIcon from "@mui/icons-material/BakeryDining";
+import DiningIcon from "@mui/icons-material/Dining";
+import LocalCafeIcon from '@mui/icons-material/LocalCafe';
+import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 
-
-export default function New({ key, setKey }) {
-
+export default function New() {
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState(null);
-    var getToken = Cookies.get('token');
+    var getToken = Cookies.get("token");
 
     const [formData, setFormData] = useState({
         name: "",
         color: "",
         img: image,
         state: 0,
+        ico: 'OfflineBoltIcon'
     });
 
     const handleChange = (e) => {
@@ -44,16 +49,13 @@ export default function New({ key, setKey }) {
     const handleSubmit = async () => {
         try {
             setLoading(true);
-            const response = await axios.post(
-                "/categoryProd",
-                formData,
-                {
-                    headers: {
-                        ' X-Requested-With': 'XMLHttpRequest',
-                        'Authorization': 'Bearer ' + getToken,
-                        'Content-Type': 'multipart/form-data',
-                    },
-                });
+            const response = await axios.post("/categoryProd", formData, {
+                headers: {
+                    " X-Requested-With": "XMLHttpRequest",
+                    Authorization: "Bearer " + getToken,
+                    "Content-Type": "multipart/form-data",
+                },
+            });
             setVisible(false);
             setLoading(false);
             return Swal.fire({
@@ -90,7 +92,9 @@ export default function New({ key, setKey }) {
 
     return (
         <>
-            <Button variant="contained" onClick={() => setVisible(!visible)}>Nuevo</Button>
+            <Button variant="contained" onClick={() => setVisible(!visible)}>
+                Nuevo
+            </Button>
             <CModal
                 size="xl"
                 backdrop="static"
@@ -112,7 +116,7 @@ export default function New({ key, setKey }) {
                                 onChange={handleChange}
                             />
                         </CCol>
-                        <CCol md={6}>
+                        <CCol md={4}>
                             <CFormInput
                                 type="color"
                                 name="color"
@@ -122,13 +126,41 @@ export default function New({ key, setKey }) {
                             />
                         </CCol>
                         <CCol md={12}>
+                            <CFormLabel>Ico</CFormLabel>
+                            <Select style={{
+                                width: '100%'
+                            }}
+                                name="ico"
+                                value={formData.ico}
+                                onChange={handleChange}
+                            >
+                                <MenuItem value='OfflineBoltIcon'>
+                                    <OfflineBoltIcon />
+                                </MenuItem>
+                                <MenuItem value='OutdoorGrillIcon'>
+                                    <OutdoorGrillIcon />
+                                </MenuItem>
+                                <MenuItem value='BakeryDiningIcon'>
+                                    <BakeryDiningIcon />
+                                </MenuItem>
+                                <MenuItem value='LocalFloristIcon'>
+                                    <LocalFloristIcon />
+                                </MenuItem>
+                                <MenuItem value='LocalCafeIcon'>
+                                    <LocalCafeIcon />
+                                </MenuItem>
+                                <MenuItem value='DiningIcon'>
+                                    <DiningIcon />
+                                </MenuItem>
+                            </Select>
+                        </CCol>
+                        <CCol md={12}>
                             <CFormInput
                                 type="file"
                                 name="featured"
                                 accept="image/*"
                                 onChange={handleImageChange}
                             />
-
                         </CCol>
                         <CCol md={12}>
                             <CFormLabel>Estado</CFormLabel>
@@ -151,9 +183,15 @@ export default function New({ key, setKey }) {
                     <CButton color="primary" onClick={() => handleSubmit()}>
                         {loading ? (
                             <div className="progess">
-                                <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+                                <CSpinner
+                                    color="light"
+                                    size="sm"
+                                    style={{ width: "1rem", height: "1rem" }}
+                                />
                             </div>
-                        ) : (<label>Save</label>)}
+                        ) : (
+                            <label>Save</label>
+                        )}
                     </CButton>
                 </CModalFooter>
             </CModal>

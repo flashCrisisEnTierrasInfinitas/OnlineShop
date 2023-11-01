@@ -14,6 +14,7 @@ import { Button } from "@mui/material";
 import Swal from "sweetalert2";
 import { Tooltip } from "@mui/joy";
 import DefaultCarousel from "./slider2";
+import Categorias from "./categorias";
 
 export default function ProList({
   allProducts,
@@ -137,6 +138,7 @@ export default function ProList({
         />
       </div>
       <div>
+        <Categorias/>
         <DefaultCarousel
           data={oferta}
           allProducts={allProducts}
@@ -194,7 +196,9 @@ export default function ProList({
                       ) : (<Tooltip title="Agregar al carrito">
                         <Button
                           variant="contained"
-                          color="warning"
+                          style={{
+                            backgroundColor:'#F44F1A'
+                          }}
                           onClick={() => onAddProduct(product)}
                         >
                           <AddShoppingCartIcon />

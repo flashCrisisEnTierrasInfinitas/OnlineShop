@@ -137,7 +137,9 @@ h1 {
 .color-gray {
   color: rgba(128, 128, 128, 0.767);
 }
-
+.color-naranja {
+  color: #f44f1a;
+}
 /* HEADER DE LA APP */
 /* *****************NAVBAR******************* */
 .navbarShop {
@@ -1049,12 +1051,12 @@ p {
   text-align: center;
   padding: 5px;
 }
-.img-factura{
+.img-factura {
   height: 30vh;
   width: 50%;
   margin: 0 auto;
 }
-.img-factura img{
+.img-factura img {
   height: 100%;
   width: 100%;
 }
@@ -1095,6 +1097,61 @@ p {
 .precio-pro-fac div {
   float: right;
   margin: 0;
+}
+/* todo: en este apartado voy a implementar las categorias en el home */
+.conter-cate-home {
+  background-color: #2c57f10e;
+}
+.box-cate-home {
+  border-radius: 5px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+.img-cate-home {
+  border: none;
+  border-radius: 9px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.171);
+}
+.img-cate-home svg {
+  font-size: 2em;
+  color: #f44f1a;
+}
+.img-cate-home:hover {
+  background-color: #f44f1a;
+  cursor: pointer;
+}
+.img-cate-home svg:hover {
+  color: #fff;
+}
+.img-cate-home img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  border-radius: 5px 5px 0px 0px;
+  border: none;
+}
+.text-cate-home {
+  border: 0px;
+  margin: 20px;
+}
+.text-cate-home h1 {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+select option::before {
+  font-family: 'Font Awesome 5 Free'; /* Asegúrate de que coincide con la fuente utilizada por Font Awesome. */
+  content: attr(data-icon);
+  margin-right: 10px; /* Espacio entre el icono y el texto. */
 }
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {

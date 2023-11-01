@@ -66,7 +66,7 @@ export default function DefaultCarousel({
   };
 
   return (
-    <Carousel className="carusel2">
+    <Carousel className="carusel2 top-50">
       <div className="conter-vacio">Slide 1</div>
       {data.map((product) => (
         <>
@@ -113,17 +113,19 @@ export default function DefaultCarousel({
                   </Typography>
                 </div>
                 <div className="flex boton-product">
-                {product.stockPro == 0 ? (
-                        ''
-                      ) : (<Tooltip title="Agregar al carrito">
-                        <Button
-                          variant="contained"
-                          color="warning"
-                          onClick={() => onAddProduct(product)}
-                        >
-                          <AddShoppingCartIcon />
-                        </Button>
-                      </Tooltip>)}
+                  {product.stockPro == 0 ? (
+                    ''
+                  ) : (<Tooltip title="Agregar al carrito">
+                    <Button
+                      variant="contained"
+                      style={{
+                        backgroundColor: '#F44F1A'
+                      }}
+                      onClick={() => onAddProduct(product)}
+                    >
+                      <AddShoppingCartIcon />
+                    </Button>
+                  </Tooltip>)}
                   <Tooltip title="Ver detalle">
                     <a href={`/DetalleProduc/${product.id}`}>
                       <Button variant="contained">
