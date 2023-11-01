@@ -5,7 +5,8 @@ import axios from "axios";
 import WestIcon from "@mui/icons-material/West";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { Button } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
+import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 
 export default function DetalleProduc({
   allProducts,
@@ -105,7 +106,8 @@ export default function DetalleProduc({
         </div>
         <h1 className="title-detalle">{data.nombrePro}</h1>
         <p className="text-detalle">
-          <strong>Quantity:</strong> 1LB
+          <strong>Cantidad:</strong>
+          {countProducts}
         </p>
         <p className="text-detalle">
           <strong>Stock:</strong> {data.stockPro}
@@ -119,9 +121,16 @@ export default function DetalleProduc({
         <h3 className="color-gray">{data.descripPro}</h3>
       </div>
       <div className="boton-detalle">
-        <Button variant="contained" onClick={() => onAddProduct(data)}>
-          Agregar
-        </Button>
+        {data.stockPro == 0 ? (
+          ""
+        ) : (
+          <Tooltip title="Agregar al carrito">
+            <Button variant="contained" onClick={() => onAddProduct(data)}>
+              <LocalGroceryStoreIcon />
+              Agregar
+            </Button>
+          </Tooltip>
+        )}
       </div>
     </div>
   );
