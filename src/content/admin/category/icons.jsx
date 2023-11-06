@@ -6,6 +6,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { CButton, CSpinner } from "@coreui/react";
 import { useState } from "react";
 import Update from "./update";
+import New from "./new";
 
 export default function Icons({ data, key, setKey, token,getDataList }) {
   const ID = data.id;

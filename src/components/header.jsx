@@ -135,9 +135,8 @@ export default function Header({
             </div>
             <div className="conter-ico-nav">
               <a href="/Profile">
-                <i className="fa fa-user" aria-hidden="true"></i>
+               admin
               </a>
-
               <Admin />
               <a href="/notificaciones">
                 <i className="fa fa-bell" aria-hidden="true">

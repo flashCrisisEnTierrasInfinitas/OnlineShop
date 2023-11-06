@@ -1,12 +1,7 @@
 import { useState } from "react";
-import CIcon from "@coreui/icons-react";
-import { cilX } from "@coreui/icons";
 import {
   CCloseButton,
   CContainer,
-  CDropdown,
-  CDropdownMenu,
-  CDropdownToggle,
   CNavbar,
   CNavbarBrand,
   CNavbarNav,

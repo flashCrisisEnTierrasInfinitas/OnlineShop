@@ -4,7 +4,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import isMountedRef from "../../../hooks/useRefMounted";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
-import CardContent from "@mui/joy/CardContent";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
