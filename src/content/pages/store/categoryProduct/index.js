@@ -14,7 +14,6 @@ export default function CategoryProduct({
 }) {
   const { id } = useParams();
   const [idFilter,setIdFilter] = useState(id);
-  console.log("🚀 ~ file: index.js:19 ~ idFilter:", idFilter)
 
   return (
     <div className="conter-home">
