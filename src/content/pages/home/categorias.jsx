@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useCallback, useState, useEffect } from "react";
 import isMountedRef from "../../../hooks/useRefMounted";
+import { CSpinner } from "@coreui/react";
 
 export default function Categorias() {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const getCategoriList = useCallback(async () => {
         try {
@@ -14,13 +16,23 @@ export default function Categorias() {
             });
 
             setData(response.data);
+            setLoading(false);
         } catch (err) {
             console.error(err);
+            setLoading(false);
         }
     }, [isMountedRef]);
     useEffect(() => {
         getCategoriList();
     }, [getCategoriList]);
+
+    if (loading) {
+        return (
+            <div className="d-flex justify-content-center">
+                <CSpinner color="danger" />
+            </div>
+        );
+    }
 
     return (
         <div className="conter-cate-home top-50">
@@ -30,7 +42,7 @@ export default function Categorias() {
             <div className="grid">
                 {data.map(data => (
                     <div className="box-cate-home">
-                        <a href="#">
+                        <a href={`categoryProduct/${data.id}`}>
                             <div
                                 className="img-cate-home"
                                 dangerouslySetInnerHTML={{

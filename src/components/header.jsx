@@ -24,19 +24,19 @@ export default function Header({
   total,
   setTotal,
   Seccion,
-  contNotifi
+  contNotifi,
 }) {
   const [visible, setVisible] = useState(false);
   const [Open, setOpen] = useState(false);
 
-  var role = Cookies.get('role');
+  var role = Cookies.get("role");
+  var seccion = Cookies.get("seccion");
   var hastRole = role;
 
-  const formattedNumber = new Intl.NumberFormat('es-CO', {
-    style: 'currency',
-    currency: 'COP'
+  const formattedNumber = new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
   }).format(total);
-
 
   const MenuPro = () => {
     return (
@@ -76,7 +76,8 @@ export default function Header({
               </div>
               <div className="grid">
                 <Button onClick={() => onCleanCart()}>Vaciar Carrito</Button>
-                <Drawers Seccion={Seccion}
+                <Drawers
+                  Seccion={Seccion}
                   setAllproducts={setAllproducts}
                   setCountProducts={setCountProducts}
                   setTotal={setTotal}
@@ -109,12 +110,14 @@ export default function Header({
   const Admin = () => {
     if (hastRole == 1) {
       return (
-        <a href="/dahsboard">
-          <i class="fa fa-lock" aria-hidden="true"></i>
-        </a>
-      )
+        <Tooltip title="Administrador">
+          <a href="/dahsboard">
+            <i class="fa-solid fa-user-lock"></i>
+          </a>
+        </Tooltip>
+      );
     }
-  }
+  };
 
   return (
     <header>
@@ -134,24 +137,38 @@ export default function Header({
               </a>
             </div>
             <div className="conter-ico-nav">
-              <a href="/Profile">
-               admin
-              </a>
+              <Tooltip title="Profile">
+                <a
+                  href="/Profile"
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                  }}
+                >
+                  {seccion}
+                </a>
+              </Tooltip>
               <Admin />
-              <a href="/notificaciones">
-                <i className="fa fa-bell" aria-hidden="true">
-                  <span className="conterProduct">{contNotifi}</span>
-                </i>
-              </a>
-              <a onClick={() => setOpen(!Open)}>
-                <i class="fa fa-shopping-cart" aria-hidden="true">
-                  <span className="conterProduct">{countProducts}</span>
-                </i>
-              </a>
+              <Tooltip title="notificaciones">
+                <a href="/notificaciones">
+                  <i className="fa fa-bell" aria-hidden="true">
+                    <span className="conterProduct">{contNotifi}</span>
+                  </i>
+                </a>
+              </Tooltip>
+              <Tooltip title="Carrito">
+                <a onClick={() => setOpen(!Open)}>
+                  <i class="fa fa-shopping-cart" aria-hidden="true">
+                    <span className="conterProduct">{countProducts}</span>
+                  </i>
+                </a>
+              </Tooltip>
               <div className="conter-menu-pro">{Open ? <MenuPro /> : ""}</div>
-              <a href="/login">
-                <i className="fa fa-sign-in" aria-hidden="true"></i>
-              </a>
+              <Tooltip title="Login">
+                <a href="/login">
+                  <i className="fa fa-sign-in" aria-hidden="true"></i>
+                </a>
+              </Tooltip>
             </div>
           </div>
           <COffcanvas
