@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  CButton,
   CCloseButton,
   CContainer,
   CNavbar,
@@ -11,6 +12,7 @@ import {
   COffcanvasHeader,
   COffcanvasTitle,
 } from "@coreui/react";
+import { Button } from "@mui/joy";
 
 export default function AppBarAdmin() {
 
@@ -18,12 +20,21 @@ export default function AppBarAdmin() {
   return (
     <CNavbar colorScheme="light" className="conter-appBar">
       <CContainer fluid>
-        <CNavbarBrand>
+        <CNavbarBrand className="flex">
           <div className="logo-admin ">
             <a href="/">
               <div>
                 <img src="img/logos/logo1.png" />
               </div>
+            </a>
+          </div>
+          <div style={{
+            marginLeft:'20px'
+          }}>
+            <a href="/login">
+            <CButton variant="outline">
+              Login
+            </CButton>
             </a>
           </div>
         </CNavbarBrand>

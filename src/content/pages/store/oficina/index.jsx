@@ -55,8 +55,8 @@ export default function Oficina({
             setCountProducts(0);
             return Swal.fire({
                 position: "center",
-                icon: "info",
-                title: "Su informacion,sera validada,para el respectivo envio!!",
+                icon: "success",
+                title: "Pedido Exitoso",
                 showConfirmButton: false,
                 timer: 1500,
             });
@@ -66,7 +66,7 @@ export default function Oficina({
             return Swal.fire({
                 position: "center",
                 icon: "error",
-                title: "error al enviar los datos!!",
+                title: error.response.data.message,
                 showConfirmButton: false,
                 timer: 1500,
             });

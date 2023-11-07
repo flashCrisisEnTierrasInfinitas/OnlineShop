@@ -29,7 +29,7 @@ export default function Toast() {
     return (
         <div className="conter-toast">
             {data.map(data => (
-                <CToast animation={false} autohide={false} visible={false}>
+                <CToast animation={false} autohide={false} visible={true}>
                     <CToastHeader closeButton>
                         <svg
                             className="rounded me-2"

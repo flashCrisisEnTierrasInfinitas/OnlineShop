@@ -13,12 +13,12 @@ export default function Conted({
   total,
   setTotal,
   token,
-  Seccion
+  Seccion,
 }) {
   const [image, setImage] = useState(null);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const data = localStorage.getItem('allProducts');
+  const data = localStorage.getItem("allProducts");
   const productos = JSON.parse(data);
 
   const [formData, setFormData] = useState({
@@ -28,12 +28,11 @@ export default function Conted({
     user_telefono: "",
     tipo_servicio: 1,
     img: image,
-    productos: productos.map(producto => ({
+    productos: productos.map((producto) => ({
       id: producto.id,
-      cantidad: producto.quantity
-    }))
+      cantidad: producto.quantity,
+    })),
   });
-
 
   useEffect(() => {
     setFormData({
@@ -54,7 +53,7 @@ export default function Conted({
     }));
   };
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setOpen(false);
@@ -69,11 +68,11 @@ export default function Conted({
       const response = await axios.post("/ventas", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          'X-Requested-With': 'XMLHttpRequest',
-          'Authorization': 'Bearer ' + token,
+          "X-Requested-With": "XMLHttpRequest",
+          Authorization: "Bearer " + token,
         },
       });
-      console.log(response)
+      console.log(response);
       setLoading(false);
       setAllproducts([]);
       setTotal(0);
@@ -91,7 +90,7 @@ export default function Conted({
       return Swal.fire({
         position: "center",
         icon: "error",
-        title: 'error al enviar los datos!!',
+        title: "error al enviar los datos!!",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -100,8 +99,18 @@ export default function Conted({
 
   return (
     <div className="conter-pay margin-90 top-50">
-      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose} className="conter-alerts">
-        <Alert variant="filled" severity="error" onClose={handleClose} sx={{ width: '100%' }}>
+      <Snackbar
+        open={open}
+        autoHideDuration={2000}
+        onClose={handleClose}
+        className="conter-alerts"
+      >
+        <Alert
+          variant="filled"
+          severity="error"
+          onClose={handleClose}
+          sx={{ width: "100%" }}
+        >
           ¡Todos, los campos son requeridos!!
         </Alert>
       </Snackbar>
@@ -152,15 +161,28 @@ export default function Conted({
         <div className="drag-file-area">
           <i class="fa fa-cloud-upload" aria-hidden="true"></i>
           <p>Arrastra y suelta cualquier archivo aquí</p>
-          <input type="file" id="fileInput" class="custom-file-input" name="featured" accept="image/*" onChange={handleImageChange} />
+          <input
+            type="file"
+            id="fileInput"
+            class="custom-file-input"
+            name="featured"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
           <label for="fileInput" class="custom-file-label"></label>
         </div>
         <Button onClick={handleSubmit}>
           {loading ? (
             <div className="progess">
-              <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+              <CSpinner
+                color="light"
+                size="sm"
+                style={{ width: "1rem", height: "1rem" }}
+              />
             </div>
-          ) : (<BackupIcon />)}
+          ) : (
+            <BackupIcon />
+          )}
         </Button>
       </div>
     </div>

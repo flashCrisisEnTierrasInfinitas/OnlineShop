@@ -21,7 +21,7 @@ export default function ProList({
   total,
   setTotal,
   idFilter,
-  id
+  id,
 }) {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -116,7 +116,7 @@ export default function ProList({
         />
       </div>
       <div>
-      <div className="box-vendido">
+        <div className="box-vendido">
           {filteredData?.map((product) => (
             <>
               <div className="card-pro-list">
@@ -160,16 +160,18 @@ export default function ProList({
                     </div>
                     <div className="flex boton-product">
                       {product.stockPro == 0 ? (
-                        ''
-                      ) : (<Tooltip title="Agregar al carrito">
-                        <Button
-                          variant="contained"
-                          color="warning"
-                          onClick={() => onAddProduct(product)}
-                        >
-                          <AddShoppingCartIcon />
-                        </Button>
-                      </Tooltip>)}
+                        ""
+                      ) : (
+                        <Tooltip title="Agregar al carrito">
+                          <Button
+                            variant="contained"
+                            color="warning"
+                            onClick={() => onAddProduct(product)}
+                          >
+                            <AddShoppingCartIcon />
+                          </Button>
+                        </Tooltip>
+                      )}
                       <Tooltip title="Ver detalle">
                         <a href={`/DetalleProduc/${product.id}`}>
                           <Button variant="contained">
