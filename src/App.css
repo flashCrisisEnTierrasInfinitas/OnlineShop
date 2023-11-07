@@ -643,6 +643,13 @@ h1 {
 }
 
 /* PASARELA DE PAGOS */
+.logo-pagos{
+  width: 100px;
+  height: 50px;
+}.logo-pagos img{
+  width: 100%;
+  height: 100%;
+}
 .header-pay {
   margin-top: 10vh;
 }
