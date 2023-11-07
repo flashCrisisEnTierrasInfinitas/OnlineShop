@@ -12,17 +12,14 @@ import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useCallback, useEffect, useState } from "react";
-import Swal from "sweetalert2";
 import { Tooltip } from "@mui/joy";
 import Factura from "../../facturaPay";
 import isMountedRef from "../../../../hooks/useRefMounted";
 
 export default function PDF({ id }) {
-    console.log("🚀 ~ file: pdf.jsx:21 ~ PDF ~ id:", id)
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
-    const [image, setImage] = useState(null);
     var getToken = Cookies.get("token");
 
     const getDataList = useCallback(async () => {

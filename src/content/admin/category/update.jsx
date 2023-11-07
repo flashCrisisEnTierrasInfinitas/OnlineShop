@@ -109,7 +109,6 @@ const Icons = [
 ];
 
 export default function Update({ key, getDataList, data }) {
-    console.log("🚀 ~ file: update.jsx:112 ~ Update ~ data:", data)
     const [visible, setVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState(null);

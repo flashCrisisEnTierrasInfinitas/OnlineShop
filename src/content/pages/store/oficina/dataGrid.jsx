@@ -1,19 +1,9 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { CSpinner } from "@coreui/react";
 
 export default function DataGrids({
-    data,
-    loading
+    data
 }) {
-
-    if (loading) {
-        return (
-            <div className="d-flex justify-content-center">
-                <CSpinner color="danger" />
-            </div>
-        );
-    }
     const columns = [
         { field: "id", headerName: "ID", width: 20 },
         { field: "nombrePro", headerName: "Nombre", width: 130 },

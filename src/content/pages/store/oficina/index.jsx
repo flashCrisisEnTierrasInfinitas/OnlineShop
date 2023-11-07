@@ -5,21 +5,19 @@ import { CSpinner } from "@coreui/react";
 import Factura from "../../facturaPay";
 import Swal from "sweetalert2";
 import { Button, Tooltip } from "@mui/joy";
-import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import GradingIcon from '@mui/icons-material/Grading';
 import DataGrids from "./dataGrid";
 import PDF from "./pdf";
+import Metodo from "./metodo";
 
 export default function Oficina({
     setAllproducts,
     setCountProducts,
     setTotal,
-    Seccion,
+    Seccion
 }) {
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
     const [venta, setVenta] = useState([]);
-    const [Error, setError] = useState(false);
-    const [Message, setMessage] = useState([]);
     var getToken = Cookies.get("token");
 
     const datas = localStorage.getItem("allProducts");
@@ -74,6 +72,9 @@ export default function Oficina({
     };
     var id = Cookies.get("ventaId");
 
+    const MetosPago = () => {
+
+    }
 
     return (
         <div className="conter-home">
@@ -89,20 +90,16 @@ export default function Oficina({
                     </a>
                 </div>
                 <div className="flex top-50 boton-product">
-                    <Tooltip title="Confirmar Solicitud">
-                        <Button onClick={() => halendOficina()}>
-                            <SaveAltIcon />
-                        </Button>
-                    </Tooltip>
                     {id ? (
                         <PDF id={id} />
                     ) : (
                         ""
                     )}
+                    <MetodoPago halendOficina={halendOficina} />
                 </div>
                 <div className=" flex top-50">
                     <div>
-                        <DataGrids data={productos} loading={loading}/>
+                        <DataGrids data={productos} loading={loading} />
                     </div>
                 </div>
                 <br />
@@ -111,4 +108,17 @@ export default function Oficina({
             </div>
         </div>
     );
+}
+
+
+export function MetodoPago({ halendOficina }) {
+    return (
+        <>
+            <Tooltip title="Confirmar Solicitud">
+                <Button onClick={() => halendOficina()}>
+                    <GradingIcon />
+                </Button>
+            </Tooltip>
+        </>
+    )
 }
