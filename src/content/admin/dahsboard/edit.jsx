@@ -134,8 +134,16 @@ export default function Edit({ data }) {
               {data.tipo_servicio === 0 && (
                 <>
                   <h2 className="title-ver-daly top-50">Factura productos:</h2>
+                  <div className="grid">
                   <div className="img-pago">
                     <Factura data={data} />
+                  </div>
+                  <div className="img-pago">
+                    <img
+                      src={data.img}
+                      alt='Sin Comprobante de pago rechazar la solicitud¡!'
+                    />
+                  </div>
                   </div>
                 </>
               )}

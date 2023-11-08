@@ -7,7 +7,6 @@ import {
   CFormInput,
   CModal,
   CModalBody,
-  CModalFooter,
   CModalHeader,
   CModalTitle,
   CSpinner,
@@ -186,39 +185,43 @@ export function MetodoPago({ halendOficina, loading, handleImageChange }) {
               </div>
             </CCol>
             <CCol md={12}>
-              <div>
-                <CFormInput
-                  type="file"
-                  size="lg"
-                  id="formFileLg"
-                  label="Cargue el comprobante de pago."
-                  name="featured"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-              </div>
+              {pay ? (
+                <div className="box-file">
+                  <div className="drag-file-area">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                    <p>Arrastra y suelta el comprabante de pago.</p>
+                    <input
+                      type="file"
+                      id="fileInput"
+                      class="custom-file-input"
+                      name="featured"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                    />
+                    <label for="fileInput" class="custom-file-label"></label>
+                  </div>
+                  <div className="top-50">
+                    <Button onClick={halendOficina}>
+                      {loading ? (
+                        <div className="progess">
+                          <CSpinner
+                            color="light"
+                            size="sm"
+                            style={{ width: "1rem", height: "1rem" }}
+                          />
+                        </div>
+                      ) : (
+                        <BackupIcon />
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </CCol>
           </CForm>
         </CModalBody>
-        <CModalFooter>
-          <CCol md={12}>
-            {pay ? (
-              <div>
-                <CFormInput
-                  type="file"
-                  size="lg"
-                  id="formFileLg"
-                  label="Cargue el comprobante de pago."
-                  name="featured"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-              </div>
-            ) : (
-              ""
-            )}
-          </CCol>
-        </CModalFooter>
       </CModal>
     </>
   );

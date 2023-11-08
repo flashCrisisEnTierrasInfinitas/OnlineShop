@@ -708,8 +708,7 @@ h1 {
 .drag-file-area {
   border: 2px dashed #03a691;
   border-radius: 40px;
-  margin: 10px 0 15px;
-  padding: 30px 50px;
+  padding: 30px;
   width: 100%;
   text-align: center;
 }
@@ -720,10 +719,10 @@ h1 {
 }
 
 .custom-file-label {
-  background-color: #007bff;
+  background-color: #f44f1a;
   color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 5px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -1034,7 +1033,7 @@ p {
 }
 .img-pago {
   margin: 0 auto;
-  width: 50%;
+  width: 400px;
 }
 .img-pago img {
   height: 100%;
