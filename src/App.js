@@ -31,7 +31,7 @@ import Oficina from "./content/pages/store/oficina";
 function App() {
   axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
   //axios.defaults.baseURL = "http://localhost:8000/api";
-  //axios.defaults.baseURL = "http://127.0.0.1:8000/api";
+
   const seccion = Cookies.get("seccion");
   const token = Cookies.get("token");
   const [contNotifi,setContNotifi]=useState([]);

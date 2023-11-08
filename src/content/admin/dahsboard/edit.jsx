@@ -77,7 +77,7 @@ export default function Edit({ data }) {
             <h2 className="title-ver-daly">Usuario: {data.user_compra}</h2>
             <h3 className="title-ver-daly color-gray">Codigo: {data.id}</h3>
             <h3 className="title-ver-daly color-gray">
-              Fecha: {data.created_at}
+              Fecha: {new Date(data.created_at).toLocaleString()}
             </h3>
           </CModalTitle>
         </CModalHeader>
