@@ -15,12 +15,9 @@ import {
   CModalFooter,
   CModalHeader,
   CModalTitle,
-  CSpinner,
 } from "@coreui/react";
-import axios from "axios";
-import Cookies from "js-cookie";
+
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
 
 export default function Edit({ data }) {
   const [visible, setVisible] = useState(false);
@@ -28,33 +25,65 @@ export default function Edit({ data }) {
   const Status = ({ data }) => {
     if (data == 0) {
       return (
-        <input type="text" class="form-control top-20" value="sin entrega" disabled />
+        <input
+          type="text"
+          class="form-control top-20"
+          value="sin entrega"
+          disabled
+        />
       );
     }
     if (data == 1) {
       return (
-        <input type="text" class="form-control top-20" value="rechazado" disabled />
+        <input
+          type="text"
+          class="form-control top-20"
+          value="rechazado"
+          disabled
+        />
       );
     }
     if (data == 2) {
       return (
-        <input type="text" class="form-control top-20" value="enviado" disabled />
+        <input
+          type="text"
+          class="form-control top-20"
+          value="enviado"
+          disabled
+        />
       );
     }
     if (data == 3) {
       return (
-        <input type="text" class="form-control top-20" value="entregado" disabled />
+        <input
+          type="text"
+          class="form-control top-20"
+          value="entregado"
+          disabled
+        />
       );
     }
   };
   const Service = ({ data }) => {
     if (data == 0) {
       return (
-        <input type="text" class="form-control top-20" value="Entregar" disabled />
+        <input
+          type="text"
+          class="form-control top-20"
+          value="Entregar"
+          disabled
+        />
       );
     }
     if (data == 1) {
-      return <input type="text" class="form-control top-20" value="Enviar" disabled />;
+      return (
+        <input
+          type="text"
+          class="form-control top-20"
+          value="Enviar"
+          disabled
+        />
+      );
     }
   };
 
@@ -89,7 +118,7 @@ export default function Edit({ data }) {
                 <Status data={data.status_venta} />
               </div>
               <div class="col">
-                <label htmlFor="">Tipo  Servicio:</label>
+                <label htmlFor="">Tipo Servicio:</label>
                 <Service data={data.tipo_servicio} />
               </div>
               <div class="col-12 top-50">
@@ -109,7 +138,7 @@ export default function Edit({ data }) {
                     <h2 className="title-ver-daly top-50">
                       Factura productos:
                     </h2>
-                    <div className="img-pago">
+                    <div className="margin-90">
                       <Factura data={data} />
                     </div>
                   </div>

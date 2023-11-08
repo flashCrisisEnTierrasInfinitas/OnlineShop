@@ -5,7 +5,7 @@
 h1 {
   font-weight: 700;
 }
-.required{
+.required {
   color: red;
   margin-top: 10px;
   margin-right: 10px;
@@ -643,10 +643,11 @@ h1 {
 }
 
 /* PASARELA DE PAGOS */
-.logo-pagos{
+.logo-pagos {
   width: 100px;
   height: 50px;
-}.logo-pagos img{
+}
+.logo-pagos img {
   width: 100%;
   height: 100%;
 }
@@ -928,12 +929,14 @@ p {
   top: 0;
   left: 0;
   margin: 10px;
-}.ico-detalle:hover {
+}
+.ico-detalle:hover {
   background-color: #4747472c;
 }
 .ico-detalle svg {
   color: black;
-}.ico-detalle svg:hover {
+}
+.ico-detalle svg:hover {
   color: #ffffffc0;
 }
 .descrip-detalle {
@@ -1080,8 +1083,8 @@ p {
   padding: 5px;
 }
 .img-factura {
-  height: 30vh;
-  width: 50%;
+  height: 100px;
+  width: 200px;
   margin: 0 auto;
 }
 .img-factura img {
@@ -1126,6 +1129,15 @@ p {
   float: right;
   margin: 0;
 }
+.state-factura {
+  background-color: #f13c00;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
 /* todo: en este apartado voy a implementar las categorias en el home */
 .conter-cate-home {
   background-color: #2c57f10e;
@@ -1151,7 +1163,7 @@ p {
 .img-cate-home svg {
   font-size: 2em;
   color: #f44f1a;
-  fill:#f44f1a
+  fill: #f44f1a;
 }
 .img-cate-home:hover {
   background-color: #f44f1a;
@@ -1159,7 +1171,7 @@ p {
 }
 .img-cate-home svg:hover {
   color: #fff;
-  fill:#fff
+  fill: #fff;
 }
 .img-cate-home img {
   width: 100%;

@@ -113,6 +113,7 @@ export default function Oficina({
         <div className="flex top-50 boton-product">
           {id ? <PDF id={id} /> : ""}
           <MetodoPago
+            id={id}
             halendOficina={halendOficina}
             loading={loading}
             handleImageChange={handleImageChange}
@@ -131,17 +132,20 @@ export default function Oficina({
   );
 }
 
-export function MetodoPago({ halendOficina, loading, handleImageChange }) {
+export function MetodoPago({ halendOficina, loading, handleImageChange, id }) {
   const [visible, setVisible] = useState(false);
   const [pay, seyPay] = useState(false);
   return (
     <>
-      <Tooltip title="Confirmar Solicitud">
-        <Button onClick={() => setVisible(!visible)}>
-          <GradingIcon />
-        </Button>
-      </Tooltip>
-
+      {id ? (
+        ""
+      ) : (
+        <Tooltip title="Confirmar Solicitud">
+          <Button onClick={() => setVisible(!visible)}>
+            <GradingIcon />
+          </Button>
+        </Tooltip>
+      )}
       <CModal
         size="xl"
         backdrop="static"
