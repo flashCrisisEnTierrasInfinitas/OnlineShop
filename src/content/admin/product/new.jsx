@@ -105,7 +105,9 @@ export default function New({ token }) {
 
     return (
         <>
-            <Button variant="contained" onClick={() => setVisible(!visible)}>Nuevo</Button>
+            <CButton variant="outline" onClick={() => setVisible(!visible)}>
+                <i class="fa fa-pencil" aria-hidden="true" />
+            </CButton>
             <CModal
                 size="xl"
                 backdrop="static"
