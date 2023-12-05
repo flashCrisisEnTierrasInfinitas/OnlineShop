@@ -4,22 +4,19 @@ import { CSpinner } from "@coreui/react";
 import axios from "axios";
 import WestIcon from "@mui/icons-material/West";
 import { useParams } from "react-router-dom";
-import Swal from "sweetalert2";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { Button, Tooltip } from "@mui/material";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
+import Cookies from "js-cookie";
 
-export default function DetalleProduc({
-  allProducts,
-  setAllproducts,
-  countProducts,
-  setCountProducts,
-  total,
-  setTotal,
-}) {
+export default function DetalleProduc({Seccion}) {
   const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+  const [inputValue, setInputValue] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [LoadingBotton, setLoadingBotton] = useState(false);
   const { id } = useParams();
+  const [validate, setValidate] = useState(false);
+  var token = Cookies.get("token");
 
   const getDataList = useCallback(async () => {
     try {
@@ -33,7 +30,6 @@ export default function DetalleProduc({
       setLoading(false);
     } catch (err) {
       console.error(err);
-      setError(err);
       setLoading(false);
     }
   }, [isMountedRef]);
@@ -43,95 +39,180 @@ export default function DetalleProduc({
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center">
+      <div
+        className="d-flex justify-content-center"
+        style={{ marginTop: "30vh" }}
+      >
         <CSpinner color="danger" />
       </div>
     );
   }
 
-  const onAddProduct = (product) => {
-    const IndexCarrito = allProducts.findIndex(
-      (item) => item.id === product.id
-    );
+  const isPositiveNumber = (value) => {
+    return /^[1-9]\d*$/.test(value);
+  };
 
-    if (
-      allProducts.length > 0 && allProducts[IndexCarrito]?.quantity
-        ? allProducts[IndexCarrito].quantity + 1
-        : 1
-    ) {
-      if (product.stockPro == allProducts[IndexCarrito]?.quantity) {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+  const handleInputChange = (event) => {
+    const inputValue = event.target.value;
 
-        return Toast.fire({
-          icon: "error",
-          title: "No Stock",
-        });
-      }
+    if (isPositiveNumber(inputValue)) {
+      setInputValue(inputValue);
     }
+  };
 
-    if (allProducts.find((item) => item.id === product.id)) {
-      const products = allProducts.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-      setTotal(total + product.precioPro * product.quantity);
-      setCountProducts(countProducts + product.quantity);
-      return setAllproducts([...products]);
+  const onAddProduct = async (product) => {
+    const { id, precioPro, img, nombrePro } = product;
+
+    const formData = {
+      user: Seccion,
+      idPro: id,
+      cantidad: inputValue,
+      precio: precioPro,
+      img: img,
+      nombre: nombrePro,
+    };
+
+    try {
+      setLoadingBotton(true);
+      const response = await axios.post("/shopss", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: "Bearer " + token,
+        },
+      });
+      setLoadingBotton(false);
+      setValidate(true);
+      setValidate(response.data.data.id);
+      return response;
+    } catch (error) {
+      setLoadingBotton(false);
+      return alert(error);
     }
+  };
 
-    setTotal(total + product.precioPro * product.quantity);
-    setCountProducts(countProducts + product.quantity);
-    setAllproducts([...allProducts, product]);
+  const UpdateProduct = async () => {
+    const formData = {
+      cantidad: inputValue,
+    };
+    try {
+      setLoadingBotton(true);
+      const response = await axios.put(`/shopss/${validate}`, formData, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: "Bearer " + token,
+        },
+      });
+      setValidate(response.data.data.id);
+      setLoadingBotton(false);
+      return response;
+    } catch (error) {
+      setLoadingBotton(false);
+      return alert(error);
+    }
   };
 
   return (
     <div className="conter-detallepro">
       <header>
-        <div className="img-detalle">
-          <div className="ico-detalle">
-            <a href="/">
-              <WestIcon />
-            </a>
+        <div className="grid">
+          <div>
+            <div className="img-detalle">
+              <div className="ico-detalle">
+                <a href="/">
+                  <WestIcon />
+                </a>
+              </div>
+              <img src={data.img} alt={data.nombrePro} />
+            </div>
           </div>
-          <img src={data.img} alt={data.nombrePro} />
-        </div>
-        <h1 className="title-detalle">{data.nombrePro}</h1>
-        <p className="text-detalle">
-          <strong>Cantidad:</strong>
-          {countProducts}
-        </p>
-        <p className="text-detalle">
-          <strong>Stock:</strong> {data.stockPro}
-        </p>
-        <p className="text-detalle">
-          <strong>Precio:</strong> ${data.precioPro.toLocaleString("es-CO")}
-        </p>
-      </header>
 
-      <div className="descrip-detalle">
-        <h3 className="color-gray">{data.descripPro}</h3>
-      </div>
-      <div className="boton-detalle">
-        {data.stockPro == 0 ? (
-          ""
-        ) : (
-          <Tooltip title="Agregar al carrito">
-            <Button variant="contained" onClick={() => onAddProduct(data)}>
-              <LocalGroceryStoreIcon />
-              Agregar
-            </Button>
-          </Tooltip>
-        )}
-      </div>
+          <div>
+            <h1 className="title-detalle">{data.nombrePro}</h1>
+            <div className="descrip-detalle">
+              <h3 className="color-gray">{data.descripPro}</h3>
+            </div>
+            <p className="text-detalle">
+              Precio: ${data.precioPro.toLocaleString("es-CO")}
+            </p>
+            <p className="text-detalle">Stock:{data.stockPro}</p>
+            <div className="grid">
+              <div className="flex">
+                Cantidad:
+                <input
+                  type="number"
+                  onChange={handleInputChange}
+                  className="input-quantity"
+                  value={inputValue}
+                />
+              </div>
+              {data.stockPro == 0 ? (
+                ""
+              ) : validate ? (
+                <Tooltip title="Agregar al carrito">
+                  <Button
+                    style={{
+                      background: "#FF6333",
+                      width: "100%",
+                    }}
+                    variant="contained"
+                    onClick={() => UpdateProduct(data)}
+                  >
+                    {LoadingBotton ? (
+                      <div className="progess">
+                        <CSpinner
+                          color="light"
+                          size="sm"
+                          style={{ width: "1rem", height: "1rem" }}
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <LocalGroceryStoreIcon />
+                        Agregar
+                      </>
+                    )}
+                  </Button>
+                </Tooltip>
+              ) : (
+                <Tooltip title="Agregar al carrito">
+                  <Button
+                    style={{
+                      background: "#FF6333",
+                      width: "100%",
+                    }}
+                    variant="contained"
+                    onClick={() => onAddProduct(data)}
+                  >
+                    {LoadingBotton ? (
+                      <div className="progess">
+                        <CSpinner
+                          color="light"
+                          size="sm"
+                          style={{ width: "1rem", height: "1rem" }}
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <LocalGroceryStoreIcon />
+                        Agregar a carrito
+                      </>
+                    )}
+                  </Button>
+                </Tooltip>
+              )}
+            </div>
+            {validate ? (
+              <div className="check">
+                <CheckCircleOutlineIcon />
+                <label>Se ha agregado este producto,</label>
+                <a href="/shop">ver carrito</a>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+      </header>
     </div>
   );
 }

@@ -26,6 +26,8 @@ export default function ProList({
   const [searchTerm, setSearchTerm] = useState("");
 
   const [data, setData] = useState([]);
+  console.log("🚀 ~ file: ProList.jsx:29 ~ data:", data);
+
   const [oferta, setOferta] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -49,6 +51,7 @@ export default function ProList({
   useEffect(() => {
     getDataList();
   }, [getDataList]);
+
   const getOfertaList = useCallback(async () => {
     try {
       const response = await axios.get(`/producOferta`, {
@@ -81,49 +84,6 @@ export default function ProList({
     item.nombrePro?.toLowerCase().includes(searchTerm.toLowerCase())
   );
   //!
-  const onAddProduct = (product) => {
-    const IndexCarrito = allProducts.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (
-      allProducts.length > 0 && allProducts[IndexCarrito]?.quantity
-        ? allProducts[IndexCarrito].quantity + 1
-        : 1
-    ) {
-      if (product.stockPro == allProducts[IndexCarrito]?.quantity) {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-
-        return Toast.fire({
-          icon: "error",
-          title: "No Stock",
-        });
-      }
-    }
-
-    if (allProducts.find((item) => item.id === product.id)) {
-      const products = allProducts.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-      setTotal(total + product.precioPro * product.quantity);
-      setCountProducts(countProducts + product.quantity);
-      return setAllproducts([...products]);
-    }
-
-    setTotal(total + product.precioPro * product.quantity);
-    setCountProducts(countProducts + product.quantity);
-    setAllproducts([...allProducts, product]);
-  };
 
   return (
     <div className="margin-90 conter-pro">
@@ -137,7 +97,7 @@ export default function ProList({
         />
       </div>
       <div>
-        <Categorias/>
+        <Categorias />
         <DefaultCarousel
           data={oferta}
           allProducts={allProducts}
@@ -149,25 +109,12 @@ export default function ProList({
         />
         <div className="box-vendido top-50">
           {filteredData?.map((product) => (
-            <>
-              <div className="card-pro-list">
+            <div className="card-pro-list">
+              <a
+                href={`/DetalleProduc/${product.id}`}
+                style={{ textDecoration: "none" }}
+              >
                 <Card key={product.id}>
-                  <div>
-                    <h1 className="title-card-list">{product.nombrePro}</h1>
-                    <IconButton
-                      aria-label="bookmark Bahamas Islands"
-                      variant="plain"
-                      color="neutral"
-                      size="sm"
-                      sx={{
-                        position: "absolute",
-                        top: "0.875rem",
-                        right: "0.5rem",
-                      }}
-                    >
-                      <BookmarkAdd />
-                    </IconButton>
-                  </div>
                   <AspectRatio minHeight="120px" maxHeight="400px">
                     <img
                       src={product.img}
@@ -178,10 +125,10 @@ export default function ProList({
                   </AspectRatio>
                   <div className="grid">
                     <div className="text-product">
-                      <Typography level="body-xs">Total price:</Typography>
                       <Typography fontSize="lg" fontWeight="lg">
-                        ${product.precioPro.toLocaleString("es-CO")}
+                        {product.descripPro}
                       </Typography>
+                      <Typography fontSize="lg" level="body-xs">{product.nombrePro}</Typography>
                     </div>
                     <div className="text-product">
                       <Typography level="body-xs">Total Stock:</Typography>
@@ -189,32 +136,14 @@ export default function ProList({
                         {product.stockPro}
                       </Typography>
                     </div>
-                    <div className="flex boton-product">
-                      {product.stockPro == 0 ? (
-                        ''
-                      ) : (<Tooltip title="Agregar al carrito">
-                        <Button
-                          variant="contained"
-                          style={{
-                            backgroundColor:'#F44F1A'
-                          }}
-                          onClick={() => onAddProduct(product)}
-                        >
-                          <AddShoppingCartIcon />
-                        </Button>
-                      </Tooltip>)}
-                      <Tooltip title="Ver detalle">
-                        <a href={`/DetalleProduc/${product.id}`}>
-                          <Button variant="contained">
-                            <LoupeIcon />
-                          </Button>
-                        </a>
-                      </Tooltip>
+                    <div className="text-precio">
+                      <label>${product.precioPro.toLocaleString("es-CO")}</label>
+                      <label>IVA INCLUIDO</label>
                     </div>
                   </div>
                 </Card>
-              </div>
-            </>
+              </a>
+            </div>
           ))}
         </div>
       </div>

@@ -1,12 +1,5 @@
 import React, { useState } from "react";
 import {
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CCard,
-  CCardBody,
   CSpinner,
 } from "@coreui/react";
 import Icons from "./icons";

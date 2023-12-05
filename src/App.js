@@ -27,14 +27,15 @@ import protectedRoute from "./Auth/ProtectedRoute";
 import protectedUser from "./Auth/RoutesUser";
 import Cookies from "js-cookie";
 import Oficina from "./content/pages/store/oficina";
+import Shop from "./content/pages/store/shop";
 
 function App() {
-  axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
-  //axios.defaults.baseURL = "http://localhost:8000/api";
+  //axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  axios.defaults.baseURL = "http://localhost:8000/api";
 
   const seccion = Cookies.get("seccion");
   const token = Cookies.get("token");
-  const [contNotifi,setContNotifi]=useState([]);
+  const [contNotifi, setContNotifi] = useState([]);
   const [allProducts, setAllproducts] = useState(() => {
     const saveEquipos = window.localStorage.getItem("allProducts");
     if (saveEquipos) {
@@ -126,21 +127,9 @@ function App() {
               }
             />
 
-            <Route path="/login" element={<Login/>} />
+            <Route path="/login" element={<Login />} />
             <Route path="/ProductosCat" element={<ProductoCate />} />
-            <Route
-              path="/DetalleProduc/:id"
-              element={
-                <DetalleProduc
-                  allProducts={allProducts}
-                  setAllproducts={setAllproducts}
-                  total={total}
-                  setTotal={setTotal}
-                  countProducts={countProducts}
-                  setCountProducts={setCountProducts}
-                />
-              }
-            />
+
             <Route
               path="/categoryProduct/:id"
               element={
@@ -163,6 +152,14 @@ function App() {
             </Route>
             {/* rutas del usuario */}
             <Route element={protectedUser()}>
+              <Route
+                path="/DetalleProduc/:id"
+                element={<DetalleProduc Seccion={seccion} />}
+              />
+              <Route
+                path="/shop"
+                element={<Shop Seccion={seccion} token={token} />}
+              />
               <Route
                 path="/pay"
                 element={
@@ -190,9 +187,18 @@ function App() {
                 }
               />
               <Route path="/Profile" element={<Profile />} />
-              <Route path="/notificaciones" element={<Notificaciones Seccion={seccion} token={token} setContNotifi={setContNotifi}/>} />
+              <Route
+                path="/notificaciones"
+                element={
+                  <Notificaciones
+                    Seccion={seccion}
+                    token={token}
+                    setContNotifi={setContNotifi}
+                  />
+                }
+              />
               <Route path="/Historial" element={<Historial />} />
-              <Route path="/MiLista" element={<MiLista seccion={seccion}/>} />
+              <Route path="/MiLista" element={<MiLista seccion={seccion} />} />
             </Route>
           </Routes>
           <FooterMenu />
