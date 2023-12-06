@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
+import Drawers from "./drawers";
 
-export default function Table({ data, Total }) {
+export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
   console.log("🚀 ~ file: table.jsx:2 ~ Table ~ data:", data);
   const dataToRender = data || [];
 
@@ -9,6 +10,18 @@ export default function Table({ data, Total }) {
     const total = precioPro * quantity;
     return total.toLocaleString("es-CO");
   };
+
+  const removeFromCart = (productId) => {
+    const updatedCart = addShop.filter((product) => product.id !== productId);
+    setAddShop(updatedCart);
+
+    const newTotal = updatedCart.reduce(
+      (acc, product) => acc + product.precioPro * product.quantity,
+      0
+    );
+    setTotal(newTotal);
+  };
+
   return (
     <div>
       {dataToRender.map((val) => (
@@ -19,7 +32,7 @@ export default function Table({ data, Total }) {
             </div>
             <div className="text-nombre-shop">
               <p>{val.descripPro}</p>
-              <button>Quitar</button>
+              <button onClick={() => removeFromCart(val.id)}>Quitar</button>
             </div>
           </div>
           <div className="nombre-shop">

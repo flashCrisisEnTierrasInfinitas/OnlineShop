@@ -84,7 +84,10 @@ function App() {
       window.localStorage.removeItem("Total");
     };
 
-    const temporizador = setTimeout(limpiarDespuesDeUnaHora,  2 * 60 * 60 * 1000); // 1 hora en milisegundos
+    const temporizador = setTimeout(
+      limpiarDespuesDeUnaHora,
+      2 * 60 * 60 * 1000
+    ); // 1 hora en milisegundos
 
     // Eliminar el temporizador y limpiar localStorage cuando el componente se desmonta
     return () => {
@@ -141,7 +144,16 @@ function App() {
               />
               <Route
                 path="/shop"
-                element={<Shop Seccion={seccion} token={token} Total={Total}/>}
+                element={
+                  <Shop
+                    Seccion={seccion}
+                    token={token}
+                    Total={Total}
+                    setTotal={setTotal}
+                    setAddShop={setAddShop}
+                    addShop={addShop}
+                  />
+                }
               />
               <Route
                 path="/pay"
