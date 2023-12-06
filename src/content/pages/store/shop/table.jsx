@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 import Drawers from "./drawers";
+import { useEffect } from "react";
 
 export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
-  console.log("🚀 ~ file: table.jsx:2 ~ Table ~ data:", data);
   const dataToRender = data || [];
 
   const Totals = ({ product }) => {
@@ -20,6 +20,7 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
       0
     );
     setTotal(newTotal);
+    window.location.reload();
   };
 
   return (
