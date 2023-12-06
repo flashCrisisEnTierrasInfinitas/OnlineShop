@@ -17,12 +17,6 @@ import Cookies from "js-cookie";
 import Drawers from "./drawers";
 
 export default function Header({
-  allProducts,
-  setAllproducts,
-  countProducts,
-  setCountProducts,
-  total,
-  setTotal,
   Seccion,
   contNotifi,
 }) {
@@ -33,12 +27,8 @@ export default function Header({
   var seccion = Cookies.get("seccion");
   var hastRole = role;
 
-  const formattedNumber = new Intl.NumberFormat("es-CO", {
-    style: "currency",
-    currency: "COP",
-  }).format(total);
 
-  const MenuPro = () => {
+  /* const MenuPro = () => {
     return (
       <div className="box-tar-menu">
         <div className="container-cart-products">
@@ -91,9 +81,9 @@ export default function Header({
         </div>
       </div>
     );
-  };
+  }; */
 
-  const onDeleteProduct = (product) => {
+  /* const onDeleteProduct = (product) => {
     const results = allProducts.filter((item) => item.id !== product.id);
 
     setTotal(total - product.precioPro * product.quantity);
@@ -105,7 +95,7 @@ export default function Header({
     setAllproducts([]);
     setTotal(0);
     setCountProducts(0);
-  };
+  }; */
 
   const Admin = () => {
     if (hastRole == 1) {
@@ -157,13 +147,12 @@ export default function Header({
                 </a>
               </Tooltip>
               <Tooltip title="Carrito">
-                <a onClick={() => setOpen(!Open)}>
+                <a href="/shop">
                   <i class="fa fa-shopping-cart" aria-hidden="true">
-                    <span className="conterProduct">{countProducts}</span>
+                    <span className="conterProduct"></span>
                   </i>
                 </a>
               </Tooltip>
-              <div className="conter-menu-pro">{Open ? <MenuPro /> : ""}</div>
               <Tooltip title="Login">
                 <a href="/login">
                   <i className="fa fa-sign-in" aria-hidden="true"></i>

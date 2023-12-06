@@ -8,17 +8,16 @@ import { Alert, Snackbar } from "@mui/material";
 import { CSpinner } from "@coreui/react";
 
 export default function Conted({
-  setAllproducts,
-  setCountProducts,
-  total,
+  setAddShop,
   setTotal,
+  Total,
   token,
   Seccion,
 }) {
   const [image, setImage] = useState(null);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const data = localStorage.getItem("allProducts");
+  const data = localStorage.getItem("addShop");
   const productos = JSON.parse(data);
 
   const [formData, setFormData] = useState({
@@ -74,9 +73,8 @@ export default function Conted({
       });
       console.log(response);
       setLoading(false);
-      setAllproducts([]);
+      setAddShop([]);
       setTotal(0);
-      setCountProducts(0);
       return Swal.fire({
         position: "center",
         icon: "info",
@@ -117,7 +115,7 @@ export default function Conted({
       <p>
         Para proceder con el pago, consigne el monto total de su compra al
         número de cuenta:<span className="color-secondary">311533906</span>su
-        monto total es: <span className="color-secondary">${total}</span>
+        monto total es: <span className="color-secondary">${Total}</span>
       </p>
       <div className="top-50 bottom-50">
         <form className="grid  margin-90">

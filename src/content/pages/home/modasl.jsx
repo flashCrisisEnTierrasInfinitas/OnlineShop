@@ -9,7 +9,7 @@ export default function BasicModal() {
     const [open, setOpen] = React.useState(false);
 
     React.useEffect(() => {
-        const modalsFalse = window.localStorage.getItem("modals");
+        const modalsFalse = window.sessionStorage.getItem("modals");
 
         // Verificar si modalsFalse es igual a "false" como una cadena (no como un booleano)
         if (modalsFalse === "false") {
@@ -20,7 +20,7 @@ export default function BasicModal() {
     }, []); // El efecto se ejecuta una vez durante la inicialización
 
     const close = () => {
-        window.localStorage.setItem("modals", "false"); // Guardar "false" como cadena en localStorage
+        window.sessionStorage.setItem("modals", "false"); // Guardar "false" como cadena en localStorage
         setOpen(false); // Establecer el estado en falso
     };
 

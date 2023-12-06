@@ -36,21 +36,17 @@ function App() {
   const seccion = Cookies.get("seccion");
   const token = Cookies.get("token");
   const [contNotifi, setContNotifi] = useState([]);
-  const [allProducts, setAllproducts] = useState(() => {
-    const saveEquipos = window.localStorage.getItem("allProducts");
+
+  const [addShop, setAddShop] = useState(() => {
+    const saveEquipos = window.localStorage.getItem("addShop");
     if (saveEquipos) {
       return JSON.parse(saveEquipos);
     } else {
       return [];
     }
   });
-
-  useEffect(() => {
-    window.localStorage.setItem("allProducts", JSON.stringify(allProducts));
-  }, [allProducts]);
-
-  const [total, setTotal] = useState(() => {
-    const total = window.localStorage.getItem("total");
+  const [Total, setTotal] = useState(() => {
+    const total = window.localStorage.getItem("Total");
     if (total) {
       return JSON.parse(total);
     } else {
@@ -59,42 +55,43 @@ function App() {
   });
 
   useEffect(() => {
-    window.localStorage.setItem("total", JSON.stringify(total));
-  }, [total]);
+    // Almacenar en localStorage cuando addShop cambia
+    window.localStorage.setItem("addShop", JSON.stringify(addShop));
 
-  const [countProducts, setCountProducts] = useState(0);
+    // Establecer un temporizador para limpiar localStorage después de una hora
+    const limpiarDespuesDeUnaHora = () => {
+      window.localStorage.removeItem("addShop");
+    };
+
+    const temporizador = setTimeout(
+      limpiarDespuesDeUnaHora,
+      2 * 60 * 60 * 1000
+    ); // 1 hora en milisegundos
+
+    // Eliminar el temporizador y limpiar localStorage cuando el componente se desmonta
+    return () => {
+      clearTimeout(temporizador);
+      limpiarDespuesDeUnaHora();
+    };
+  }, [addShop]);
 
   useEffect(() => {
-    window.localStorage.setItem("countProducts", JSON.stringify(countProducts));
-  }, [countProducts]);
+    // Almacenar en localStorage cuando Total cambia
+    window.localStorage.setItem("Total", JSON.stringify(parseInt(Total, 10)));
 
-  // Guarda la fecha de expiración en localStorage
-  const setExpiration = (minutes) => {
-    const now = new Date();
-    const expiration = new Date(now.getTime() + minutes * 60000); // Agrega minutos
-    window.localStorage.setItem("expiration", expiration);
-  };
+    // Establecer un temporizador para limpiar localStorage después de una hora
+    const limpiarDespuesDeUnaHora = () => {
+      window.localStorage.removeItem("Total");
+    };
 
-  // Esta función verifica si los datos han expirado y los elimina
-  const checkExpiration = () => {
-    const expiration = new Date(window.localStorage.getItem("expiration"));
-    const now = new Date();
-    if (now > expiration) {
-      // Los datos han expirado, elimínalos
-      window.localStorage.removeItem("modals");
-      window.localStorage.removeItem("expiration");
-    }
-  };
+    const temporizador = setTimeout(limpiarDespuesDeUnaHora,  2 * 60 * 60 * 1000); // 1 hora en milisegundos
 
-  // Establece la expiración al montar el componente
-  useEffect(() => {
-    setExpiration(10); // 10 minutos en minutos
-  }, []);
-
-  // Verifica y elimina datos expirados al montar el componente
-  useEffect(() => {
-    checkExpiration();
-  }, []);
+    // Eliminar el temporizador y limpiar localStorage cuando el componente se desmonta
+    return () => {
+      clearTimeout(temporizador);
+      limpiarDespuesDeUnaHora();
+    };
+  }, [Total]);
 
   return (
     <>
@@ -102,12 +99,8 @@ function App() {
         <Router>
           <header className="App-header">
             <Header
-              allProducts={allProducts}
-              setAllproducts={setAllproducts}
-              total={total}
+              total={Total}
               setTotal={setTotal}
-              countProducts={countProducts}
-              setCountProducts={setCountProducts}
               Seccion={seccion}
               contNotifi={contNotifi}
             />
@@ -115,16 +108,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={
-                <Home
-                  allProducts={allProducts}
-                  setAllproducts={setAllproducts}
-                  total={total}
-                  setTotal={setTotal}
-                  countProducts={countProducts}
-                  setCountProducts={setCountProducts}
-                />
-              }
+              element={<Home total={Total} setTotal={setTotal} />}
             />
 
             <Route path="/login" element={<Login />} />
@@ -132,16 +116,7 @@ function App() {
 
             <Route
               path="/categoryProduct/:id"
-              element={
-                <CategoryProduct
-                  allProducts={allProducts}
-                  setAllproducts={setAllproducts}
-                  total={total}
-                  setTotal={setTotal}
-                  countProducts={countProducts}
-                  setCountProducts={setCountProducts}
-                />
-              }
+              element={<CategoryProduct total={Total} setTotal={setTotal} />}
             />
             {/* TODO:routes the admin */}
             <Route element={protectedRoute()}>
@@ -154,22 +129,29 @@ function App() {
             <Route element={protectedUser()}>
               <Route
                 path="/DetalleProduc/:id"
-                element={<DetalleProduc Seccion={seccion} />}
+                element={
+                  <DetalleProduc
+                    Seccion={seccion}
+                    addShop={addShop}
+                    Total={Total}
+                    setAddShop={setAddShop}
+                    setTotal={setTotal}
+                  />
+                }
               />
               <Route
                 path="/shop"
-                element={<Shop Seccion={seccion} token={token} />}
+                element={<Shop Seccion={seccion} token={token} Total={Total}/>}
               />
               <Route
                 path="/pay"
                 element={
                   <Pay
-                    total={total}
-                    setAllproducts={setAllproducts}
-                    setTotal={setTotal}
-                    setCountProducts={setCountProducts}
-                    allProducts={allProducts}
                     Seccion={seccion}
+                    addShop={addShop}
+                    Total={Total}
+                    setAddShop={setAddShop}
+                    setTotal={setTotal}
                   />
                 }
               />
@@ -177,11 +159,8 @@ function App() {
                 path="/oficina"
                 element={
                   <Oficina
-                    total={total}
-                    setAllproducts={setAllproducts}
+                    total={Total}
                     setTotal={setTotal}
-                    setCountProducts={setCountProducts}
-                    allProducts={allProducts}
                     Seccion={seccion}
                   />
                 }

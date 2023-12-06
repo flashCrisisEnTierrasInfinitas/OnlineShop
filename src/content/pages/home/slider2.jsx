@@ -14,57 +14,9 @@ import Swal from "sweetalert2";
 
 export default function DefaultCarousel({
   data,
-  allProducts,
-  setAllproducts,
-  countProducts,
-  setCountProducts,
   total,
   setTotal,
 }) {
-  const onAddProduct = (product) => {
-    const IndexCarrito = allProducts.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (
-      allProducts.length > 0 && allProducts[IndexCarrito]?.quantity
-        ? allProducts[IndexCarrito].quantity + 1
-        : 1
-    ) {
-      if (product.stockPro == allProducts[IndexCarrito]?.quantity) {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-
-        return Toast.fire({
-          icon: "error",
-          title: "No Stock",
-        });
-      }
-    }
-
-    if (allProducts.find((item) => item.id === product.id)) {
-      const products = allProducts.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-      setTotal(total + product.precioPro * product.quantity);
-      setCountProducts(countProducts + product.quantity);
-      return setAllproducts([...products]);
-    }
-
-    setTotal(total + product.precioPro * product.quantity);
-    setCountProducts(countProducts + product.quantity);
-    setAllproducts([...allProducts, product]);
-  };
-
   return (
     <Carousel className="carusel2 top-50">
       <div className="conter-vacio">Slide 1</div>
@@ -113,19 +65,6 @@ export default function DefaultCarousel({
                   </Typography>
                 </div>
                 <div className="flex boton-product">
-                  {product.stockPro == 0 ? (
-                    ''
-                  ) : (<Tooltip title="Agregar al carrito">
-                    <Button
-                      variant="contained"
-                      style={{
-                        backgroundColor: '#F44F1A'
-                      }}
-                      onClick={() => onAddProduct(product)}
-                    >
-                      <AddShoppingCartIcon />
-                    </Button>
-                  </Tooltip>)}
                   <Tooltip title="Ver detalle">
                     <a href={`/DetalleProduc/${product.id}`}>
                       <Button variant="contained">

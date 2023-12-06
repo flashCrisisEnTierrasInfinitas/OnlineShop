@@ -9,14 +9,14 @@ import { Button, Tooltip } from "@mui/material";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import Cookies from "js-cookie";
 
-export default function DetalleProduc({Seccion}) {
+export default function DetalleProduc({ addShop,Total,setAddShop,setTotal }) {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState(1);
   const [loading, setLoading] = useState(true);
   const [LoadingBotton, setLoadingBotton] = useState(false);
   const { id } = useParams();
   const [validate, setValidate] = useState(false);
-  var token = Cookies.get("token");
+
 
   const getDataList = useCallback(async () => {
     try {
@@ -60,56 +60,37 @@ export default function DetalleProduc({Seccion}) {
     }
   };
 
-  const onAddProduct = async (product) => {
-    const { id, precioPro, img, nombrePro } = product;
 
-    const formData = {
-      user: Seccion,
-      idPro: id,
-      cantidad: inputValue,
-      precio: precioPro,
-      img: img,
-      nombre: nombrePro,
-    };
+  const AddShoppingCart = (data) => {
+    // Asegúrate de que 'productos' exista y sea un array
 
-    try {
-      setLoadingBotton(true);
-      const response = await axios.post("/shopss", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: "Bearer " + token,
-        },
+    // Verifica si el producto ya está en el carrito
+    const productoExistente = addShop.find(
+      (producto) => producto.id === data.id
+    );
+
+    if (productoExistente) {
+      // Si el producto ya está en el carrito, aumenta la cantidad
+      productoExistente.quantity = parseInt(inputValue, 10);
+    } else {
+      // Si el producto no está en el carrito, agrégalo
+      addShop.push({
+        ...data,
+        quantity: parseInt(inputValue, 10),
       });
-      setLoadingBotton(false);
-      setValidate(true);
-      setValidate(response.data.data.id);
-      return response;
-    } catch (error) {
-      setLoadingBotton(false);
-      return alert(error);
     }
+
+    // Actualiza el total sumando el precio del nuevo producto
+    //addShop.total += data.precioPro;
+    {addShop.map(product=>(
+      setTotal(Total + data.precioPro * product.quantity)
+    ))}
+    setValidate(true);
+    setAddShop([...addShop]);
+    console.table("Carrito de compras addShop:", addShop);
   };
 
-  const UpdateProduct = async () => {
-    const formData = {
-      cantidad: inputValue,
-    };
-    try {
-      setLoadingBotton(true);
-      const response = await axios.put(`/shopss/${validate}`, formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: "Bearer " + token,
-        },
-      });
-      setValidate(response.data.data.id);
-      setLoadingBotton(false);
-      return response;
-    } catch (error) {
-      setLoadingBotton(false);
-      return alert(error);
-    }
-  };
+  
 
   return (
     <div className="conter-detallepro">
@@ -147,32 +128,6 @@ export default function DetalleProduc({Seccion}) {
               </div>
               {data.stockPro == 0 ? (
                 ""
-              ) : validate ? (
-                <Tooltip title="Agregar al carrito">
-                  <Button
-                    style={{
-                      background: "#FF6333",
-                      width: "100%",
-                    }}
-                    variant="contained"
-                    onClick={() => UpdateProduct(data)}
-                  >
-                    {LoadingBotton ? (
-                      <div className="progess">
-                        <CSpinner
-                          color="light"
-                          size="sm"
-                          style={{ width: "1rem", height: "1rem" }}
-                        />
-                      </div>
-                    ) : (
-                      <>
-                        <LocalGroceryStoreIcon />
-                        Agregar
-                      </>
-                    )}
-                  </Button>
-                </Tooltip>
               ) : (
                 <Tooltip title="Agregar al carrito">
                   <Button
@@ -181,7 +136,7 @@ export default function DetalleProduc({Seccion}) {
                       width: "100%",
                     }}
                     variant="contained"
-                    onClick={() => onAddProduct(data)}
+                    onClick={() => AddShoppingCart(data)}
                   >
                     {LoadingBotton ? (
                       <div className="progess">
@@ -212,6 +167,7 @@ export default function DetalleProduc({Seccion}) {
             )}
           </div>
         </div>
+        <div className="top-50"></div>
       </header>
     </div>
   );

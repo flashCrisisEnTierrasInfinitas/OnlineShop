@@ -3,12 +3,11 @@ import Header from "./Header";
 import Conted from "./conted";
 
 export default function Pay({
-    setAllproducts,
-    setCountProducts,
-    total,
+    Total,
     setTotal,
-    allProducts,
-    Seccion
+    Seccion,
+    addShop,
+    setAddShop
 }) {
     var token = Cookies.get('token');
     return (
@@ -17,13 +16,12 @@ export default function Pay({
                 <Header /> 
             </div>
             <Conted
-                total={total}
-                setAllproducts={setAllproducts}
-                setCountProducts={setCountProducts}
+                Total={Total}
                 setTotal={setTotal}
                 token={token}
-                allProducts={allProducts}
                 Seccion={Seccion}
+                addShop={addShop}
+                setAddShop={setAddShop}
             />
         </div>
 

@@ -16,10 +16,6 @@ import DefaultCarousel from "./slider2";
 import Categorias from "./categorias";
 
 export default function ProList({
-  allProducts,
-  setAllproducts,
-  countProducts,
-  setCountProducts,
   total,
   setTotal,
 }) {
@@ -100,10 +96,6 @@ export default function ProList({
         <Categorias />
         <DefaultCarousel
           data={oferta}
-          allProducts={allProducts}
-          setAllproducts={setAllproducts}
-          countProducts={countProducts}
-          setCountProducts={setCountProducts}
           total={total}
           setTotal={setTotal}
         />

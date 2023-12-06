@@ -1226,19 +1226,21 @@ select option::before {
 }
 
 /* todo SHOP */
-.table-shop{
+.table-shop {
   display: flex;
   align-items: center;
   border-top: 1px solid rgba(128, 128, 128, 0.199);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.199);
 }
 .nombre-shop {
   display: flex;
   align-items: center;
   padding: 20px;
+  width: 100%;
 }
 .text-nombre-shop {
   margin-left: 20px;
-  display: block;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -1255,12 +1257,25 @@ select option::before {
   background-color: #2d477c;
 }
 .img-shop {
-  width: 70px;
-  height: 70px;
+  width: 150px;
+  height: 90px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.397);
 }
 .img-shop img {
   width: 100%;
   height: 100%;
+}
+.info-shop {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: monospace;
+  margin-bottom: 5px;
+}.info-shop label{
+  margin-bottom: 20px;
+  text-align: justify;
 }
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {

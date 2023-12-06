@@ -31,7 +31,7 @@ export default function Oficina({
   const [image, setImage] = useState(null);
   var getToken = Cookies.get("token");
 
-  const datas = localStorage.getItem("allProducts");
+  const datas = localStorage.getItem("addShop");
   const productos = JSON.parse(datas);
 
   const [formData, setFormData] = useState({
@@ -46,7 +46,6 @@ export default function Oficina({
       cantidad: producto.quantity,
     })),
   });
-  console.log("🚀 ~ file: index.jsx:48 ~ formData:", formData);
   useEffect(() => {
     setFormData({
       ...formData,
