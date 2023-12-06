@@ -1,9 +1,30 @@
 import { Button } from "@mui/material";
-import Drawers from "./drawers";
 import { useEffect } from "react";
+import { useState } from "react";
 
 export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
   const dataToRender = data || [];
+  const [inputValue, setInputValue] = useState("");
+  const valueToDisplay = Total ? Total.toLocaleString() : "";
+
+  // Supongamos que dataToRender es un array de objetos con propiedades, y quieres mapear alguna propiedad en inputValue
+  useEffect(() => {
+    const mappedValues = dataToRender.map((val) => val.quantity); // Reemplaza 'algunaPropiedad' con la propiedad que deseas mapear
+    const concatenatedValues = mappedValues.join(", "); // Puedes ajustar la lógica según tus necesidades
+    setInputValue(concatenatedValues);
+  }, [dataToRender]);
+
+  const isPositiveNumber = (value) => {
+    return /^[1-9]\d*$/.test(value);
+  };
+
+  const handleInputChange = (event) => {
+    const inputValue = event.target.value;
+
+    if (isPositiveNumber(inputValue)) {
+      setInputValue(inputValue);
+    }
+  };
 
   const Totals = ({ product }) => {
     const { precioPro, quantity } = product;
@@ -23,6 +44,35 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
     window.location.reload();
   };
 
+  const AddShoppingCart = (data) => {
+    // Asegúrate de que 'productos' exista y sea un array
+
+    // Verifica si el producto ya está en el carrito
+    const productoExistente = addShop.find(
+      (producto) => producto.id === data.id
+    );
+
+    if (productoExistente) {
+      // Si el producto ya está en el carrito, aumenta la cantidad
+      productoExistente.quantity = parseInt(inputValue, 10);
+    } else {
+      // Si el producto no está en el carrito, agrégalo
+      addShop.push({
+        ...data,
+        quantity: parseInt(inputValue, 10),
+      });
+    }
+
+    // Actualiza el total sumando el precio del nuevo producto
+    //addShop.total += data.precioPro;
+    {
+      addShop.map((product) =>
+        setTotal(Total + data.precioPro * product.quantity)
+      );
+    }
+    setAddShop([...addShop]);
+    window.location.reload();
+  };
   return (
     <div>
       {dataToRender.map((val) => (
@@ -33,7 +83,6 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
             </div>
             <div className="text-nombre-shop">
               <p>{val.descripPro}</p>
-              <button onClick={() => removeFromCart(val.id)}>Quitar</button>
             </div>
           </div>
           <div className="nombre-shop">
@@ -44,20 +93,23 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
             <input
               type="number"
               className="input-quantity"
-              value={val.quantity}
+              value={inputValue}
+              onChange={handleInputChange}
             />
           </div>
           <div className="nombre-shop">
             Total: $<Totals product={val} />
+          </div>
+          <div className="text-nombre-shop">
+            <button onClick={() => AddShoppingCart(val)}>Actualizar</button>
+            <button onClick={() => removeFromCart(val.id)}>Quitar</button>
           </div>
         </div>
       ))}
       <div className="grid top-50">
         <div></div>
         <div>
-          <div className="info-shop">
-            Subtotal: ${Total.toLocaleString("es-CO")}
-          </div>
+          <div className="info-shop">Subtotal: ${valueToDisplay}</div>
           <div className="info-shop">
             <label>
               En la pantalla de pagos se incluye el impuesto y se calculan los

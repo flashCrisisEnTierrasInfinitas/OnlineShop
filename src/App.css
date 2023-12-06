@@ -1252,12 +1252,13 @@ select option::before {
   font-weight: 700;
   padding: 5px;
   background-color: #2d477cc2;
+  margin: 5px;
 }
 .text-nombre-shop button:hover {
   background-color: #2d477c;
 }
 .img-shop {
-  width: 150px;
+  width: 190px;
   height: 90px;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.397);
 }
