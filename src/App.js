@@ -124,7 +124,7 @@ function App() {
             />
             {/* TODO:routes the admin */}
             <Route element={protectedRoute()}>
-              <Route path="/dahsboard" element={<DahsboardAdmin />} />
+              <Route path="/dahsboard/:id" element={<DahsboardAdmin />} />
               <Route path="/User" element={<User />} />
               <Route path="/product" element={<Product />} />
               <Route path="/category" element={<Category />} />

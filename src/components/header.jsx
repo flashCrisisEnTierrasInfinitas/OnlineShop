@@ -12,96 +12,23 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 
-import { Button, Tooltip } from "@mui/joy";
+import { Tooltip } from "@mui/joy";
 import Cookies from "js-cookie";
-import Drawers from "./drawers";
 
 export default function Header({
-  Seccion,
   contNotifi,
 }) {
   const [visible, setVisible] = useState(false);
-  const [Open, setOpen] = useState(false);
 
   var role = Cookies.get("role");
   var seccion = Cookies.get("seccion");
   var hastRole = role;
 
-
-  /* const MenuPro = () => {
-    return (
-      <div className="box-tar-menu">
-        <div className="container-cart-products">
-          {allProducts.length ? (
-            <>
-              <div className="row-product">
-                {allProducts.map((product) => (
-                  <div className="cart-product" key={product.id}>
-                    <div className="info-cart-product">
-                      <span className="cantidad-producto-carrito">
-                        {product.quantity}
-                      </span>
-                      <p className="titulo-producto-carrito">
-                        {product.nombrePro}
-                      </p>
-                      <div className="img-menu">
-                        <img src={product.img} alt="" />
-                      </div>
-                      <span className="precio-producto-carrito">
-                        ${product.precioPro}
-                      </span>
-                    </div>
-                    <a
-                      className="icon-close"
-                      onClick={() => onDeleteProduct(product)}
-                    >
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                ))}
-              </div>
-              <div className="cart-total">
-                <h3>Total:</h3>
-                <span className="total-pagar">{formattedNumber}</span>
-              </div>
-              <div className="grid">
-                <Button onClick={() => onCleanCart()}>Vaciar Carrito</Button>
-                <Drawers
-                  Seccion={Seccion}
-                  setAllproducts={setAllproducts}
-                  setCountProducts={setCountProducts}
-                  setTotal={setTotal}
-                  allProducts={allProducts}
-                />
-              </div>
-            </>
-          ) : (
-            <p className="cart-empty">El carrito está vacío</p>
-          )}
-        </div>
-      </div>
-    );
-  }; */
-
-  /* const onDeleteProduct = (product) => {
-    const results = allProducts.filter((item) => item.id !== product.id);
-
-    setTotal(total - product.precioPro * product.quantity);
-    setCountProducts(countProducts - product.quantity);
-    setAllproducts(results);
-  };
-
-  const onCleanCart = () => {
-    setAllproducts([]);
-    setTotal(0);
-    setCountProducts(0);
-  }; */
-
   const Admin = () => {
     if (hastRole == 1) {
       return (
         <Tooltip title="Administrador">
-          <a href="/dahsboard">
+          <a href="/dahsboard/0">
             <i class="fa-solid fa-user-lock"></i>
           </a>
         </Tooltip>

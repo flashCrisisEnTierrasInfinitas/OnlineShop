@@ -6,15 +6,14 @@ import isMountedRef from "../../../hooks/useRefMounted";
 import { CSpinner } from "@coreui/react";
 import Cookies from "js-cookie";
 import Alertas from "./alerta";
-import Toast from "./toast";
 
-export default function Components() {
+export default function Components({ id }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [Error, setError] = useState(false);
   const [Message, setMessage] = useState([]);
-  const [statusVen, setStatusVen] = useState(0);
+  const [statusVen, setStatusVen] = useState(parseInt(id, 10) || 0);
   var getToken = Cookies.get("token");
 
   const getDataList = useCallback(async () => {
@@ -53,9 +52,6 @@ export default function Components() {
     return itemId.includes(searchTermLower) && item.status_venta === statusVen;
   });
 
-  const haldeClikStatus = async (id) => {
-    setStatusVen(id);
-  };
   return (
     <div className="conter-daly">
       {Error ? (
@@ -72,36 +68,6 @@ export default function Components() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-          </div>
-          <div className="boton-product">
-            <Button
-              variant="contained"
-              color="warning"
-              onClick={() => haldeClikStatus(0)}
-            >
-              Nuevos
-            </Button>
-            <Button
-              variant="contained"
-              color="info"
-              onClick={() => haldeClikStatus(2)}
-            >
-              Enviados
-            </Button>
-            <Button
-              variant="contained"
-              color="success"
-              onClick={() => haldeClikStatus(3)}
-            >
-              Entregados
-            </Button>
-            <Button
-              variant="contained"
-              color="error"
-              onClick={() => haldeClikStatus(1)}
-            >
-              Cancelados
-            </Button>
           </div>
           <br />
           <Stack sx={{ width: "100%" }} spacing={2}>

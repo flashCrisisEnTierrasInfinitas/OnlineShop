@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { Button, Tooltip } from "@mui/material";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
-import Cookies from "js-cookie";
 
 export default function DetalleProduc({ addShop,Total,setAddShop,setTotal }) {
   const [data, setData] = useState([]);

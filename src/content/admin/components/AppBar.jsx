@@ -3,6 +3,11 @@ import {
   CButton,
   CCloseButton,
   CContainer,
+  CDropdown,
+  CDropdownDivider,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
   CNavbar,
   CNavbarBrand,
   CNavbarNav,
@@ -12,10 +17,9 @@ import {
   COffcanvasHeader,
   COffcanvasTitle,
 } from "@coreui/react";
-import { Button } from "@mui/joy";
+import { Button } from "@mui/material";
 
 export default function AppBarAdmin() {
-
   const [visible, setVisible] = useState(false);
   return (
     <CNavbar colorScheme="light" className="conter-appBar">
@@ -24,17 +28,17 @@ export default function AppBarAdmin() {
           <div className="logo-admin ">
             <a href="/">
               <div>
-                <img src="img/logos/logo1.png" />
+                <img src="/img/logos/logo1.png" />
               </div>
             </a>
           </div>
-          <div style={{
-            marginLeft:'20px'
-          }}>
+          <div
+            style={{
+              marginLeft: "20px",
+            }}
+          >
             <a href="/login">
-            <CButton variant="outline">
-              Login
-            </CButton>
+              <CButton variant="outline">Login</CButton>
             </a>
           </div>
         </CNavbarBrand>
@@ -61,31 +65,67 @@ export default function AppBarAdmin() {
             <CNavbarNav>
               <a href="/" className="text-appBar">
                 <div className="ico-menu">
-                  <img src="img/icons/iconfinder-home.png" />
+                  <img src="/img/icons/iconfinder-home.png" />
                 </div>
                 <label>Home</label>
               </a>
-              <a href="/dahsboard" className="text-appBar">
-                <div className="ico-menu">
-                  <img src="img/icons/school_81290.png" />
-                </div>
-                <label>Mi diario</label>
-              </a>
+              <CDropdown variant="nav-item" popper={false}>
+                <CDropdownToggle color="secondary">
+                  <div style={{ display: "flex" }}>
+                    <div className="ico-menu">
+                      <img src="/img/icons/school_81290.png" />
+                    </div>
+                    <label>Pedidos</label>
+                  </div>
+                </CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="/dahsboard/0">
+                    <Button variant="contained" color="warning">
+                      Nuevos
+                    </Button>
+                  </CDropdownItem>
+                  <CDropdownItem href="/dahsboard/2">
+                    <Button
+                      variant="contained"
+                      color="info"
+                    >
+                      Enviados
+                    </Button>
+                  </CDropdownItem>
+                  <CDropdownItem href="/dahsboard/3">
+                    <Button
+                      variant="contained"
+                      color="success"
+                    >
+                      Entregados
+                    </Button>
+                  </CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="/dahsboard/1">
+                    <Button
+                      variant="contained"
+                      color="error"
+                    >
+                      Cancelados
+                    </Button>
+                  </CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
               <a href="/User" className="text-appBar">
                 <div className="ico-menu">
-                  <img src="img/icons/avatardefault_92824.png" />
+                  <img src="/img/icons/avatardefault_92824.png" />
                 </div>
                 <label>Usuarios</label>
               </a>
               <a href="/category" className="text-appBar">
                 <div className="ico-menu">
-                  <img src="img/icons/category.png" />
+                  <img src="/img/icons/category.png" />
                 </div>
                 <label>Categoria</label>
               </a>
               <a href="/product" className="text-appBar">
                 <div className="ico-menu">
-                  <img src="img/icons/shopping.png" />
+                  <img src="/img/icons/shopping.png" />
                 </div>
                 <label>Lista</label>
               </a>
