@@ -48,7 +48,7 @@ export default function Login() {
       setLoading(false);
       
       if(response.data.role==1){
-        return (window.location.href = "/dahsboard");
+        return (window.location.href = "/dahsboard/0");
       }
       return (window.location.href = "/");
     } catch (error) {
