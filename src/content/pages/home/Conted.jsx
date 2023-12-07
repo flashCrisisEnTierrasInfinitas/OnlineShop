@@ -15,7 +15,7 @@ export default function Conted() {
             <Button variant="outlined">
               Empecemos <ExpandMoreIcon />
             </Button>
-          </a>
+          </a> 
         </div>
       </div>
       <div className="img-resul">

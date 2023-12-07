@@ -159,7 +159,7 @@ export default function Alertas({ data, getDataList }) {
 
   if (data.status_venta == 0) {
     return (
-      <div className="alerta" style={{ background: "rgb(237, 108, 2)" }}>
+      <div className="alerta">
         <div className="conter-alerta">
           <div className="ico-alerta">
             <GppBadIcon />
@@ -192,7 +192,7 @@ export default function Alertas({ data, getDataList }) {
   }
   if (data.status_venta == 1) {
     return (
-      <div className="alerta" style={{ background: "rgb(211, 47, 47)" }}>
+      <div className="alerta">
         <div className="conter-alerta">
           <div className="ico-alerta">
             <GppBadIcon />
@@ -225,7 +225,7 @@ export default function Alertas({ data, getDataList }) {
   }
   if (data.status_venta == 2) {
     return (
-      <div className="alerta" style={{ background: "rgb(2, 136, 209)" }}>
+      <div className="alerta">
         <div className="conter-alerta">
           <div className="ico-alerta">
             <GppBadIcon />
@@ -258,7 +258,7 @@ export default function Alertas({ data, getDataList }) {
   }
   if (data.status_venta == 3) {
     return (
-      <div className="alerta" style={{ background: "rgb(46, 125, 50)" }}>
+      <div className="alerta">
         <div className="conter-alerta">
           <div className="ico-alerta">
             <GppBadIcon />

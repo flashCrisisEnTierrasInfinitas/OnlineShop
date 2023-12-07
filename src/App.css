@@ -993,12 +993,12 @@ p {
   font-size: 0.975rem;
   line-height: 1.43;
   letter-spacing: 0.01071em;
-  background-color: #2e7d32;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 6px 16px;
-  color: #fff;
+
+  border: 1px solid #0d6efd;
 }
 .conter-alerta {
   width: 100%;
@@ -1325,11 +1325,13 @@ select option::before {
 }
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
+  .text-home a > p{
+
+  }
   .text-home a > p {
     font-size: 1em;
     letter-spacing: 20px;
     margin: 0;
-    margin-top: 10vh;
   }
   .box-menu {
     width: 100%;
@@ -1375,7 +1377,6 @@ select option::before {
   }
   .searchPro {
     font-size: 2em;
-    margin-top: 10vh;
   }
   .conter-alerta {
     display: block;
@@ -1444,5 +1445,21 @@ select option::before {
   }
   .table-shop {
     display: block;
+  }
+  .text-resul {
+    margin: 15px;
+  }
+  .text-resul h1 {
+    font-weight: bold;
+    font-size: 2em;
+  }
+  .text-resul p {
+    font-size: 1.5em;
+  }
+  .img-resul {
+    display: none;
+  }
+  .conter-search,.conter-cate-home,.box-vendido  {
+    margin-top: 0px;
   }
 }
