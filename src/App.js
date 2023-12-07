@@ -28,6 +28,7 @@ import protectedUser from "./Auth/RoutesUser";
 import Cookies from "js-cookie";
 import Oficina from "./content/pages/store/oficina";
 import Shop from "./content/pages/store/shop";
+import Sale from "./content/pages/store/sale";
 
 function App() {
   //axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
@@ -139,6 +140,19 @@ function App() {
                     Total={Total}
                     setAddShop={setAddShop}
                     setTotal={setTotal}
+                  />
+                }
+              />
+              <Route
+                path="/shop/sale"
+                element={
+                  <Sale
+                    Seccion={seccion}
+                    token={token}
+                    Total={Total}
+                    setTotal={setTotal}
+                    setAddShop={setAddShop}
+                    addShop={addShop}
                   />
                 }
               />

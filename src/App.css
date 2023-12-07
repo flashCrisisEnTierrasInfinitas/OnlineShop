@@ -1274,9 +1274,54 @@ select option::before {
   font-weight: 600;
   font-family: monospace;
   margin-bottom: 5px;
-}.info-shop label{
+}
+.info-shop label {
   margin-bottom: 20px;
   text-align: justify;
+}
+/* TODO SALE */
+.form-sale input {
+  margin-top: 10px;
+}
+.form-sale div {
+  margin-top: 10px;
+}
+.img-checkout-pago {
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  margin-left: 10px;
+}
+.img-checkout-pago div {
+  padding: 0;
+  margin: 0;
+  width: 70px;
+  margin-left: 5px;
+}
+.img-checkout-pago div img {
+  width: 100%;
+  height: 100%;
+}
+.list-sale {
+  display: flex;
+}
+.list-sale div {
+  height: 70px;
+}
+.list-sale div label {
+  background-color: #81818181;
+  color: #fff;
+  border-radius: 100%;
+  padding: 5px;
+  position: absolute;
+  font-size: 10px;
+  margin: 2px;
+}
+.list-sale div img {
+  height: 100%;
+  border: 1px solid rgba(128, 128, 128, 0.658);
+  border-radius: 5px;
 }
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {

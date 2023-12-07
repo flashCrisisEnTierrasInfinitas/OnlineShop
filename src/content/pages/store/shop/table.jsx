@@ -128,15 +128,17 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
                 Seguir comprando
               </Button>
             </a>
-            <Button
-              style={{
-                background: "#FF6333",
-                width: "100%",
-                color: "#fff",
-              }}
-            >
-              Finalizar pedido
-            </Button>
+            <a href="/shop/sale">
+              <Button
+                style={{
+                  background: "#FF6333",
+                  width: "100%",
+                  color: "#fff",
+                }}
+              >
+                Finalizar pedido
+              </Button>
+            </a>
           </div>
         </div>
       </div>
