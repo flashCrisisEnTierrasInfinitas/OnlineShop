@@ -80,20 +80,28 @@ export default function AppBarAdmin() {
                 </CDropdownToggle>
                 <CDropdownMenu>
                   <CDropdownItem href="/dahsboard/0">
-                    <Button variant="outlined">
+                    <Button variant="outlined" style={{
+                      width: '100%'
+                    }}>
                       Nuevos
                     </Button>
                   </CDropdownItem>
                   <CDropdownItem href="/dahsboard/2">
                     <Button
-                    variant="outlined"
+                      variant="outlined"
+                      style={{
+                        width: '100%'
+                      }}
                     >
                       Enviados
                     </Button>
                   </CDropdownItem>
                   <CDropdownItem href="/dahsboard/3">
                     <Button
-                    variant="outlined"
+                      variant="outlined"
+                      style={{
+                        width: '100%'
+                      }}
                     >
                       Entregados
                     </Button>
@@ -102,6 +110,9 @@ export default function AppBarAdmin() {
                   <CDropdownItem href="/dahsboard/1">
                     <Button
                       variant="outlined"
+                      style={{
+                        width: '100%'
+                      }}
                     >
                       Cancelados
                     </Button>
