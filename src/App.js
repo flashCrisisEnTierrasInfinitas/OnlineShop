@@ -31,8 +31,9 @@ import Shop from "./content/pages/store/shop";
 import Sale from "./content/pages/store/sale";
 
 function App() {
-  //axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
-  axios.defaults.baseURL = "http://localhost:8000/api";
+  axios.defaults.baseURL =
+    "https://apionlineshop.com.asuprocolombiasas.com/api";
+  //axios.defaults.baseURL = "http://localhost:8000/api";
 
   const seccion = Cookies.get("seccion");
   const token = Cookies.get("token");
