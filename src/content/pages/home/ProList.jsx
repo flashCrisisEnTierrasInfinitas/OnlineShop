@@ -122,12 +122,6 @@ export default function ProList({
                       </Typography>
                       <Typography fontSize="lg" level="body-xs">{product.nombrePro}</Typography>
                     </div>
-                    <div className="text-product">
-                      <Typography level="body-xs">Total Stock:</Typography>
-                      <Typography fontSize="lg" fontWeight="lg">
-                        {product.stockPro}
-                      </Typography>
-                    </div>
                     <div className="text-precio">
                       <label>${product.precioPro.toLocaleString("es-CO")}</label>
                       <label>IVA INCLUIDO</label>

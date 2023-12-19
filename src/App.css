@@ -316,9 +316,10 @@ h1 {
 }
 
 .text-home {
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: black;
 }
 
@@ -807,7 +808,7 @@ h1 {
 *****************PROFILE********************
 ****************************************** */
 .conted-profile {
-  margin-bottom: 30%;
+  margin-bottom: 30px;
 }
 .avatar-profile img {
   border-radius: 100%;
@@ -1325,8 +1326,7 @@ select option::before {
 }
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
-  .text-home a > p{
-
+  .text-home a > p {
   }
   .text-home a > p {
     font-size: 1em;
@@ -1459,7 +1459,9 @@ select option::before {
   .img-resul {
     display: none;
   }
-  .conter-search,.conter-cate-home,.box-vendido  {
+  .conter-search,
+  .conter-cate-home,
+  .box-vendido {
     margin-top: 0px;
   }
 }

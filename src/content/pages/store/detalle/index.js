@@ -8,14 +8,18 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { Button, Tooltip } from "@mui/material";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 
-export default function DetalleProduc({ addShop,Total,setAddShop,setTotal }) {
+export default function DetalleProduc({
+  addShop,
+  Total,
+  setAddShop,
+  setTotal,
+}) {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState(1);
   const [loading, setLoading] = useState(true);
   const [LoadingBotton, setLoadingBotton] = useState(false);
   const { id } = useParams();
   const [validate, setValidate] = useState(false);
-
 
   const getDataList = useCallback(async () => {
     try {
@@ -59,7 +63,6 @@ export default function DetalleProduc({ addShop,Total,setAddShop,setTotal }) {
     }
   };
 
-
   const AddShoppingCart = (data) => {
     // Asegúrate de que 'productos' exista y sea un array
 
@@ -67,6 +70,11 @@ export default function DetalleProduc({ addShop,Total,setAddShop,setTotal }) {
     const productoExistente = addShop.find(
       (producto) => producto.id === data.id
     );
+
+    if (data.stockPro < inputValue) {
+      // If the product is not in the cart and there's not enough stock, show an alert
+      return alert("sin stock");
+    }
 
     if (productoExistente) {
       // Si el producto ya está en el carrito, aumenta la cantidad
@@ -81,15 +89,14 @@ export default function DetalleProduc({ addShop,Total,setAddShop,setTotal }) {
 
     // Actualiza el total sumando el precio del nuevo producto
     //addShop.total += data.precioPro;
-    {addShop.map(product=>(
-      setTotal(Total + data.precioPro * product.quantity)
-    ))}
+    {
+      addShop.map((product) =>
+        setTotal(Total + data.precioPro * product.quantity)
+      );
+    }
     setValidate(true);
     setAddShop([...addShop]);
-    console.table("Carrito de compras addShop:", addShop);
   };
-
-  
 
   return (
     <div className="conter-detallepro">

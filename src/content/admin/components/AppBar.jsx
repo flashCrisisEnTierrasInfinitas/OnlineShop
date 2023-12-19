@@ -81,7 +81,7 @@ export default function AppBarAdmin() {
                 <CDropdownMenu>
                   <CDropdownItem href="/dahsboard/0">
                     <Button variant="outlined" style={{
-                      width: '100%'
+                      width: '80%'
                     }}>
                       Nuevos
                     </Button>
@@ -90,7 +90,7 @@ export default function AppBarAdmin() {
                     <Button
                       variant="outlined"
                       style={{
-                        width: '100%'
+                        width: '80%'
                       }}
                     >
                       Enviados
@@ -100,7 +100,7 @@ export default function AppBarAdmin() {
                     <Button
                       variant="outlined"
                       style={{
-                        width: '100%'
+                        width: '80%'
                       }}
                     >
                       Entregados
@@ -111,7 +111,7 @@ export default function AppBarAdmin() {
                     <Button
                       variant="outlined"
                       style={{
-                        width: '100%'
+                        width: '80%'
                       }}
                     >
                       Cancelados

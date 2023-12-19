@@ -58,12 +58,6 @@ export default function DefaultCarousel({
                     ${product.precioPro.toLocaleString("es-CO")}
                   </Typography>
                 </div>
-                <div className="text-product">
-                  <Typography level="body-xs">Total Stock:</Typography>
-                  <Typography fontSize="lg" fontWeight="lg">
-                    {product.stockPro}
-                  </Typography>
-                </div>
                 <div className="flex boton-product">
                   <Tooltip title="Ver detalle">
                     <a href={`/DetalleProduc/${product.id}`}>

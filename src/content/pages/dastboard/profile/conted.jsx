@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-export default function Conted({ data }) {
-    var token = Cookies.get('token');
+export default function Conted({ data, getDataList }) {
+    var token = Cookies.get("token");
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [dataLog, setDataLog] = useState({
@@ -16,7 +16,7 @@ export default function Conted({ data }) {
         direccion: data.direccion,
         telefono: data.telefono,
         email: data.email,
-        img: image
+        img: image,
     });
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -39,62 +39,70 @@ export default function Conted({ data }) {
     const hanleSave = async (id) => {
         try {
             setLoading(true);
-            const response = await axios.put(`/users/${id}`, dataLog, {
+            const response = await axios.post(`/users/${id}?_method=PUT`, {
+                ...dataLog, // Include the _method parameter in the request payload
+            }, {
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'Authorization': 'Bearer ' + token,
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`,
                 },
             });
+            getDataList();
             setLoading(false);
             const Toast = Swal.mixin({
                 toast: true,
-                position: 'top-end',
+                position: "top-end",
                 showConfirmButton: false,
                 timer: 3000,
                 timerProgressBar: true,
                 didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-        
-              Toast.fire({
-                icon: 'success',
-                title: response.data.message
-              })
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+            });
+
+            Toast.fire({
+                icon: "success",
+                title: response.data.message,
+            });
         } catch (error) {
             setLoading(false);
-            console.log(error.response.data)
+            console.log(error.response.data);
             const Toast = Swal.mixin({
                 toast: true,
-                position: 'top-end',
+                position: "top-end",
                 showConfirmButton: false,
                 timer: 3000,
                 timerProgressBar: true,
                 didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-        
-              Toast.fire({
-                icon: 'error',
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+            });
+
+            Toast.fire({
+                icon: "error",
                 title: error.response.data.message,
                 text: error.response.data.error,
-              })
+            });
         }
-
     };
     return (
         <div className="conted-profile margin-90">
             <div className="avatar-profile flex top-50">
-                <img src="" alt={data.name} />
+                <img src={data.img} alt={data.name} />
             </div>
+            <div className="top-50"></div>
             <div className="info-profile top-50 margin-90">
                 <form className="form-login">
                     <div class="mb-3">
-                        <input class="form-control" type="file" id="formFile" accept="image/*" onChange={handleImageChange} />
+                        <input
+                            class="form-control"
+                            type="file"
+                            id="formFile"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                        />
                     </div>
                     <div className="grid">
                         <CFormInput
@@ -138,16 +146,22 @@ export default function Conted({ data }) {
                         />
                     </div>
                     <div className="flex top-50">
-                        <Button onClick={()=>hanleSave(data.id)}>
+                        <Button onClick={() => hanleSave(data.id)}>
                             {loading ? (
                                 <div className="progess">
-                                    <CSpinner color="light" size="sm" style={{ width: '1rem', height: '1rem' }} />
+                                    <CSpinner
+                                        color="light"
+                                        size="sm"
+                                        style={{ width: "1rem", height: "1rem" }}
+                                    />
                                 </div>
-                            ) : (<>Actualizar</>)}
+                            ) : (
+                                <>Actualizar</>
+                            )}
                         </Button>
                     </div>
                 </form>
             </div>
         </div>
-    )
+    );
 }

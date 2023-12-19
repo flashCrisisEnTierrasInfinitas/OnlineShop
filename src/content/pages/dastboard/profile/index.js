@@ -9,17 +9,17 @@ import Cookies from "js-cookie";
 export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  var token = Cookies.get('token');
+  var token = Cookies.get("token");
   const id = Cookies.get("id");
 
   const getDataList = useCallback(async () => {
     try {
       const response = await axios.get(`/users/${id}`, {
         headers: {
-            "Content-Type": "multipart/form-data",
-            'X-Requested-With': 'XMLHttpRequest',
-            'Authorization': 'Bearer ' + token,
-          },
+          "Content-Type": "multipart/form-data",
+          "X-Requested-With": "XMLHttpRequest",
+          Authorization: "Bearer " + token,
+        },
       });
       setData(response.data);
       setLoading(false);
@@ -34,7 +34,12 @@ export default function Profile() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center">
+      <div
+        className="d-flex justify-content-center"
+        style={{
+          marginTop: "130px",
+        }}
+      >
         <CSpinner color="danger" />
       </div>
     );
@@ -45,7 +50,7 @@ export default function Profile() {
       <div className="header-pay">
         <Header />
       </div>
-      <Conted data={data}/>
+      <Conted data={data} getDataList={getDataList} />
     </>
   );
 }

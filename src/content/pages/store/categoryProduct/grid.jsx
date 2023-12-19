@@ -118,25 +118,12 @@ export default function ProList({
       <div>
         <div className="box-vendido">
           {filteredData?.map((product) => (
-            <>
-              <div className="card-pro-list">
+            <div className="card-pro-list">
+              <a
+                href={`/DetalleProduc/${product.id}`}
+                style={{ textDecoration: "none" }}
+              >
                 <Card key={product.id}>
-                  <div>
-                    <h1 className="title-card-list">{product.nombrePro}</h1>
-                    <IconButton
-                      aria-label="bookmark Bahamas Islands"
-                      variant="plain"
-                      color="neutral"
-                      size="sm"
-                      sx={{
-                        position: "absolute",
-                        top: "0.875rem",
-                        right: "0.5rem",
-                      }}
-                    >
-                      <BookmarkAdd />
-                    </IconButton>
-                  </div>
                   <AspectRatio minHeight="120px" maxHeight="400px">
                     <img
                       src={product.img}
@@ -147,10 +134,10 @@ export default function ProList({
                   </AspectRatio>
                   <div className="grid">
                     <div className="text-product">
-                      <Typography level="body-xs">Total price:</Typography>
                       <Typography fontSize="lg" fontWeight="lg">
-                        ${product.precioPro.toLocaleString("es-CO")}
+                        {product.descripPro}
                       </Typography>
+                      <Typography fontSize="lg" level="body-xs">{product.nombrePro}</Typography>
                     </div>
                     <div className="text-product">
                       <Typography level="body-xs">Total Stock:</Typography>
@@ -158,32 +145,14 @@ export default function ProList({
                         {product.stockPro}
                       </Typography>
                     </div>
-                    <div className="flex boton-product">
-                      {product.stockPro == 0 ? (
-                        ""
-                      ) : (
-                        <Tooltip title="Agregar al carrito">
-                          <Button
-                            variant="contained"
-                            color="warning"
-                            onClick={() => onAddProduct(product)}
-                          >
-                            <AddShoppingCartIcon />
-                          </Button>
-                        </Tooltip>
-                      )}
-                      <Tooltip title="Ver detalle">
-                        <a href={`/DetalleProduc/${product.id}`}>
-                          <Button variant="contained">
-                            <LoupeIcon />
-                          </Button>
-                        </a>
-                      </Tooltip>
+                    <div className="text-precio">
+                      <label>${product.precioPro.toLocaleString("es-CO")}</label>
+                      <label>IVA INCLUIDO</label>
                     </div>
                   </div>
                 </Card>
-              </div>
-            </>
+              </a>
+            </div>
           ))}
         </div>
       </div>

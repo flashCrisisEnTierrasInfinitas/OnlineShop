@@ -133,10 +133,9 @@ export default function Update({ key, getDataList, data }) {
     const handleSubmit = async () => {
         try {
             setLoading(true);
-            const response = await axios.put(`/categoryProd/${data.row.id}`, formData, {
+            const response = await axios.post(`/categoryProd/${data.row.id}?_method=PUT`, formData, {
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'multipart/form-data',
                     Authorization: "Bearer " + getToken,
                 },
             });

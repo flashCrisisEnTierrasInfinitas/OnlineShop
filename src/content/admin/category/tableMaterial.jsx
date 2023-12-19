@@ -28,18 +28,6 @@ export default function DataTable({ setKey, key, token }) {
       ),
     },
     {
-      field: "ico",
-      headerName: "ico",
-      width: 90,
-      renderCell: (Params) => (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: Params.row.ico
-          }}
-        />
-      ),
-    },
-    {
       field: "state",
       headerName: "Estado",
       width: 220,

@@ -13,25 +13,25 @@ export default function CategoryProduct({
   setTotal,
 }) {
   const { id } = useParams();
-  const [idFilter,setIdFilter] = useState(id);
+  const [idFilter, setIdFilter] = useState(id);
 
   return (
     <div className="conter-home">
       <div className="header-pay">
-        <Header id={id}/>
+        <Header id={id} />
       </div>
       <div className="row">
-        <div className="col-9 margin-90">
-        <ProList
-          allProducts={allProducts}
-          setAllproducts={setAllproducts}
-          total={total}
-          setTotal={setTotal}
-          countProducts={countProducts}
-          setCountProducts={setCountProducts}
-          idFilter={idFilter}
-          id={id}
-        />
+        <div>
+          <ProList
+            allProducts={allProducts}
+            setAllproducts={setAllproducts}
+            total={total}
+            setTotal={setTotal}
+            countProducts={countProducts}
+            setCountProducts={setCountProducts}
+            idFilter={idFilter}
+            id={id}
+          />
         </div>
       </div>
     </div>

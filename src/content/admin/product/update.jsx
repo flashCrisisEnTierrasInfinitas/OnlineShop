@@ -20,7 +20,7 @@ import isMountedRef from "../../../hooks/useRefMounted";
 import Cookies from "js-cookie";
 
 
-export default function Update({data, token }) {
+export default function Update({ data, token }) {
     const [visible, setVisible] = useState(false);
     const [image, setImage] = useState(null);
     const [TypePro, setTypePro] = useState([]);
@@ -61,9 +61,9 @@ export default function Update({data, token }) {
     const handleSubmit = async () => {
         try {
             setLoading(true);
-            const response = await axios.put(`/product/${data.row.id}}`, formData, {
+            const response = await axios.post(`/product/${data.row.id}?_method=PUT`, formData, {
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Content-Type': 'multipart/form-data',
                     'X-Requested-With': 'XMLHttpRequest',
                     Authorization: "Bearer " + getToken,
                 },
@@ -142,7 +142,7 @@ export default function Update({data, token }) {
                             />
                         </CCol>
                         <CCol md={6}>
-                        <CFormLabel>tipo producto</CFormLabel>
+                            <CFormLabel>tipo producto</CFormLabel>
                             <CFormSelect name="id_category" onChange={handleChange}>
                                 <option>Seleccione..</option>
                                 {TypePro.map((option) => (
@@ -198,7 +198,7 @@ export default function Update({data, token }) {
                             />
                         </CCol>
                         <CCol md={12}>
-                        <CFormLabel>Oferta?</CFormLabel>
+                            <CFormLabel>Oferta?</CFormLabel>
                             <CFormSelect
                                 id="oferta"
                                 name="oferta"

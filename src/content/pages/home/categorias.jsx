@@ -36,7 +36,7 @@ export default function Categorias() {
 
     return (
         <div className="conter-cate-home top-50">
-            <h1 className="color-naranja animate__animated animate__pulse animate__infinite">
+            <h1 className="color-naranja animate__animated animate__backInRight">
                 Compra por categorías
             </h1>
             <div className="grid">
