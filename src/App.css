@@ -1324,6 +1324,18 @@ select option::before {
   border: 1px solid rgba(128, 128, 128, 0.658);
   border-radius: 5px;
 }
+.ico-navbar {
+  text-decoration: none;
+  color: #2d477c;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.ico-navbar svg {
+  font-size: 25px;
+}
+.ico-navbar:hover {
+  color: #2d477c88;
+}
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
   .text-home a > p {
@@ -1372,6 +1384,7 @@ select option::before {
     align-items: center;
     justify-content: center;
   }
+
   .input-search {
     font-size: 5em;
   }

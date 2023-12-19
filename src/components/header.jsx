@@ -11,9 +11,45 @@ import {
 } from "@coreui/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import LogoutIcon from '@mui/icons-material/Logout';
+import LockPersonIcon from '@mui/icons-material/LockPerson';
 
 import { Tooltip } from "@mui/joy";
 import Cookies from "js-cookie";
+import { Avatar, Badge, styled } from "@mui/material";
+
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    backgroundColor: '#44b700',
+    color: '#44b700',
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    '&::after': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      borderRadius: '50%',
+      animation: 'ripple 1.2s infinite ease-in-out',
+      border: '1px solid currentColor',
+      content: '""',
+    },
+  },
+  '@keyframes ripple': {
+    '0%': {
+      transform: 'scale(.8)',
+      opacity: 1,
+    },
+    '100%': {
+      transform: 'scale(2.4)',
+      opacity: 0,
+    },
+  },
+}));
+
 
 export default function Header({
   contNotifi,
@@ -22,19 +58,34 @@ export default function Header({
 
   var role = Cookies.get("role");
   var seccion = Cookies.get("seccion");
+  var img = Cookies.get("img");
   var hastRole = role;
 
   const Admin = () => {
     if (hastRole == 1) {
       return (
         <Tooltip title="Administrador">
-          <a href="/dahsboard/0">
-            <i class="fa-solid fa-user-lock"></i>
+          <a href="/dahsboard/0" className="ico-navbar">
+            <LockPersonIcon />
           </a>
         </Tooltip>
       );
     }
   };
+
+  const ValidateAvatar = () => {
+    if (role) {
+      return (
+        <StyledBadge
+          overlap="circular"
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          variant="dot"
+        >
+          <Avatar alt={seccion} src={img} />
+        </StyledBadge>
+      )
+    }
+  }
 
   return (
     <header>
@@ -62,27 +113,23 @@ export default function Header({
                     textDecoration: "none",
                   }}
                 >
-                  {seccion}
+                  <ValidateAvatar />
                 </a>
               </Tooltip>
               <Admin />
               <Tooltip title="notificaciones">
-                <a href="/notificaciones">
-                  <i className="fa fa-bell" aria-hidden="true">
-                    <span className="conterProduct">{contNotifi}</span>
-                  </i>
+                <a href="/notificaciones" className="ico-navbar">
+                  <NotificationsActiveIcon />
                 </a>
               </Tooltip>
-              <Tooltip title="Carrito">
+              <Tooltip title="Carrito" className="ico-navbar">
                 <a href="/shop">
-                  <i class="fa fa-shopping-cart" aria-hidden="true">
-                    <span className="conterProduct"></span>
-                  </i>
+                  <ShoppingCartCheckoutIcon />
                 </a>
               </Tooltip>
-              <Tooltip title="Login">
+              <Tooltip title="Login" className="ico-navbar">
                 <a href="/login">
-                  <i className="fa fa-sign-in" aria-hidden="true"></i>
+                  <LogoutIcon />
                 </a>
               </Tooltip>
             </div>

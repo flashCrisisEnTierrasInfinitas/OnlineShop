@@ -12,6 +12,7 @@ export default function Login() {
   const [role, setRole] = useState('');
   const [seccion, setSeccion] = useState('');
   const [id, setId] = useState('');
+  const [img, setImg] = useState('');
   const [open, setOpen] = useState(false);
 
 
@@ -20,6 +21,7 @@ export default function Login() {
     Cookies.set('role', role, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
     Cookies.set('seccion', seccion, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
     Cookies.set('id', id, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
+    Cookies.set('img', img, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
   }
   Cooki();
 
@@ -45,9 +47,10 @@ export default function Login() {
       setRole(response.data.role);
       setSeccion(response.data.seccion);
       setId(response.data.id);
+      setImg(response.data.img);
       setLoading(false);
-      
-      if(response.data.role==1){
+
+      if (response.data.role == 1) {
         return (window.location.href = "/dahsboard/0");
       }
       return (window.location.href = "/");
