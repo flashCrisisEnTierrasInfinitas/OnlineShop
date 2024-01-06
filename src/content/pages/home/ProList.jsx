@@ -15,10 +15,7 @@ import { Tooltip } from "@mui/joy";
 import DefaultCarousel from "./slider2";
 import Categorias from "./categorias";
 
-export default function ProList({
-  total,
-  setTotal,
-}) {
+export default function ProList({ total, setTotal }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [data, setData] = useState([]);
@@ -83,22 +80,18 @@ export default function ProList({
 
   return (
     <div className="margin-90 conter-pro">
-      <div className="conter-search top-50">
-        <input
-          type="text"
-          placeholder="¿Qué estás buscando?"
-          class="form-control"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
       <div>
         <Categorias />
-        <DefaultCarousel
-          data={oferta}
-          total={total}
-          setTotal={setTotal}
-        />
+        <DefaultCarousel data={oferta} total={total} setTotal={setTotal} />
+        <div className="conter-search top-50">
+          <input
+            type="text"
+            placeholder="¿Qué estás buscando?"
+            class="form-control"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
         <div className="box-vendido top-50">
           {filteredData?.map((product) => (
             <div className="card-pro-list">
@@ -120,10 +113,14 @@ export default function ProList({
                       <Typography fontSize="lg" fontWeight="lg">
                         {product.descripPro}
                       </Typography>
-                      <Typography fontSize="lg" level="body-xs">{product.nombrePro}</Typography>
+                      <Typography fontSize="lg" level="body-xs">
+                        {product.nombrePro}
+                      </Typography>
                     </div>
                     <div className="text-precio">
-                      <label>${product.precioPro.toLocaleString("es-CO")}</label>
+                      <label>
+                        ${product.precioPro.toLocaleString("es-CO")}
+                      </label>
                       <label>IVA INCLUIDO</label>
                     </div>
                   </div>
