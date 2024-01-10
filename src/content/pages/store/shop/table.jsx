@@ -65,11 +65,14 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
 
     // Actualiza el total sumando el precio del nuevo producto
     //addShop.total += data.precioPro;
-    {
-      addShop.map((product) =>
-        setTotal(Total + data.precioPro * product.quantity)
-      );
-    }
+    // Calcula el nuevo total sumando el precio de todos los productos en el carrito
+    const nuevoTotal = addShop.reduce(
+      (total, product) => total + product.precioPro * product.quantity,
+      0
+    );
+
+    // Actualiza el estado del total
+    setTotal(nuevoTotal);
     setAddShop([...addShop]);
     window.location.reload();
   };

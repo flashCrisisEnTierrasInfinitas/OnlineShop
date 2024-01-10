@@ -31,7 +31,8 @@ import Shop from "./content/pages/store/shop";
 import Sale from "./content/pages/store/sale";
 
 function App() {
-  axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  axios.defaults.baseURL =
+    "https://apionlineshop.com.asuprocolombiasas.com/api";
   //axios.defaults.baseURL = "http://localhost:8000/api";
 
   const seccion = Cookies.get("seccion");
@@ -122,6 +123,31 @@ function App() {
               path="/categoryProduct/:id"
               element={<CategoryProduct total={Total} setTotal={setTotal} />}
             />
+            <Route
+              path="/DetalleProduc/:id"
+              element={
+                <DetalleProduc
+                  Seccion={seccion}
+                  addShop={addShop}
+                  Total={Total}
+                  setAddShop={setAddShop}
+                  setTotal={setTotal}
+                />
+              }
+            />
+            <Route
+              path="/shop"
+              element={
+                <Shop
+                  Seccion={seccion}
+                  token={token}
+                  Total={Total}
+                  setTotal={setTotal}
+                  setAddShop={setAddShop}
+                  addShop={addShop}
+                />
+              }
+            />
             {/* TODO:routes the admin */}
             <Route element={protectedRoute()}>
               <Route path="/dahsboard/:id" element={<DahsboardAdmin />} />
@@ -132,34 +158,9 @@ function App() {
             {/* rutas del usuario */}
             <Route element={protectedUser()}>
               <Route
-                path="/DetalleProduc/:id"
-                element={
-                  <DetalleProduc
-                    Seccion={seccion}
-                    addShop={addShop}
-                    Total={Total}
-                    setAddShop={setAddShop}
-                    setTotal={setTotal}
-                  />
-                }
-              />
-              <Route
                 path="/shop/sale"
                 element={
                   <Sale
-                    Seccion={seccion}
-                    token={token}
-                    Total={Total}
-                    setTotal={setTotal}
-                    setAddShop={setAddShop}
-                    addShop={addShop}
-                  />
-                }
-              />
-              <Route
-                path="/shop"
-                element={
-                  <Shop
                     Seccion={seccion}
                     token={token}
                     Total={Total}

@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 export default function Header() {
     return (
         <div className="text-home">
-            <a className='searchPro top-50' id="searchPro">
+            <a className='searchPro top-50'>
                 <p>TIENDA</p>
                 <label>ASUPRO</label>
             </a>

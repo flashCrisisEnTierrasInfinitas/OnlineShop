@@ -65,17 +65,17 @@ export default function DetalleProduc({
 
   const AddShoppingCart = (data) => {
     // Asegúrate de que 'productos' exista y sea un array
-
+  
     // Verifica si el producto ya está en el carrito
     const productoExistente = addShop.find(
       (producto) => producto.id === data.id
     );
-
+  
     if (data.stockPro < inputValue) {
-      // If the product is not in the cart and there's not enough stock, show an alert
+      // Si el producto no está en el carrito y no hay suficiente stock, muestra una alerta
       return alert("sin stock");
     }
-
+  
     if (productoExistente) {
       // Si el producto ya está en el carrito, aumenta la cantidad
       productoExistente.quantity = parseInt(inputValue, 10);
@@ -86,17 +86,20 @@ export default function DetalleProduc({
         quantity: parseInt(inputValue, 10),
       });
     }
-
-    // Actualiza el total sumando el precio del nuevo producto
-    //addShop.total += data.precioPro;
-    {
-      addShop.map((product) =>
-        setTotal(Total + data.precioPro * product.quantity)
-      );
-    }
+  
+    // Calcula el nuevo total sumando el precio de todos los productos en el carrito
+    const nuevoTotal = addShop.reduce(
+      (total, product) => total + product.precioPro * product.quantity,
+      0
+    );
+  
+    // Actualiza el estado del total
+    setTotal(nuevoTotal);
+  
     setValidate(true);
     setAddShop([...addShop]);
   };
+  
 
   return (
     <div className="conter-detallepro">

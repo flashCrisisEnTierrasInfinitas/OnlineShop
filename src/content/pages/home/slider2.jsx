@@ -18,7 +18,7 @@ export default function DefaultCarousel({
   setTotal,
 }) {
   return (
-    <Carousel className="carusel2 top-50">
+    <Carousel className="carusel2 top-50" id="searchPro">
       <div className="conter-vacio">Slide 1</div>
       {data.map((product) => (
         <>
