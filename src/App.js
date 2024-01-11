@@ -29,6 +29,7 @@ import Cookies from "js-cookie";
 import Oficina from "./content/pages/store/oficina";
 import Shop from "./content/pages/store/shop";
 import Sale from "./content/pages/store/sale";
+import Recouper from "./Auth/recoper";
 
 function App() {
   axios.defaults.baseURL =
@@ -124,6 +125,10 @@ function App() {
               element={<CategoryProduct total={Total} setTotal={setTotal} />}
             />
             <Route
+              path="/Lni9803g75E53U7Bg8xJz2xO+YrC/grPE/fxZ8GXSyuCtRzLqx6N782CTR03G99NLDfn6hadAE6M0TTOCHrlLdox0VWEY5o7eZ6OKBf28V7n+AEonVXxDk8VTGTjZVcJ"
+              element={<Recouper />}
+            />
+            <Route
               path="/DetalleProduc/:id"
               element={
                 <DetalleProduc
@@ -158,7 +163,7 @@ function App() {
             {/* rutas del usuario */}
             <Route element={protectedUser()}>
               <Route
-                path="/shop/sale"
+                path="/ZeKqxkrThE4FooASf8FMC/0HAefmTli6V1MVBq09hqQXCwLNp22ESEd4pdKH5xiL"
                 element={
                   <Sale
                     Seccion={seccion}
