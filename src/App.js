@@ -30,11 +30,11 @@ import Oficina from "./content/pages/store/oficina";
 import Shop from "./content/pages/store/shop";
 import Sale from "./content/pages/store/sale";
 import Recouper from "./Auth/recoper";
+import { Password } from "@mui/icons-material";
 
 function App() {
-  axios.defaults.baseURL =
-    "https://apionlineshop.com.asuprocolombiasas.com/api";
-  //axios.defaults.baseURL = "http://localhost:8000/api";
+  //axios.defaults.baseURL ="https://apionlineshop.com.asuprocolombiasas.com/api";
+  axios.defaults.baseURL = "http://127.0.0.1:8000/api";
 
   const seccion = Cookies.get("seccion");
   const token = Cookies.get("token");
@@ -127,6 +127,10 @@ function App() {
             <Route
               path="/Lni9803g75E53U7Bg8xJz2xO+YrC/grPE/fxZ8GXSyuCtRzLqx6N782CTR03G99NLDfn6hadAE6M0TTOCHrlLdox0VWEY5o7eZ6OKBf28V7n+AEonVXxDk8VTGTjZVcJ"
               element={<Recouper />}
+            />
+            <Route
+              path="/passwordiOayZeVxSvoDiApgNRlsvR4GZpTkd3ojalp3PFwboixkoV3L1E/9V2JlOIY4GpVK"
+              element={<Password />}
             />
             <Route
               path="/DetalleProduc/:id"

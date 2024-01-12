@@ -1,11 +1,71 @@
 import { CFormInput } from "@coreui/react";
-import { useState } from "react";
+import { Alert } from "@mui/material";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+
+const styles = {
+  btn: {
+    color: "#2854D8",
+    border: "1px solid #2854D8",
+  },
+};
 
 export default function Recouper() {
+  const [mostrarPassword, setMostrarPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [dataLog, setDataLog] = useState({
+    email: "",
+    password: "",
+  });
 
-    const [dataLog, setDataLog] = useState({
-        email: "",
-      });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDataLog((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const toggleMostrarPassword = () => {
+    setMostrarPassword(!mostrarPassword);
+  };
+  const getDataList = async () => {
+    try {
+      const response = await axios.get(
+        `/tWxaSh5KffstEpFpwkt67eGH+PRzI9/k44a/8jN6VLSqNM2nrE0MHoBjxffaC+qE/${dataLog.email}`
+      );
+
+      setData(response.data);
+    } catch (err) {
+      return console.warn(err);
+    }
+  };
+
+  const SaveNewPassword = async () => {
+    try {
+      const response = await axios.post(
+        `21HuCgOHJL0fETeSxzlNrJtx4hmQUVo9Pz8tfiT3AYXRe+0mcQrh5nu1fKJjQo7X/${data.data}`,
+        dataLog
+      );
+      return alert(response.data.message);
+    } catch (error) {
+      return alert(error);
+    }
+  };
+
+  const Validate = () => {
+    if (data.status == 200) {
+      setLoading(true);
+      return (
+        <div className="top-20">
+          <Alert severity="success">Correo Encontrado.</Alert>
+        </div>
+      );
+    }
+  };
 
   return (
     <div className="conted-login">
@@ -18,11 +78,50 @@ export default function Recouper() {
               className="inpunt-login"
               name="email"
               type="email"
+              value={dataLog.email}
+              onChange={handleChange}
             />
+            <Validate data={data} />
+            {loading ? (
+              <div className="flex">
+                <CFormInput
+                  placeholder="New password"
+                  className="inpunt-login"
+                  name="password"
+                  type={mostrarPassword ? "text" : "password"}
+                  value={dataLog.password}
+                  onChange={handleChange}
+                />
+                <button
+                  onClick={toggleMostrarPassword}
+                  type="button"
+                  className="btn1"
+                  style={styles.btn}
+                >
+                  {mostrarPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
             <div className="flex">
-              <button type="button" className="btn1 btn-secondary">
-                Validar
-              </button>
+              {loading ? (
+                <button
+                  type="button"
+                  className="btn1 btn-secondary"
+                  onClick={SaveNewPassword}
+                >
+                  Guardar
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="btn1 btn-secondary"
+                  onClick={getDataList}
+                >
+                  Validar
+                </button>
+              )}
             </div>
           </form>
         </div>

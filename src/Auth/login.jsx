@@ -3,7 +3,16 @@ import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Cookies from "js-cookie";
+
+const styles = {
+  btn: {
+    color: "#2854D8",
+    border: "1px solid #2854D8",
+  },
+};
 
 export default function Login() {
   const [log, setLog] = useState(false);
@@ -14,6 +23,7 @@ export default function Login() {
   const [id, setId] = useState("");
   const [img, setImg] = useState("");
   const [open, setOpen] = useState(false);
+  const [mostrarPassword, setMostrarPassword] = useState(false);
 
   const Cooki = () => {
     Cookies.set("token", token, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
@@ -35,6 +45,9 @@ export default function Login() {
       ...prevData,
       [name]: value,
     }));
+  };
+  const toggleMostrarPassword = () => {
+    setMostrarPassword(!mostrarPassword);
   };
   //REGISTRO DEL USUARIO
   //INGRESO DEL USUARIO
@@ -143,14 +156,24 @@ export default function Login() {
                 value={dataLog.email}
                 onChange={handleChange}
               />
-              <CFormInput
-                placeholder="Password"
-                className="inpunt-login"
-                type="password"
-                name="password"
-                value={dataLog.password}
-                onChange={handleChange}
-              />
+               <div className="flex">
+                <CFormInput
+                  placeholder="password"
+                  className="inpunt-login"
+                  name="password"
+                  type={mostrarPassword ? "text" : "password"}
+                  value={dataLog.password}
+                  onChange={handleChange}
+                />
+                <button
+                  onClick={toggleMostrarPassword}
+                  type="button"
+                  className="btn1"
+                  style={styles.btn}
+                >
+                  {mostrarPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                </button>
+              </div>
               <div className="conte-terminos">
                 <div>
                   <input type="checkbox" checked />
@@ -189,14 +212,24 @@ export default function Login() {
                 value={dataLog.email}
                 onChange={handleChange}
               />
-              <CFormInput
-                placeholder="Password"
-                className="inpunt-login"
-                type="password"
-                name="password"
-                value={dataLog.password}
-                onChange={handleChange}
-              />
+               <div className="flex">
+                <CFormInput
+                  placeholder="password"
+                  className="inpunt-login"
+                  name="password"
+                  type={mostrarPassword ? "text" : "password"}
+                  value={dataLog.password}
+                  onChange={handleChange}
+                />
+                <button
+                  onClick={toggleMostrarPassword}
+                  type="button"
+                  className="btn1"
+                  style={styles.btn}
+                >
+                  {mostrarPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                </button>
+              </div>
               <div className="conte-terminos">
                 <div>
                   <input type="checkbox" checked />
