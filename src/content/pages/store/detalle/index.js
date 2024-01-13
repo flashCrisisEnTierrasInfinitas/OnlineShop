@@ -65,17 +65,17 @@ export default function DetalleProduc({
 
   const AddShoppingCart = (data) => {
     // Asegúrate de que 'productos' exista y sea un array
-  
+
     // Verifica si el producto ya está en el carrito
     const productoExistente = addShop.find(
       (producto) => producto.id === data.id
     );
-  
+
     if (data.stockPro < inputValue) {
       // Si el producto no está en el carrito y no hay suficiente stock, muestra una alerta
       return alert("sin stock");
     }
-  
+
     if (productoExistente) {
       // Si el producto ya está en el carrito, aumenta la cantidad
       productoExistente.quantity = parseInt(inputValue, 10);
@@ -86,20 +86,19 @@ export default function DetalleProduc({
         quantity: parseInt(inputValue, 10),
       });
     }
-  
+
     // Calcula el nuevo total sumando el precio de todos los productos en el carrito
     const nuevoTotal = addShop.reduce(
       (total, product) => total + product.precioPro * product.quantity,
       0
     );
-  
+
     // Actualiza el estado del total
     setTotal(nuevoTotal);
-  
+
     setValidate(true);
     setAddShop([...addShop]);
   };
-  
 
   return (
     <div className="conter-detallepro">
@@ -170,6 +169,7 @@ export default function DetalleProduc({
                 <CheckCircleOutlineIcon />
                 <label>Se ha agregado este producto,</label>
                 <a href="/shop">ver carrito</a>
+                <a href="/">,o seguir comprando.</a>
               </div>
             ) : (
               ""

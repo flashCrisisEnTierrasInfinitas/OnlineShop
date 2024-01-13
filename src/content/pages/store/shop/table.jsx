@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
   const dataToRender = data || [];
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState({});
   const valueToDisplay = Total ? Total.toLocaleString() : "";
 
   // Supongamos que dataToRender es un array de objetos con propiedades, y quieres mapear alguna propiedad en inputValue
@@ -18,11 +18,12 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
     return /^[1-9]\d*$/.test(value);
   };
 
-  const handleInputChange = (event) => {
-    const inputValue = event.target.value;
-
-    if (isPositiveNumber(inputValue)) {
-      setInputValue(inputValue);
+  const handleInputChange = (productId, value) => {
+    if (isPositiveNumber(value)) {
+      setInputValue((prevInputValues) => ({
+        ...prevInputValues,
+        [productId]: value,
+      }));
     }
   };
 
@@ -54,12 +55,12 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
 
     if (productoExistente) {
       // Si el producto ya está en el carrito, aumenta la cantidad
-      productoExistente.quantity = parseInt(inputValue, 10);
+      productoExistente.quantity = parseInt(inputValue[data.quantity], 10) || 0;
     } else {
       // Si el producto no está en el carrito, agrégalo
       addShop.push({
         ...data,
-        quantity: parseInt(inputValue, 10),
+        quantity: parseInt(inputValue[data.quantity], 10) || 0,
       });
     }
 
@@ -96,9 +97,10 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
             <input
               type="number"
               className="input-quantity"
-              value={inputValue}
-              onChange={handleInputChange}
+              value={inputValue[val.quantity] || ""}
+              onChange={(e) => handleInputChange(val.id, e.target.value)}
             />
+            {val.quantity}
           </div>
           <div className="nombre-shop">
             Total: $<Totals product={val} />
