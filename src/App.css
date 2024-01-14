@@ -1491,4 +1491,7 @@ select option::before {
   .box-vendido {
     margin-top: 0px;
   }
+  .footer-img a {
+    display: none;
+  }
 }

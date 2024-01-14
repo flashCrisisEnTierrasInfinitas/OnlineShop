@@ -18,12 +18,11 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
     return /^[1-9]\d*$/.test(value);
   };
 
-  const handleInputChange = (productId, value) => {
-    if (isPositiveNumber(value)) {
-      setInputValue((prevInputValues) => ({
-        ...prevInputValues,
-        [productId]: value,
-      }));
+  const handleInputChange = (event) => {
+    const inputValue = event.target.value;
+
+    if (isPositiveNumber(inputValue)) {
+      setInputValue(inputValue);
     }
   };
 
@@ -55,12 +54,12 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
 
     if (productoExistente) {
       // Si el producto ya está en el carrito, aumenta la cantidad
-      productoExistente.quantity = parseInt(inputValue[data.quantity], 10) || 0;
+      productoExistente.quantity = parseInt(inputValue, 10);
     } else {
       // Si el producto no está en el carrito, agrégalo
       addShop.push({
         ...data,
-        quantity: parseInt(inputValue[data.quantity], 10) || 0,
+        quantity: parseInt(inputValue, 10),
       });
     }
 
@@ -97,8 +96,8 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
             <input
               type="number"
               className="input-quantity"
-              value={inputValue[val.quantity] || ""}
-              onChange={(e) => handleInputChange(val.id, e.target.value)}
+              value={inputValue}
+              onChange={handleInputChange}
             />
             {val.quantity}
           </div>

@@ -1,14 +1,10 @@
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import Modal from "@mui/joy/Modal";
 import Typography from "@mui/joy/Typography";
-import Sheet from "@mui/joy/Sheet";
-import { Tooltip, ModalOverflow } from "@mui/joy";
+import { Tooltip } from "@mui/joy";
 import DataTable from "./table";
-import ModalClose from "@mui/joy/ModalClose";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import Factura from "../../pages/facturaPay";
 import {
-  CButton,
-  CCol,
   CForm,
   CModal,
   CModalBody,
@@ -18,6 +14,7 @@ import {
 } from "@coreui/react";
 
 import { useEffect, useState } from "react";
+import { Button } from "@mui/material";
 
 export default function Edit({ data }) {
   const [visible, setVisible] = useState(false);
@@ -108,6 +105,9 @@ export default function Edit({ data }) {
             <h3 className="title-ver-daly color-gray">
               Fecha: {new Date(data.created_at).toLocaleString()}
             </h3>
+            <Button variant="contained">
+              <PictureAsPdfIcon />
+            </Button>
           </CModalTitle>
         </CModalHeader>
         <CModalBody>
