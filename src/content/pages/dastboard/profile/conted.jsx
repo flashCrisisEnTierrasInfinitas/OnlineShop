@@ -39,14 +39,18 @@ export default function Conted({ data, getDataList }) {
     const hanleSave = async (id) => {
         try {
             setLoading(true);
-            const response = await axios.post(`/users/${id}?_method=PUT`, {
-                ...dataLog, // Include the _method parameter in the request payload
-            }, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    Authorization: `Bearer ${token}`,
+            const response = await axios.post(
+                `/users/${id}?_method=PUT`,
+                {
+                    ...dataLog, // Include the _method parameter in the request payload
                 },
-            });
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
             getDataList();
             setLoading(false);
             const Toast = Swal.mixin({
