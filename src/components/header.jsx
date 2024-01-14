@@ -15,10 +15,11 @@ import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LockPersonIcon from "@mui/icons-material/LockPerson";
+import LoginIcon from "@mui/icons-material/Login";
 
 import { Tooltip } from "@mui/joy";
 import Cookies from "js-cookie";
-import { Avatar, Badge, styled } from "@mui/material";
+import { Avatar, Badge, Button, styled } from "@mui/material";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -48,6 +49,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
   },
 }));
+
+const styles = {
+  btn: {
+    background: "#2D477C",
+  },
+};
 
 export default function Header({ contNotifi }) {
   const [visible, setVisible] = useState(false);
@@ -79,6 +86,51 @@ export default function Header({ contNotifi }) {
         >
           <Avatar alt={seccion} src={img} />
         </StyledBadge>
+      );
+    }
+  };
+
+  const logout = () => {
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i];
+      const eqPos = cookie.indexOf("=");
+      const nombre = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = nombre + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+
+    // Refrescar la página
+    window.location.reload();
+  };
+
+  const ValidateLogin = () => {
+    if (seccion) {
+      return (
+        <Tooltip title="Login">
+          <Button
+            variant="contained"
+            style={styles.btn}
+            endIcon={<LogoutIcon />}
+            onClick={logout}
+          >
+            salir
+          </Button>
+        </Tooltip>
+      );
+    } else {
+      return (
+        <Tooltip title="Login">
+          <a href="/login">
+            <Button
+              variant="contained"
+              style={styles.btn}
+              endIcon={<LoginIcon />}
+            >
+              Ingresa
+            </Button>
+          </a>
+        </Tooltip>
       );
     }
   };
@@ -125,11 +177,7 @@ export default function Header({ contNotifi }) {
                   <ShoppingCartCheckoutIcon />
                 </a>
               </Tooltip>
-              <Tooltip title="Login" className="ico-navbar">
-                <a href="/login">
-                  <LogoutIcon />
-                </a>
-              </Tooltip>
+              <ValidateLogin />
             </div>
           </div>
           <COffcanvas
