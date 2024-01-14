@@ -2,7 +2,12 @@
 //* creador: jhon mario(WHOAOMI)
 //? fecha creacion: 2023
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
 import axios from "axios";
 
 import "./App.css";
@@ -114,9 +119,22 @@ function App() {
           </header>
           <Routes>
             <Route
-              path="/"
-              element={<Home total={Total} setTotal={setTotal} />}
-            />
+              element={
+                <Header
+                  total={Total}
+                  setTotal={setTotal}
+                  Seccion={seccion}
+                  contNotifi={contNotifi}
+                >
+                  <Outlet />
+                </Header>
+              }
+            >
+              <Route
+                path="/"
+                element={<Home total={Total} setTotal={setTotal} />}
+              />
+            </Route>
 
             <Route
               path="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da"
