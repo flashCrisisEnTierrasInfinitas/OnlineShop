@@ -1336,6 +1336,18 @@ select option::before {
 .ico-navbar:hover {
   color: #2d477c88;
 }
+.next-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+.next-login a {
+  padding: 5px;
+}
+.next-login a span {
+  margin: 5px;
+}
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
   .text-home a > p {

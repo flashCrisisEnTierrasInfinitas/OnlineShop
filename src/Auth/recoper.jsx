@@ -1,9 +1,10 @@
 import { CFormInput } from "@coreui/react";
 import { Alert } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import AddToHomeScreenIcon from '@mui/icons-material/AddToHomeScreen';
 
 const styles = {
   btn: {
@@ -40,7 +41,8 @@ export default function Recouper() {
 
       setData(response.data);
     } catch (err) {
-      return console.warn(err);
+      console.warn(err)
+      return alert(err.response.data.message);
     }
   };
 
@@ -61,7 +63,7 @@ export default function Recouper() {
       setLoading(true);
       return (
         <div className="top-20">
-          <Alert severity="success">Correo Encontrado.</Alert>
+          <Alert severity="success">Correo Validado por google OAuth 2.0.</Alert>
         </div>
       );
     }
@@ -122,6 +124,9 @@ export default function Recouper() {
                   Validar
                 </button>
               )}
+            </div>
+            <div className="next-login">
+              <a href="/login"><span>Regresar al Login.</span></a>
             </div>
           </form>
         </div>
