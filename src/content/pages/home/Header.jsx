@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <div className="text-home head-home-asupro">
-      <a className="searchPro top-50">
+      <a className="searchPro top-50" href="/">
         <p>TIENDA</p>
         <label>ASUPRO</label>
       </a>

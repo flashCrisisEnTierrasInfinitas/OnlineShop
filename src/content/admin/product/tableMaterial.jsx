@@ -37,6 +37,12 @@ export default function DataTable() {
   }
 
   const columns = [
+    {
+      field: "actions", // Nombre del campo
+      headerName: "Acciones", // Nombre en la cabecera
+      width: 130, // Ancho de la columna
+      renderCell: (params) => <Icons data={params} getDataList={getDataList} />,
+    },
     { field: "id", headerName: "ID", width: 70 },
     { field: "nombrePro", headerName: "Nombre", width: 230 },
     {
@@ -62,21 +68,23 @@ export default function DataTable() {
       field: "status", // Nombre del campo
       headerName: "status", // Nombre en la cabecera
       width: 100, // Ancho de la columna
-      renderCell: (params) => (
+      renderCell: (params) =>
         params.row.status == 0 ? (
-          <p style={{ color: 'green' }}>Activo</p>
-        ) : (<p style={{ color: 'red' }}>Inactivo</p>)
-      ),
+          <p style={{ color: "green" }}>Activo</p>
+        ) : (
+          <p style={{ color: "red" }}>Inactivo</p>
+        ),
     },
     {
       field: "oferta", // Nombre del campo
       headerName: "oferta", // Nombre en la cabecera
       width: 100, // Ancho de la columna
-      renderCell: (params) => (
+      renderCell: (params) =>
         params.row.oferta == 0 ? (
           <Chip label="NO" color="primary" />
-        ) : (<Chip label="SI" color="error" />)
-      ),
+        ) : (
+          <Chip label="SI" color="error" />
+        ),
     },
     {
       field: "name",
@@ -89,12 +97,6 @@ export default function DataTable() {
     { field: "created_at", headerName: "Fecha", width: 130 },
     { field: "precioPro", headerName: "Precio", width: 130 },
     { field: "stockPro", headerName: "Stock", width: 10 },
-    {
-      field: "actions", // Nombre del campo
-      headerName: "Acciones", // Nombre en la cabecera
-      width: 130, // Ancho de la columna
-      renderCell: (params) => <Icons data={params} getDataList={getDataList} />,
-    },
   ];
 
   const filteredData = data?.filter((item) => {

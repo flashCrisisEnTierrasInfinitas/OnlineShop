@@ -7,8 +7,9 @@ export default function Footer() {
         <div>
           <h1>ASUPRO</h1>
           <p>
-            Here you can use rows and columns to organize your footer content.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Las Tiendas ASUPRO COLOMBIA proporcionan a todos sus clientes una
+            amplia variedad de opciones, ofreciendo comodidad y acceso las 24
+            horas día, para seleccionar sus productos y servicios.
           </p>
         </div>
         <div>
@@ -24,11 +25,11 @@ export default function Footer() {
             </div>
             <div>
               <i className="fa fa-mobile" aria-hidden="true" />
-              <p>+57 3115339060</p>
+              <p>+57 310 2055841</p>
             </div>
             <div>
               <i className="fa fa-fax" aria-hidden="true" />
-              <p>+57 3115339060</p>
+              <p>+57 310 2055841</p>
             </div>
           </div>
         </div>
