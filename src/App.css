@@ -889,6 +889,7 @@ h1 {
 }
 .conter-cont-footer div {
   display: flex;
+  text-align: center;
   padding: 5px;
 }
 .conter-cont-footer div i,

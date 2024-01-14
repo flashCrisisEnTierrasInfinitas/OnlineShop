@@ -11,29 +11,6 @@ export default function Footer() {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </p>
         </div>
-        <div className="pro-footer">
-          <h1>PRODUCTOS</h1>
-          <li>
-            <a href="ProductosCat">VERDURAS</a>
-          </li>
-          <li>
-            <a href="ProductosCat">FRUTAS</a>
-          </li>
-          <li>
-            <a href="ProductosCat">LEGUMBRES</a>
-          </li>
-        </div>
-        <div>
-          <h1>PAGOS</h1>
-          <div className="footer-logos-pay">
-            <div>
-              <img src="/img/icons/nequi-2.svg" />
-            </div>
-            <div>
-              <img src="/img/icons/daviplata.svg" />
-            </div>
-          </div>
-        </div>
         <div>
           <h1>CONTACTOS</h1>
           <div className="conter-cont-footer">
@@ -42,15 +19,15 @@ export default function Footer() {
               <p>Pitalito huila</p>
             </div>
             <div>
-              <i className="fa fa-envelope" aria-hidden="true"/>
+              <i className="fa fa-envelope" aria-hidden="true" />
               <p>asupro@gmail.com</p>
             </div>
             <div>
-              <i className="fa fa-mobile" aria-hidden="true"/>
+              <i className="fa fa-mobile" aria-hidden="true" />
               <p>+57 3115339060</p>
             </div>
             <div>
-              <i className="fa fa-fax" aria-hidden="true"/>
+              <i className="fa fa-fax" aria-hidden="true" />
               <p>+57 3115339060</p>
             </div>
           </div>

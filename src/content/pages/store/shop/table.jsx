@@ -1,4 +1,4 @@
-import { Button, Chip } from "@mui/material";
+import { Button } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
 
@@ -99,13 +99,6 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
               <img src={val.img} alt={val.nombre} />
             </div>
             <div className="text-nombre-shop">
-              <Chip
-                label={val.quantity}
-                style={{
-                  background: "#2d477cc2",
-                  color: "#fff",
-                }}
-              />
               <p>{val.descripPro}</p>
             </div>
           </div>
