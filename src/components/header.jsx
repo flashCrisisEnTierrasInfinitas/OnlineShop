@@ -56,7 +56,7 @@ const styles = {
   },
 };
 
-export default function Header({ contNotifi }) {
+export default function Header(props) {
   const [visible, setVisible] = useState(false);
 
   var role = Cookies.get("role");
@@ -158,119 +158,125 @@ export default function Header({ contNotifi }) {
   };
 
   return (
-    <div className="navbarShop">
-      <CContainer fluid>
-        <div className="conter-navbar">
-          <div className="toogel-nav">
-            <button onClick={() => setVisible(!visible)} className="togel">
-              <i class="fa fa-bars" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div className="footer-img">
-            <a href="/">
-              <div>
-                <img src="/img/logos/logo1.png" className="logo-asupro" />
-              </div>
-            </a>
-          </div>
-          <div className="conter-ico-nav">
-            <Tooltip title="Profile">
-              <a
-                href="/Profile"
-                style={{
-                  color: "black",
-                  textDecoration: "none",
-                }}
-              >
-                <ValidateAvatar />
-              </a>
-            </Tooltip>
-            <Admin />
-            <ValidateNotify />
-            <Tooltip title="Carrito" className="ico-navbar">
-              <a href="/7Abq5P7EeFQM7HGxE/cDsMvM5/jPk1ZIuzGwbnuVyYI+f9RUtVrP4wVLaqftHwM/">
-                <ShoppingCartCheckoutIcon />
-              </a>
-            </Tooltip>
-            <ValidateLogin />
-          </div>
-        </div>
-        <COffcanvas
-          id="offcanvasNavbar"
-          portal={false}
-          visible={visible}
-          onHide={() => setVisible(false)}
-          className="position-nav"
-        >
-          <COffcanvasHeader>
-            <div>
+    <>
+      <div className="navbarShop">
+        <CContainer fluid>
+          <div className="conter-navbar">
+            <div className="toogel-nav">
+              <button onClick={() => setVisible(!visible)} className="togel">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div className="footer-img">
               <a href="/">
-                <p>ASUPRO</p>
+                <div>
+                  <img src="/img/logos/logo1.png" className="logo-asupro" />
+                </div>
               </a>
             </div>
-            <CCloseButton
-              className="text-reset"
-              onClick={() => setVisible(false)}
-            />
-          </COffcanvasHeader>
-          <COffcanvasBody>
-            <CNavbarNav>
-              <CNavItem>
-                <CNavLink href="/Profile" active>
-                  <div className="conter-nav-li">
-                    <i class="fa fa-cog color-secondary" aria-hidden="true"></i>
-                    <label className="label-nav">Mi perfil</label>
-                  </div>
-                </CNavLink>
-              </CNavItem>
-              <CNavItem>
-                <CNavLink href="/notificaciones" active>
-                  <div className="conter-nav-li">
-                    <i
-                      class="fa fa-bell color-secondary"
-                      aria-hidden="true"
-                    ></i>
-                    <label className="label-nav">Notificaciones</label>
-                  </div>
-                </CNavLink>
-              </CNavItem>
-              <CNavItem>
-                <CNavLink href="/Historial" active>
-                  <div className="conter-nav-li">
-                    <i
-                      class="fa fa-clock color-secondary"
-                      aria-hidden="true"
-                    ></i>
-                    <label className="label-nav">Historial</label>
-                  </div>
-                </CNavLink>
-              </CNavItem>
-              <CNavItem>
-                <CNavLink href="/MiLista" active>
-                  <div className="conter-nav-li">
-                    <i
-                      class="fa fa-th-list color-secondary"
-                      aria-hidden="true"
-                    ></i>
-                    <label className="label-nav">Mi lista</label>
-                  </div>
-                </CNavLink>
-              </CNavItem>
-            </CNavbarNav>
-          </COffcanvasBody>
-          <div className="conter-log-red">
-            <div>
-              <img src="img/icons/facebook_108044.svg" alt="" />
-            </div>
-            <div>
-              <img src="img/icons/instagram_108043.svg" alt="" />
-            </div>
-            <div>
-              <img src="img/icons/whatsapp_108042.svg" alt="" />
+            <div className="conter-ico-nav">
+              <Tooltip title="Profile">
+                <a
+                  href="/Profile"
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                  }}
+                >
+                  <ValidateAvatar />
+                </a>
+              </Tooltip>
+              <Admin />
+              <ValidateNotify />
+              <Tooltip title="Carrito" className="ico-navbar">
+                <a href="/7Abq5P7EeFQM7HGxE/cDsMvM5/jPk1ZIuzGwbnuVyYI+f9RUtVrP4wVLaqftHwM/">
+                  <ShoppingCartCheckoutIcon />
+                </a>
+              </Tooltip>
+              <ValidateLogin />
             </div>
           </div>
-        </COffcanvas>
-      </CContainer>
-    </div>
+          <COffcanvas
+            id="offcanvasNavbar"
+            portal={false}
+            visible={visible}
+            onHide={() => setVisible(false)}
+            className="position-nav"
+          >
+            <COffcanvasHeader>
+              <div>
+                <a href="/">
+                  <p>ASUPRO</p>
+                </a>
+              </div>
+              <CCloseButton
+                className="text-reset"
+                onClick={() => setVisible(false)}
+              />
+            </COffcanvasHeader>
+            <COffcanvasBody>
+              <CNavbarNav>
+                <CNavItem>
+                  <CNavLink href="/Profile" active>
+                    <div className="conter-nav-li">
+                      <i
+                        class="fa fa-cog color-secondary"
+                        aria-hidden="true"
+                      ></i>
+                      <label className="label-nav">Mi perfil</label>
+                    </div>
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="/notificaciones" active>
+                    <div className="conter-nav-li">
+                      <i
+                        class="fa fa-bell color-secondary"
+                        aria-hidden="true"
+                      ></i>
+                      <label className="label-nav">Notificaciones</label>
+                    </div>
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="/Historial" active>
+                    <div className="conter-nav-li">
+                      <i
+                        class="fa fa-clock color-secondary"
+                        aria-hidden="true"
+                      ></i>
+                      <label className="label-nav">Historial</label>
+                    </div>
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink href="/MiLista" active>
+                    <div className="conter-nav-li">
+                      <i
+                        class="fa fa-th-list color-secondary"
+                        aria-hidden="true"
+                      ></i>
+                      <label className="label-nav">Mi lista</label>
+                    </div>
+                  </CNavLink>
+                </CNavItem>
+              </CNavbarNav>
+            </COffcanvasBody>
+            <div className="conter-log-red">
+              <div>
+                <img src="img/icons/facebook_108044.svg" alt="" />
+              </div>
+              <div>
+                <img src="img/icons/instagram_108043.svg" alt="" />
+              </div>
+              <div>
+                <img src="img/icons/whatsapp_108042.svg" alt="" />
+              </div>
+            </div>
+          </COffcanvas>
+        </CContainer>
+      </div>
+      <div>{props.children}</div>
+    </>
   );
 }

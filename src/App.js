@@ -109,15 +109,19 @@ function App() {
     <>
       <div className="App">
         <Router>
-          <header className="App-header">
-            <Header
-              total={Total}
-              setTotal={setTotal}
-              Seccion={seccion}
-              contNotifi={contNotifi}
-            />
-          </header>
           <Routes>
+            <Route
+              path="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da"
+              element={<Login />}
+            />
+            <Route
+              path="/Lni9803g75E53U7Bg8xJz2xO+YrC/grPE/fxZ8GXSyuCtRzLqx6N782CTR03G99NLDfn6hadAE6M0TTOCHrlLdox0VWEY5o7eZ6OKBf28V7n+AEonVXxDk8VTGTjZVcJ"
+              element={<Recouper />}
+            />
+            <Route
+              path="/passwordiOayZeVxSvoDiApgNRlsvR4GZpTkd3ojalp3PFwboixkoV3L1E/9V2JlOIY4GpVK"
+              element={<Password />}
+            />
             <Route
               element={
                 <Header
@@ -134,51 +138,50 @@ function App() {
                 path="/"
                 element={<Home total={Total} setTotal={setTotal} />}
               />
+              <Route path="/ProductosCat" element={<ProductoCate />} />
+              <Route
+                path="/categoryProduct/:id"
+                element={<CategoryProduct total={Total} setTotal={setTotal} />}
+              />
+              <Route
+                path="/DetalleProduc/:id"
+                element={
+                  <DetalleProduc
+                    Seccion={seccion}
+                    addShop={addShop}
+                    Total={Total}
+                    setAddShop={setAddShop}
+                    setTotal={setTotal}
+                  />
+                }
+              />
+              <Route
+                path="/7Abq5P7EeFQM7HGxE/cDsMvM5/jPk1ZIuzGwbnuVyYI+f9RUtVrP4wVLaqftHwM/"
+                element={
+                  <Shop
+                    Seccion={seccion}
+                    token={token}
+                    Total={Total}
+                    setTotal={setTotal}
+                    setAddShop={setAddShop}
+                    addShop={addShop}
+                  />
+                }
+              />
+              <Route path="/Profile" element={<Profile />} />
+              <Route
+                path="/notificaciones"
+                element={
+                  <Notificaciones
+                    Seccion={seccion}
+                    token={token}
+                    setContNotifi={setContNotifi}
+                  />
+                }
+              />
+              <Route path="/Historial" element={<Historial />} />
+              <Route path="/MiLista" element={<MiLista seccion={seccion} />} />
             </Route>
-
-            <Route
-              path="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da"
-              element={<Login />}
-            />
-            <Route path="/ProductosCat" element={<ProductoCate />} />
-
-            <Route
-              path="/categoryProduct/:id"
-              element={<CategoryProduct total={Total} setTotal={setTotal} />}
-            />
-            <Route
-              path="/Lni9803g75E53U7Bg8xJz2xO+YrC/grPE/fxZ8GXSyuCtRzLqx6N782CTR03G99NLDfn6hadAE6M0TTOCHrlLdox0VWEY5o7eZ6OKBf28V7n+AEonVXxDk8VTGTjZVcJ"
-              element={<Recouper />}
-            />
-            <Route
-              path="/passwordiOayZeVxSvoDiApgNRlsvR4GZpTkd3ojalp3PFwboixkoV3L1E/9V2JlOIY4GpVK"
-              element={<Password />}
-            />
-            <Route
-              path="/DetalleProduc/:id"
-              element={
-                <DetalleProduc
-                  Seccion={seccion}
-                  addShop={addShop}
-                  Total={Total}
-                  setAddShop={setAddShop}
-                  setTotal={setTotal}
-                />
-              }
-            />
-            <Route
-              path="/7Abq5P7EeFQM7HGxE/cDsMvM5/jPk1ZIuzGwbnuVyYI+f9RUtVrP4wVLaqftHwM/"
-              element={
-                <Shop
-                  Seccion={seccion}
-                  token={token}
-                  Total={Total}
-                  setTotal={setTotal}
-                  setAddShop={setAddShop}
-                  addShop={addShop}
-                />
-              }
-            />
             {/* TODO:routes the admin */}
             <Route element={protectedRoute()}>
               <Route path="/dahsboard/:id" element={<DahsboardAdmin />} />
@@ -201,41 +204,6 @@ function App() {
                   />
                 }
               />
-              <Route
-                path="/pay"
-                element={
-                  <Pay
-                    Seccion={seccion}
-                    addShop={addShop}
-                    Total={Total}
-                    setAddShop={setAddShop}
-                    setTotal={setTotal}
-                  />
-                }
-              />
-              <Route
-                path="/oficina"
-                element={
-                  <Oficina
-                    total={Total}
-                    setTotal={setTotal}
-                    Seccion={seccion}
-                  />
-                }
-              />
-              <Route path="/Profile" element={<Profile />} />
-              <Route
-                path="/notificaciones"
-                element={
-                  <Notificaciones
-                    Seccion={seccion}
-                    token={token}
-                    setContNotifi={setContNotifi}
-                  />
-                }
-              />
-              <Route path="/Historial" element={<Historial />} />
-              <Route path="/MiLista" element={<MiLista seccion={seccion} />} />
             </Route>
           </Routes>
           <FooterMenu />
