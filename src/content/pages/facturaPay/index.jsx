@@ -51,7 +51,7 @@ export default function Factura({ data }) {
           <h5>SUBTOTAL</h5>
         </div>
         <div className="precio-pro-fac">
-          <h5>${data.Total_Pago}</h5>
+          <h5>${data.Total_Pago.toLocaleString("es-CO")}</h5>
         </div>
       </div>
       <div className="state-factura">

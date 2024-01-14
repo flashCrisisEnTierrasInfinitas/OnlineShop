@@ -4,6 +4,7 @@ import { Tooltip } from "@mui/joy";
 import DataTable from "./table";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import Factura from "../../pages/facturaPay";
+import generatePDF from "react-to-pdf";
 import {
   CForm,
   CModal,
@@ -13,11 +14,12 @@ import {
   CModalTitle,
 } from "@coreui/react";
 
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@mui/material";
 
 export default function Edit({ data }) {
   const [visible, setVisible] = useState(false);
+  const targetRef = useRef();
 
   const Status = ({ data }) => {
     if (data == 0) {
@@ -105,7 +107,20 @@ export default function Edit({ data }) {
             <h3 className="title-ver-daly color-gray">
               Fecha: {new Date(data.created_at).toLocaleString()}
             </h3>
-            <Button variant="contained">
+            <Button
+              variant="contained"
+              onClick={() =>
+                generatePDF(targetRef, {
+                  filename:
+                    data.id +
+                    " " +
+                    data.user_compra +
+                    " " +
+                    new Date(data.created_at).toLocaleString() +
+                    ".pdf",
+                })
+              }
+            >
               <PictureAsPdfIcon />
             </Button>
           </CModalTitle>
@@ -131,37 +146,14 @@ export default function Edit({ data }) {
         </CModalBody>
         <CModalFooter>
           <div class="col-12">
-            {data.tipo_servicio === 0 && (
-              <>
-                <div className="grid">
-                  <div>
-                    <h2 className="title-ver-daly top-50">
-                      Factura productos:
-                    </h2>
-                    <div className="margin-90">
-                      <Factura data={data} />
-                    </div>
-                  </div>
-                  {data.img ? (
-                    <div>
-                      <h2 className="title-ver-daly top-50">
-                        Comprobante pago:
-                      </h2>
-                      <div className="img-pago">
-                        <img
-                          src={data.img}
-                          alt="Sin Comprobante de pago rechazar la solicitud¡!"
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    ""
-                  )}
+            <div className="grid">
+              <div>
+                <h2 className="title-ver-daly top-50">Factura productos:</h2>
+                <div className="margin-90" ref={targetRef}>
+                  <Factura data={data} />
                 </div>
-              </>
-            )}
-            {data.tipo_servicio === 1 && (
-              <>
+              </div>
+              <div>
                 <h2 className="title-ver-daly top-50">Comprobante pago:</h2>
                 <div className="img-pago">
                   <img
@@ -169,8 +161,8 @@ export default function Edit({ data }) {
                     alt="Sin Comprobante de pago rechazar la solicitud¡!"
                   />
                 </div>
-              </>
-            )}
+              </div>
+            </div>
           </div>
         </CModalFooter>
       </CModal>

@@ -1,28 +1,34 @@
-import { Button } from "@mui/material";
+import { Button, Chip } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
 
 export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
   const dataToRender = data || [];
-  const [inputValue, setInputValue] = useState({});
+  const [inputValue, setInputValue] = useState([]);
   const valueToDisplay = Total ? Total.toLocaleString() : "";
 
   // Supongamos que dataToRender es un array de objetos con propiedades, y quieres mapear alguna propiedad en inputValue
   useEffect(() => {
-    const mappedValues = dataToRender.map((val) => val.quantity); // Reemplaza 'algunaPropiedad' con la propiedad que deseas mapear
-    const concatenatedValues = mappedValues.join(", "); // Puedes ajustar la lógica según tus necesidades
-    setInputValue(concatenatedValues);
+    const initializedInputValue = dataToRender.reduce((acc, product) => {
+      acc[product.id] = product.quantity;
+      return acc;
+    }, {});
+
+    setInputValue(initializedInputValue);
   }, [dataToRender]);
 
   const isPositiveNumber = (value) => {
     return /^[1-9]\d*$/.test(value);
   };
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event, productId) => {
     const inputValue = event.target.value;
 
     if (isPositiveNumber(inputValue)) {
-      setInputValue(inputValue);
+      setInputValue((prevInputValue) => ({
+        ...prevInputValue,
+        [productId]: parseInt(inputValue, 10),
+      }));
     }
   };
 
@@ -54,12 +60,12 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
 
     if (productoExistente) {
       // Si el producto ya está en el carrito, aumenta la cantidad
-      productoExistente.quantity = parseInt(inputValue, 10);
+      productoExistente.quantity = inputValue[data.id];
     } else {
       // Si el producto no está en el carrito, agrégalo
       addShop.push({
         ...data,
-        quantity: parseInt(inputValue, 10),
+        quantity: inputValue[data.id],
       });
     }
 
@@ -85,6 +91,13 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
               <img src={val.img} alt={val.nombre} />
             </div>
             <div className="text-nombre-shop">
+              <Chip
+                label={val.quantity}
+                style={{
+                  background: "#2d477cc2",
+                  color: "#fff",
+                }}
+              />
               <p>{val.descripPro}</p>
             </div>
           </div>
@@ -96,10 +109,9 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
             <input
               type="number"
               className="input-quantity"
-              value={inputValue}
-              onChange={handleInputChange}
+              value={inputValue[val.id] || ""}
+              onChange={(event) => handleInputChange(event, val.id)}
             />
-            {val.quantity}
           </div>
           <div className="nombre-shop">
             Total: $<Totals product={val} />
