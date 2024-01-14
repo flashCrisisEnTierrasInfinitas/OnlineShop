@@ -135,6 +135,28 @@ export default function Header({ contNotifi }) {
     }
   };
 
+  const ValidateNotify = () => {
+    if (seccion) {
+      return (
+        <Tooltip title="notificaciones">
+          <a href="/notificaciones" className="ico-navbar">
+            <Badge badgeContent={1} color="primary">
+              <NotificationsActiveIcon />
+            </Badge>
+          </a>
+        </Tooltip>
+      );
+    } else {
+      <Tooltip title="notificaciones">
+        <a href="/notificaciones" className="ico-navbar">
+          <Badge color="primary">
+            <NotificationsActiveIcon />
+          </Badge>
+        </a>
+      </Tooltip>;
+    }
+  };
+
   return (
     <header>
       <nav className="navbarShop">
@@ -165,13 +187,7 @@ export default function Header({ contNotifi }) {
                 </a>
               </Tooltip>
               <Admin />
-              <Tooltip title="notificaciones">
-                <a href="/notificaciones" className="ico-navbar">
-                  <Badge badgeContent={1} color="primary">
-                    <NotificationsActiveIcon />
-                  </Badge>
-                </a>
-              </Tooltip>
+              <ValidateNotify />
               <Tooltip title="Carrito" className="ico-navbar">
                 <a href="/7Abq5P7EeFQM7HGxE/cDsMvM5/jPk1ZIuzGwbnuVyYI+f9RUtVrP4wVLaqftHwM/">
                   <ShoppingCartCheckoutIcon />
