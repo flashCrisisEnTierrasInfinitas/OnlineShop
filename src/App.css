@@ -149,7 +149,6 @@ h1 {
 /* HEADER DE LA APP */
 /* *****************NAVBAR******************* */
 .navbarShop {
-  z-index: 50;
   background: var(
     --r-globalnav-topbar-override,
     var(
@@ -157,11 +156,7 @@ h1 {
       var(--r-globalmessage-segment-background-color, #fbfbfd)
     )
   );
-  padding: 5px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.37);
-  position: fixed;
-  width: 100%;
-  top: 0;
 }
 
 .conter-navbar {
