@@ -1,5 +1,5 @@
 import { CFormLabel, CFormSelect, CSpinner } from "@coreui/react";
-import { Alert, Button, TextField } from "@mui/material";
+import { Alert, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
@@ -61,7 +61,7 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
     user_compra: Seccion,
     direccion: "",
     user_telefono: "",
-    tipo_servicio: "" || 1,
+    tipo_servicio: "",
     img: image,
     productos: productos.map((producto) => ({
       id: producto.id,
@@ -304,7 +304,7 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
             COL <label>${valueToDisplay}</label>
           </div>
           <div className="top-20">
-          +  $2.000 <label>De envió</label>
+            + $2.000 <label>De envió</label>
           </div>
         </div>
         <div className="top-50">

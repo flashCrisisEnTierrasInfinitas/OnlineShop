@@ -6,6 +6,14 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
   const dataToRender = data || [];
   const [inputValue, setInputValue] = useState([]);
   const valueToDisplay = Total ? Total.toLocaleString() : "";
+  // Define un estado para el contador
+  const [counter, setCounter] = useState(0);
+  console.log("🚀 ~ Table ~ counter:", counter);
+
+  // Define la función que se encargará de actualizar el contador
+  const updateCounter = ({ increment }) => {
+    setCounter(increment);
+  };
 
   // Supongamos que dataToRender es un array de objetos con propiedades, y quieres mapear alguna propiedad en inputValue
   useEffect(() => {
@@ -68,7 +76,7 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
         quantity: inputValue[data.id],
       });
     }
-
+    updateCounter(inputValue);
     // Actualiza el total sumando el precio del nuevo producto
     //addShop.total += data.precioPro;
     // Calcula el nuevo total sumando el precio de todos los productos en el carrito

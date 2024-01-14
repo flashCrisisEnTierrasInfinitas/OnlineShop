@@ -37,7 +37,7 @@ export default function AppBarAdmin() {
               marginLeft: "20px",
             }}
           >
-            <a href="/login">
+            <a href="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da">
               <CButton variant="outline">Login</CButton>
             </a>
           </div>
@@ -80,9 +80,12 @@ export default function AppBarAdmin() {
                 </CDropdownToggle>
                 <CDropdownMenu>
                   <CDropdownItem href="/dahsboard/0">
-                    <Button variant="outlined" style={{
-                      width: '80%'
-                    }}>
+                    <Button
+                      variant="outlined"
+                      style={{
+                        width: "80%",
+                      }}
+                    >
                       Nuevos
                     </Button>
                   </CDropdownItem>
@@ -90,7 +93,7 @@ export default function AppBarAdmin() {
                     <Button
                       variant="outlined"
                       style={{
-                        width: '80%'
+                        width: "80%",
                       }}
                     >
                       Enviados
@@ -100,7 +103,7 @@ export default function AppBarAdmin() {
                     <Button
                       variant="outlined"
                       style={{
-                        width: '80%'
+                        width: "80%",
                       }}
                     >
                       Entregados
@@ -111,7 +114,7 @@ export default function AppBarAdmin() {
                     <Button
                       variant="outlined"
                       style={{
-                        width: '80%'
+                        width: "80%",
                       }}
                     >
                       Cancelados

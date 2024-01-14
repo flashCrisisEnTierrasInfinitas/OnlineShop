@@ -8,9 +8,6 @@ export default function Conted() {
         <h1 className="">Asupro Colombia</h1>
         <p>Venta de productos de la canasta familiar, entre otros.</p>
         <div className="boton-product">
-          <a href="/login">
-            <Button variant="contained">Login</Button>
-          </a>
           <a href="#searchPro">
             <Button variant="outlined">
               Empecemos <ExpandMoreIcon />

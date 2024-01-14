@@ -168,7 +168,9 @@ export default function DetalleProduc({
               <div className="check">
                 <CheckCircleOutlineIcon />
                 <label>Se ha agregado este producto,</label>
-                <a href="/shop">ver carrito</a>
+                <a href="/7Abq5P7EeFQM7HGxE/cDsMvM5/jPk1ZIuzGwbnuVyYI+f9RUtVrP4wVLaqftHwM/">
+                  ver carrito
+                </a>
                 <a href="/">,o seguir comprando.</a>
               </div>
             ) : (

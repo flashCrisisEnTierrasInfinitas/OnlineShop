@@ -82,7 +82,7 @@ export default function ProList({ total, setTotal }) {
     <div className="margin-90 conter-pro">
       <div>
         <Categorias />
-        <DefaultCarousel  data={oferta} total={total} setTotal={setTotal} />
+        <DefaultCarousel data={oferta} total={total} setTotal={setTotal} />
         <div className="conter-search top-50">
           <input
             type="text"

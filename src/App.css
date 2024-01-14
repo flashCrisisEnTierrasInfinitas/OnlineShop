@@ -1154,6 +1154,9 @@ p {
 .conter-cate-home {
   background-color: #2c57f10e;
 }
+.conter-cate-home h1 {
+  text-align: center;
+}
 .box-cate-home {
   border-radius: 5px;
   display: block;
@@ -1493,5 +1496,11 @@ select option::before {
   }
   .footer-img a {
     display: none;
+  }
+  .head-home-asupro {
+    display: none;
+  }
+  .conter-cate-home {
+    margin-top: 90px;
   }
 }

@@ -121,7 +121,7 @@ export default function Header({ contNotifi }) {
     } else {
       return (
         <Tooltip title="Login">
-          <a href="/login">
+          <a href="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da">
             <Button
               variant="contained"
               style={styles.btn}
@@ -173,7 +173,7 @@ export default function Header({ contNotifi }) {
                 </a>
               </Tooltip>
               <Tooltip title="Carrito" className="ico-navbar">
-                <a href="/shop">
+                <a href="/7Abq5P7EeFQM7HGxE/cDsMvM5/jPk1ZIuzGwbnuVyYI+f9RUtVrP4wVLaqftHwM/">
                   <ShoppingCartCheckoutIcon />
                 </a>
               </Tooltip>

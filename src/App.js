@@ -118,7 +118,10 @@ function App() {
               element={<Home total={Total} setTotal={setTotal} />}
             />
 
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da"
+              element={<Login />}
+            />
             <Route path="/ProductosCat" element={<ProductoCate />} />
 
             <Route
@@ -146,7 +149,7 @@ function App() {
               }
             />
             <Route
-              path="/shop"
+              path="/7Abq5P7EeFQM7HGxE/cDsMvM5/jPk1ZIuzGwbnuVyYI+f9RUtVrP4wVLaqftHwM/"
               element={
                 <Shop
                   Seccion={seccion}

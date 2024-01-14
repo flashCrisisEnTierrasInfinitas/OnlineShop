@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import AddToHomeScreenIcon from '@mui/icons-material/AddToHomeScreen';
+import AddToHomeScreenIcon from "@mui/icons-material/AddToHomeScreen";
 
 const styles = {
   btn: {
@@ -41,7 +41,7 @@ export default function Recouper() {
 
       setData(response.data);
     } catch (err) {
-      console.warn(err)
+      console.warn(err);
       return alert(err.response.data.message);
     }
   };
@@ -63,7 +63,9 @@ export default function Recouper() {
       setLoading(true);
       return (
         <div className="top-20">
-          <Alert severity="success">Correo Validado por google OAuth 2.0.</Alert>
+          <Alert severity="success">
+            Correo Validado por google OAuth 2.0.
+          </Alert>
         </div>
       );
     }
@@ -126,7 +128,9 @@ export default function Recouper() {
               )}
             </div>
             <div className="next-login">
-              <a href="/login"><span>Regresar al Login.</span></a>
+              <a href="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da">
+                <span>Regresar al Login.</span>
+              </a>
             </div>
           </form>
         </div>

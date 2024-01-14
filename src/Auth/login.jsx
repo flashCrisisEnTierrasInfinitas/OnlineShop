@@ -111,7 +111,8 @@ export default function Login() {
         icon: "registrado con exito!!",
         title: "Signed in successfully",
       });
-      return (window.location.href = "/login");
+      return (window.location.href =
+        "/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da");
     } catch (error) {
       console.error("Error al iniciar sesión:", error.response.data);
       setLoading(false);
@@ -156,7 +157,7 @@ export default function Login() {
                 value={dataLog.email}
                 onChange={handleChange}
               />
-               <div className="flex">
+              <div className="flex">
                 <CFormInput
                   placeholder="password"
                   className="inpunt-login"
@@ -212,7 +213,7 @@ export default function Login() {
                 value={dataLog.email}
                 onChange={handleChange}
               />
-               <div className="flex">
+              <div className="flex">
                 <CFormInput
                   placeholder="password"
                   className="inpunt-login"
