@@ -1,5 +1,5 @@
 import { CFormLabel, CFormSelect, CSpinner } from "@coreui/react";
-import { Alert, Button } from "@mui/material";
+import { Alert, Button, Chip } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
@@ -133,6 +133,38 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
 
   return (
     <div className="grid">
+      <div style={{ background: "#F9F9F9", padding: "5px" }}>
+        <div className="margin-90 list-sale">
+          {productos.map((data) => (
+            <div className="Conter-sale grid">
+              <div>
+                <div>
+                  <img src={data.img} />
+                </div>
+                <span>{data.quantity}</span>
+              </div>
+              <div>
+                <p>{data.descripPro}</p>
+              </div>
+              <div>
+                <p>SubTotal:</p>
+                <p>${data.precioPro}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="margin-90 grid">
+          <div className="top-20">
+            <label>Total:</label>
+          </div>
+          <div className="top-20">
+            COL <label>${valueToDisplay}</label>
+          </div>
+          <div className="top-20">
+            + $2.000 <label>De envió</label>
+          </div>
+        </div>
+      </div>
       <div>
         <form className="form-sale">
           <CFormLabel>Tipo de Entrega</CFormLabel>
@@ -276,37 +308,6 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
             </Accordion>
           </div>
         </form>
-      </div>
-      <div style={{ background: "#F9F9F9", padding: "5px" }}>
-        <div className="margin-90 list-sale">
-          {productos.map((data) => (
-            <>
-              <div>
-                <label>{data.quantity}</label>
-                <div>
-                  <img src={data.img} />
-                </div>
-              </div>
-              <div>
-                <p>{data.descripPro}</p>
-              </div>
-              <div>
-                <p>${data.precioPro}</p>
-              </div>
-            </>
-          ))}
-        </div>
-        <div className="margin-90 grid">
-          <div className="top-20">
-            <label>Total:</label>
-          </div>
-          <div className="top-20">
-            COL <label>${valueToDisplay}</label>
-          </div>
-          <div className="top-20">
-            + $2.000 <label>De envió</label>
-          </div>
-        </div>
         <div className="top-50">
           <Button
             onClick={handleSubmit}

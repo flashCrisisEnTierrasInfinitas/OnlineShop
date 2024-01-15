@@ -1306,20 +1306,27 @@ select option::before {
   height: 100%;
 }
 .list-sale {
-  display: flex;
+  display: block;
 }
-.list-sale div {
+.Conter-sale {
+  margin: 5px;
+}
+.Conter-sale div {
   height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}.Conter-sale div span{
+ background-color: #2d477c8f;
+ color: #fff;
+ padding: 5px;
+ height: 39px;
+ width: 40px;
+ text-align: center;
+ border-radius: 100%;
+ margin: 5px;
 }
-.list-sale div label {
-  background-color: #81818181;
-  color: #fff;
-  border-radius: 100%;
-  padding: 5px;
-  position: absolute;
-  font-size: 10px;
-  margin: 2px;
-}
+
 .list-sale div img {
   height: 100%;
   border: 1px solid rgba(128, 128, 128, 0.658);
@@ -1503,5 +1510,8 @@ select option::before {
   .img-shop img {
     width: 120px;
     height: 90px;
+  }
+  .conter-ico-nav {
+    display: block;
   }
 }

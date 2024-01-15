@@ -181,16 +181,7 @@ function App() {
               />
               <Route path="/Historial" element={<Historial />} />
               <Route path="/MiLista" element={<MiLista seccion={seccion} />} />
-            </Route>
-            {/* TODO:routes the admin */}
-            <Route element={protectedRoute()}>
-              <Route path="/dahsboard/:id" element={<DahsboardAdmin />} />
-              <Route path="/User" element={<User />} />
-              <Route path="/product" element={<Product />} />
-              <Route path="/category" element={<Category />} />
-            </Route>
-            {/* rutas del usuario */}
-            <Route element={protectedUser()}>
+              <Route element={protectedUser()}>
               <Route
                 path="/ZeKqxkrThE4FooASf8FMC/0HAefmTli6V1MVBq09hqQXCwLNp22ESEd4pdKH5xiL"
                 element={
@@ -205,6 +196,15 @@ function App() {
                 }
               />
             </Route>
+            </Route>
+            {/* TODO:routes the admin */}
+            <Route element={protectedRoute()}>
+              <Route path="/dahsboard/:id" element={<DahsboardAdmin />} />
+              <Route path="/User" element={<User />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/category" element={<Category />} />
+            </Route>
+            {/* rutas del usuario */}
           </Routes>
           <FooterMenu />
           <Footer />
