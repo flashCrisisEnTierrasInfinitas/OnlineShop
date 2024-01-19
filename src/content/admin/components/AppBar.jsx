@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  CButton,
   CCloseButton,
   CContainer,
   CDropdown,
@@ -18,6 +17,12 @@ import {
   COffcanvasTitle,
 } from "@coreui/react";
 import { Button } from "@mui/material";
+import SettingsPowerIcon from "@mui/icons-material/SettingsPower";
+import HomeIcon from "@mui/icons-material/Home";
+import SendIcon from "@mui/icons-material/Send";
+import HailIcon from "@mui/icons-material/Hail";
+import HandshakeIcon from "@mui/icons-material/Handshake";
+import ContentCutIcon from "@mui/icons-material/ContentCut";
 
 export default function AppBarAdmin() {
   const [visible, setVisible] = useState(false);
@@ -36,11 +41,7 @@ export default function AppBarAdmin() {
             style={{
               marginLeft: "20px",
             }}
-          >
-            <a href="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da">
-              <CButton variant="outline">Login</CButton>
-            </a>
-          </div>
+          ></div>
         </CNavbarBrand>
         <CNavbarToggler
           aria-controls="offcanvasNavbar"
@@ -53,6 +54,7 @@ export default function AppBarAdmin() {
           portal={false}
           visible={visible}
           onHide={() => setVisible(false)}
+          className="with-navbar"
         >
           <COffcanvasHeader>
             <COffcanvasTitle>ASUPRO</COffcanvasTitle>
@@ -63,12 +65,6 @@ export default function AppBarAdmin() {
           </COffcanvasHeader>
           <COffcanvasBody>
             <CNavbarNav>
-              <a href="/" className="text-appBar">
-                <div className="ico-menu">
-                  <img src="/img/icons/iconfinder-home.png" />
-                </div>
-                <label>Home</label>
-              </a>
               <CDropdown variant="nav-item" popper={false}>
                 <CDropdownToggle color="secondary">
                   <div style={{ display: "flex" }}>
@@ -79,47 +75,32 @@ export default function AppBarAdmin() {
                   </div>
                 </CDropdownToggle>
                 <CDropdownMenu>
-                  <CDropdownItem href="/dahsboard/0">
-                    <Button
-                      variant="outlined"
-                      style={{
-                        width: "80%",
-                      }}
-                    >
-                      Nuevos
-                    </Button>
-                  </CDropdownItem>
-                  <CDropdownItem href="/dahsboard/2">
-                    <Button
-                      variant="outlined"
-                      style={{
-                        width: "80%",
-                      }}
-                    >
-                      Enviados
-                    </Button>
-                  </CDropdownItem>
-                  <CDropdownItem href="/dahsboard/3">
-                    <Button
-                      variant="outlined"
-                      style={{
-                        width: "80%",
-                      }}
-                    >
-                      Entregados
-                    </Button>
-                  </CDropdownItem>
-                  <CDropdownDivider />
-                  <CDropdownItem href="/dahsboard/1">
-                    <Button
-                      variant="outlined"
-                      style={{
-                        width: "80%",
-                      }}
-                    >
-                      Cancelados
-                    </Button>
-                  </CDropdownItem>
+                  <div className="footer-nav-admins">
+                    <a href="/dahsboard/0">
+                      <div className="ico-menu">
+                        <HailIcon />
+                      </div>
+                      <label>Nuevos</label>
+                    </a>
+                    <a href="/dahsboard/2">
+                      <div className="ico-menu">
+                        <SendIcon />
+                      </div>
+                      <label>Enviados</label>
+                    </a>
+                    <a href="/dahsboard/3">
+                      <div className="ico-menu">
+                        <HandshakeIcon />
+                      </div>
+                      <label>Entregados</label>
+                    </a>
+                    <a href="/dahsboard/1">
+                      <div className="ico-menu">
+                        <ContentCutIcon />
+                      </div>
+                      <label>Cancelados</label>
+                    </a>
+                  </div>
                 </CDropdownMenu>
               </CDropdown>
               <a href="/User" className="text-appBar">
@@ -140,6 +121,20 @@ export default function AppBarAdmin() {
                 </div>
                 <label>Lista</label>
               </a>
+              <div className="footer-nav-admin">
+                <a href="/">
+                  <div className="ico-menu">
+                    <HomeIcon />
+                  </div>
+                  <label>Home</label>
+                </a>
+                <a href="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da">
+                  <div className="ico-menu">
+                    <SettingsPowerIcon />
+                  </div>
+                  <label>Power Off</label>
+                </a>
+              </div>
             </CNavbarNav>
           </COffcanvasBody>
         </COffcanvas>

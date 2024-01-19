@@ -4,14 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import isMountedRef from "../../../hooks/useRefMounted";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
-import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
-import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
-import LoupeIcon from "@mui/icons-material/Loupe";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Button } from "@mui/material";
-import Swal from "sweetalert2";
-import { Tooltip } from "@mui/joy";
 import DefaultCarousel from "./slider2";
 import Categorias from "./categorias";
 
@@ -100,7 +93,7 @@ export default function ProList({ total, setTotal }) {
                 style={{ textDecoration: "none" }}
               >
                 <Card key={product.id}>
-                  <AspectRatio minHeight="120px" maxHeight="400px">
+                  <AspectRatio>
                     <img
                       src={product.img}
                       srcSet={product.img}

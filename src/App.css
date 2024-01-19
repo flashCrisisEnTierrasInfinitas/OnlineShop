@@ -421,6 +421,13 @@ h1 {
 .card-pro-list {
   width: 260px;
 }
+.card-pro-list a {
+  padding: 5px;
+}
+.card-pro-list a div {
+  width: 95%;
+  margin: 0 auto;
+}
 .img-cards {
   height: 50vh;
   background-size: cover;
@@ -1316,15 +1323,16 @@ select option::before {
   display: flex;
   align-items: center;
   justify-content: center;
-}.Conter-sale div span{
- background-color: #2d477c8f;
- color: #fff;
- padding: 5px;
- height: 39px;
- width: 40px;
- text-align: center;
- border-radius: 100%;
- margin: 5px;
+}
+.Conter-sale div span {
+  background-color: #2d477c8f;
+  color: #fff;
+  padding: 5px;
+  height: 39px;
+  width: 40px;
+  text-align: center;
+  border-radius: 100%;
+  margin: 5px;
 }
 
 .list-sale div img {
@@ -1513,5 +1521,15 @@ select option::before {
   }
   .conter-ico-nav {
     display: block;
+  }
+}
+
+@media (max-width: 667px) {
+  .card-pro-list {
+    background-color: red;
+    width: 100%;
+  }
+  .footer {
+    display: none;
   }
 }
