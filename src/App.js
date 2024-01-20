@@ -192,7 +192,10 @@ function App() {
                   path="/Tz0QDp4ERS81rCCHx/YEWX4wTBveKdtl5szCsnv8iQv57RmjwNzB0HKzt97RBsFX"
                   element={<MisPediso Seccion={seccion} />}
                 />
-                <Route element={<DetallePedidos />} path="/detallepedido" />
+                <Route
+                  element={<DetallePedidos />}
+                  path="/k/PRLpMj2FjF1BazAE8N4VCpYpq12Mx1oAe5mfHgUgFerURJTOG1NtcErOcZX458"
+                />
                 <Route
                   path="/notificaciones"
                   element={

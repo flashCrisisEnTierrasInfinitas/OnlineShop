@@ -125,15 +125,17 @@ export default function Table({ data }) {
                 <label>{data.user_venta}</label>
               </div>
               <div>
-                <Button
-                  style={{
-                    background: "#FF6333",
-                    width: "100%",
-                    color: "#fff",
-                  }}
-                >
-                  ver detalles del pedido
-                </Button>
+                <a href="/k/PRLpMj2FjF1BazAE8N4VCpYpq12Mx1oAe5mfHgUgFerURJTOG1NtcErOcZX458">
+                  <Button
+                    style={{
+                      background: "#FF6333",
+                      width: "100%",
+                      color: "#fff",
+                    }}
+                  >
+                    ver detalles del pedido
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
