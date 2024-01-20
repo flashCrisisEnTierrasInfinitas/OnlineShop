@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Chip } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
 export default function Table({ data }) {
@@ -72,23 +72,9 @@ export default function Table({ data }) {
 
   const ValidateService = ({ values }) => {
     if (values === 0) {
-      return (
-        <input
-          type="text"
-          class="form-control top-20"
-          value="Recoger"
-          disabled
-        />
-      );
+      return <Chip label="Recoger" />;
     } else {
-      return (
-        <input
-          type="text"
-          class="form-control top-20"
-          value="Enviar"
-          disabled
-        />
-      );
+      return <Chip label="Enviar" />;
     }
   };
 
@@ -99,7 +85,9 @@ export default function Table({ data }) {
           <div className="grid head-table-pedidos">
             <div>
               <h4>FECHA DEL PEDIDO</h4>
-              <label className="parra-head-tab-pedi">{data.created_at}</label>
+              <label className="parra-head-tab-pedi">
+                {data.created_at.toLocaleString()}
+              </label>
             </div>
             <div>
               <h4>TOTAL</h4>
@@ -125,6 +113,10 @@ export default function Table({ data }) {
             <div>
               <div>
                 <ValidateService values={data.tipo_servicio} />
+                <div className="info-body-tab-pedi">
+                  <label className="title-info-tab-pedi">USUARIO</label>
+                  <label>{data.user_compra}</label>
+                </div>
               </div>
             </div>
             <div>

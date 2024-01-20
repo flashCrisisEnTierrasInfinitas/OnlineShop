@@ -1419,6 +1419,13 @@ select option::before {
 .title-body-tab-pedi label {
   font-size: 22px;
 }
+.info-body-tab-pedi {
+  margin-top: 10px;
+  padding: 5px;
+}
+.info-body-tab-pedi label {
+  display: block;
+}
 
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
