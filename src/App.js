@@ -36,6 +36,7 @@ import Shop from "./content/pages/store/shop";
 import Sale from "./content/pages/store/sale";
 import Recouper from "./Auth/recoper";
 import { Password } from "@mui/icons-material";
+import MisPediso from "./content/pages/store/misPedidos";
 
 function App() {
   axios.defaults.baseURL =
@@ -110,6 +111,7 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
+            <Route path="*" element="Pague no fount" />
             <Route
               path="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da"
               element={<Login />}
@@ -169,33 +171,37 @@ function App() {
                 }
               />
               <Route path="/Profile" element={<Profile />} />
-              <Route
-                path="/notificaciones"
-                element={
-                  <Notificaciones
-                    Seccion={seccion}
-                    token={token}
-                    setContNotifi={setContNotifi}
-                  />
-                }
-              />
               <Route path="/Historial" element={<Historial />} />
               <Route path="/MiLista" element={<MiLista seccion={seccion} />} />
               <Route element={protectedUser()}>
-              <Route
-                path="/ZeKqxkrThE4FooASf8FMC/0HAefmTli6V1MVBq09hqQXCwLNp22ESEd4pdKH5xiL"
-                element={
-                  <Sale
-                    Seccion={seccion}
-                    token={token}
-                    Total={Total}
-                    setTotal={setTotal}
-                    setAddShop={setAddShop}
-                    addShop={addShop}
-                  />
-                }
-              />
-            </Route>
+                <Route
+                  path="/ZeKqxkrThE4FooASf8FMC/0HAefmTli6V1MVBq09hqQXCwLNp22ESEd4pdKH5xiL"
+                  element={
+                    <Sale
+                      Seccion={seccion}
+                      token={token}
+                      Total={Total}
+                      setTotal={setTotal}
+                      setAddShop={setAddShop}
+                      addShop={addShop}
+                    />
+                  }
+                />
+                <Route
+                  path="/mispedidos"
+                  element={<MisPediso Seccion={seccion} />}
+                />
+                <Route
+                  path="/notificaciones"
+                  element={
+                    <Notificaciones
+                      Seccion={seccion}
+                      token={token}
+                      setContNotifi={setContNotifi}
+                    />
+                  }
+                />
+              </Route>
             </Route>
             {/* TODO:routes the admin */}
             <Route element={protectedRoute()}>

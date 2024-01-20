@@ -1364,6 +1364,62 @@ select option::before {
 .next-login a span {
   margin: 5px;
 }
+.conter-table-pedidos {
+  width: 90%;
+  margin: 0 auto;
+}
+.table-pedidos {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border: 2px solid rgba(128, 128, 128, 0.24);
+}
+.head-table-pedidos {
+  padding: 5px;
+  background-color: rgb(243, 243, 243);
+}
+.head-table-pedidos div {
+  display: block;
+  margin: 5px;
+}
+.parra-head-tab-pedi {
+  font-weight: 700;
+  font-size: 17px;
+}
+.status-table-pedidos div {
+  width: 50%;
+  float: right;
+}
+.status-table-pedidos div div {
+  width: 100%;
+}
+.body-table-pedidos {
+  padding: 5px;
+  margin: 5px;
+}
+.img-table-pedidos {
+  display: flex;
+  align-items: center;
+}
+.body-table-pedidos div img {
+  width: 120px;
+  height: 120px;
+  border-radius: 5px;
+}
+.body-table-pedidos div {
+  padding: 5px;
+}
+.title-body-tab-pedi {
+  display: flex;
+  align-items: center;
+  color: rgba(128, 128, 128, 0.664);
+}
+.title-body-tab-pedi svg {
+  font-size: 40px;
+}
+.title-body-tab-pedi label {
+  font-size: 22px;
+}
+
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
   .text-home a > p {

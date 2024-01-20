@@ -62,6 +62,16 @@ export default function Edit({ data }) {
         />
       );
     }
+    if (data == 4) {
+      return (
+        <input
+          type="text"
+          class="form-control top-20"
+          value="Preparando"
+          disabled
+        />
+      );
+    }
   };
   const Service = ({ data }) => {
     if (data == 0) {

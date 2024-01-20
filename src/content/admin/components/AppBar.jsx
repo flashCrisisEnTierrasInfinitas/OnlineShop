@@ -3,8 +3,6 @@ import {
   CCloseButton,
   CContainer,
   CDropdown,
-  CDropdownDivider,
-  CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
   CNavbar,
@@ -16,7 +14,6 @@ import {
   COffcanvasHeader,
   COffcanvasTitle,
 } from "@coreui/react";
-import { Button } from "@mui/material";
 import SettingsPowerIcon from "@mui/icons-material/SettingsPower";
 import HomeIcon from "@mui/icons-material/Home";
 import SendIcon from "@mui/icons-material/Send";
@@ -83,7 +80,7 @@ export default function AppBarAdmin() {
                       </div>
                       <label>Nuevos</label>
                     </a>
-                    <a href="/dahsboard/0">
+                    <a href="/dahsboard/4">
                       <div className="ico-menu">
                         <OutdoorGrillIcon />
                       </div>

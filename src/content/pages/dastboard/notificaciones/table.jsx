@@ -5,14 +5,8 @@ import {
   CTableDataCell,
   CCard,
   CCardBody,
-  CAlert,
   CSpinner,
-
 } from "@coreui/react";
-import CIcon from "@coreui/icons-react";
-import {
-  cilBellExclamation, cilFire, cilInfo, cilCheck
-} from "@coreui/icons";
 import axios from "axios";
 import isMountedRef from "../../../../hooks/useRefMounted";
 import Cookies from "js-cookie";
@@ -31,8 +25,8 @@ export default function Table({ Seccion, setContNotifi }) {
       const response = await axios.get(`/ventas/${Seccion}`, {
         headers: {
           "Content-Type": "multipart/form-data",
-          'X-Requested-With': 'XMLHttpRequest',
-          'Authorization': 'Bearer ' + token,
+          "X-Requested-With": "XMLHttpRequest",
+          Authorization: "Bearer " + token,
         },
       });
       setData(response.data);
@@ -58,13 +52,12 @@ export default function Table({ Seccion, setContNotifi }) {
     const { status_venta, id } = data;
     if (status_venta == 0) {
       return (
-
-        < Alert severity="warning" >
+        <Alert severity="warning">
           <AlertTitle>Sin Entregar</AlertTitle>
           <div className="flex">
             <Chip label={id} color="primary" />—<PDF id={id} />
           </div>
-        </Alert >
+        </Alert>
       );
     }
     if (status_venta == 1) {
@@ -80,7 +73,11 @@ export default function Table({ Seccion, setContNotifi }) {
     if (status_venta == 2) {
       return (
         <Alert severity="info">
-          <AlertTitle> Su producto ya fue enviado, en breve resivira su producto en su puerta!</AlertTitle>
+          <AlertTitle>
+            {" "}
+            Su producto ya fue enviado, en breve resivira su producto en su
+            puerta!
+          </AlertTitle>
           <div className="flex">
             <Chip label={id} color="primary" />—<PDF id={id} />
           </div>
@@ -104,12 +101,11 @@ export default function Table({ Seccion, setContNotifi }) {
         <CCardBody>
           <CTable striped>
             <CTableBody>
-              {data
-                .map((item) => (
-                  <tr key={item.id}>
-                    <CTableDataCell>{Status(item)}</CTableDataCell>
-                  </tr>
-                ))}
+              {data.map((item) => (
+                <tr key={item.id}>
+                  <CTableDataCell>{Status(item)}</CTableDataCell>
+                </tr>
+              ))}
             </CTableBody>
           </CTable>
         </CCardBody>
