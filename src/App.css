@@ -1447,10 +1447,12 @@ select option::before {
 }
 
 .body-deta-pedi,
-.footer-deta-pedi {
+.footer-deta-pedi,
+.list-pro-deta-pedi {
   margin-top: 20px;
 }
-.targe-deta-pedi {
+.targe-deta-pedi,
+.list-pro-deta-pedi {
   border: 1px solid rgba(128, 128, 128, 0.377);
   padding: 10px;
 }
@@ -1487,10 +1489,31 @@ select option::before {
   width: 90%;
   background-color: rgba(128, 128, 128, 0.342);
 }
+
+.target-list-deta-pedi div {
+  display: flex;
+  align-items: center;
+}
+.target-list-deta-pedi div img {
+  width: 100px;
+  height: 100px;
+}
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
   .footer-deta-pedi {
     margin-bottom: 40px;
+  }
+  .indicador div {
+    display: none;
+    width: 0px;
+  }
+  .footer-deta-pedi h6 {
+    text-align: center;
+  }
+  .avances-deta-pedi div div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .text-home a > p {
   }

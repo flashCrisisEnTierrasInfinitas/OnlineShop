@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Chip } from "@mui/material";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 import CancelIcon from "@mui/icons-material/Cancel";
 import OutdoorGrillIcon from "@mui/icons-material/OutdoorGrill";
@@ -69,6 +69,25 @@ export default function DetallePedidos() {
           <div>
             <label>Total</label>
             <label>$ 399.990</label>
+          </div>
+        </div>
+      </div>
+      <div className="grid list-pro-deta-pedi">
+        <div className="target-list-deta-pedi">
+          <div>
+            <img
+              src="https://multimedia-gs.s3.amazonaws.com/Data_StagingProducts/5861030844-9.jpg"
+              alt=""
+            />
+          </div>
+          <div>
+            <label>Licuadora</label>
+          </div>
+          <div>
+            <Chip label="1" />
+          </div>
+          <div>
+            <label>$399.990</label>
           </div>
         </div>
       </div>
