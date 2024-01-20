@@ -23,6 +23,7 @@ import SendIcon from "@mui/icons-material/Send";
 import HailIcon from "@mui/icons-material/Hail";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
+import OutdoorGrillIcon from "@mui/icons-material/OutdoorGrill";
 
 export default function AppBarAdmin() {
   const [visible, setVisible] = useState(false);
@@ -81,6 +82,12 @@ export default function AppBarAdmin() {
                         <HailIcon />
                       </div>
                       <label>Nuevos</label>
+                    </a>
+                    <a href="/dahsboard/0">
+                      <div className="ico-menu">
+                        <OutdoorGrillIcon />
+                      </div>
+                      <label>En preparación</label>
                     </a>
                     <a href="/dahsboard/2">
                       <div className="ico-menu">
