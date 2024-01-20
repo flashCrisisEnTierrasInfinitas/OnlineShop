@@ -1427,8 +1427,71 @@ select option::before {
   display: block;
 }
 
+/* ************************** */
+.conter-deta-pedi {
+  width: 90%;
+  margin: 0 auto;
+  padding: 5px;
+  margin-top: 20px;
+}
+.title-head-deta-pedi {
+  display: flex;
+}
+.title-head-deta-pedi h5 {
+  margin-right: 20px;
+}
+.head-deta-pedi div div {
+  margin-top: 5px;
+  background-color: rgb(46, 31, 31);
+  width: 150px;
+}
+
+.body-deta-pedi,
+.footer-deta-pedi {
+  margin-top: 20px;
+}
+.targe-deta-pedi {
+  border: 1px solid rgba(128, 128, 128, 0.377);
+  padding: 10px;
+}
+.footer-deta-pedi {
+  padding: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.377);
+  margin-bottom: 100px;
+}
+.avances-deta-pedi label {
+  background-color: rgba(128, 128, 128, 0.342);
+  padding: 5px;
+  border-radius: 100%;
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.avances-deta-pedi label svg {
+  font-size: 25px;
+}
+.avances-deta-pedi div div {
+  display: flex;
+}
+.indicador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.indicador div {
+  margin-left: 4px;
+  border: 0px;
+  height: 1px;
+  width: 90%;
+  background-color: rgba(128, 128, 128, 0.342);
+}
 /* EN ESTA PAGINA TAMBIEN SE MANEJARA LAS @MEDIA CON UN MAXIMO DE WIDTH DE 1024px*/
 @media (max-width: 1024px) {
+  .footer-deta-pedi {
+    margin-bottom: 40px;
+  }
   .text-home a > p {
   }
   .text-home a > p {
