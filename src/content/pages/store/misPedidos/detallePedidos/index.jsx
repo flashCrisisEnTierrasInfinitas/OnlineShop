@@ -16,6 +16,11 @@ const styles = {
   anvance: {
     backgroundColor: "#2D477C",
   },
+  flex: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 };
 export default function DetallePedidos() {
   const token = Cookies.get("token");
@@ -66,6 +71,309 @@ export default function DetallePedidos() {
     }
     if (value === 4) {
       return "Preparando";
+    }
+  };
+
+  const ValiadteMovi = ({ value }) => {
+    if (value === 0) {
+      return (
+        <div className="grid avances-deta-pedi">
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <BorderColorIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>Pendiente</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <OutdoorGrillIcon />
+              </label>
+              <div />
+            </div>
+            <div>
+              <p>preparando pedido</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <LocalShippingIcon />
+              </label>
+              <div />
+            </div>
+            <div>
+              <p>pedido enviado o listo para recoger</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <HandshakeIcon />
+              </label>
+              <div />
+            </div>
+            <div>
+              <p>Entregado</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <CancelIcon />
+              </label>
+            </div>
+            <div style={styles.flex}>
+              <p>Cancelado</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (value === 1) {
+      return (
+        <div className="grid avances-deta-pedi">
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <BorderColorIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>Pendiente</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <OutdoorGrillIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>preparando pedido</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <LocalShippingIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>pedido enviado o listo para recoger</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <HandshakeIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>Entregado</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <CancelIcon />
+              </label>
+            </div>
+            <div style={styles.flex}>
+              <p>Rechazado</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (value === 2) {
+      return (
+        <div className="grid avances-deta-pedi">
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <BorderColorIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>Pendiente</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <OutdoorGrillIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>preparando pedido</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <LocalShippingIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>pedido enviado o listo para recoger</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <HandshakeIcon />
+              </label>
+              <div />
+            </div>
+            <div>
+              <p>Entregado</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <CancelIcon />
+              </label>
+            </div>
+            <div style={styles.flex}>
+              <p>Rechazado</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (value === 3) {
+      return (
+        <div className="grid avances-deta-pedi">
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <BorderColorIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>Pendiente</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <OutdoorGrillIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>preparando pedido</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <LocalShippingIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>pedido enviado o listo para recoger</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <HandshakeIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>Entregado</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <CancelIcon />
+              </label>
+            </div>
+            <div style={styles.flex}>
+              <p>Rechazado</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (value === 4) {
+      return (
+        <div className="grid avances-deta-pedi">
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <BorderColorIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>Pendiente</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label style={styles.anvance}>
+                <OutdoorGrillIcon />
+              </label>
+              <div style={styles.anvance} />
+            </div>
+            <div>
+              <p>preparando pedido</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <LocalShippingIcon />
+              </label>
+              <div />
+            </div>
+            <div>
+              <p>pedido enviado o listo para recoger</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <HandshakeIcon />
+              </label>
+              <div />
+            </div>
+            <div>
+              <p>Entregado</p>
+            </div>
+          </div>
+          <div>
+            <div className="indicador">
+              <label>
+                <CancelIcon />
+              </label>
+            </div>
+            <div style={styles.flex}>
+              <p>Rechazado</p>
+            </div>
+          </div>
+        </div>
+      );
     }
   };
 
@@ -136,62 +444,7 @@ export default function DetallePedidos() {
         <div>
           <h6>Estado Del Pedido</h6>
         </div>
-        <div className="grid avances-deta-pedi">
-          <div>
-            <div className="indicador">
-              <label style={styles.anvance}>
-                <BorderColorIcon />
-              </label>
-              <div style={styles.anvance} />
-            </div>
-            <div>
-              <p>Pendiente</p>
-            </div>
-          </div>
-          <div>
-            <div className="indicador">
-              <label style={styles.anvance}>
-                <OutdoorGrillIcon />
-              </label>
-              <div style={styles.anvance} />
-            </div>
-            <div>
-              <p>preparando pedido</p>
-            </div>
-          </div>
-          <div>
-            <div className="indicador">
-              <label style={styles.anvance}>
-                <LocalShippingIcon />
-              </label>
-              <div style={styles.anvance} />
-            </div>
-            <div>
-              <p>pedido enviado o listo para recoger</p>
-            </div>
-          </div>
-          <div>
-            <div className="indicador">
-              <label>
-                <HandshakeIcon />
-              </label>
-              <div />
-            </div>
-            <div>
-              <p>Entregado</p>
-            </div>
-          </div>
-          <div>
-            <div className="indicador">
-              <label>
-                <CancelIcon />
-              </label>
-            </div>
-            <div>
-              <p>Cancelado</p>
-            </div>
-          </div>
-        </div>
+        <ValiadteMovi value={data.status_venta} />
       </div>
     </div>
   );
