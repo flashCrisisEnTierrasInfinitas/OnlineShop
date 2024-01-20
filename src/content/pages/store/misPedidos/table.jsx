@@ -108,7 +108,7 @@ export default function Table({ data }) {
           </div>
           <div className="grid body-table-pedidos">
             <div className="img-table-pedidos">
-              <img src="https://static.vecteezy.com/system/resources/thumbnails/026/434/409/small_2x/default-avatar-profile-icon-social-media-user-photo-vector.jpg" />
+              <img src="/img/foto-profil-pro.jpg" />
             </div>
             <div>
               <div>

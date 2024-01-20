@@ -37,6 +37,7 @@ import Sale from "./content/pages/store/sale";
 import Recouper from "./Auth/recoper";
 import { Password } from "@mui/icons-material";
 import MisPediso from "./content/pages/store/misPedidos";
+import DetallePedidos from "./content/pages/store/misPedidos/detallePedidos";
 
 function App() {
   axios.defaults.baseURL =
@@ -188,9 +189,10 @@ function App() {
                   }
                 />
                 <Route
-                  path="/mispedidos"
+                  path="/Tz0QDp4ERS81rCCHx/YEWX4wTBveKdtl5szCsnv8iQv57RmjwNzB0HKzt97RBsFX"
                   element={<MisPediso Seccion={seccion} />}
                 />
+                <Route element={<DetallePedidos />} path="/detallepedido" />
                 <Route
                   path="/notificaciones"
                   element={

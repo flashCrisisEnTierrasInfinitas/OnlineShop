@@ -40,7 +40,14 @@ export default function MisPediso({ Seccion }) {
   }
   return (
     <div>
-      <h1>Mis pedidos</h1>
+      <h1
+        className="top-20"
+        style={{
+          textAlign: "center",
+        }}
+      >
+        Mis pedidos
+      </h1>
       <div>
         <Table data={data} />
       </div>
