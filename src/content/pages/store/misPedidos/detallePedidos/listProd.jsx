@@ -1,10 +1,10 @@
-import axios from "axios";
-import { useCallback, useState, useEffect } from "react";
 import { CSpinner } from "@coreui/react";
-import isMountedRef from "../../../hooks/useRefMounted";
 import { Chip } from "@mui/material";
+import axios from "axios";
+import { useCallback, useEffect, useState } from "react";
+import isMountedRef from "../../../../../hooks/useRefMounted";
 
-export default function Result({ id }) {
+export default function ListProd({ id }) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -35,23 +35,23 @@ export default function Result({ id }) {
   }
 
   return (
-    <>
+    <div className="grid list-pro-deta-pedi">
       {data.map((data) => (
-        <>
-          <div className="produc-factura">
-            <div style={{ display: "flex" }}>
-              <p className="flex">
-                <i class="fa fa-balance-scale" aria-hidden="true" />-
-                <Chip label={data.cantidad} color="primary" />
-              </p>
-              <p>{data.nombrePro}</p>
-            </div>
-            <div className="precio-pro-fac">
-              <p>${data.precio.toLocaleString("es-CO")}</p>
-            </div>
+        <div className="target-list-deta-pedi" key={data.id}>
+          <div>
+            <img src={data.img} alt={data.nombrePro} />
           </div>
-        </>
+          <div>
+            <label>{data.nombrePro}</label>
+          </div>
+          <div>
+            <Chip label={data.cantidad} />
+          </div>
+          <div>
+            <label>$ {data.precio.toLocaleString("es-CO")}</label>
+          </div>
+        </div>
       ))}
-    </>
+    </div>
   );
 }

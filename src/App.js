@@ -194,7 +194,7 @@ function App() {
                 />
                 <Route
                   element={<DetallePedidos />}
-                  path="/k/PRLpMj2FjF1BazAE8N4VCpYpq12Mx1oAe5mfHgUgFerURJTOG1NtcErOcZX458"
+                  path="/k/PRLpMj2FjF1BazAE8N4VCpYpq12Mx1oAe5mfHgUgFerURJTOG1NtcErOcZX458/:id"
                 />
                 <Route
                   path="/notificaciones"
