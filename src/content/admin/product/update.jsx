@@ -35,6 +35,7 @@ export default function Update({ data, token }) {
     precioPro: data.row.precioPro,
     stockPro: data.row.stockPro,
     oferta: data.row.oferta,
+    categorias: data.row.categorias,
     img: image,
   });
 
@@ -160,6 +161,15 @@ export default function Update({ data, token }) {
               </CFormSelect>
             </CCol>
             <CCol md={6}>
+              <CFormInput
+                type="text"
+                name="categorias"
+                label="categorias"
+                value={formData.categorias}
+                onChange={handleChange}
+              />
+            </CCol>
+            <CCol md={12}>
               <CFormLabel>estado</CFormLabel>
               <CFormSelect
                 id="status"

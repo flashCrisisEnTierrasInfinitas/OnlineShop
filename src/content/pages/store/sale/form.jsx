@@ -139,7 +139,7 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
             <div className="Conter-sale grid">
               <div>
                 <div>
-                  <img src={data.img} />
+                  <img src={data.img} alt="" />
                 </div>
                 <span>{data.quantity}</span>
               </div>
@@ -158,7 +158,7 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
             <label>Total:</label>
           </div>
           <div className="top-20">
-            COL <label>${valueToDisplay}</label>
+            COL <label>${valueToDisplay.toLocaleString("es-CO")}</label>
           </div>
           <div className="top-20">
             + $2.000 <label>De envió</label>

@@ -88,12 +88,13 @@ export default function DataTable() {
     },
     {
       field: "name",
-      headerName: "Categoria",
+      headerName: "Tipo Producto",
       width: 130,
       renderCell: (params) => (
         <p style={{ color: params.row.color }}>{params.row.name}</p>
       ),
     },
+    { field: "categorias", headerName: "categorias", width: 130 },
     { field: "created_at", headerName: "Fecha", width: 130 },
     { field: "precioPro", headerName: "Precio", width: 130 },
     { field: "stockPro", headerName: "Stock", width: 10 },

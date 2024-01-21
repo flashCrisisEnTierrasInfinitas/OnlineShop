@@ -910,7 +910,7 @@ p {
 }
 /* DETALLE DEL PRODUCTO */
 .conter-detallepro {
-  margin-top: 100px;
+  margin-top: 20px;
   margin-bottom: 5px;
 }
 .title-detalle {
@@ -1626,13 +1626,14 @@ select option::before {
     font-size: 2em;
   }
   .img-detalle {
-    width: 100%;
+    margin: 0 auto;
+    width: 90%;
     height: 70vh;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 20px;
   }
   .img-detalle img {
     width: 100%;
-    border-radius: 0px 0px 20px 20px;
+    border-radius: 20px;
   }
   .table-shop {
     display: block;

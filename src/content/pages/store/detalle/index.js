@@ -52,14 +52,14 @@ export default function DetalleProduc({
   }
 
   const isPositiveNumber = (value) => {
-    return /^[1-9]\d*$/.test(value);
+    return /^[1-9]\d*$/.test(value.toString());
   };
 
   const handleInputChange = (event) => {
-    const inputValue = event.target.value;
+    const newValue = event.target.value;
 
-    if (isPositiveNumber(inputValue)) {
-      setInputValue(inputValue);
+    if (newValue === "" || isPositiveNumber(newValue)) {
+      setInputValue(newValue);
     }
   };
 
@@ -123,7 +123,6 @@ export default function DetalleProduc({
             <p className="text-detalle">
               Precio: ${data.precioPro.toLocaleString("es-CO")}
             </p>
-            <p className="text-detalle">Stock:{data.stockPro}</p>
             <div className="grid">
               <div className="flex">
                 Cantidad:

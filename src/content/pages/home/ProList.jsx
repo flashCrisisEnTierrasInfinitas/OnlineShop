@@ -106,6 +106,15 @@ export default function ProList({ total, setTotal }) {
                       <Typography fontSize="lg" fontWeight="lg">
                         {product.descripPro}
                       </Typography>
+                      <Typography
+                        fontSize="lg"
+                        fontWeight="lg"
+                        style={{
+                          color: "#F44F1A",
+                        }}
+                      >
+                        Categoria: {product.categorias}
+                      </Typography>
                       <Typography fontSize="lg" level="body-xs">
                         {product.nombrePro}
                       </Typography>

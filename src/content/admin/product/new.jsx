@@ -34,6 +34,7 @@ export default function New({ token }) {
     stockPro: "",
     status: "0",
     oferta: "0",
+    categorias: "",
     img: image,
   });
 
@@ -153,6 +154,15 @@ export default function New({ token }) {
                   </option>
                 ))}
               </CFormSelect>
+            </CCol>
+            <CCol md={6}>
+              <CFormInput
+                type="text"
+                name="categorías"
+                label="categorías"
+                value={formData.categorias}
+                onChange={handleChange}
+              />
             </CCol>
             <CCol md={12}>
               <CFormTextarea
