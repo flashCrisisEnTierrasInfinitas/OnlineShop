@@ -104,7 +104,7 @@ export default function ProList({ total, setTotal }) {
                   <div className="grid">
                     <div className="text-product">
                       <Typography fontSize="lg" fontWeight="lg">
-                        {product.descripPro}
+                        {product.descripPro.toUpperCase()}
                       </Typography>
                       <Typography
                         fontSize="lg"
@@ -113,7 +113,7 @@ export default function ProList({ total, setTotal }) {
                           color: "#F44F1A",
                         }}
                       >
-                        Categoria: {product.categorias}
+                        Categoria: {product.categorias.toUpperCase()}
                       </Typography>
                       <Typography fontSize="lg" level="body-xs">
                         {product.nombrePro}

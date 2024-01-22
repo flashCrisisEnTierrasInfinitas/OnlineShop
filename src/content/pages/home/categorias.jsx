@@ -51,7 +51,7 @@ export default function Categorias() {
               />
             </a>
             <div className="text-cate-home">
-              <h1>{data.name}</h1>
+              <h1>{data.name.toUpperCase()}</h1>
             </div>
           </div>
         ))}
