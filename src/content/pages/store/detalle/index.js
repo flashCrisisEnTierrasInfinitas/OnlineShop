@@ -124,7 +124,7 @@ export default function DetalleProduc({
             <p className="text-detalle">
               Precio: ${data.precioPro.toLocaleString("es-CO")}
             </p>
-            <p className="text-detalle">Peso: {data.peso}</p>
+            <p className="text-detalle">Presentación: {data.Presentacion} </p>
             <div className="grid">
               <div className="flex">
                 Cantidad:

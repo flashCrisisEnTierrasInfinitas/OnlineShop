@@ -39,9 +39,9 @@ import MisPediso from "./content/pages/store/misPedidos";
 import DetallePedidos from "./content/pages/store/misPedidos/detallePedidos";
 
 function App() {
-  //axios.defaults.baseURL =
-  //"https://apionlineshop.com.asuprocolombiasas.com/api";
-  axios.defaults.baseURL = "http://127.0.0.1:8000/api";
+  axios.defaults.baseURL =
+    "https://apionlineshop.com.asuprocolombiasas.com/api";
+  //axios.defaults.baseURL = "http://127.0.0.1:8000/api";
 
   const seccion = Cookies.get("seccion");
   const token = Cookies.get("token");

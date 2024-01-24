@@ -79,6 +79,15 @@ export default function ProList({ total, setTotal }) {
     if (value === "g") {
       return "Gramos";
     }
+    if (value === "arr") {
+      return "Arroba";
+    }
+    if (value === "do") {
+      return "docenas";
+    }
+    if (value === "lt") {
+      return "Litros";
+    }
   };
 
   const Presentacion = ({ value }) => {
@@ -96,6 +105,15 @@ export default function ProList({ total, setTotal }) {
     }
     if (value === "doce") {
       return "Docena";
+    }
+    if (value === "btl") {
+      return "Bulto";
+    }
+    if (value === "can") {
+      return "Canasta";
+    }
+    if (value === "bto") {
+      return "Botella";
     }
   };
 

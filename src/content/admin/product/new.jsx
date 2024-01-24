@@ -178,6 +178,7 @@ export default function New({ token }) {
                 <option value="g">gramos</option>
                 <option value="arr">arroba</option>
                 <option value="do">docenas</option>
+                <option value="lt">litro</option>
               </CFormSelect>
             </CCol>
             <CCol md={6}>
@@ -193,6 +194,9 @@ export default function New({ token }) {
                 <option value="paq">paquetes</option>
                 <option value="cube">cubeta</option>
                 <option value="doce">docenas</option>
+                <option value="blt">bulto</option>
+                <option value="can">canasta</option>
+                <option value="bto">botella</option>
               </CFormSelect>
             </CCol>
             <CCol md={12}>
