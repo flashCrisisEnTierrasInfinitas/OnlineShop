@@ -66,6 +66,39 @@ export default function ProList({ total, setTotal }) {
     );
   }
 
+  const Peso = ({ value }) => {
+    if (value === "un") {
+      return "Unidades";
+    }
+    if (value === "lb") {
+      return "Libras";
+    }
+    if (value === "kg") {
+      return "Kilos";
+    }
+    if (value === "g") {
+      return "Gramos";
+    }
+  };
+
+  const Presentacion = ({ value }) => {
+    if (value === "un") {
+      return "Unidades";
+    }
+    if (value === "cj") {
+      return "Cajas";
+    }
+    if (value === "paq") {
+      return "Paquetes";
+    }
+    if (value === "cube") {
+      return "Cubeta";
+    }
+    if (value === "doce") {
+      return "Docena";
+    }
+  };
+
   const filteredData = data?.filter((item) =>
     item.nombrePro?.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -106,17 +139,18 @@ export default function ProList({ total, setTotal }) {
                       <Typography fontSize="lg" fontWeight="lg">
                         {product.descripPro.toUpperCase()}
                       </Typography>
-                      <Typography
-                        fontSize="lg"
-                        fontWeight="lg"
-                        style={{
-                          color: "#F44F1A",
-                        }}
-                      >
-                        Categoria: {product.categorias.toUpperCase()}
-                      </Typography>
                       <Typography fontSize="lg" level="body-xs">
                         {product.nombrePro}
+                      </Typography>
+                      <Typography fontSize="lg" level="body-xs">
+                        Categoria: {product.categorias}
+                      </Typography>
+                      <Typography fontSize="lg" level="body-xs">
+                        Cantidades: <Peso value={product.peso} />
+                      </Typography>
+                      <Typography fontSize="lg" level="body-xs">
+                        Presentación:{" "}
+                        <Presentacion value={product.Presentacion} />
                       </Typography>
                     </div>
                     <div className="text-precio">

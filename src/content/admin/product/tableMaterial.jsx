@@ -60,7 +60,7 @@ export default function DataTable() {
     { field: "descripPro", headerName: "Descripción", width: 220 },
     {
       field: "codigoPro",
-      headerName: "Age",
+      headerName: "Codigo",
       type: "Codigo",
       width: 90,
     },
@@ -96,8 +96,14 @@ export default function DataTable() {
     },
     { field: "categorias", headerName: "categorias", width: 130 },
     { field: "created_at", headerName: "Fecha", width: 130 },
-    { field: "precioPro", headerName: "Precio", width: 130 },
+    {
+      field: "precioPro".toLocaleString("es-CO"),
+      headerName: "Precio",
+      width: 130,
+    },
+    { field: "Presentacion", headerName: "Presentacion", width: 130 },
     { field: "stockPro", headerName: "Stock", width: 10 },
+    { field: "peso", headerName: "peso", width: 10 },
   ];
 
   const filteredData = data?.filter((item) => {

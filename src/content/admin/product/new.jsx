@@ -17,7 +17,6 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import isMountedRef from "../../../hooks/useRefMounted";
-import { Button } from "@mui/material";
 
 export default function New({ token }) {
   const [visible, setVisible] = useState(false);
@@ -35,6 +34,8 @@ export default function New({ token }) {
     status: "0",
     oferta: "0",
     categorias: "",
+    peso: "",
+    Presentacion: "",
     img: image,
   });
 
@@ -158,11 +159,41 @@ export default function New({ token }) {
             <CCol md={6}>
               <CFormInput
                 type="text"
-                name="categorías"
+                name="categorias"
                 label="categorías"
                 value={formData.categorias}
                 onChange={handleChange}
               />
+            </CCol>
+            <CCol md={6}>
+              <CFormLabel>Cantidades</CFormLabel>
+              <CFormSelect
+                name="peso"
+                onChange={handleChange}
+                value={formData.peso}
+              >
+                <option>Seleccione..</option>
+                <option value="lb">libras</option>
+                <option value="kg">kilos</option>
+                <option value="g">gramos</option>
+                <option value="arr">arroba</option>
+                <option value="do">docenas</option>
+              </CFormSelect>
+            </CCol>
+            <CCol md={6}>
+              <CFormLabel>Presentación</CFormLabel>
+              <CFormSelect
+                name="Presentacion"
+                onChange={handleChange}
+                value={formData.Presentacion}
+              >
+                <option>Seleccione..</option>
+                <option value="un">unidades</option>
+                <option value="cj">caja</option>
+                <option value="paq">paquetes</option>
+                <option value="cube">cubeta</option>
+                <option value="doce">docenas</option>
+              </CFormSelect>
             </CCol>
             <CCol md={12}>
               <CFormTextarea

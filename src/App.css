@@ -379,7 +379,6 @@ h1 {
   position: relative;
   bottom: 0;
   width: 100%;
-  height: 10vh;
   background-color: #20272b;
   display: flex;
   align-items: center;
@@ -924,17 +923,13 @@ p {
   margin: 20px;
 }
 .img-detalle {
-  width: 100%;
+  width: 90%;
   height: 60vh;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   align-items: center;
-}
-.img-detalle img {
-  height: 100%;
-  height: 100%;
 }
 .ico-detalle {
   background-color: #ffffff6e;
@@ -1216,7 +1211,7 @@ select option::before {
 
 .input-quantity {
   width: 50px;
-  margin: 0px 5px;
+  margin: 2px 5px;
   padding: 5px;
 }
 
@@ -1529,7 +1524,6 @@ select option::before {
     align-items: center;
     justify-content: center;
     border-radius: 0px;
-    height: 15vh;
   }
   .input-search {
     width: 100%;
@@ -1558,9 +1552,7 @@ select option::before {
     width: 100%;
   }
   .conter-navbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
   }
 
   .input-search {
@@ -1626,14 +1618,7 @@ select option::before {
     font-size: 2em;
   }
   .img-detalle {
-    margin: 0 auto;
-    width: 90%;
-    height: 70vh;
-    border-radius: 20px;
-  }
-  .img-detalle img {
-    width: 100%;
-    border-radius: 20px;
+    height: 50vh;
   }
   .table-shop {
     display: block;
@@ -1657,7 +1642,9 @@ select option::before {
     margin-top: 0px;
   }
   .footer-img a {
-    display: none;
+    display: block;
+    width: 200px;
+    height: 40px;
   }
   .head-home-asupro {
     display: none;
@@ -1671,13 +1658,19 @@ select option::before {
     height: 90px;
   }
   .conter-ico-nav {
-    display: block;
+    justify-content: left;
+  }
+  .toogel-nav {
+    margin: 0px;
+  }
+  .togel {
+    margin: 0px;
+    margin-top: 3px;
   }
 }
 
 @media (max-width: 667px) {
   .card-pro-list {
-    background-color: red;
     width: 100%;
   }
   .footer {

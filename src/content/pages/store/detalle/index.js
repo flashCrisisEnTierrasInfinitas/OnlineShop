@@ -106,15 +106,16 @@ export default function DetalleProduc({
         <div className="grid">
           <div>
             <div className="img-detalle">
-              <div className="ico-detalle">
-                <a href="/">
-                  <WestIcon />
-                </a>
-              </div>
-              <img src={data.img} alt={data.nombrePro} />
+              <img
+                src={data.img}
+                alt={data.nombrePro}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
             </div>
           </div>
-
           <div>
             <h1 className="title-detalle">{data.nombrePro}</h1>
             <div className="descrip-detalle">
@@ -123,6 +124,7 @@ export default function DetalleProduc({
             <p className="text-detalle">
               Precio: ${data.precioPro.toLocaleString("es-CO")}
             </p>
+            <p className="text-detalle">Peso: {data.peso}</p>
             <div className="grid">
               <div className="flex">
                 Cantidad:

@@ -35,10 +35,12 @@ export default function Update({ data, token }) {
     precioPro: data.row.precioPro,
     stockPro: data.row.stockPro,
     oferta: data.row.oferta,
+    peso: data.row.peso,
+    Presentacion: data.row.Presentacion,
     categorias: data.row.categorias,
     img: image,
   });
-
+  console.log("🚀 ~ Update ~ formData:", formData);
   useEffect(() => {
     setFormData({
       ...formData,
@@ -147,14 +149,14 @@ export default function Update({ data, token }) {
             </CCol>
             <CCol md={6}>
               <CFormLabel>tipo producto</CFormLabel>
-              <CFormSelect name="id_category" onChange={handleChange}>
+              <CFormSelect
+                name="id_category"
+                onChange={handleChange}
+                value={formData.id_category}
+              >
                 <option>Seleccione..</option>
                 {TypePro.map((option) => (
-                  <option
-                    key={option.id}
-                    value={option.id || formData.id_category}
-                    onChange={handleChange}
-                  >
+                  <option key={option.id} value={option.id}>
                     {option.name}
                   </option>
                 ))}
@@ -168,17 +170,35 @@ export default function Update({ data, token }) {
                 value={formData.categorias}
                 onChange={handleChange}
               />
-            </CCol>
-            <CCol md={12}>
-              <CFormLabel>estado</CFormLabel>
+            </CCol>{" "}
+            <CCol md={6}>
+              <CFormLabel>Cantidades</CFormLabel>
               <CFormSelect
-                id="status"
-                name="status"
-                value={formData.status}
+                name="peso"
                 onChange={handleChange}
+                value={formData.peso}
               >
-                <option value={0}>Activo</option>
-                <option value={1}>Inactivo</option>
+                <option>Seleccione..</option>
+                <option value="un">unidades</option>
+                <option value="lb">libras</option>
+                <option value="kg">kilos</option>
+                <option value="g">gramos</option>
+                <option value="oz">ozono jsjjsj</option>
+              </CFormSelect>
+            </CCol>
+            <CCol md={6}>
+              <CFormLabel>Presentación</CFormLabel>
+              <CFormSelect
+                name="Presentacion"
+                onChange={handleChange}
+                value={formData.Presentacion}
+              >
+                <option>Seleccione..</option>
+                <option value="un">unidades</option>
+                <option value="cj">caja</option>
+                <option value="paq">paquetes</option>
+                <option value="cube">cubeta</option>
+                <option value="doce">docenas</option>
               </CFormSelect>
             </CCol>
             <CCol md={12}>
@@ -210,7 +230,7 @@ export default function Update({ data, token }) {
                 onChange={handleChange}
               />
             </CCol>
-            <CCol md={12}>
+            <CCol md={6}>
               <CFormLabel>Oferta?</CFormLabel>
               <CFormSelect
                 id="oferta"
@@ -220,6 +240,18 @@ export default function Update({ data, token }) {
               >
                 <option value={0}>NO</option>
                 <option value={1}>SI</option>
+              </CFormSelect>
+            </CCol>
+            <CCol md={6}>
+              <CFormLabel>estado</CFormLabel>
+              <CFormSelect
+                id="status"
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+              >
+                <option value={0}>Activo</option>
+                <option value={1}>Inactivo</option>
               </CFormSelect>
             </CCol>
             <CCol md={12}>
