@@ -17,10 +17,8 @@ import Pay from "./content/pages/store/ pay";
 import Login from "./Auth/login";
 import ProductoCate from "./content/pages/store/producCate";
 import Profile from "./content/pages/dastboard/profile";
-import Historial from "./content/pages/dastboard/historial";
 import Footer from "./components/Footer";
 import Notificaciones from "./content/pages/dastboard/notificaciones";
-import MiLista from "./content/pages/dastboard/miLista";
 import DahsboardAdmin from "./content/admin/dahsboard";
 import User from "./content/admin/user";
 import Product from "./content/admin/product";
@@ -171,8 +169,6 @@ function App() {
                 }
               />
               <Route path="/Profile" element={<Profile />} />
-              <Route path="/Historial" element={<Historial />} />
-              <Route path="/MiLista" element={<MiLista seccion={seccion} />} />
               <Route element={protectedUser()}>
                 <Route
                   path="/ZeKqxkrThE4FooASf8FMC/0HAefmTli6V1MVBq09hqQXCwLNp22ESEd4pdKH5xiL"

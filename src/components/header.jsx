@@ -16,7 +16,7 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LockPersonIcon from "@mui/icons-material/LockPerson";
 import LoginIcon from "@mui/icons-material/Login";
-
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { Tooltip } from "@mui/joy";
 import Cookies from "js-cookie";
 import { Avatar, Badge, Button, styled } from "@mui/material";
@@ -154,9 +154,11 @@ export default function Header(props) {
             className="position-nav"
           >
             <COffcanvasHeader>
-              <div>
+              <div className="footer-img">
                 <a href="/">
-                  <p>ASUPRO</p>
+                  <div>
+                    <img src="/img/logos/logo1.png" className="logo-asupro" />
+                  </div>
                 </a>
               </div>
               <CCloseButton
@@ -189,24 +191,16 @@ export default function Header(props) {
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink href="/Historial" active>
+                  <CNavLink
+                    href="/Tz0QDp4ERS81rCCHx/YEWX4wTBveKdtl5szCsnv8iQv57RmjwNzB0HKzt97RBsFX"
+                    active
+                  >
                     <div className="conter-nav-li">
                       <i
-                        class="fa fa-clock color-secondary"
+                        class="fa fa-shopping-cart color-secondary"
                         aria-hidden="true"
-                      ></i>
-                      <label className="label-nav">Historial</label>
-                    </div>
-                  </CNavLink>
-                </CNavItem>
-                <CNavItem>
-                  <CNavLink href="/MiLista" active>
-                    <div className="conter-nav-li">
-                      <i
-                        class="fa fa-th-list color-secondary"
-                        aria-hidden="true"
-                      ></i>
-                      <label className="label-nav">Mi lista</label>
+                      />
+                      <label className="label-nav">Pedidos</label>
                     </div>
                   </CNavLink>
                 </CNavItem>
@@ -214,13 +208,13 @@ export default function Header(props) {
             </COffcanvasBody>
             <div className="conter-log-red">
               <div>
-                <img src="img/icons/facebook_108044.svg" alt="" />
+                <img src="/img/icons/facebook_108044.svg" alt="" />
               </div>
               <div>
-                <img src="img/icons/instagram_108043.svg" alt="" />
+                <img src="/img/icons/instagram_108043.svg" alt="" />
               </div>
               <div>
-                <img src="img/icons/whatsapp_108042.svg" alt="" />
+                <img src="/img/icons/whatsapp_108042.svg" alt="" />
               </div>
             </div>
           </COffcanvas>
