@@ -44,6 +44,15 @@ export default function DataTable() {
       renderCell: (params) => <Icons data={params} getDataList={getDataList} />,
     },
     { field: "id", headerName: "ID", width: 70 },
+    {
+      field: "name",
+      headerName: "Tipo Categoria",
+      width: 200,
+      renderCell: (params) => (
+        <p style={{ color: params.row.color }}>{params.row.name}</p>
+      ),
+    },
+    { field: "categorias", headerName: "categorias", width: 130 },
     { field: "nombrePro", headerName: "Nombre", width: 230 },
     {
       field: "img",
@@ -86,15 +95,6 @@ export default function DataTable() {
           <Chip label="SI" color="error" />
         ),
     },
-    {
-      field: "name",
-      headerName: "Tipo Producto",
-      width: 130,
-      renderCell: (params) => (
-        <p style={{ color: params.row.color }}>{params.row.name}</p>
-      ),
-    },
-    { field: "categorias", headerName: "categorias", width: 130 },
     { field: "created_at", headerName: "Fecha", width: 130 },
     {
       field: "precioPro".toLocaleString("es-CO"),

@@ -165,7 +165,7 @@ export default function Header(props) {
             <COffcanvasBody>
               <CNavbarNav>
                 <CNavItem>
-                  <CNavLink href="/Profile" active>
+                  <CNavLink href="/" active>
                     <div className="conter-nav-li">
                       <i
                         class="fa fa-home color-secondary"

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Header from "./Header";
 import Filter from "./filter";
 import { useState } from "react";
+import Categorias from "../../home/categorias";
 
 export default function CategoryProduct({
   allProducts,
@@ -17,7 +18,10 @@ export default function CategoryProduct({
 
   return (
     <div className="conter-home">
-      <div className="header-pay">
+      <div>
+        <div className="margin-90">
+          <Categorias />
+        </div>
         <Header id={id} />
       </div>
       <div className="row">
