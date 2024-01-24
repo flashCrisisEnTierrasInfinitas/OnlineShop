@@ -155,7 +155,7 @@ export default function Edit({ data }) {
           </CForm>
         </CModalBody>
         <CModalFooter>
-          <div class="col-12">
+          <div class="col-12 top-50">
             <div className="grid">
               <div>
                 <h2 className="title-ver-daly top-50">Factura productos:</h2>
@@ -163,15 +163,19 @@ export default function Edit({ data }) {
                   <Factura data={data} />
                 </div>
               </div>
-              <div>
-                <h2 className="title-ver-daly top-50">Comprobante pago:</h2>
-                <div className="img-pago">
-                  <img
-                    src={data.img}
-                    alt="Sin Comprobante de pago rechazar la solicitud¡!"
-                  />
+              {data.img && data.img.length > 0 ? (
+                <div>
+                  <h2 className="title-ver-daly top-50">Comprobante pago:</h2>
+                  <div className="img-pago">
+                    <img
+                      src={data.img}
+                      alt="Sin Comprobante de pago rechazar la solicitud¡!"
+                    />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </CModalFooter>

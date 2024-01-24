@@ -129,10 +129,10 @@ export default function Alertas({ data, getDataList }) {
 
   const TypeService = ({ data }) => {
     if (data == 0) {
-      return <Chip label="Entregar" color="primary" />;
+      return <Chip label="Entregar en oficina" color="primary" />;
     }
     if (data == 1) {
-      return <Chip label="Enviar" color="success" />;
+      return <Chip label="Enviar a domicilio" color="success" />;
     }
   };
 
