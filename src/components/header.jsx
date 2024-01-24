@@ -48,16 +48,12 @@ export default function Header(props) {
     }
   };
 
-  const logout = () => {
-    const cookies = document.cookie.split(";");
-
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i];
-      const eqPos = cookie.indexOf("=");
-      const nombre = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-      document.cookie = nombre + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-
+  const logout = async () => {
+    const cookieNames = ["token", "role", "seccion", "id", "img"];
+    cookieNames.forEach((cookieName) => {
+      Cookies.remove(cookieName);
+    });
+    // Llamar a la función para eliminar cookies específicas (puedes personalizar el array según tus necesidades)
     // Refrescar la página
     window.location.reload();
   };
@@ -168,6 +164,17 @@ export default function Header(props) {
             </COffcanvasHeader>
             <COffcanvasBody>
               <CNavbarNav>
+                <CNavItem>
+                  <CNavLink href="/Profile" active>
+                    <div className="conter-nav-li">
+                      <i
+                        class="fa fa-home color-secondary"
+                        aria-hidden="true"
+                      />
+                      <label className="label-nav">Home</label>
+                    </div>
+                  </CNavLink>
+                </CNavItem>
                 <CNavItem>
                   <CNavLink href="/Profile" active>
                     <div className="conter-nav-li">

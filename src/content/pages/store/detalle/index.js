@@ -100,6 +100,57 @@ export default function DetalleProduc({
     setAddShop([...addShop]);
   };
 
+  const Peso = ({ value }) => {
+    if (value === "un") {
+      return "Unidades";
+    }
+    if (value === "lb") {
+      return "Libras";
+    }
+    if (value === "kg") {
+      return "Kilos";
+    }
+    if (value === "g") {
+      return "Gramos";
+    }
+    if (value === "arr") {
+      return "Arroba";
+    }
+    if (value === "do") {
+      return "docenas";
+    }
+    if (value === "lt") {
+      return "Litros";
+    }
+  };
+
+  const Presentacion = ({ value }) => {
+    if (value === "un") {
+      return "Unidades";
+    }
+    if (value === "cj") {
+      return "Cajas";
+    }
+    if (value === "paq") {
+      return "Paquetes";
+    }
+    if (value === "cube") {
+      return "Cubeta";
+    }
+    if (value === "doce") {
+      return "Docena";
+    }
+    if (value === "btl") {
+      return "Bulto";
+    }
+    if (value === "can") {
+      return "Canasta";
+    }
+    if (value === "bto") {
+      return "Botella";
+    }
+  };
+
   return (
     <div className="conter-detallepro">
       <header>
@@ -124,7 +175,12 @@ export default function DetalleProduc({
             <p className="text-detalle">
               Precio: ${data.precioPro.toLocaleString("es-CO")}
             </p>
-            <p className="text-detalle">Presentación: {data.Presentacion} </p>
+            <p className="text-detalle">
+              Cantidades: <Peso value={data.peso} />
+            </p>
+            <p className="text-detalle">
+              Presentación: <Presentacion value={data.Presentacion} />{" "}
+            </p>
             <div className="grid">
               <div className="flex">
                 Cantidad:

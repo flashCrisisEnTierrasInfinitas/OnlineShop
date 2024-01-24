@@ -4,7 +4,8 @@ import isMountedRef from "../../../../hooks/useRefMounted";
 import axios from "axios";
 import { CSpinner } from "@coreui/react";
 import Table from "./table";
-import { Alert } from "@mui/material";
+import { Alert, Button } from "@mui/material";
+import UndoIcon from "@mui/icons-material/Undo";
 
 export default function MisPediso({ Seccion }) {
   const token = Cookies.get("token");
@@ -40,6 +41,18 @@ export default function MisPediso({ Seccion }) {
   }
   return (
     <div>
+      <div
+        style={{
+          margin: "20px",
+        }}
+      >
+        <a href="/">
+          {" "}
+          <Button variant="outlined" startIcon={<UndoIcon />}>
+            regresar a la tienda
+          </Button>
+        </a>
+      </div>
       <h1
         className="top-20"
         style={{

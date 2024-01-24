@@ -123,7 +123,7 @@ export default function AppBarAdmin() {
                 <div className="ico-menu">
                   <img src="/img/icons/shopping.png" />
                 </div>
-                <label>Lista</label>
+                <label>Productos</label>
               </a>
               <div className="footer-nav-admin">
                 <a href="/">

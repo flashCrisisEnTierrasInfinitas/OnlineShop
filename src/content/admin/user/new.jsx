@@ -12,11 +12,13 @@ import {
   CModalTitle,
 } from "@coreui/react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
 export default function New() {
   const [visible, setVisible] = useState(false);
+  var token = Cookies.get("token");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -37,7 +39,13 @@ export default function New() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("/users", formData);
+      const response = await axios.post("/users", formData, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "X-Requested-With": "XMLHttpRequest",
+          Authorization: "Bearer " + token,
+        },
+      });
       setVisible(false);
       return Swal.fire({
         position: "center",
