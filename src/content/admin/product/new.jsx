@@ -110,6 +110,7 @@ export default function New({ token }) {
     <>
       <CButton variant="outline" onClick={() => setVisible(!visible)}>
         <i class="fa fa-pencil" aria-hidden="true" />
+        crear producto
       </CButton>
       <CModal
         size="xl"

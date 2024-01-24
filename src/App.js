@@ -124,14 +124,18 @@ function App() {
             />
             <Route
               element={
-                <Header
-                  total={Total}
-                  setTotal={setTotal}
-                  Seccion={seccion}
-                  contNotifi={contNotifi}
-                >
-                  <Outlet />
-                </Header>
+                <>
+                  <Header
+                    total={Total}
+                    setTotal={setTotal}
+                    Seccion={seccion}
+                    contNotifi={contNotifi}
+                  >
+                    <Outlet />
+                  </Header>
+                  <FooterMenu />
+                  <Footer />
+                </>
               }
             >
               <Route
@@ -212,8 +216,6 @@ function App() {
             </Route>
             {/* rutas del usuario */}
           </Routes>
-          <FooterMenu />
-          <Footer />
         </Router>
       </div>
     </>
