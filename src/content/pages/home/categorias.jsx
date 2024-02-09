@@ -42,7 +42,7 @@ export default function Categorias() {
       <div className="grid">
         {data.map((data) => (
           <div className="box-cate-home">
-            <a href={`categoryProduct/${data.id}`}>
+            <a href={`/categoryProduct/${data.id}`}>
               <div
                 className="img-cate-home"
                 dangerouslySetInnerHTML={{

@@ -1,7 +1,6 @@
 import ProList from "./grid";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
-import Filter from "./filter";
 import { useState } from "react";
 import Categorias from "../../home/categorias";
 
