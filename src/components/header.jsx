@@ -116,11 +116,14 @@ export default function Header(props) {
       <div className="navbarShop">
         <CContainer fluid>
           <div className="conter-navbar">
-            <div className="toogel-nav">
-              <button onClick={() => setVisible(!visible)} className="togel">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </button>
-            </div>
+            {seccion && (
+              <div className="toogel-nav">
+                <button onClick={() => setVisible(!visible)} className="togel">
+                  <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+              </div>
+            )}
+
             <div className="footer-img">
               <a href="/">
                 <div>

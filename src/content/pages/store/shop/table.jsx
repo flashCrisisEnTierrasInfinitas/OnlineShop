@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
   const dataToRender = data || [];
@@ -119,7 +120,9 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
           </div>
           <div className="text-nombre-shop">
             <button onClick={() => AddShoppingCart(val)}>Actualizar</button>
-            <button onClick={() => removeFromCart(val.id)}>Quitar</button>
+            <button onClick={() => removeFromCart(val.id)}>
+              <DeleteIcon />
+            </button>
           </div>
         </div>
       ))}
@@ -153,7 +156,7 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
                   color: "#fff",
                 }}
               >
-                Finalizar pedido
+                continuar
               </Button>
             </a>
           </div>

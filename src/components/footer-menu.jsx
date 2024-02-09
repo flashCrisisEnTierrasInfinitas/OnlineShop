@@ -9,7 +9,7 @@ export default function FooterMenu() {
                 class="fa fa-shopping-bag color-secondary"
                 aria-hidden="true"
               ></i>
-              <p className="color-gray">Tienda</p>
+              <p className="color-gray">Inicio</p>
             </div>
           </a>
         </div>
