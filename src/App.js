@@ -133,7 +133,6 @@ function App() {
                   >
                     <Outlet />
                   </Header>
-                  <FooterMenu />
                   <Footer />
                 </>
               }

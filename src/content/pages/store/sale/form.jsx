@@ -97,7 +97,7 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
       !formData.direccion | !formData.user_telefono ||
       !formData.tipo_servicio
     ) {
-      return setOpen(true);
+      return alert("Faltan campos del formulario!");
     }
     try {
       setLoading(true);
@@ -133,38 +133,6 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
 
   return (
     <div className="grid">
-      <div style={{ background: "#F9F9F9", padding: "5px" }}>
-        <div className="margin-90 list-sale">
-          {productos.map((data) => (
-            <div className="Conter-sale grid">
-              <div>
-                <div>
-                  <img src={data.img} alt="" />
-                </div>
-                <span>{data.quantity}</span>
-              </div>
-              <div>
-                <p>{data.descripPro}</p>
-              </div>
-              <div>
-                <p>SubTotal:</p>
-                <p>${data.precioPro}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="margin-90 grid">
-          <div className="top-20">
-            <label>Total:</label>
-          </div>
-          <div className="top-20">
-            COL <label>${valueToDisplay.toLocaleString("es-CO")}</label>
-          </div>
-          <div className="top-20">
-            + $2.000 <label>De envió</label>
-          </div>
-        </div>
-      </div>
       <div>
         <form className="form-sale">
           <CFormLabel>Tipo de Entrega</CFormLabel>
@@ -198,17 +166,10 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
               onChange={handleChanges}
             />
           </div>
-          <div>
-            {open ? (
-              <Alert severity="error">Todos los campos son requeridos.</Alert>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="top-50">
+          {/*  <div className="top-50">
             <CFormLabel>Pagos</CFormLabel>
-          </div>
-          <div>
+          </div> */}
+          {/*  <div>
             <Accordion
               expanded={expanded === "panel1"}
               onChange={handleChange("panel1")}
@@ -306,7 +267,7 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-          </div>
+          </div> */}
         </form>
         <div className="top-50">
           <Button
@@ -326,9 +287,42 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
                 />
               </div>
             ) : (
-              "Finalizar el Pedido"
+              "continuar pedido"
             )}
           </Button>
+        </div>
+      </div>
+      <div style={{ background: "#F9F9F9", padding: "5px" }}>
+        <div className="margin-90 list-sale">
+          RESUMEN DE COMPRA
+          {productos.map((data) => (
+            <div className="Conter-sale grid">
+              <div>
+                <div>
+                  <img src={data.img} alt="" />
+                </div>
+              </div>
+              <div>
+                <label>{data.descripPro}</label>
+                <label>{data.quantity}x</label>
+              </div>
+              <div>
+                <p>Subtotal</p>
+                <p>${data.precioPro}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="margin-90 grid">
+          <div className="top-20">
+            <label>Total:</label>
+          </div>
+          <div className="top-20">
+            COL <label>${valueToDisplay.toLocaleString("es-CO")}</label>
+          </div>
+          <div className="top-20">
+            + $2.000 <label>De envió</label>
+          </div>
         </div>
       </div>
     </div>

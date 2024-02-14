@@ -1,6 +1,6 @@
+import FooterMenu from "../../../components/footer-menu";
 import Header from "./Header";
 import ProList from "./ProList";
-import BasicModal from "./modasl";
 
 export default function Home({
   allProducts,
@@ -22,6 +22,7 @@ export default function Home({
         countProducts={countProducts}
         setCountProducts={setCountProducts}
       />
+      <FooterMenu />
     </div>
   );
 }
