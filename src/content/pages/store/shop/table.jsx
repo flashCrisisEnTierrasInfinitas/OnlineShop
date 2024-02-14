@@ -92,8 +92,8 @@ export default function Table({ data, Total, setTotal, setAddShop, addShop }) {
     window.location.reload();
   };
   return (
-    <section class="flex items-center bg-gray-50 xl:h-screen font-poppins">
-      <div class="justify-center flex-1 px-1 py-6 mx-auto max-w-7xl lg:py-4 md:px-6">
+    <section class="flex items-center bg-gray-50 font-poppins margin-90">
+      <div class="justify-center flex-1 px-1 py-6 mx-auto  lg:py-4 md:px-6">
         <h2 class="mb-10 text-4xl font-bold text-center dark:text-gray-400">
           Compras Asupro
         </h2>
