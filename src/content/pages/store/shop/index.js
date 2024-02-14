@@ -51,9 +51,6 @@ export default function Shop({
           </div>
         </div>{" "}
       </div>
-      <div>
-        <h2>COMPRAS</h2>
-      </div>
       <Table
         data={productos}
         Total={Total}
