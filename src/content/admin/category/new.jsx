@@ -186,7 +186,7 @@ export default function New() {
     });
   }, [image]);
 
-  return (  
+  return (
     <>
       <CButton variant="outline" onClick={() => setVisible(!visible)}>
         <i class="fa fa-pencil" aria-hidden="true" />
