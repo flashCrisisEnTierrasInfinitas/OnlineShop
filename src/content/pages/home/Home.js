@@ -12,7 +12,6 @@ export default function Home({
 }) {
   return (
     <div className="conter-home">
-      {/* <BasicModal /> */}
       <Header />
       <ProList
         allProducts={allProducts}
