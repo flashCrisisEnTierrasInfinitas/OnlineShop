@@ -1,11 +1,33 @@
 import { CFormInput, CSpinner } from "@coreui/react";
-import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+
+import { useLocation } from "react-router-dom";
+
+function useSafeNavigate() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const safeNavigate = (path) => {
+    console.log("🚀 ~ safeNavigate ~ path:", path);
+    console.log("🚀 ~ useSafeNavigate ~ location:", location);
+
+    if (location.pathname === "/") {
+      // Si estás en la página de inicio, navega a otra página de tu elección
+      navigate(location.pathname);
+    } else {
+      // De lo contrario, intenta retroceder dos entradas en el historial
+      navigate(-2);
+    }
+  };
+
+  return safeNavigate;
+}
 
 const styles = {
   btn: {
@@ -15,6 +37,10 @@ const styles = {
 };
 
 export default function Login() {
+  const history = useNavigate();
+
+  const safeNavigate = useSafeNavigate();
+
   const [log, setLog] = useState(false);
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState("");
@@ -24,6 +50,8 @@ export default function Login() {
   const [img, setImg] = useState("");
   const [open, setOpen] = useState(false);
   const [mostrarPassword, setMostrarPassword] = useState(false);
+
+  const goToEntry = (entryIndex) => safeNavigate(entryIndex);
 
   const Cooki = () => {
     Cookies.set("token", token, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
@@ -50,6 +78,7 @@ export default function Login() {
     setMostrarPassword(!mostrarPassword);
   };
   //REGISTRO DEL USUARIO
+
   //INGRESO DEL USUARIO
   const Sing = async () => {
     try {
@@ -62,10 +91,15 @@ export default function Login() {
       setImg(response.data.img);
       setLoading(false);
 
-      if (response.data.role == 1) {
+      /*   if (response.data.role == 1) {
         return (window.location.href = "/dahsboard/0");
+      } */
+      // Redirige de vuelta a la URL almacenada si es una URL válida, de lo contrario redirige al inicio
+      if (response.data.role === 1) {
+        return (window.location.href = "/dahsboard/0");
+      } else {
+        goToEntry();
       }
-      return (window.location.href = "/");
     } catch (error) {
       setLoading(false);
       setOpen(true);
