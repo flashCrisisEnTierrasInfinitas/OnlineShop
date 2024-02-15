@@ -1,11 +1,55 @@
 import { CSpinner } from "@coreui/react";
 import { Button } from "@mui/material";
-import Cookies from "js-cookie";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import { useState } from "react";
 import Progres from "./progres";
 
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
+
+const stats = [{ id: 1, name: "Paga por nequi", value: "310 2055841" }];
+const daviplata = [{ id: 1, name: "Paga por DaviPlata", value: "310 2055841" }];
+
 export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
-  var token = Cookies.get("token");
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const [loading, setLoading] = useState(false);
   return (
     <div className="top-20">
@@ -66,57 +110,143 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
                   </div>
                 </div>
               </div>
-              <div class="py-6 border-b border-gray-100">
-                <div class="w-full md:w-10/12">
-                  <div class="flex flex-wrap mb-2 -m-3">
-                    <div class="w-full p-3 md:w-1/3">
-                      <p class="text-sm font-semibold text-gray-800 dark:text-gray-400">
-                        Card details
-                      </p>
-                    </div>
-                    <div class="w-full p-3 md:flex-1">
-                      <p class="mb-1.5 font-medium text-base text-gray-800 dark:text-gray-400">
-                        Card Number
-                      </p>
-                      <div class="flex items-center overflow-hidden border border-gray-200 rounded-lg dark:text-gray-400 dark:border-gray-800 focus-within:border-blue-500 ">
-                        <div class="flex-shrink-0 pl-3.5 pr-2">
-                          <img
-                            src="https://i.postimg.cc/YCDxyJ3c/download-removebg-preview-1.png"
-                            alt=""
-                            class="object-contain w-7 h-7"
-                          />
-                        </div>
-                        <input
-                          class="w-full pr-4 py-2.5 text-base dark:border-gray-800 dark:placeholder-gray-500 dark:text-gray-400 text-gray-900 font-normal outline-none"
-                          type="text"
-                          placeholder="1283960lk0887ad"
+              <Box sx={{ width: "100%" }}>
+                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="basic tabs example"
+                  >
+                    <Tab label="Nequi" {...a11yProps(0)} />
+                    <Tab label="DaviPlata" {...a11yProps(1)} />
+                    <Tab label="Efectivo" {...a11yProps(2)} />
+                  </Tabs>
+                </Box>
+                <CustomTabPanel value={value} index={0}>
+                  <div class="flex flex-wrap max-w-5xl mx-auto -m-3">
+                    <div class="w-full md:w-1/2 lg:w-1/4 p-3">
+                      <div class="flex items-center justify-center py-8 px-9 h-full bg-white rounded-3xl">
+                        <img
+                          src="https://www.elnuevodia.com.co/nuevodia/sites/default/files/inline-images/32%20_0.jpg"
+                          alt=""
                         />
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="flex pt-6 flex-wrap -m-1.5">
-                <Button
-                  style={{
-                    background: "#FF6333",
-                    width: "100%",
-                    color: "#fff",
-                  }}
-                >
-                  {loading ? (
-                    <div className="progess">
-                      <CSpinner
-                        color="light"
-                        size="sm"
-                        style={{ width: "1rem", height: "1rem" }}
-                      />
+                  <label
+                    class="block mb-2 text-sm font-medium text-gray-900 "
+                    for="file_input"
+                  >
+                    Cargar Comprobante
+                  </label>
+                  <div class="flex items-center justify-center w-full">
+                    <label
+                      for="dropzone-file"
+                      class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800  hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                    >
+                      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg
+                          class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 16"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                          />
+                        </svg>
+                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                          <span class="font-semibold">Click to upload</span> or
+                          drag and drop
+                        </p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                          SVG, PNG, JPG or GIF (MAX. 800x400px)
+                        </p>
+                      </div>
+                      <input id="dropzone-file" type="file" class="hidden" />
+                    </label>
+                  </div>
+                </CustomTabPanel>
+                <CustomTabPanel value={value} index={1}>
+                  <div class="flex flex-wrap max-w-5xl mx-auto -m-3">
+                    <div class="w-full md:w-1/2 lg:w-1/4 p-3">
+                      <div class="flex items-center justify-center py-8 px-9 h-full bg-white rounded-3xl">
+                        <img
+                          src="https://cdn.worldvectorlogo.com/logos/daviplata.svg"
+                          alt="logo daviplata"
+                        />
+                      </div>
                     </div>
-                  ) : (
-                    "finalizar compra"
-                  )}
-                </Button>
-              </div>
+                  </div>
+                  <label
+                    class="block mb-2 text-sm font-medium text-gray-900 "
+                    for="file_input"
+                  >
+                    Cargar Comprobante
+                  </label>
+                  <div class="flex items-center justify-center w-full">
+                    <label
+                      for="dropzone-file"
+                      class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800  hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                    >
+                      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg
+                          class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 16"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                          />
+                        </svg>
+                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                          <span class="font-semibold">Click to upload</span> or
+                          drag and drop
+                        </p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                          SVG, PNG, JPG or GIF (MAX. 800x400px)
+                        </p>
+                      </div>
+                      <input id="dropzone-file" type="file" class="hidden" />
+                    </label>
+                  </div>
+                </CustomTabPanel>
+                <CustomTabPanel value={value} index={2}>
+                  Item Three
+                </CustomTabPanel>
+              </Box>
+            </div>
+            <div class="flex pt-6 flex-wrap -m-1.5">
+              <Button
+                style={{
+                  background: "#FF6333",
+                  width: "100%",
+                  color: "#fff",
+                }}
+              >
+                {loading ? (
+                  <div className="progess">
+                    <CSpinner
+                      color="light"
+                      size="sm"
+                      style={{ width: "1rem", height: "1rem" }}
+                    />
+                  </div>
+                ) : (
+                  "finalizar compra"
+                )}
+              </Button>
             </div>
           </div>
         </div>
