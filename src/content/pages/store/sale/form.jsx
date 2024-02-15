@@ -1,9 +1,7 @@
 import { CFormLabel, CFormSelect, CSpinner } from "@coreui/react";
 import { Alert, Button, Chip } from "@mui/material";
 import { useState } from "react";
-import { useEffect } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
+
 import Cookies from "js-cookie";
 
 export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
@@ -43,6 +41,8 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
       return setRequire(false);
     } else {
       await Info();
+      return (window.location.href =
+        "/UO17GnzSbb3aAELCedxp/sa0gKSig+a2WVdeggeZbWcPcbXYmohwaT+NQYcilQ93");
     }
   };
 
