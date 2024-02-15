@@ -187,6 +187,19 @@ function App() {
                   }
                 />
                 <Route
+                  path="/UO17GnzSbb3aAELCedxp/sa0gKSig+a2WVdeggeZbWcPcbXYmohwaT+NQYcilQ93"
+                  element={
+                    <Pay
+                      Seccion={seccion}
+                      token={token}
+                      Total={Total}
+                      setTotal={setTotal}
+                      setAddShop={setAddShop}
+                      addShop={addShop}
+                    />
+                  }
+                />
+                <Route
                   path="/Tz0QDp4ERS81rCCHx/YEWX4wTBveKdtl5szCsnv8iQv57RmjwNzB0HKzt97RBsFX"
                   element={<MisPediso Seccion={seccion} />}
                 />
