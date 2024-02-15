@@ -133,6 +133,9 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
                       </div>
                     </div>
                   </div>
+                  <p class="mb-14 text-sm text-gray-600 text-center font-semibold uppercase tracking-px">
+                    Paga por Nequi al telefono:57 310 2055841
+                  </p>
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 "
                     for="file_input"
@@ -183,6 +186,9 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
                       </div>
                     </div>
                   </div>
+                  <p class="mb-14 text-sm text-gray-600 text-center font-semibold uppercase tracking-px">
+                    Paga por daviPlata al telefono:57 310 2055841
+                  </p>
                   <label
                     class="block mb-2 text-sm font-medium text-gray-900 "
                     for="file_input"
@@ -223,7 +229,19 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
                   </div>
                 </CustomTabPanel>
                 <CustomTabPanel value={value} index={2}>
-                  Item Three
+                  <div class="flex flex-wrap max-w-5xl mx-auto -m-3">
+                    <div class="w-full md:w-1/2 lg:w-1/4 p-3">
+                      <div class="flex items-center justify-center py-8 px-9 h-full bg-white rounded-3xl">
+                        <img
+                          src="https://cdn.worldvectorlogo.com/logos/pago-efectivo-2020.svg"
+                          alt="logo daviplata"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mb-14 text-sm text-gray-600 text-center font-semibold uppercase tracking-px">
+                    Paga en Efectivo en nuestras tiendas
+                  </p>
                 </CustomTabPanel>
               </Box>
             </div>
