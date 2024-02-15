@@ -134,194 +134,116 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
   return (
     <div className="grid">
       <div>
-        <form className="form-sale">
-          <CFormLabel>Tipo de Entrega</CFormLabel>
-          <CFormSelect
-            name="tipo_servicio"
-            value={formData.tipo_servicio}
-            onChange={handleChanges}
-          >
-            <option>Seleccione Servicio...</option>
-            <option value={1}>Envio</option>
-            <option value={0}>Recoger</option>
-          </CFormSelect>
-          <div></div>
-          <div>
-            <input
-              type="text"
-              placeholder="Dirección completa (Calle, No. Exterior, No. Interior)"
-              class="form-control"
-              name="direccion"
-              value={formData.direccion}
-              onChange={handleChanges}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Numero de telefono"
-              class="form-control"
-              name="user_telefono"
-              value={formData.user_telefono}
-              onChange={handleChanges}
-            />
-          </div>
-          {/*  <div className="top-50">
-            <CFormLabel>Pagos</CFormLabel>
-          </div> */}
-          {/*  <div>
-            <Accordion
-              expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
-            >
-              <AccordionSummary
-                aria-controls="panel1d-content"
-                id="panel1d-header"
-              >
-                <Typography>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignContent: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div>Checkout de Pago, nequi o daviplata</div>
-                    <div className="img-checkout-pago">
-                      <div>
-                        {" "}
-                        <img src="/img/daviplata.svg" />
-                      </div>
-                      <div>
-                        {" "}
-                        <img src="/img/nequi-2.svg" />
-                      </div>
-                    </div>
-                  </div>
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  <div>
-                    Para proceder con el pago, consigne el monto total de su
-                    compra al número de cuenta:{" "}
-                    <span
-                      style={{
-                        color: "#FF6333",
-                      }}
-                    >
-                      311533906{" "}
-                    </span>{" "}
-                    su monto total es:{" "}
-                    <span
-                      style={{
-                        color: "#FF6333",
-                      }}
-                    >
-                      ${valueToDisplay}
-                    </span>
-                  </div>
-                  <div>
-                    Puedes hacer tu transferencia a través de nuestros dos
-                    métodos de pago, toma captura del pago y súbelo en este
-                    recuadro¡!
-                  </div>
-                  <div>
-                    <div className="box-file">
-                      <div className="drag-file-area">
-                        <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                        <p>Arrastra y suelta cualquier archivo aquí</p>
-                        <input
-                          type="file"
-                          id="fileInput"
-                          class="custom-file-input"
-                          name="featured"
-                          accept="image/*"
-                          onChange={handleImageChange}
-                        />
-                        <label
-                          for="fileInput"
-                          class="custom-file-label"
-                        ></label>
-                      </div>
-                    </div>
-                  </div>
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion
-              expanded={expanded === "panel2"}
-              onChange={handleChange("panel2")}
-            >
-              <AccordionSummary
-                aria-controls="panel2d-content"
-                id="panel2d-header"
-              >
-                <Typography>Pago en efectivo a la entrega</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  Paga en efectivo cuando entreguemos tu pedido en el domicilio
-                  seleccionado (sólo para entregas, tu total es: $
-                  {valueToDisplay})
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          </div> */}
-        </form>
-        <div className="top-50">
-          <Button
-            onClick={handleSubmit}
-            style={{
-              background: "#FF6333",
-              width: "100%",
-              color: "#fff",
-            }}
-          >
-            {loading ? (
-              <div className="progess">
-                <CSpinner
-                  color="light"
-                  size="sm"
-                  style={{ width: "1rem", height: "1rem" }}
-                />
+        <section class="py-16 bg-gray-100">
+          <div class="max-w-6xl px-2">
+            <div class="p-6 bg-white border border-gray-100 rounded-lg shadow dark:bg-gray-900 dark:border-gray-900">
+              <div class="pb-6 border-b border-gray-100">
+                <h2 class="text-xl font-bold text-gray-800 md:text-3xl dark:text-gray-300">
+                  Informacion pedido
+                </h2>
+                <p class="text-xs font-medium text-gray-500">
+                  Complete toda la informacion requeridad.
+                </p>
               </div>
-            ) : (
-              "continuar pedido"
-            )}
-          </Button>
-        </div>
-      </div>
-      <div style={{ background: "#F9F9F9", padding: "5px" }}>
-        <div className="margin-90 list-sale">
-          RESUMEN DE COMPRA
-          {productos.map((data) => (
-            <div className="Conter-sale grid">
-              <div>
+              <form className="form-sale">
+                <CFormLabel>Tipo de Entrega</CFormLabel>
+                <CFormSelect
+                  name="tipo_servicio"
+                  value={formData.tipo_servicio}
+                  onChange={handleChanges}
+                >
+                  <option>Seleccione Servicio...</option>
+                  <option value={1}>Envio</option>
+                  <option value={0}>Recoger</option>
+                </CFormSelect>
+                <div></div>
                 <div>
-                  <img src={data.img} alt="" />
+                  <input
+                    type="text"
+                    placeholder="Dirección completa (Calle, No. Exterior, No. Interior)"
+                    class="form-control"
+                    name="direccion"
+                    value={formData.direccion}
+                    onChange={handleChanges}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Numero de telefono"
+                    class="form-control"
+                    name="user_telefono"
+                    value={formData.user_telefono}
+                    onChange={handleChanges}
+                  />
+                </div>
+              </form>
+              <div class="flex pt-6 flex-wrap -m-1.5">
+                <Button
+                  onClick={handleSubmit}
+                  style={{
+                    background: "#FF6333",
+                    width: "100%",
+                    color: "#fff",
+                  }}
+                >
+                  {loading ? (
+                    <div className="progess">
+                      <CSpinner
+                        color="light"
+                        size="sm"
+                        style={{ width: "1rem", height: "1rem" }}
+                      />
+                    </div>
+                  ) : (
+                    "continuar pedido"
+                  )}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div>
+        <div class="p-6 bg-white md:pb-6 md:px-12 dark:bg-gray-800">
+          <div class="flex items-center mb-10">
+            <h2 class="font-bold dark:text-gray-400 ">Resumen Compra</h2>
+          </div>
+          {productos.map((data) => (
+            <div class="block pb-6 mb-6 -mx-4 border-b border-gray-200 dark:border-gray-700 md:flex">
+              <div class="w-full px-4 mb-6 md:w-1/3 md:mb-0">
+                <div class="flex w-full h-96 md:h-32 md:w-32">
+                  <img
+                    src={data.img}
+                    alt={data.nombrePro}
+                    class="object-cover w-full h-full rounded-md"
+                  />
                 </div>
               </div>
-              <div>
-                <label>{data.descripPro}</label>
-                <label>{data.quantity}x</label>
-              </div>
-              <div>
-                <p>Subtotal</p>
-                <p>${data.precioPro}</p>
+              <div class="w-full px-4 md:2/3">
+                <div class="flex justify-between">
+                  <div class="">
+                    <h2 class="mb-2 text-xl font-bold dark:text-gray-400">
+                      {data.nombrePro}
+                    </h2>
+                    <p class="mb-4 text-sm font-medium text-gray-600 dark:text-gray-400 ">
+                      {" "}
+                      Quantity: {data.quantity}
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-lg font-bold text-blue-500 dark:text-gray-400">
+                      ${data.precioPro}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
-        </div>
-        <div className="margin-90 grid">
-          <div className="top-20">
-            <label>Total:</label>
-          </div>
-          <div className="top-20">
-            COL <label>${valueToDisplay.toLocaleString("es-CO")}</label>
-          </div>
-          <div className="top-20">
-            + $2.000 <label>De envió</label>
+
+          <div class="flex justify-between text-base dark:text-gray-400">
+            <p>Total</p>
+            <p> COL${valueToDisplay.toLocaleString("es-CO")}</p>
           </div>
         </div>
       </div>

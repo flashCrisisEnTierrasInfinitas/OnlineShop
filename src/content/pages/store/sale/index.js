@@ -9,7 +9,7 @@ export default function Sale({
   addShop,
 }) {
   return (
-    <div className="conter-detallepro margin-90">
+    <div className="top-20">
       <div class="justify-center flex-1 max-w-6xl py-20 mx-auto bg-white dark:bg-gray-900 rounded-2xl">
         <div class="flex flex-wrap items-center ">
           <div class="relative w-full px-4 mb-16 md:w-1/2 lg:w-1/4 lg:mb-0">
@@ -63,9 +63,6 @@ export default function Sale({
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex">
-        <h3 className="color-gray">Pantalla de pagos</h3>
       </div>
       <div className="margin-90">
         <Form
