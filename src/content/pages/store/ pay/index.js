@@ -41,9 +41,6 @@ function a11yProps(index) {
   };
 }
 
-const stats = [{ id: 1, name: "Paga por nequi", value: "310 2055841" }];
-const daviplata = [{ id: 1, name: "Paga por DaviPlata", value: "310 2055841" }];
-
 export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
   const [value, setValue] = useState(0);
 
