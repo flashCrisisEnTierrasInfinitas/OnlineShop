@@ -4,12 +4,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 
 export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
-  const [expanded, setExpanded] = useState("panel1");
   const [image, setImage] = useState(null);
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [require, setRequire] = useState(true);
   const data = localStorage.getItem("addShop");
   const productos = JSON.parse(data);
   const valueToDisplay = Total ? Total.toLocaleString() : "";
@@ -20,28 +19,14 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
     direccion: "",
     user_telefono: "",
     tipo_servicio: "",
-    img: image,
-    productos: productos.map((producto) => ({
-      id: producto.id,
-      cantidad: producto.quantity,
-    })),
   });
 
-  useEffect(() => {
-    setFormData({
-      ...formData,
-      img: image || "",
-    });
-  }, [image]);
-
-  const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
+  const Info = () => {
+    Cookies.set("direccion", formData.direccion, { expires: 1 });
+    Cookies.set("user_telefono", formData.user_telefono, { expires: 1 });
+    Cookies.set("tipo_servicio", formData.tipo_servicio, { expires: 1 });
   };
 
-  const handleImageChange = (e) => {
-    const selectedImage = e.target.files[0];
-    setImage(selectedImage);
-  };
   const handleChanges = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -55,37 +40,9 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
       !formData.direccion | !formData.user_telefono ||
       !formData.tipo_servicio
     ) {
-      return alert("Faltan campos del formulario!");
-    }
-    try {
-      setLoading(true);
-      const response = await axios.post("/ventas", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "X-Requested-With": "XMLHttpRequest",
-          Authorization: "Bearer " + token,
-        },
-      });
-      setLoading(false);
-      setAddShop([]);
-      setTotal(0);
-      return Swal.fire({
-        position: "center",
-        icon: "info",
-        title: "Su informacion,sera validada,para el respectivo envio!!",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } catch (error) {
-      console.error("Error al enviar los datos:", error);
-      setLoading(false);
-      return Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "error al enviar los datos!!",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      return setRequire(false);
+    } else {
+      await Info();
     }
   };
 
@@ -103,7 +60,10 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
                   Complete toda la informacion requeridad.
                 </p>
               </div>
-              <form className="form-sale">
+              <form
+                className="form-sale"
+                action="/UO17GnzSbb3aAELCedxp/sa0gKSig+a2WVdeggeZbWcPcbXYmohwaT+NQYcilQ93"
+              >
                 <CFormLabel>Tipo de Entrega</CFormLabel>
                 <CFormSelect
                   name="tipo_servicio"
@@ -133,11 +93,38 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
                     name="user_telefono"
                     value={formData.user_telefono}
                     onChange={handleChanges}
+                    required
                   />
                 </div>
               </form>
+              {require ? (
+                ""
+              ) : (
+                <div
+                  class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:text-red-400"
+                  role="alert"
+                >
+                  <svg
+                    class="flex-shrink-0 inline w-4 h-4 me-3"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                  </svg>
+                  <span class="sr-only">Info</span>
+                  <div>
+                    <span class="font-medium">
+                      Todos los campos son requeridos!
+                    </span>
+                  </div>
+                </div>
+              )}
+
               <div class="flex pt-6 flex-wrap -m-1.5">
                 <Button
+                  type=""
                   onClick={handleSubmit}
                   style={{
                     background: "#FF6333",
@@ -145,17 +132,7 @@ export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
                     color: "#fff",
                   }}
                 >
-                  {loading ? (
-                    <div className="progess">
-                      <CSpinner
-                        color="light"
-                        size="sm"
-                        style={{ width: "1rem", height: "1rem" }}
-                      />
-                    </div>
-                  ) : (
-                    "continuar pedido"
-                  )}
+                  continuar pedido
                 </Button>
               </div>
             </div>

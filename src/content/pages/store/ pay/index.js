@@ -5,8 +5,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Progres from "./progres";
+import Cookies from "js-cookie";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,11 +46,89 @@ function a11yProps(index) {
 
 export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
   const [value, setValue] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const [image, setImage] = useState(null);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const [loading, setLoading] = useState(false);
+
+  var direccion = Cookies.get("direccion");
+  var user_telefono = Cookies.get("user_telefono");
+  var tipo_servicio = Cookies.get("tipo_servicio");
+  var getToken = Cookies.get("token");
+
+  const [formData, setFormData] = useState({
+    user_venta: "Admin",
+    user_compra: Seccion,
+    direccion: direccion,
+    user_telefono: user_telefono,
+    tipo_servicio: tipo_servicio,
+    img: image,
+    productos: addShop.map((producto) => ({
+      id: producto.id,
+      cantidad: producto.quantity,
+    })),
+  });
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      img: image || "",
+    });
+  }, [image]);
+
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    setImage(selectedImage);
+  };
+  const handleChanges = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    if (
+      !formData.direccion | !formData.user_telefono ||
+      !formData.tipo_servicio
+    ) {
+      return alert("Faltan campos del formulario!");
+    }
+    try {
+      setLoading(true);
+      const response = await axios.post("/ventas", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "X-Requested-With": "XMLHttpRequest",
+          Authorization: "Bearer " + getToken,
+        },
+      });
+      setLoading(false);
+      setAddShop([]);
+      setTotal(0);
+      return Swal.fire({
+        position: "center",
+        icon: "info",
+        title: "Su informacion,sera validada,para el respectivo envio!!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+      setLoading(false);
+      return Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "error al enviar los datos!!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
   return (
     <div className="top-20">
       <Progres />
@@ -85,7 +166,22 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
                       <input
                         class="w-full  dark:border-gray-800 px-4 dark:placeholder-gray-500 dark:text-gray-400 py-2.5 text-base text-gray-900 rounded-lg font-normal border border-gray-200"
                         type="text"
-                        value={Seccion}
+                        value={formData.direccion}
+                        disabled
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full md:w-10/12">
+                  <div class="flex flex-wrap mb-2 -m-3">
+                    <div class="w-full p-3 md:flex-1">
+                      <p class="mb-1.5 font-medium text-base text-gray-800 dark:text-gray-400">
+                        Telefono
+                      </p>
+                      <input
+                        class="w-full  dark:border-gray-800 px-4 dark:placeholder-gray-500 dark:text-gray-400 py-2.5 text-base text-gray-900 rounded-lg font-normal border border-gray-200"
+                        type="text"
+                        value={formData.user_telefono}
                         disabled
                       />
                     </div>
@@ -97,10 +193,13 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
                       <p class="mb-1.5 font-medium text-base text-gray-800 dark:text-gray-400">
                         Tipo de Entrega
                       </p>
+
                       <input
                         class="w-full  dark:border-gray-800 px-4 dark:placeholder-gray-500 dark:text-gray-400 py-2.5 text-base text-gray-900 rounded-lg font-normal border border-gray-200"
                         type="text"
-                        value="envio"
+                        value={
+                          formData.tipo_servicio == 1 ? "enviar" : "recoger"
+                        }
                         disabled
                       />
                     </div>
@@ -168,7 +267,12 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
                           SVG, PNG, JPG or GIF (MAX. 800x400px)
                         </p>
                       </div>
-                      <input id="dropzone-file" type="file" class="hidden" />
+                      <input
+                        id="dropzone-file"
+                        type="file"
+                        class="hidden"
+                        onChange={handleImageChange}
+                      />
                     </label>
                   </div>
                 </CustomTabPanel>
@@ -244,6 +348,7 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
             </div>
             <div class="flex pt-6 flex-wrap -m-1.5">
               <Button
+                onClick={handleSubmit}
                 style={{
                   background: "#FF6333",
                   width: "100%",
