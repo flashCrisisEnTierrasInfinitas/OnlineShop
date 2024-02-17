@@ -27,7 +27,7 @@ export default function Update({ data, token }) {
   var getToken = Cookies.get("token");
 
   const [formData, setFormData] = useState({
-    nombrePro: data.row.nombrePro,
+    nombrePro: data.row.nombrePro.toUpperCase(),
     id_category: data.row.id_category,
     codigoPro: data.row.codigoPro,
     descripPro: data.row.descripPro,
@@ -40,7 +40,6 @@ export default function Update({ data, token }) {
     categorias: data.row.categorias,
     img: image,
   });
-  console.log("🚀 ~ Update ~ formData:", formData);
   useEffect(() => {
     setFormData({
       ...formData,
@@ -76,13 +75,15 @@ export default function Update({ data, token }) {
       );
       setVisible(false);
       setLoading(false);
-      return Swal.fire({
+      await Swal.fire({
         position: "center",
         icon: "success",
         title: response.data.message,
         showConfirmButton: false,
-        timer: 5500,
+        timer: 1000,
       });
+
+      return window.location.reload();
     } catch (error) {
       console.error("Error al enviar los datos:", error);
       setLoading(false);
