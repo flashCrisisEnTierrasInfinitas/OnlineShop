@@ -165,7 +165,8 @@ export default function Login() {
 
       Toast.fire({
         icon: "error",
-        title: error.response.data,
+        title:
+          "Error:Verifique que su correo no esté registrado, o la contraseña no cumpla con los 8 caracteres",
       });
     }
   };
