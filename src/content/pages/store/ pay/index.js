@@ -44,7 +44,7 @@ function a11yProps(index) {
   };
 }
 
-export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
+export default function Pay({ setTotal, Seccion, addShop, setAddShop }) {
   const [value, setValue] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -58,6 +58,14 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
   var user_telefono = Cookies.get("user_telefono");
   var tipo_servicio = Cookies.get("tipo_servicio");
   var getToken = Cookies.get("token");
+
+  const eliminarCookie = () => {
+    Cookies.remove("direccion");
+    Cookies.remove("user_telefono");
+    Cookies.remove("tipo_servicio");
+    localStorage.removeItem("addShop");
+    localStorage.removeItem("Total");
+  };
 
   const [formData, setFormData] = useState({
     user_venta: "Admin",
@@ -82,20 +90,21 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
     const selectedImage = e.target.files[0];
     setImage(selectedImage);
   };
-  const handleChanges = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
 
   const handleSubmit = async () => {
     if (
-      !formData.direccion | !formData.user_telefono ||
-      !formData.tipo_servicio
+      !formData.direccion ||
+      !formData.user_telefono ||
+      !formData.tipo_servicio ||
+      !formData.productos
     ) {
-      return alert("Faltan campos del formulario!");
+      return Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Faltan campos!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
     try {
       setLoading(true);
@@ -109,6 +118,8 @@ export default function Pay({ Total, setTotal, Seccion, addShop, setAddShop }) {
       setLoading(false);
       setAddShop([]);
       setTotal(0);
+      await eliminarCookie();
+      window.location.reload();
       return Swal.fire({
         position: "center",
         icon: "info",

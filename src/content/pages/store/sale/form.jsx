@@ -4,8 +4,7 @@ import { useState } from "react";
 
 import Cookies from "js-cookie";
 
-export default function Form({ Seccion, token, setAddShop, setTotal, Total }) {
-  const [image, setImage] = useState(null);
+export default function Form({ Seccion, Total }) {
   const [require, setRequire] = useState(true);
   const data = localStorage.getItem("addShop");
   const productos = JSON.parse(data);
