@@ -59,7 +59,7 @@ export default function Admin() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAuth(true);
-    }, 1500); // Cambia 5000 a la cantidad de milisegundos que desees
+    }, 1000); // Cambia 5000 a la cantidad de milisegundos que desees
 
     return () => clearTimeout(timer);
   }, []);
@@ -126,7 +126,7 @@ export default function Admin() {
           ) : (
             <div role="alert">
               <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                Danger
+                Info
               </div>
               <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-2 py-0 text-red-700">
                 <p>No autorizado.</p>
@@ -137,7 +137,7 @@ export default function Admin() {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center rounded-md  px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm bg-blue-900 hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               {loading ? (
                 <div className="progess">
