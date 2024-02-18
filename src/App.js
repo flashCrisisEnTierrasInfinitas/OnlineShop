@@ -10,7 +10,6 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
-import FooterMenu from "./components/footer-menu";
 import Header from "./components/header";
 import Home from "./content/pages/home/Home";
 import Pay from "./content/pages/store/ pay";
@@ -35,6 +34,7 @@ import Recouper from "./Auth/recoper";
 import { Password } from "@mui/icons-material";
 import MisPediso from "./content/pages/store/misPedidos";
 import DetallePedidos from "./content/pages/store/misPedidos/detallePedidos";
+import Admin from "./Auth/admin";
 
 function App() {
   axios.defaults.baseURL =
@@ -110,6 +110,10 @@ function App() {
         <Router>
           <Routes>
             <Route path="*" element="Pague no fount" />
+            <Route
+              path="/admid"
+              element={<Admin />}
+            />
             <Route
               path="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da"
               element={<Login />}

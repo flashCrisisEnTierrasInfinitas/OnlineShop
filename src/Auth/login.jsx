@@ -8,15 +8,13 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
+import { Button } from "@mui/material";
 
 function useSafeNavigate() {
   const navigate = useNavigate();
   const location = useLocation();
 
   const safeNavigate = (path) => {
-    console.log("🚀 ~ safeNavigate ~ path:", path);
-    console.log("🚀 ~ useSafeNavigate ~ location:", location);
-
     if (location.pathname === "/") {
       // Si estás en la página de inicio, navega a otra página de tu elección
       navigate(location.pathname);
@@ -37,8 +35,6 @@ const styles = {
 };
 
 export default function Login() {
-  const history = useNavigate();
-
   const safeNavigate = useSafeNavigate();
 
   const [log, setLog] = useState(false);
@@ -61,7 +57,6 @@ export default function Login() {
     Cookies.set("img", img, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
   };
   Cooki();
-
   const [dataLog, setDataLog] = useState({
     name: "",
     email: "",
@@ -93,13 +88,11 @@ export default function Login() {
 
       /*   if (response.data.role == 1) {
         return (window.location.href = "/dahsboard/0");
+      } else {
+        return (window.location.href = "/");
       } */
       // Redirige de vuelta a la URL almacenada si es una URL válida, de lo contrario redirige al inicio
-      if (response.data.role === 1) {
-        return (window.location.href = "/dahsboard/0");
-      } else {
-        goToEntry();
-      }
+      goToEntry();
     } catch (error) {
       setLoading(false);
       setOpen(true);
@@ -287,11 +280,7 @@ export default function Login() {
                 >
                   Registrarse
                 </button>
-                <button
-                  type="button"
-                  className="btn1 btn-secondary"
-                  onClick={Sing}
-                >
+                <Button onClick={Sing}>
                   {loading ? (
                     <div className="progess">
                       <CSpinner
@@ -301,9 +290,9 @@ export default function Login() {
                       />
                     </div>
                   ) : (
-                    <label>Ingresar</label>
+                    "Ingresar"
                   )}
-                </button>
+                </Button>
               </div>
             </form>
           )}

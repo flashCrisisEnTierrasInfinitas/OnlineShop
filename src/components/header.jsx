@@ -16,7 +16,6 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LockPersonIcon from "@mui/icons-material/LockPerson";
 import LoginIcon from "@mui/icons-material/Login";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { Tooltip } from "@mui/joy";
 import Cookies from "js-cookie";
 import { Avatar, Badge, Button, styled } from "@mui/material";
