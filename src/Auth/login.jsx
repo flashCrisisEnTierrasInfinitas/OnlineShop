@@ -17,7 +17,7 @@ function useSafeNavigate() {
   const safeNavigate = (path) => {
     if (location.pathname === "/") {
       // Si estás en la página de inicio, navega a otra página de tu elección
-      navigate(location.pathname);
+      navigate(path);
     } else {
       // De lo contrario, intenta retroceder dos entradas en el historial
       navigate(-2);
@@ -46,6 +46,7 @@ export default function Login() {
   const [img, setImg] = useState("");
   const [open, setOpen] = useState(false);
   const [mostrarPassword, setMostrarPassword] = useState(false);
+  const [auth, setAuth] = useState(true);
 
   const goToEntry = (entryIndex) => safeNavigate(entryIndex);
 
@@ -85,13 +86,10 @@ export default function Login() {
       setId(response.data.id);
       setImg(response.data.img);
       setLoading(false);
-
-      /*   if (response.data.role == 1) {
-        return (window.location.href = "/dahsboard/0");
-      } else {
-        return (window.location.href = "/");
-      } */
-      // Redirige de vuelta a la URL almacenada si es una URL válida, de lo contrario redirige al inicio
+      setAuth(true);
+      if (response.data.role === 1) {
+        return setAuth(false);
+      }
       goToEntry();
     } catch (error) {
       setLoading(false);
@@ -259,6 +257,19 @@ export default function Login() {
                   {mostrarPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                 </button>
               </div>
+              {auth ? (
+                ""
+              ) : (
+                <div role="alert">
+                  <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                    Info
+                  </div>
+                  <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-2 py-0 text-red-700">
+                    <p>No autorizado.</p>
+                  </div>
+                </div>
+              )}
+
               <div className="conte-terminos">
                 <div>
                   <input type="checkbox" checked />
