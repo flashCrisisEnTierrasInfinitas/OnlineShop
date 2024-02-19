@@ -136,7 +136,7 @@ export default function AppBarAdmin() {
                   </div>
                   <label>Home</label>
                 </a>
-                <a href="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da">
+                <a href="/admid">
                   <div className="ico-menu">
                     <SettingsPowerIcon />
                   </div>

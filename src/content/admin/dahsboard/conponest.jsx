@@ -70,19 +70,21 @@ export default function Components({ id }) {
             />
           </div>
           <br />
-          <Stack sx={{ width: "100%" }} spacing={2}>
-            {filteredData && filteredData.length > 0 ? (
-              filteredData?.map((data) => (
-                <Alertas data={data} getDataList={getDataList} />
-              ))
-            ) : (
-              <p>
-                <Alert variant="filled" severity="info">
-                  No Rows!!
-                </Alert>
-              </p>
-            )}
-          </Stack>
+          <div class="p-3 bg-gray-200">
+            <Stack sx={{ width: "100%" }} spacing={2}>
+              {filteredData && filteredData.length > 0 ? (
+                filteredData?.map((data) => (
+                  <Alertas data={data} getDataList={getDataList} />
+                ))
+              ) : (
+                <p>
+                  <Alert variant="filled" severity="info">
+                    No Rows!!
+                  </Alert>
+                </p>
+              )}
+            </Stack>
+          </div>
         </>
       )}
     </div>
