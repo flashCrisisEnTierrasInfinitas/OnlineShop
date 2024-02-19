@@ -36,13 +36,9 @@ export default function Footer() {
       </CFooter>
       <div className="conter-log-red">
         <div>
-          <img src="/img/icons/facebook_108044.svg" alt="" />
-        </div>
-        <div>
-          <img src="/img/icons/instagram_108043.svg" alt="" />
-        </div>
-        <div>
-          <img src="/img/icons/whatsapp_108042.svg" alt="" />
+          <a href="https://api.whatsapp.com/send/?phone=3102055841&text&type=phone_number&app_absent=0">
+            <img src="/img/icons/whatsapp_108042.svg" alt="" />
+          </a>
         </div>
       </div>
     </div>

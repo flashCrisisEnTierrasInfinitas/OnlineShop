@@ -35,6 +35,7 @@ import { Password } from "@mui/icons-material";
 import MisPediso from "./content/pages/store/misPedidos";
 import DetallePedidos from "./content/pages/store/misPedidos/detallePedidos";
 import Admin from "./Auth/admin";
+import NoFount from "./noFount";
 
 function App() {
   axios.defaults.baseURL =
@@ -109,7 +110,7 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
-            <Route path="*" element="Pague no fount" />
+            <Route path="*" element={<NoFount/>} />
             <Route
               path="/admid"
               element={<Admin />}

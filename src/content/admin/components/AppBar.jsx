@@ -21,9 +21,12 @@ import HailIcon from "@mui/icons-material/Hail";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import OutdoorGrillIcon from "@mui/icons-material/OutdoorGrill";
+import Cookies from "js-cookie";
+import { Chip } from "@mui/material";
 
 export default function AppBarAdmin() {
   const [visible, setVisible] = useState(false);
+  const seccion = Cookies.get("seccion");
   return (
     <CNavbar colorScheme="light" className="conter-appBar">
       <CContainer fluid>
@@ -41,6 +44,7 @@ export default function AppBarAdmin() {
             }}
           ></div>
         </CNavbarBrand>
+        <Chip label={seccion} />
         <CNavbarToggler
           aria-controls="offcanvasNavbar"
           aria-label="Toggle navigation"

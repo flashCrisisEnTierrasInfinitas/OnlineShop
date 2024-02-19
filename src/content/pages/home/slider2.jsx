@@ -1,16 +1,11 @@
-import { Button, Tooltip } from "@mui/material";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
-import LoupeIcon from "@mui/icons-material/Loupe";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Chip from "@mui/joy/Chip";
-
 import { Carousel } from "flowbite-react";
-import Swal from "sweetalert2";
 
 export default function DefaultCarousel({ data, total, setTotal }) {
   return (
@@ -18,7 +13,7 @@ export default function DefaultCarousel({ data, total, setTotal }) {
       <div className="conter-vacio">Slide 1</div>
       {data.map((product) => (
         <>
-          <div className="card-pro-list">
+          <div>
             <a
               href={`/DetalleProduc/${product.id}`}
               style={{ textDecoration: "none" }}
