@@ -55,7 +55,6 @@ export default function Admin() {
     Cookies.set("img", img, { expires: 1 }); // Almacena el token en una cookie con una duración de 1 día
   };
   Cooki();
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setAuth(true);
