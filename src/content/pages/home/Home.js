@@ -11,7 +11,7 @@ export default function Home({
   setTotal,
 }) {
   return (
-    <div className="conter-home">
+    <div className="mt-10">
       <Header />
       <ProList
         allProducts={allProducts}
