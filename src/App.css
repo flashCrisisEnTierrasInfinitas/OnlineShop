@@ -1174,11 +1174,11 @@ p {
 }
 .img-cate-home svg {
   font-size: 2em;
-  color: #2d477c;
-  fill: #2d477c;
+  color: #1d4ed8;
+  fill: #1d4ed8;
 }
 .img-cate-home:hover {
-  background-color: #2d477c;
+  background-color: #1d4ed8;
   cursor: pointer;
 }
 .img-cate-home svg:hover {
