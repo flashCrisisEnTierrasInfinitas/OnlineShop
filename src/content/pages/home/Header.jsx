@@ -9,7 +9,7 @@ export default function Header() {
               <br class="xl:hidden" />
               <span class="text-orange-600"> Asupro Colombia</span>
             </h1>
-            <p class="max-w-md mx-auto text-lg text-white sm:text-xl mt-4 md:mt-6 md:max-w-3xl">
+            <p class="max-w-md mx-auto text-lg text-white sm:text-xl mt-4 md:mt-6 md:max-w-3xl animate__animated animate__pulse animate__infinite">
               Las Tiendas <strong>ASUPRO COLOMBIA</strong> proporcionan a todos
               sus clientes una amplia variedad de opciones, ofreciendo comodidad
               y acceso las 24 horas día, para seleccionar sus productos y
