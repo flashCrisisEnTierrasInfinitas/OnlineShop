@@ -134,7 +134,7 @@ export default function ProList({ total, setTotal }) {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-        </div>{" "}
+        </div>
         <div class="font-[sans-serif] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
           <h2 class="text-4xl font-extrabold text-gray-800 mb-12">
             Nuestros Productos

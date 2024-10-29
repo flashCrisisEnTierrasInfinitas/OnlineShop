@@ -35,10 +35,10 @@ export default function Categorias() {
   }
 
   return (
-    <div className="conter-cate-home top-50">
-      <h1 className="color-naranja animate__animated animate__backInRight">
+    <div class="font-sans bg-white py-4 mx-auto lg:max-w-7xl md:max-w-4xl">
+      <h2 class="text-4xl font-extrabold text-gray-800 text-center mb-16">
         Categorías
-      </h1>
+      </h2>
       <div className="grid">
         {data.map((data) => (
           <div className="box-cate-home">
@@ -51,7 +51,9 @@ export default function Categorias() {
               />
             </a>
             <div className="text-cate-home">
-              <h1>{data.name.toUpperCase()}</h1>
+              <h1>
+                <strong>{data.name.toUpperCase()}</strong>
+              </h1>
             </div>
           </div>
         ))}
