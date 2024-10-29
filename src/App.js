@@ -39,7 +39,7 @@ import NoFount from "./noFount";
 
 function App() {
   axios.defaults.baseURL =
-    "https://apionlineshop.com.asuprocolombiasas.com/api";
+    "https://back.apionlineshop.com.asuprocolombiasas.com/api";
   //axios.defaults.baseURL = "http://127.0.0.1:8000/api";
 
   const seccion = Cookies.get("seccion");
@@ -110,11 +110,8 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
-            <Route path="*" element={<NoFount/>} />
-            <Route
-              path="/admid"
-              element={<Admin />}
-            />
+            <Route path="*" element={<NoFount />} />
+            <Route path="/admin" element={<Admin />} />
             <Route
               path="/au5Z4YhReMcxh1r0WdbGNrGiMU7+j6CfaUrMxP2TGJNv7ZgI72muOl1gie2Lc7da"
               element={<Login />}
