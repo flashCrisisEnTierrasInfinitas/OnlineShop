@@ -126,15 +126,23 @@ export default function ProList({ total, setTotal }) {
       <div>
         <Categorias />
         <DefaultCarousel data={oferta} total={total} setTotal={setTotal} />
-        <div className="conter-search top-50">
+        <div className="mt-20 mb-10" />
+        <div class="bg-white flex px-1 py-1 rounded-full border border-blue-500 overflow-hidden max-w-md mx-auto font-[sans-serif]">
           <input
-            type="text"
+            type="email"
             placeholder="¿Qué estás buscando?"
-            class="form-control"
+            class="w-full outline-none bg-white pl-4 text-sm"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          <button
+            type="button"
+            class="bg-blue-600 hover:bg-blue-700 transition-all text-white text-sm rounded-full px-5 py-2.5"
+          >
+            Search
+          </button>
         </div>
+
         <div class="font-[sans-serif] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
           <h2 class="text-4xl font-extrabold text-gray-800 mb-12">
             Nuestros Productos
