@@ -1,32 +1,31 @@
-import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { CFormInput, CSpinner } from "@coreui/react";
-import isMountedRef from "../../../hooks/useRefMounted";
 import axios from "axios";
 import Icons from "./icons";
 import { Chip } from "@mui/material";
+import { CSpinner } from "@coreui/react";
+import { useEffect, useState } from "react";
 export default function DataTable() {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [loading, setLoading] = React.useState(true);
-  const [data, setData] = React.useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
-  const getDataList = React.useCallback(async () => {
-    try {
-      const response = await axios.get(`/product`, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      setData(response.data);
-      setLoading(false);
-    } catch (err) {
-      console.error(err);
-      setLoading(false);
-    }
-  }, [isMountedRef]);
-  React.useEffect(() => {
+  useEffect(() => {
+    const getDataList = async () => {
+      try {
+        const response = await axios.get(`/product`, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        setData(response.data);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+        setLoading(false);
+      }
+    };
     getDataList();
-  }, [getDataList]);
+  }, []);
 
   if (loading) {
     return (
@@ -41,7 +40,7 @@ export default function DataTable() {
       field: "actions", // Nombre del campo
       headerName: "Acciones", // Nombre en la cabecera
       width: 130, // Ancho de la columna
-      renderCell: (params) => <Icons data={params} getDataList={getDataList} />,
+      renderCell: (params) => <Icons data={params} />,
     },
     { field: "id", headerName: "ID", width: 70 },
     {

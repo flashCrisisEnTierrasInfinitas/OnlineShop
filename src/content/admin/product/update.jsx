@@ -83,7 +83,7 @@ export default function Update({ data, token }) {
         timer: 1000,
       });
 
-      return window.location.reload();
+      // return window.location.reload();
     } catch (error) {
       console.error("Error al enviar los datos:", error);
       setLoading(false);

@@ -11,7 +11,11 @@ import {
 } from "@coreui/react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import {
+  BellIcon,
+  LockOpenIcon,
+  ShoppingCartIcon,
+} from "@heroicons/react/24/outline";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LockPersonIcon from "@mui/icons-material/LockPerson";
@@ -40,7 +44,7 @@ export default function Header(props) {
       return (
         <Tooltip title="Administrador">
           <a href="/dahsboard/0" className="ico-navbar">
-            <LockPersonIcon />
+            <LockOpenIcon className="w-6 text-gray-500" />
           </a>
         </Tooltip>
       );
@@ -61,14 +65,12 @@ export default function Header(props) {
     if (seccion) {
       return (
         <Tooltip title="Login">
-          <Button
-            variant="contained"
-            style={styles.btn}
-            endIcon={<LogoutIcon />}
+          <button
             onClick={logout}
+            className="px-4 py-2 text-sm rounded-full font-bold text-white border-2 bg-blue-700 hover:bg-blue-400 flex"
           >
-            salir
-          </Button>
+            Salir
+          </button>
         </Tooltip>
       );
     } else {
@@ -94,19 +96,11 @@ export default function Header(props) {
         <Tooltip title="notificaciones">
           <a href="/notificaciones" className="ico-navbar">
             <Badge badgeContent={1} color="primary">
-              <NotificationsActiveIcon />
+              <BellIcon className="w-6  h-6 text-gray-500" />
             </Badge>
           </a>
         </Tooltip>
       );
-    } else {
-      <Tooltip title="notificaciones">
-        <a href="/notificaciones" className="ico-navbar">
-          <Badge color="primary">
-            <NotificationsActiveIcon />
-          </Badge>
-        </a>
-      </Tooltip>;
     }
   };
 
@@ -138,7 +132,7 @@ export default function Header(props) {
               <ValidateNotify />
               <Tooltip title="Carrito" className="ico-navbar">
                 <a href="/7Abq5P7EeFQM7HGxE/cDsMvM5/jPk1ZIuzGwbnuVyYI+f9RUtVrP4wVLaqftHwM/">
-                  <ShoppingCartCheckoutIcon />
+                  <ShoppingCartIcon className="h-6 w-6 text-gray-500" />
                 </a>
               </Tooltip>
               <ValidateLogin />
