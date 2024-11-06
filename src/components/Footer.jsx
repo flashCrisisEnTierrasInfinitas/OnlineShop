@@ -20,7 +20,7 @@ export default function Footer() {
               href="https://api.whatsapp.com/send/?phone=3102055841&text&type=phone_number&app_absent=0"
               class="bg-gray-600 hover:bg-gray-700 text-white text-sm rounded-full px-5 py-2.5 ml-4 transition-all"
             >
-              Submit
+              Comunicar
             </a>
           </div>
         </div>
