@@ -1,4 +1,5 @@
 import FooterMenu from "../../../components/footer-menu";
+import Loader from "../../../components/loader";
 import Header from "./Header";
 import ProList from "./ProList";
 

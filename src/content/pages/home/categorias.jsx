@@ -2,6 +2,7 @@ import axios from "axios";
 import { useCallback, useState, useEffect } from "react";
 import isMountedRef from "../../../hooks/useRefMounted";
 import { CSpinner } from "@coreui/react";
+import Loader from "../../../components/loader";
 
 export default function Categorias() {
   const [data, setData] = useState([]);
@@ -27,11 +28,7 @@ export default function Categorias() {
   }, [getCategoriList]);
 
   if (loading) {
-    return (
-      <div className="d-flex justify-content-center">
-        <CSpinner color="danger" />
-      </div>
-    );
+    return <Loader />;
   }
 
   return (

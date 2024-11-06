@@ -7,6 +7,7 @@ import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
 import DefaultCarousel from "./slider2";
 import Categorias from "./categorias";
+import Loader from "../../../components/loader";
 
 export default function ProList({ total, setTotal }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -58,11 +59,7 @@ export default function ProList({ total, setTotal }) {
   }, [getOfertaList]);
 
   if (loading) {
-    return (
-      <div className="d-flex justify-content-center">
-        <CSpinner color="danger" />
-      </div>
-    );
+    return <Loader />;
   }
 
   const Peso = ({ value }) => {
