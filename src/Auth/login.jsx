@@ -76,10 +76,12 @@ export default function Login() {
   //REGISTRO DEL USUARIO
 
   //INGRESO DEL USUARIO
-  const Sing = async () => {
+  const Sing = async (e) => {
+    e.preventDefault();
     try {
       setLoading(true);
       const response = await axios.post("/auth/login", dataLog);
+      console.log(response.data);
       setToken(response.data.access_token);
       setRole(response.data.role);
       setSeccion(response.data.seccion);
@@ -113,7 +115,8 @@ export default function Login() {
     }
   };
 
-  const hanledRegister = async () => {
+  const hanledRegister = async (e) => {
+    e.preventDefault();
     try {
       setLoading(true);
       const response = await axios.post("/auth/register", dataLog);
@@ -162,100 +165,149 @@ export default function Login() {
     }
   };
 
-  return (
-    <div className="conted-login">
-      <div className="conter-box-login">
-        <div className="box-">
-          {log ? (
-            <form className="form-login">
-              <h1 className="top-50">Registrarse</h1>
-              <CFormInput
-                placeholder="nombre"
-                className="inpunt-login"
+  return log ? (
+    <div class="flex flex-col justify-center font-[sans-serif] sm:h-screen p-4">
+      <div class="max-w-md w-full mx-auto border border-gray-300 rounded-2xl p-8">
+        <div class="text-center mb-12">
+          <a href="javascript:void(0)">
+            <img
+              src="/img/logos/logoVerde.jpeg"
+              alt="logo"
+              class="w-40 inline-block"
+            />
+          </a>
+        </div>
+
+        <form onSubmit={hanledRegister}>
+          <div class="space-y-6">
+            <div>
+              <label class="text-gray-800 text-sm mb-2 block">Nombre</label>
+              <input
+                class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
+                placeholder="Ingrese su nombre"
+                type="text"
                 name="name"
                 value={dataLog.name}
                 onChange={handleChange}
+                required
               />
-              <CFormInput
-                placeholder="email"
-                className="inpunt-login"
+            </div>
+            <div>
+              <label class="text-gray-800 text-sm mb-2 block">
+                Correo Electronico
+              </label>
+              <input
+                class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
+                placeholder="Ingrese Correo Electronico"
+                type="email"
                 name="email"
                 value={dataLog.email}
                 onChange={handleChange}
+                required
               />
-              <div className="flex">
-                <CFormInput
-                  placeholder="password"
-                  className="inpunt-login"
-                  name="password"
-                  type={mostrarPassword ? "text" : "password"}
-                  value={dataLog.password}
-                  onChange={handleChange}
-                />
-                <button
-                  onClick={toggleMostrarPassword}
-                  type="button"
-                  className="btn1"
-                  style={styles.btn}
+            </div>
+            <div>
+              <label class="text-gray-800 text-sm mb-2 block">Contraseña</label>
+              <input
+                class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
+                placeholder="Ingrese Contraseña"
+                name="password"
+                type={mostrarPassword ? "text" : "password"}
+                value={dataLog.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div class="flex items-center">
+              <input
+                id="remember-me"
+                name="remember-me"
+                type="checkbox"
+                class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              />
+              <label for="remember-me" class="text-gray-800 ml-3 block text-sm">
+                Acepto los
+                <a
+                  href="javascript:void(0);"
+                  class="text-blue-600 font-semibold hover:underline ml-1"
                 >
-                  {mostrarPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                </button>
-              </div>
-              <div className="conte-terminos">
-                <div>
-                  <input type="checkbox" checked />
-                  <label className="color-gray">
-                    Acepta términos y condiciones
-                  </label>
+                  Términos y Condiciones
+                </a>
+              </label>
+            </div>
+          </div>
+
+          <div class="!mt-12">
+            <button
+              type="submit"
+              class="w-full py-3 px-4 text-sm tracking-wider font-semibold rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none"
+            >
+              {loading ? (
+                <div className="progess">
+                  <CSpinner
+                    color="light"
+                    size="sm"
+                    style={{ width: "1rem", height: "1rem" }}
+                  />
                 </div>
-              </div>
-              <div className="flex">
-                <button
-                  type="button"
-                  className="btn1 btn-secondary"
-                  onClick={hanledRegister}
-                >
-                  {loading ? (
-                    <div className="progess">
-                      <CSpinner
-                        color="light"
-                        size="sm"
-                        style={{ width: "1rem", height: "1rem" }}
-                      />
-                    </div>
-                  ) : (
-                    <label>Registrarse</label>
-                  )}
-                </button>
-              </div>
-            </form>
-          ) : (
-            <form className="form-login">
-              <h1 className="top-50">Ingresar</h1>
-              <CFormInput
-                placeholder="email"
-                className="inpunt-login"
-                name="email"
-                value={dataLog.email}
-                onChange={handleChange}
-              />
-              <div className="flex">
-                <CFormInput
-                  placeholder="password"
-                  className="inpunt-login"
-                  name="password"
-                  type={mostrarPassword ? "text" : "password"}
-                  value={dataLog.password}
-                  onChange={handleChange}
-                />
-                <button
-                  onClick={toggleMostrarPassword}
-                  type="button"
-                  className="btn1"
-                  style={styles.btn}
-                >
-                  {mostrarPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                </button>
+              ) : (
+                "Crear una cuenta"
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  ) : (
+    <div class="bg-gray-50 font-[sans-serif]">
+      <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+        <div class="max-w-md w-full">
+          <a href="javascript:void(0)">
+            <img
+              src="/img/logos/logoAzul.jpeg"
+              alt="logo"
+              class="w-40 mb-8 mx-auto block"
+            />
+          </a>
+
+          <div class="p-8 rounded-2xl bg-white shadow">
+            <h2 class="text-gray-800 text-center text-2xl font-bold">
+              Iniciar sesión
+            </h2>
+            <form class="mt-8 space-y-4" onSubmit={Sing}>
+              <div>
+                <label class="text-gray-800 text-sm mb-2 block">
+                  Nombre de usuario
+                </label>
+                <div class="relative flex items-center">
+                  <input
+                    name="email"
+                    type="email"
+                    class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
+                    placeholder="Enter user name"
+                    value={dataLog.email}
+                    onChange={handleChange}
+                    required={true}
+                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#bbb"
+                    stroke="#bbb"
+                    class="w-4 h-4 absolute right-4"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      cx="10"
+                      cy="7"
+                      r="6"
+                      data-original="#000000"
+                    ></circle>
+                    <path
+                      d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z"
+                      data-original="#000000"
+                    ></path>
+                  </svg>
+                </div>
               </div>
               {auth ? (
                 ""
@@ -269,29 +321,64 @@ export default function Login() {
                   </div>
                 </div>
               )}
-
-              <div className="conte-terminos">
-                <div>
-                  <input type="checkbox" checked />
-                  <label className="color-gray">
-                    Acepta términos y condiciones
+              <div>
+                <label class="text-gray-800 text-sm mb-2 block">
+                  Contraseña
+                </label>
+                <div class="relative flex items-center">
+                  <input
+                    name="password"
+                    type={mostrarPassword ? "text" : "password"}
+                    required
+                    value={dataLog.password}
+                    onChange={handleChange}
+                    class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
+                    placeholder="Enter password"
+                  />
+                  <svg
+                    onClick={toggleMostrarPassword}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#bbb"
+                    stroke="#bbb"
+                    class="w-4 h-4 absolute right-4 cursor-pointer"
+                    viewBox="0 0 128 128"
+                  >
+                    <path
+                      d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z"
+                      data-original="#000000"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center">
+                  <input
+                    id="remember-me"
+                    name="remember-me"
+                    type="checkbox"
+                    class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                  <label
+                    for="remember-me"
+                    class="ml-3 block text-sm text-gray-800"
+                  >
+                    Acuérdate de mí
                   </label>
                 </div>
-                <div>
-                  <a href="/Lni9803g75E53U7Bg8xJz2xO+YrC/grPE/fxZ8GXSyuCtRzLqx6N782CTR03G99NLDfn6hadAE6M0TTOCHrlLdox0VWEY5o7eZ6OKBf28V7n+AEonVXxDk8VTGTjZVcJ">
-                    <label>¿Olvido su contraseña?</label>
+                <div class="text-sm">
+                  <a
+                    href="/Lni9803g75E53U7Bg8xJz2xO+YrC/grPE/fxZ8GXSyuCtRzLqx6N782CTR03G99NLDfn6hadAE6M0TTOCHrlLdox0VWEY5o7eZ6OKBf28V7n+AEonVXxDk8VTGTjZVcJ"
+                    class="text-blue-600 hover:underline font-semibold"
+                  >
+                    ¿Olvidaste tu contraseña?
                   </a>
                 </div>
               </div>
-              <div className="flex">
+              <div class="!mt-8">
                 <button
-                  type="button"
-                  className="btn1 btn-primary"
-                  onClick={() => setLog(true)}
+                  type="submit"
+                  class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
                 >
-                  Registrarse
-                </button>
-                <Button onClick={Sing}>
                   {loading ? (
                     <div className="progess">
                       <CSpinner
@@ -301,12 +388,22 @@ export default function Login() {
                       />
                     </div>
                   ) : (
-                    "Ingresar"
+                    "Iniciar sesión"
                   )}
-                </Button>
+                </button>
               </div>
+              <p class="text-gray-800 text-sm !mt-8 text-center">
+                ¿No tienes una cuenta?
+                <button
+                  type="button"
+                  onClick={() => setLog(true)}
+                  class="text-blue-600 hover:underline ml-1 whitespace-nowrap font-semibold"
+                >
+                  Regístrate aquí
+                </button>
+              </p>
             </form>
-          )}
+          </div>
         </div>
       </div>
     </div>
