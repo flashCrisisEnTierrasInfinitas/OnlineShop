@@ -7,12 +7,12 @@ export default function Header() {
             <h1 class="text-4xl tracking-tight leading-10 font-extrabold text-white sm:text-5xl sm:leading-none md:text-6xl lg:text-7xl">
               Tienda
               <br class="xl:hidden" />
-              <span class="text-orange-600"> Asupro Colombia</span>
+              <span class="text-orange-600"> La Tienda</span>
             </h1>
             <p class="max-w-md mx-auto text-lg text-white sm:text-xl mt-4 md:mt-6 md:max-w-3xl animate__animated animate__pulse animate__infinite">
-              Las Tiendas <strong>ASUPRO COLOMBIA</strong> proporcionan a todos
-              sus clientes una amplia variedad de opciones, ofreciendo comodidad
-              y acceso las 24 horas día, para seleccionar sus productos y
+              Las Tiendas <strong>La Tienda</strong> proporcionan a todos sus
+              clientes una amplia variedad de opciones, ofreciendo comodidad y
+              acceso las 24 horas día, para seleccionar sus productos y
               servicios.
             </p>
 
