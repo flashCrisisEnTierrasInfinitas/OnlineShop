@@ -34,7 +34,7 @@ export default function AppBarAdmin() {
           <div className="logo-admin ">
             <a href="/">
               <div>
-                <img src="/img/logos/logo1.png" />
+                <img src="/img/logos/logoVerde.jpeg" />
               </div>
             </a>
           </div>
@@ -44,7 +44,9 @@ export default function AppBarAdmin() {
             }}
           ></div>
         </CNavbarBrand>
-        <Chip label={seccion} />
+        <span class="bg-green-600 px-2 py-1  text-white rounded-full">
+          {seccion}
+        </span>
         <CNavbarToggler
           aria-controls="offcanvasNavbar"
           aria-label="Toggle navigation"
