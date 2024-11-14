@@ -6,6 +6,7 @@ import { CSpinner } from "@coreui/react";
 import Table from "./table";
 import { Alert, Button } from "@mui/material";
 import UndoIcon from "@mui/icons-material/Undo";
+import Loader from "../../../../components/loader";
 
 export default function MisPediso({ Seccion }) {
   const token = Cookies.get("token");
@@ -33,11 +34,7 @@ export default function MisPediso({ Seccion }) {
   }, [getDataList]);
 
   if (loading) {
-    return (
-      <div className="d-flex justify-content-center">
-        <CSpinner color="danger" />
-      </div>
-    );
+    return <Loader />;
   }
   return (
     <div>

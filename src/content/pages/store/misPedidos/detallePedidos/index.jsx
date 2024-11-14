@@ -11,6 +11,7 @@ import isMountedRef from "../../../../../hooks/useRefMounted";
 import ListProd from "./listProd";
 import Cookies from "js-cookie";
 import { useParams } from "react-router-dom";
+import Loader from "../../../../../components/loader";
 
 const styles = {
   anvance: {
@@ -49,11 +50,7 @@ export default function DetallePedidos() {
   }, [getDataList]);
 
   if (loading) {
-    return (
-      <div className="d-flex justify-content-center">
-        <CSpinner color="danger" />
-      </div>
-    );
+    return <Loader />;
   }
 
   const ValidateStatus = ({ value }) => {
