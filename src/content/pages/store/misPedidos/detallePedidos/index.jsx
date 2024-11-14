@@ -6,7 +6,6 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { CSpinner } from "@coreui/react";
 import isMountedRef from "../../../../../hooks/useRefMounted";
 import ListProd from "./listProd";
 import Cookies from "js-cookie";
